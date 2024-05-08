@@ -1,0 +1,57 @@
+---
+title: "Glossary and definitions"
+order: 1
+---
+
+This page clarifies the terminology that is used throughout the model and its associated apps.
+
+## Bed days
+
+Bed days are defined as `discharge_date - admission_date + 1`.
+
+## Beds available
+
+The methodology for this calculation is [available here](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/capacity_conversion/beds.html).
+
+## Distribution of projections
+
+The results of the (usually 256) Monte Carlo simulation runs, each of which will randomly sample from the 80% confidence intervals supplied as the model parameters. The "central projection" is the median result from the 256 runs.  
+
+## Empirical Cumulative Distribution Function (ECDF) Curve / S-Curve
+
+The s-curve shows the range of results (or values) obtained from all the model runs on the x-axis and their likelihood of occurring as (cumulative) percentages (0% to 100%) on the y-axis. There are three main ways of reading the s-curve. 
+
+1. Start from the x-axis. Pick a value from the x-axis (say its 4500) and climb vertically to that point on the s-curve and then read the corresponding y-value - say this is 75%. This means there is a 75% chance that the x-value is less than or equal to 4500. In other words 75% of model runs produced a result of less than or equal to 4500.
+
+2. Start from the y-axis. Pick a given percentage chance value from the y-axis and then find the corresponding x-value. For example, if you want what model results that were obtained 85% of the time, find 85% on the y-axis and then read the corresponding x-value - say this is 5900. This means that there is a 85% chance that the x-value is less than or equal to 5900.
+
+3. You can also find the surprisingly low and high values from the s-curve by reading across from the two y-axis values - 10% and 90% - to the corresponding two x-values. Say these x-values are 6000 and 7300. This means that there is an 80% (=90%-10%) chance that x values fall between 6000 to 7300.
+
+## Impact of changes
+
+High-level estimates of the number of rows that are added/removed due to each parameter. These should be regarded as very rough estimates, and treated with a pinch of salt. 
+
+Detailed technical explanation: The “step counts” in the model are created during the phase of the model where we create the factors. When we add a step to the model we mutate a column, then take the mean of this mutate column to get a scalar value. We compare this scalar to the prior scalar to work out the effect of this step (the step count). However, the parameters are just the values that are used for the lambda parameter of a random Poisson distribution. Here, we try to convert factors of lambda to the number of rows that were added/removed due to that factor. However, because it is a random process, there is no direct relationship. We end up with an error term which is redistributed across all the steps to make the end result be consistent. 
+
+## Inpatient admissions
+
+The way in which these are classified and grouped is defined on [this page](https://connect.strategyunitwm.nhs.uk/nhp/project_information/data_extraction/inpatients.html).
+
+## Outpatient attendances
+
+These are divided into first, follow-up, and procedures. Added together, these 3 equal the total amount of outpatient activity. A single appointment cannot appear in procedures and first, or procedures and follow-up, or first and follow up. The way in which we define these is with the following code: 
+
+```
+CASE 
+  WHEN SUSHRG NOT LIKE 'WF%' AND SUSHRG NOT LIKE 'U%' THEN 'procedure' 
+  WHEN atentype IN ('1', '21') THEN 'first' 
+  ELSE 'follow-up'`
+```
+
+## Principal projection
+
+A single model run which takes as its parameters the midpoint of all the parameter estimates. So for example if the estimated expatriation of inpatient elective opthalmology activity is 80% - 100%, the model will take the value of 90% for this parameter for the principal run. Not to be confused with the ONS principal population projection.
+
+## Summary by year
+
+This page shows the results of the principal projection model run, with the chosen time profiles applied to show the estimated year-by-year increase in activity over time from the baseline year to the horizon year.

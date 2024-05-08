@@ -1,0 +1,42 @@
+---
+title: "Demographic modelling"
+order: 3
+---
+
+## Purpose
+
+The NHP activity and capacity model includes a component which adjusts hospital activity based on anticipated changes in the population size and age/sex structure. The current version of the model contains a full set of the subnational population projection variants published by ONS. 
+
+## Population projections
+
+Projections are used to understand how the size and age/sex structure of the population served by a hospital will change over time. The ONS publish national population projections for the constituent countries of the UK and separately sub-national population projections for England, which show change at the level of local authority district.
+
+Sub-national population projections include counts by single year of age to age 89, whereas the national projections include counts to age 104. To model activity by single year of age to age 99 we distribute the 90-plus population within each local authority district based on England data.
+
+## Hospital catchments {#hosp-catchments}
+
+A single hospital site will have a good understanding of the communities of patients it serves - based on spatial proximity or patterns of clinical presentation - but this 'catchment' population may not map neatly to administrative boundaries. Therefore, we construct a weighted population catchment for each hospital trust from local authority level projections.
+
+A trust's final catchment population comprises a weighted sum of its catchment local authority district (LAD) populations where LADs that contribute a greater share of the trust's activity take a greater weight. Weights are assigned using inpatient activity; we assume that this activity is most broadly representative of the population served by a hospital. 
+
+To limit the number of LADs associated with a single trust (that is to avoid a long tail of LADs that contribute negligible activity) we only include LADs with a 5% or greater share of all inpatient activity. We then redistribute the retained activity to ensure the shares across LADs sum to one.
+
+## Variant projections {#variant-projs}
+
+Alongside their main (principal) projection, ONS also publish a range of variant projections. These variant projections are based on alternative assumptions of future fertility, mortality, and migration. We construct catchments based on variant projections using the same method as for the principal projection (see [Hospital catchments](#hosp-catchments)).
+
+Sub-national population projections include four variant projections based on different assumptions about migration levels and trends. To provide a wider range of demographic scenarios for use in the model we create a custom set of sub-national variant projections using the [17 national variant projections produced by the ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/variantnationalpopulationprojectionsfortheukandsubnationalpopulationprojectionsandhouseholdprojectionsforenglanduserguide). We do this by applying growth rates by age, sex, and year from the national variant projections to the base population for each LAD from the sub-national projections.
+
+Where a national variant is based on the same set of assumptions as a sub-national variant, we prefer the sub-national version. The [complete set of projections](list_of_projections.qmd) available to the model is available in this documentation and includes 19 variants alongside the principal projection.
+
+## Birth Adjustment
+
+If maternity activity is modeled in the same way as other types of activity then future demand will depend on changes in the number of women of child-bearing age (assuming maternity activity is recorded against the mother, as opposed to the child). For example, maternity activity for 35-year-old women will increase or decrease inline with changes in the number of 35-year-old females in the general population. A better approach is for maternity activity to depend on changes in the number of births by age of the mother e.g. maternity activity for 35-year-old women increases or decreases inline with the number of births expected to 35-year-old mothers. We use data on projections of births by age of mother to implement this approach.
+
+## Summary
+
+The NHP activity and capacity model includes a component which adjusts hospital activity based on anticipated changes in the population size and age/sex structure.  The current version of the model contains a full set of the subnational population projection variants published by ONS.  ONS publish some additional population variants at a national level. We have imputed sub-national versions of these variants and made these available within the NHP model.
+
+## User selection of demographic projections
+
+In most cases we expect users to select and use ONS's principal population projection.  Users are however, free to select, for example the high migration or low fertility projections if they wish, but these variants should be used with caution and only after familiarisation with the assumptions that underpin these non-standard projections.  In addition, users can select several of the variants and indicate how often they wish these to be used in the model's Monte-Carlo replications. 

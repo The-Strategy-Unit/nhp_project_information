@@ -1,0 +1,29 @@
+---
+title: "Project outputs"
+order: 3
+---
+
+Project deliverables include:
+
+* A model for estimating detailed future demand activity, along with uncertainty in these estimates, in line with an agreed-upon specification. This model will provide and include: 
+    *	A high-level estimate of the capacity needed to meet this demand activity, informed by demographic growth forecasts, existing performance, capacity, waiting times, local unmet need, and non-demographic factors such as digital and technological innovation 
+    *	Continuous improvement and model development in parallel to testing and early roll-out with NHP schemes 
+    *	Tools to support the setting and agreeing of assumptions by stakeholders (the 'Inputs app')
+    *	Educational materials and technical documentation to support knowledge transfer to NHP analysts and Trusts within the programme, and model quality assurance 
+
+Wider deliverables include: 
+
+*	A detailed model specification  
+* Quality assurance of the model
+*	Advice on healthcare systems that support the build of the model, and further thinking around the process of using the model, informed by a comprehensive literature review
+*	Analytical work to build the evidence base that will underpin the modelling assumptions; advanced projects include:
+    *	Understanding the relationship between hospital admissions' length of stay and re-admissions and how this might affect future demand 
+    *	Developing a more intelligent nationwide approach to identifying local unmet need factoring in frailty, length of stay, hospital activity as well as traditional measures such as Index of Multiple Deprivation and standardised mortality rates 
+*	Specifically commissioned projects which enhance the evidence base for demand and capacity, as well as other NHP workstreams to be determined as requirements become clearer. These projects may include: 
+    *	Activity avoidance strategies 
+    *	Health inequalities 
+    *	Rationing and threshold changes 
+    *	Activity type changes & efficiency improvements 
+    *	Changing patient expectations 
+    *	Changes to national standards 
+    *	Repatriation/expatiation effects of new hospitals 

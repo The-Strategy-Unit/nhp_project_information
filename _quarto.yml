@@ -1,0 +1,82 @@
+project:
+  type: website
+
+website:
+  open-graph: true
+  title: "NHP model project information"
+  description: "Documentation for the Demand and Capacity Model created by the Strategy Unit to support NHS England's New Hospitals Programme"
+  favicon: _assets/favicon.ico
+  navbar:
+    background: dark
+    foreground: light
+    title: "NHP model project information"
+    pinned: true
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - text: "Project overview"
+        file: project_plan_and_summary/plan_and_summary.qmd
+        contents:
+          - project_plan_and_summary/inputs_and_outputs.qmd
+          - project_plan_and_summary/factors_and_limitations.qmd
+          - project_plan_and_summary/project_outputs.qmd
+          - project_plan_and_summary/model_updates.qmd
+      - text: 'User guide'
+        contents:
+          auto: user_guide/*
+      - section: "Modelling methodology"
+        file: modelling_methodology/methodology.qmd
+        contents:
+          - modelling_methodology/demand_supply.qmd
+          - modelling_methodology/double_counting.qmd
+          - modelling_methodology/modelling_uncertainty.qmd
+          - modelling_methodology/non-demographic_growth.qmd
+          - section: "Activity mitigators"
+            contents:
+              - modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd
+              - modelling_methodology/activity_mitigators/outpatient_activity_mitigators.qmd
+              - modelling_methodology/activity_mitigators/ae_activity_mitigators.qmd
+          - section: "Capacity conversion"
+            contents:
+              - auto: modelling_methodology/capacity_conversion/*.qmd
+          - section: "Data quality"
+            contents:
+            - modelling_methodology/data_summary.qmd
+            - modelling_methodology/covid_adjustment.qmd
+            - modelling_methodology/baseline_data_validation.qmd
+          - section: "Demographic modelling"
+            contents:
+              - auto: modelling_methodology/demographic_modelling/*.qmd
+
+      - section: "Software implementation"
+        file: software_implementation/components-overview.qmd
+        contents:
+          - software_implementation/qa_and_testing.qmd
+      - section: "Data extraction"
+        file: data_extraction/index.qmd
+        contents:
+          - data_extraction/aae.qmd
+          - data_extraction/inpatients.qmd
+          - data_extraction/outpatients.qmd
+  page-navigation: true
+  page-footer:
+    right: "[NHP Model Project Information](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)© 2023 by [The Strategy Unit](https://www.strategyunitwm.nhs.uk/) is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)"
+    left: "This page is built using the [NHS-R Quarto theme](https://github.com/nhs-r-community/quarto-nhs-theme)."
+
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    theme:
+      light: [cosmo, _assets/style/theme.scss]
+    code-copy: true
+    code-overflow: wrap
+    css: _assets/style/styles.css
+    include-after-body: _assets/style/js.html
+
+execute:
+  freeze: false
+
+
+callout-appearance: simple

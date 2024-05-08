@@ -1,0 +1,220 @@
+---
+title: "Setting the model parameters"
+order: 1
+---
+
+The model accepts input parameters, which can be set by users. These are set via the [nhp_inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). This page lists all the input parameters currently accepted by the model.
+
+A CSV containing all the activity mitigators that can be set by users is available to [download on this page](mitigators_lookup.qmd).
+
+## Baseline adjustments
+
+The model's estimations of future activity are all based on transformations conducted on the activity in the baseline year - it is therefore important that this baseline activity is an accurate representation of demand for the organisation. 
+
+The baseline data is sourced from Hospital Episodes Statistics (HES) data via the Secondary Users Service (SUS).
+
+### Baseline adjustment
+
+- Optional, set by users
+- Confidence interval, possible values 0 - 2 (Note that this will be changed to a point estimate in a future release)
+
+If for some reason the HES data for a provider trust in the baseline year was not an accurate representation of typical activity, this can be adjusted using the 'baseline adjustment' parameter. Users can provide a percentage adjustment to the baseline data currently extracted for the trust for each Point of Delivery (POD)/specialty. However, this should be only used in exceptional cases. 
+
+### Covid adjustment
+
+- Mandatory, fixed
+
+This adjustment accounts for decreased hospital activity during the 2019/20 baseline year due to the COVID-19 pandemic. The adjustments shown are those recommended by NHSE and they are applied automatically within the model.
+
+## Population changes
+
+The model accounts for how hospital activity levels might shift as a result of demographic growth. This includes adjustments relating to population size changes, population age/sex distribution, and population age-specific health status.
+
+### Population growth
+
+- Mandatory, set by users
+- 100% that can be distributed across the 20 different options
+
+This input allows users to choose from the population projection variants produced by ONS. The principal projection (not to be confused with the [principal model run](NHP_model_summary.qmd)) will be used across 100% of runs, as default. This is the recommended approach.
+
+Should trusts wish to pick an alternative variant that will be applied to their model they should select a single variant and set the slider for that variant to 100%. This means that for 100% of the Monte Carlo simulations, this alternative variant will be used. To set 60% of the runs to use Principal Projection and 40% of the runs to use High Fertility, then the slider should be set to 60 for the former and 40 for the latter.
+
+Where any alternative variants are selected, robust reasons and evidence to support the choice should be provided.
+
+More information on the different population projection variants is available from the [Office for National Statistics user guide](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/variantnationalpopulationprojectionsfortheukandsubnationalpopulationprojectionsandhouseholdprojectionsforenglanduserguide).
+
+### Health status adjustment
+
+- Mandatory, fixed
+
+This adjustment accounts for potential changes in the health status of the population - very simply, accounting for the assumption that older people in future will be healthier than they are today. 
+
+The adjustments included in this factor were calculated using [the results from an elicitation workshop with subject matter experts](https://connect.strategyunitwm.nhs.uk/modeling-changes-in-population-health-status/model-pop-health-status.html). The results are applied automatically in the model so no user inputs are required here. 
+
+## Demand-supply imbalances
+
+These are adjustments to account for any anticipated changes in demand and supply for the trust, from the baseline year.
+
+### Waiting list imbalances
+
+- Optional, set by users
+- On/off toggle
+
+This adjustment accounts for any difference between elective (inpatients and outpatients) referrals for treatment (Waiting list) and those seen (Actual) in the baseline year. The adjustment relates solely to the baseline year and not any accumulated waiting list. The choice for users is either:
+
+1. To increase the trust's inpatient elective and outpatient activity so that its Referral To Treat (RTT) activity is sufficient to meet RTT demand (referrals) in the baseline year, OR 
+2. To leave its activity in the baseline year unchanged.
+
+More information is available [here](modelling_methodology/demand_supply.html).
+
+### Expatriation / repatriation
+
+- Optional, set by users 
+- Confidence intervals. Expected expatriation values between 0-100%, repatriation values between 100-200%.
+
+These adjustments account for anticipated decreases in activity due to a move to another provider, or anticipated increases in activity from other providers. Further details are available [here](../modelling_methodology/demand_supply.html#expatriation-repatriation). 
+
+Values can be set for each activity type (Inpatients/Outpatients, A&E), Subgroup (e.g. Elective/Non-elective for Inpatients), and Specialty.
+
+## Need-supply imbalances
+
+### Inequalities
+
+Note: Not currently in the model v.1.0
+
+- Optional, set by users
+- Selection between the four options
+
+Access to some hospital services are known to vary between socio-economic groups. In particular, several studies have shown that patient access to planned hospital care are lower for patients living in more deprived areas, having adjusted for need. Reducing health inequalities and inequities in access to services is a long-standing national policy objective. Inequalities present in the baseline year will be carried forward in the NHP demand and activity model unless some adjustment is applied.
+
+Users will have four options to select from. Further information on each one is available in the [Strategies to reduce inequalities in access to planned hospital procedures report](https://www.midlandsdecisionsupport.nhs.uk/knowledge-library/strategies-to-reduce-inequalities-in-access-to-planned-hospital-procedures/).
+
+A) No change 
+B) Level-up 
+C) Level-down 
+D) Zero-sum redistribution
+
+## Non-demographic changes
+
+### Non-demographic adjustment
+
+- Mandatory, fixed
+
+This adjustment accounts for the growth in activity which is *not* due to changes in the size and age-sex structure of the population over time. This adjustment is based on detailed analysis to quantify growth after accounting for changes in population size and structure.
+
+Information on non-demographic growth is available [here](../modelling_methodology/non-demographic_growth.qmd). There are two variants currently available. Further work is planned, disaggregating the effects of the impact of new medical technologies, changes in patient expectations, and changes in clinical standards - and seeking to explain and to provide forecasts for non-demographic growth.
+
+## Activity mitigators
+
+- Optional, set by users
+- Confidence intervals, possible values 0 - 100%.
+
+Trusts may implement activity avoidance strategies, such as interventions to reduce falls in older people or changes in treatment treatment pathways aimed at reducing length of stay. A subset of the trust's activities may be affected by each of these activity mitigators.
+
+For each activity mitigator, users are asked to provide estimates of how much they think the associated activities will be reduced. For example, if the estimated activity mitigation for Admission Avoidance: Cancelled Operations is given as a confidence interval of 50%-70%, this means that users are 80% sure that that the number of cancelled operations will be reduced by between 30-50% in the target year, as compared with the baseline.
+
+A value of 100% means no change, whilst one of 0% means that all activity is mitigated.
+
+Further information on all the possible activity mitigation strategies accounted for in the model, including background, rationale, and evidence is [available here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd). The underpinning SQL code is available on request.
+
+### Inpatients
+
+Includes the following types of activities, which are broken down further into separate strategies. 
+
+- Admission Avoidance
+- Mean Length of Stay reductions
+- Ambulatory Emergency Care Length of Stay reductions
+- Pre-operative Length of Stay reductions
+- Day procedures
+
+### Outpatients
+
+Includes the following types of activities, which are broken down further into separate strategies:
+
+- Consultant referrals
+- Conversions to teleappointments
+- Followup reduction
+
+### A&E
+
+Includes the following types of activities, which are broken down further into separate strategies:
+
+- Frequent attenders
+- Left before seen
+- Low cost discharged
+
+## Capacity conversion
+
+### Bed occupancy
+
+- Mandatory, set by users
+- Confidence interval, possible values 0 - 100%
+
+The NHP model currently converts projected hospital bed days to general and acute beds. The model user can set estimated future occupancy rates by specialty or group of specialties, the full calculation is available [here](../modelling_methodology/capacity_conversion/beds.html).
+
+For example, the estimated future occupancy rate for Maternity wards might be given as an 80% confidence interval of 65% - 90%.
+
+## Time profiles
+
+- Mandatory, set by users (defaults to linear)
+- Selection between the four options
+
+As well as producing estimates of activity in the target future year (also called the horizon year), the model also produces 'time profiles', or estimations of the change in activity between the start year and end year. These time profiles utilise the parameters from the principal model run (taking the midpoint of all confidence intervals) and can account for different rates of change for different parameters.
+
+For example, for the parameter Repatriation (Local) for Inpatients Elective Ophthalmology, if the confidence interval is set to 100-120%, then the principal model run would take the value of 110% for this parameter. If the horizon year is set for 2035, then the model will project a 10% increase in activity as a result of local repatriation in 2035. The time profile selected would determine the rate of change due to this mitigator from 100% in the baseline year (2019), up to 110% in the horizon year (2035).
+
+
+```{r}
+#| echo: false
+#| fig-cap: "Illustration of time profile changes"
+#| warning: false
+
+
+
+library(dplyr)
+library(ggplot2)
+library(tibble)
+library(tidyr)
+
+
+H <- 2035
+B <- 2018
+t <- B:H
+df <- tibble(
+  t = t,
+  linear = (t - B) / (H - B),
+  `front-loaded` = sqrt((H - B)^2 - (H - t)^2) / (H - B),
+  `back-loaded` = 1 - sqrt((H - B)^2 - (t - B)^2) / (H - B)
+)
+
+df <- df |> 
+  mutate(`step change` = case_when(
+    t <= 2030 ~ 0,
+    TRUE ~ 1
+  )) |> 
+  bind_rows(tibble(t = 2030, linear = df$linear[13], 
+                   `front-loaded` = df$`front-loaded`[13], 
+                   `back-loaded` = df$`back-loaded`[13],
+                   `step change` = 1))
+
+df |> 
+  pivot_longer(-t) |>
+  ggplot(aes(t, value, colour = name)) +
+  geom_line()
+```
+
+1. Linear
+
+An even rate of change over the time period from the baseline year to the horizon year.
+
+2. Front-loaded
+
+Most of the change happens in the first few years, and the rate of change decreases towards the horizon year.
+
+3. Back-loaded
+
+The change begins more slowly, and the rate of change increases towards the horizon year.
+
+4. Step change
+
+The change is expected to happen suddenly, in one specific year that can be selected by the user.

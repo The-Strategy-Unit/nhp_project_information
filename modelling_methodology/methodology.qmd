@@ -1,0 +1,36 @@
+---
+title: "Modelling methodology"
+order: 1
+---
+
+## Assumptions and design
+
+The design of the modelling methdology was carried out after extensive review of best practice, and in particular this [review of models to project healthcare demand](https://www.york.ac.uk/media/che/documents/papers/researchpapers/CHERP186_projecting_healthcare_demand.pdf) published by the University of York.
+
+The model uses pseudonymised event-level data that describes activity for a specific hospital or catchment population in an agreed baseline period and performs a set of transformations on it to reflect anticipated changes in activity and resource levels that might occur between the baseline year and some future year, the model time horizon.  The nature of the transformations that can be applied are fixed in any model release, but the extent of each adjustment is determined by the model user via the parameters.  The model output represents a description of hospital activity and associated capacity in the future.
+The process of anticipating and specifying changes in hospital activity and resource use is not straightforward and may be subject to uncertainty.  The user can reflect this uncertainty in the model parameters, by supplying them as confidence intervals.  The model will incorporate this uncertainty as it performs its transformations and compiles its outputs.
+
+## The model engine
+
+The diagram below sets out the transformations applied by the model.  Whilst some of these transformations are available in the current model release, others will be built into future model releases. Please note that although the transformations appear sequential, in reality they are all applied simultaneously.
+
+![Diagram of model process](model_graphic_v06.png){fig-alt="Diagram showing the processes of the model"}
+
+### Demand supply imbalances
+These transformations allow users to acknowledge that activity in the baseline year may have been out of step with demand for healthcare.  These imbalances might be expressed in terms of patients waiting for care, travelling excessively to receive care, or choosing to buy care from the private sector.  If not otherwise considered, then these imbalances will be built into the modelled future activity.  Model parameters allow the user to adjust the baseline dataset to correct for these baseline imbalances.
+
+### Need supply imbalances
+In other situations, a patient may need a hospital service of some type during the baseline period, but not receive it at all.  We use the term 'need' with respect a patient and a service when published research suggests that patients with the patient's characteristics could benefit from the service.  Failure to deliver the service could arise because of a lack of awareness amongst referrers, systematic bias, or deliberate rationing due to financial or capacity constraints.  It is important to correct for these imbalances at baseline so that they so not also manifest in the model outputs.  Model parameters allow the user to adjust the baseline dataset to correct for these baseline imbalances.
+
+### Population changes
+Hospital activity arises from the demands and needs of its catchment population. As the size, age-sex structure and age-sex specific health status changes of this population changes, so will levels of healthcare need and demand.  In this component of the model engine, users will be able to specify changes in these factors between the baseline and some future period.
+
+### Non-demographic changes
+Healthcare need and demand might also change as a result of a series of non-demographic factors.  As medical technologies develop, medical conditions become treatable, and the technology becomes available to a wider set of patients.  Clinical standards may change what is acceptable or best-practice care.  And patient expectation may rise, increasing demand for a particular service or intervention.  This element of the model engine allows users to specify such changes that they anticipate over the modelling horizon.
+
+### Activity mitigators
+Hospital trusts and local health systems frequently plan to reduce hospital activity or resource use, by improving efficiency, diverting patients to receive care in more local settings outside of hospital, by preventing needs upstream or by restricting access to low-value procedures.  The component of the model allows users to adjust specific forms of hospital activity or resource use that commonly form the focus of these schemes.
+
+### Resource utilisation rates
+Having determined the level of future activity after the transformations described above, the model estimates the level of capacity (beds) required to deliver it. This is based on the user-provided estimation of resource utilisation - more information on this is available in the [Capacity Conversion section](capacity_conversion/beds.qmd).
+

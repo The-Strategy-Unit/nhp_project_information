@@ -1,0 +1,28 @@
+---
+title: Data extraction overview
+order: 200
+---
+
+We store Hospital Episodes Statistics (HES) data in the MLCSU's datawarehouse.
+There are a number of scripts in this project which are used to extract the data.
+
+All of these repositories utilise the `{targets}` package to orchestrate the data extraction.
+There is some interdependency between these repositories, namely the `nhp_strategies` repository should be run before any of the others.
+
+- nhp_strategies repository
+
+There first part of our data extraction starts by defining views of the data.
+There are views for Inpatients, Outpatients, and A&E data, stored in the "views" folder of this repository.
+
+This repository also stores all of the "strategies" sql files which act as flags for certain conditions on inpatient admissions.
+
+- nhp_inputs/nhp_national_elicitation repositories
+
+Both of these repositories do some data extraction to summarise how much activity has happened against different parts of the model.
+
+In both repositories, the code for the data extraction is stored in a folder called "targets".
+
+- nhp_model repository
+
+The main data extraction for the model is contained in the "data_extraction" folder.
+Each part of the model has its own script for extracting the data and uploading the data to Azure blob storage.

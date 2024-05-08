@@ -1,0 +1,16 @@
+---
+title: "Project objectives"
+order: 1
+---
+
+The government has committed to building more than 40 new hospitals by 2030. The New Hospital Programme (NHP), a partnership between DHSC and NHS E&I, aims to ensure that this new hospital infrastructure will meet the future needs of the population and that the required investment represents value for money.
+
+Estimating future activity levels represents a critical early step in the process of scaling and designing new hospital infrastructure. The Activity and Demand Modelling Tool has been developed by the Strategy Unit to support DHSC and its stakeholders to make robust and auditable assessments of activity that hospitals may need to accommodate in future.  
+
+This document describes this model from a technical perspective.  It is designed to be used by individuals engaging directly with the model, to ensure that they have a clear understanding of the model's operations, and by those involved in quality assuring the model. 
+
+The model will aid in the forecasting of the following:
+
+*	Required activity levels the hospital will need to service.
+*	Estimations of high-level accommodation/clinical facility requirements (number of beds, rooms, wards, theatres), to be discussed and iterated with other NHP workstreams. 
+*	The degree of flexibility to build into hospital designs, and where this flexibility should be focused, to account for uncertainties and limitations in the modelling.

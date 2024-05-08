@@ -1,0 +1,53 @@
+---
+title: "Modelling uncertainty"
+order: 2
+---
+
+Having set the model parameters, the model calculates, for each record in the baseline dataset, the frequency of such cases in the model horizon period.  The model then samples, with replacement of each record according to its own future frequency.  The process applies to each unit of activity in its own right (for example, an inpatient spell, an outpatient attendance and so on) as well as, for inpatient spells, the number of bed days used.  In some cases, aspects of an activity unit are altered to reflect anticipated changes (for example, changing an inpatient spell to an outpatient appointment). 
+
+## Handling uncertainty
+
+It is not possible to estimate with precision, many of the model parameters. Changes are subject to uncertainty and are often contingent on other changes.  Users can reflect their uncertainty in the parameters passed to the model by, for example, providing a 80% confidence interval for a parameter. In other cases, users may be asked to indicate the frequency with which certain scenarios might occur.
+The model handles these uncertainty intervals or frequency distributions, with a Monte-Carlo simulation.  Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions.  The users can specify how many Monte-Carlo simulations they wish to run.  The model results take two forms. 
+(1) a principal projection: a deterministic model based on selecting the mid-point of each uncertainty interval or most frequent option from a frequency distribution
+(2) a distribution of results, one for each of the Monte-Carlo simulations, illustrating how key metrics might vary under alternative model parameters.
+
+## A worked example
+
+We will illustrate how the model works using a simplified example.  Let's imagine our inpatient dataset in the baseline year for the subject Trust contains 100,000 spells
+
+| ID     | Age | Gender | ICB       | PoD | Specialty | Length of stay | ... | Discharge method | 
+| :----- | :-- | :----- | :-------- | :-- | :-------- | :------------- | :-: | :--------------- | 
+| 1      | 73  | m      | Non-local | NEL | T&O       | 7              | ... | 1                | 
+| 2      | 23  | f      | Local     | EL  | gynae     | 1              | ... | 1                | 
+| 3      | 93  | f      | Non-local | NEL | GenMed    | 8              | ... | 1                | 
+| 4      | 72  | m      | Local     | NEL | RespMed   | 6              | ... | 4                | 
+| 5      | 34  | f      | Local     | Mat | Obst      | 1              | ... | 1                | 
+| ...    | ... | ...    | ...       | ... | ...       | ...            | ... | ...              | 
+| 100000 | 82  | f      | Local     | NEL | Uro       | 2              | ... | 1                | 
+
+**Changes in event frequency**
+
+By definition, each of these spells occurred once in the baseline year.  Our model estimates the frequency with which each of these spells might occur in some future year, by applying the model change factors as determined by the model user.  
+
+We show how the model arrives at this frequency using the first spell (ID = 1) as an example.  This record describes an elective admission of a man aged 73.  He was treated in the trauma and orthopeadics specialty and stayed in hospital for 7 days before returning home.  Although the man was treated in the subject Trust, the Trust and the man's residence are located in different ICB areas.  Figure 1 and text below shows how the model determines the frequency with which a spell with these characteristics might occur in the future. Please note that this is a simplified example that does not include all of the parameters utilised by the current iteration of the model.
+
+![Figure 1](modelling_uncertainty-example_adjustment.png)
+
+1. The first stage in our modelling process is to establish which of our model change factors might apply to this record.   The record describes an elective admission, so the 'waiting list management' change factor does not apply.  However, the record is subject to the repatriation/expatriation, population size, age profile and health status change factors, the non-demographic change factor and the activity avoidance change factor.  (Note that in this example, the private healthcare dynamics and need-supply imbalance change factors are not considered, and that the non-demographic change factor is modelled as a single combined effect.)
+
+2. For each change factor, users pass an array of parameters to the model.  The structure of these arrays is dependent on the change factor.  For example, parameters for the repatriation/expatriation change factor are dependent on the patient's ICB (local or not), specialty and point of delivery.  Whereas parameters for the non-demographic change factor are dependent on point of delivery only.  An overview of these parameters are set out in the [model parameters section](../user_guide/setting_the_parameters.qmd). Note that the activity avoidance change factor is comprised of a number of subfactors, each focused on a subset of activity that might be avoided in the future.  None, one or several of these subfactors may apply to a given spell.  See the section on Activity Mitigators (forthcoming) for further information.
+
+3. Having established, for each change factor, the characteristics of the spell that determine which user parameter applies, the parameters that have been set by the user are retrieved.  The parameters may be point estimates, or the parameters might describe a distribution reflecting the user's uncertainty about the extent to which this change factor might apply.  In most cases users are asked to pass their 80% confidence interval for the change factor and the distribution of the change factor parameter is assumed to be Normal. 
+
+In our example, let's assume that the user's parameters for the repatriation/expatriation parameters (80% CI for a Normal distribution), are 0.91 and 0.99. This would indicate that the user believes that there is a 10% chance that more than 9% of non-local emergency admissions to trauma & orthopaedics would be expatriated in future, and a 10% chance that fewer than 1% of such cases will be expatriated.  From this information a Normal distribution is constructed. Similar distributions are constructed for each of the applicable change factors.  Note that special rules apply to derive distributions for the demographic change factors.
+
+4. Next we randomly sample a single value from these distributions.  Let's assume that sampled values are 0.96, 1.26, 1.20 and 0.79 for the repatriation/expatriation, demographic, non-demographic and activity mitigator change factors respectively.  [Note that the process by which the demographic parameter is obtained is somewhat more involved].
+
+5. We then calculate the product of these sampled parameter values as our summary parameter.  So, in our example, the summary parameter would be 1.15 (= 0.96 x 1.26 x 1.20 x 0.79)
+
+6. We then randomly sample from a Poisson distribution with rate, $\lambda$ (lambda), set to our summary parameter, 1.15.  The result of this random sample will be an integer value.  Let's assume that in the case the random sample produces the value 2.
+
+7. We replicate the record with this frequency.  So the record would be represented twice in our modelled future year.
+
+These stages are repeated for each record in the baseline dataset and for each run of the Monte-Carlo simulation.

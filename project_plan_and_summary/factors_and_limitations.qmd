@@ -1,0 +1,49 @@
+---
+title: "Factors accounted for and limitations"
+order: 4
+---
+
+The model will take historical activity levels for each hospitals trust's catchment population and project this forward based on a number of key drivers and factors to produce estimates of future activity levels and capacity requirements. It will cover the following:
+
+*	Time horizon: Projections from baseline year to a user selected final year (total time horizon likely to be in the region of 10 to 30 years). Summary outputs will be available on a yearly basis.
+*	Geographical scope: All activity in England, with outputs for a particular scheme reflecting their estimated future catchment area/market share.
+*	Factors accounted for: The model will account for the following 'change factors' which can impact on how demand, activity and capacity requirements might evolve over time:
+    *	Demand-supply imbalances:  Differences between the numbers of people seeking hospital services and the numbers of people receiving that care promptly at the most local NHS hospital that is configured to provide care of this type. This includes adjustments to correct for:
+        *	Elective waiting lists
+        *	Repatriation / expatriation between sites
+    *	Need-supply imbalances:  Differences between patients needing hospital services, and receiving it, including patients missing the opportunity to benefit from cost-effective, evidence-based interventions. This includes adjustments to account for:
+        *	Addressing unmet need/gaps in care (forthcoming)
+        * Removing/reducing inequities
+        *	Threshold changes, that is rationing access to services based on need (forthcoming) 
+    *	Population change:  How hospital activity levels might shift as a result of demographic growth and structural changes. This includes adjustments to account for:
+        *	Population size changes
+        *	Changes to population age/sex structure
+        *	Changes to population age-specific health status
+    *	Non-demographic effects:  How future hospital activity levels might grow as a result of other factors. This includes adjustments to account for:
+        *	Technological developments
+        *	Changes to national standards
+        *	Patient expectations
+    *	Activity mitigation:  The impact of responses and interventions from health care systems to minimise the impact on hospital resources, for example, by preventing need, managing care outside hospital, making care virtual or reducing the duration of care contacts. This includes adjustments to account for:
+        *	Activity avoidance strategies
+        *	Activity type changes
+        *	Efficiency improvements
+    *	Adjusting resource utilisation rates: Converting the projected activity requirements into resource requirements (beds) to ensure these are available when needed whilst minimising unnecessary downtime, accounting for:
+        *	Occupancy rates
+        *	Resource availability (hours per day, days per week, weeks per year)
+*	Granularity: Activity outputs will be available to be broken down by patient age, patient sex, activity type, point of delivery, specialty, diagnosis, treatment type, admission source, discharge destination, and site. Further breakdowns may be possible, subject to input data availability (from HES).
+
+The main outputs will be activity levels which will then be converted to high-level capacity requirements (number of beds in version 0.6; theatres and wards forthcoming). The model will use these outputs to inform work with other NHP workstreams and Trusts/ICSs, but will not go beyond basic capacity calculations at this stage. Further breakdowns of specific capacity will need to be undertaken by Trusts, informed by activity breakdowns.
+
+The model will accommodate uncertainty through:
+
+*	the development of probability distributions for each change factor where appropriate (for example via Delphi/SHELF elicitation methods) 
+*	incorporation of different input scenario projections (for example utilising the range of population projection scenarios published by the ONS, specifying different input parameters for change factors)
+*	using Monte Carlo simulation to explore the level of uncertainty in forecasts.
+
+The model will have the following key limitations:
+
+*	It will be based on estimating relative future demand for hospital services by undertaking a series of adjustments to baseline activity, rather than modelling demand for hospitals directly using epidemiological approaches, for example. This approach has been chosen given the significant challenges in modelling healthcare need directly (requiring disease level modelling) and in converting this need into activity (where consensus on optimal approaches requires considerable debate and evolves over time). Estimating current activity and adjusting this has the advantage of an agreed starting point from which projections can be adjusted and tailored to individual schemes and scenarios.
+
+*	The model will produce estimates for one hospital/scheme at a time, rather than capturing all hospitals with consideration of the interactions between them.
+
+*	Linked to this, the model will also not directly model wider healthcare settings so for example if activity mitigating interventions push activity that would have previously required hospital treatment to community care, the increase in community care demand is not explicitly modelled. This change in 'outside hospital' demand would be a useful output for wider decision making and planning, and informing cost benefit analysis. However, the model will still be able to inform this through outputting the impact of individual change factors on future hospital activity (such as activity mitigators that may transfer care out of the hospital), which could potentially be converted through some methodology and assumptions (to be determined) to community/other activity requirements.

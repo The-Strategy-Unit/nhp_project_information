@@ -1,0 +1,113 @@
+---
+title: Inpatients
+order: 201
+---
+
+Data is sourced from Hospital Episode Statistics (HES) Admitted Patient Care (APC) dataset.
+We extract spell level data for a given year.
+
+## Pre-processing
+
+### Last episode in spell
+
+We use the last episode in spell, but the field `SPELEND` has issues where some admissions end up with multiple episodes
+having a `SPELEND` flag assigned. This would lead to an inflated amount of admissions in our model if left as is.
+
+We generate a new indicator for last episodes in spell by using the field `SUSSPELLID` and the `EPIORDER` fields.
+For each `SUSSPELLID`, we assign a `ROW_NUMBER()` ordered by `EPIORDER` in descending order.
+If there are multiple records with the same `EPIORDER`, only one record will be selected as the last episode in spell.
+
+### Age
+
+In the model we join to other datasets by age. However, these other datasets cap out at different ages, with the
+lowest-common denominator being 90 years.
+Anyone aged over 90 is assigned to have an age of 90.
+
+The age field in HES encode's the age of neonatal patients with values over 7000.
+In these cases we set the age to 0.
+
+### Provider code
+
+Over time, some NHS organisations merge.
+This information is provided in the [organisation successors][ods_succ] from the Organisation Data Service (ODS).
+
+[ods_succ]: https://digital.nhs.uk/services/organisation-data-service/export-data-files/csv-downloads/miscellaneous
+
+We use the successors lists to map historical data to the current organisation.
+For example, if provider `A` merged with provider `B` in 2023, when we extract data from 2019 we would remap any data
+for `A` to `B`.
+
+## Filtering
+
+We select records where the `SEX` is either 1 or 2 (Male/Female). This causes some records to be lost where the sex is
+not known, or is neither male or female. However, the population growth part of the model depends upon this field having
+one of the two stated values above.
+
+We select the last episode in spell, determined in the pre-processing step.
+
+We select records where `WELL_BABY_IND='N'`. That is, we filter out well-baby records. Rows where there is a value of
+'Y' are new-born babies who are healthy and not requiring any medical interventions.
+
+## Derived fields
+
+### `group`
+
+We determine the group based on the `admimeth` field.
+
+- if it starts with a `"1"`, then `"elective"`
+- if it starts with a `"3"`, then `"maternity"`
+- otherwise, "`non-elective`"
+
+### `has_procedure`
+
+- if there is a procedure code that does not start with U, V, W, X, Y, or Z, then `1`
+- otherwise, `0`
+
+### `hsagrp`
+
+- if the `classpat` field is either `3` or `4`, then `"reg"`
+- if the `admimeth` field is either `"82"` or `"83"`, then `"birth"`
+- if the `mainspef` field is `"420"`, then `"paeds"`
+- if the `admimeth` field starts with `"3"` and the age is less than `56`, then `"maternity"`
+- if the `mainspef` is either `"501"` or `"560"`, and the age is less than `56`, then `"maternity"`
+- if the `admimeth` field starts with a `"2"`, then `"emerg"`
+- if the `admimeth` field is `"81"`, then `"transfer"`
+- if the `admimeth` field begins with a `"1"`, and the `classpat` is `"1"`, then `"ordelec"`
+- if the `admimeth` field begins with a `"1"`, and the `classpat` is `"2"`, then `"daycase"`
+
+### `tretspef`
+
+If the `tretspef` is in the list of RTT specialties[^RTT], then leave as is, otherwise, set it to:
+
+- if the `group` (see above) is `"maternity"`, then `"Maternity"`
+- if it starts with a `"1"`, but isn't `"180"`, `"190"`, or `"192"`, then `"Other (Surgical)"`
+- if it is `"560"`, then `"Other"`
+- if it is `"180"`, `"190"`, `"192"`, `"831"`, `"833"`, or `"834"`, then `"Other (Medical)"`
+- if it starts with a `"2"`, "`3"`, "`4"`, "`5"`, "`6"`, then `"Other (Medical)"`
+- otherwise, `"Other"`
+
+[^RTT]: For a complete list see page 40 of the NHS England [*Recording and reporting referral to treatment (RTT) waiting times for consultant-led elective care* guidance](https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2023/10/20231020-Recording-and-Reporting-guidance-October-2023-Choice-Update-Final.pdf).
+
+### `mainspef`
+
+We use `mainspef` to map to KH03 data. Any codes that do not map to the specialties in KH03 would cause a problem, so
+the following table is used:
+
+| old  | new |
+| ---- | --- |
+| 199  | 100 |
+| 499  | 300 |
+| 560  | 501 |
+| 600  | 300 |
+| 601  | 141 |
+| 902  | 141 |
+| 903  | 141 |
+| 904  | 141 |
+| 950  | 300 |
+| 960  | 300 |
+| NULL | 300 |
+| &    | 300 |
+
+### `is_wla`
+
+We derived whether this is a waiting list admission based on whether the `admimeth` field is `"11"`

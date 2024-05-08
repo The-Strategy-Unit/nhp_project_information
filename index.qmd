@@ -1,0 +1,8 @@
+---
+title: "New Hospitals Programme model project documentation"
+order: 1
+---
+
+Welcome to the New Hospital Programme Demand and Capacity modelling tool documentation site.
+
+This site summarises the project plan, statistical methodology behind the tool, and software implementation of the model. It will be kept up to date as the project progresses, and old versions of the documentation will be available in the version controlled GitHub repository on which this project is being produced.

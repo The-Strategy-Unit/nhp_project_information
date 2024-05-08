@@ -1,0 +1,52 @@
+---
+title: A&E Activity Mitigators
+---
+
+# Discharged No Investigation or Treatment 
+
+Patients who attend A&E but are subsequently discharged without any clinical investigation or treatment, and who do not require any follow up support from a GP. They may not have need to attend an emergency department. 
+
+This mitigator is divided into four subcategories:
+
+- Adult, Ambulance Conveyed (AE-AA-001)
+- Adult, Walk-in (AE-AA-002)
+- Children, Ambulance Conveyed (AE-AA-003)
+- Children, Walk-in (AE-AA-004)
+
+# Frequent Attenders
+
+Patients who attend an emergency department frequently can represent a significant proportion of all attendances.
+These patients often have complex needs such as mental health problems or drug and alcohol related issues. 
+A range of targeted interventions and support approaches exist that can reduce the attendance rate of these patients.
+
+We count attendances at all hospitals, not just the one being modelled.
+
+This mitigator is divided into four subcategories:
+
+- Adult, Ambulance Conveyed (AE-AA-005)
+- Adult, Walk-in (AE-AA-006)
+- Children, Ambulance Conveyed (AE-AA-007)
+- Children, Walk-in (AE-AA-008)
+
+# Patients Left Before Being Treated
+
+A small percentage of patients leave A&E before being seen. 
+At least some of these patients are likely to not require an emergency department attendance and as such could be avoided through alternative urgent care options or better access to primary care.  
+
+This mitigator is divided into four subcategories:
+
+- Adult, Ambulance Conveyed (AE-AA-009)
+- Adult, Walk-in (AE-AA-010)
+- Children, Ambulance Conveyed (AE-AA-011)
+- Children, Walk-in (AE-AA-012)
+
+# Low Cost Discharged Attendances
+
+Some emergency department attendances may not require the facilities or the highly skilled ED staffing and could be safely and effectively treated within alternative urgent care settings or through improved same day access to Primary care. The model identifies potential attendances of this type  where the HRG code indicates that no treatments or investigation were undertaken or if there were they were low cost (minor) treatments or investigations.
+
+This mitigator is divided into four subcategories:
+
+- Adult, Ambulance Conveyed (AE-AA-013)
+- Adult, Walk-in (AE-AA-014)
+- Children, Ambulance Conveyed (AE-AA-015)
+- Children, Walk-in (AE-AA-016)

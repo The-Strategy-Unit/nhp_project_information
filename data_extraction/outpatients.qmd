@@ -1,0 +1,149 @@
+---
+title: Outpatients
+order: 202
+---
+
+Data is sourced from Hospital Episode Statistics (HES) Outpatient Appoitments (OP) dataset.
+We extract aggregrated appointment level data for a given year.
+
+## Pre-processing
+
+### Age
+
+In the model we join to other datasets by age. However, these other datasets cap out at different ages, with the
+lowest-common denominator being 90 years.
+Anyone aged over 90 is assigned to have an age of 90.
+
+The age field in HES encode's the age of neonatal patients with values over 7000.
+In these cases we set the age to 0.
+
+### Provider code
+
+Over time, some NHS organisations merge.
+This information is provided in the [organisation successors][ods_succ] from the Organisation Data Service (ODS).
+
+[ods_succ]: https://digital.nhs.uk/services/organisation-data-service/export-data-files/csv-downloads/miscellaneous
+
+We use the successors lists to map historical data to the current organisation.
+For example, if provider `A` merged with provider `B` in 2023, when we extract data from 2019 we would remap any data
+for `A` to `B`.
+
+## Filtering
+
+We select records where the `SEX` is either 1 or 2 (Male/Female). This causes some records to be lost where the sex is
+not known, or is neither male or female. However, the population growth part of the model depends upon this field having
+one of the two stated values above.
+
+We select rows where the `ATENTYPE` is one of the following
+
+- ` 1`: Attended first appointment
+- ` 2`: Attended subsequent appointment
+- ` 3`: Attended but first/subsequent/tele unknown
+- `21`: Attended first tele consultation (from 2008-09)
+- `22`: Attended subsequent tele consultation (from 2008-09)
+
+## Derived fields
+
+### `is_surgical_specialty`
+
+- when the `tretspef` field is either `"180"`, `"190"`, `"191"`, or `"192"`, then `0`
+- when the `tretspef` field starts with a `"1"`, then `1`
+- otherwise, `0`
+
+### `is_adult`
+
+- when the `apptage` field is greater than or equal to 7000, then `0`
+- when the `apptage` field is greater than or equal to 18, then `1`
+- otherwise, `0`
+
+### `is_gp_ref`
+
+- when the `refsourc` field is `"03"` and the `firstatt` field is either `"1"` or `"3"`, then `1`
+- otherwise `0`
+
+### `is_cons_cons_ref`
+
+- when the `refsourc` field is `"05"` and the `firstatt` field is either `"1"` or `"3"` and the `sushrg` field is either `"WF01B"` or `"WF02B"`, then `1`
+- otherwise `0`
+
+### `is_first`
+
+- when the `atentype` field is either `"1"` or `"21"`, then `1`
+- when the `atentype` field is either `"2"` or `"22"`, then `0`
+- otherwise, `NULL`
+
+### `is_tele_appointment`
+
+- when the `atentype` field is either `"1"` or `"2"`, then `0`
+- when the `atentype` field is either `"21"` or `"22"`, then `1`
+- otherwise, `NULL
+
+### `has_procedures`
+
+- when the `sushrg` starts with `"U"` or `"WF"`, then `0`
+- otherwise, `1`
+
+### `type`
+
+- if the `is_adult` is `1`:
+  - if the `is_surgical_specialty_field` is `1`, then `"adult_surgical"`
+  - otherwise, `"adult_non-surgical"`
+- otherwise:
+  - if the `is_surgical_specialty_field` is `1`, then `"child_surgical"`
+  - otherwise, `"child_non-surgical"`
+
+### `hsagrp`
+
+take the `type` field, and append:
+
+- if the `has_procedures` field is `1`, then `"procedure"`
+- if the `is_first` field is `1`, then `"first"`
+- otherwise, `"follow-up"`
+
+### `group`
+
+- if the `has_procedures` field is `1`, then `"procedure"`
+- if the `is_first` field is `1`, then `"first"`
+- otherwise, `"follow-up"`
+
+### `tretspef`
+
+If the `tretspef` is in the list of RTT specialties, then leave as is, otherwise, set it to:
+
+- if it starts with a `"1"`, but isn't `"180"`, `"190"`, or `"192"`, then `"Other (Surgical)"`
+- if it is `"560"`, then `"Other"`
+- if it is `"180"`, `"190"`, `"192"`, `"831"`, `"833"`, or `"834"`, then `"Other (Medical)"`
+- if it starts with a `"2"`, "`3"`, "`4"`, "`5"`, "`6"`, then "Other (Medical)"
+- otherwise, `"Other"`
+
+### `is_wla`
+
+This is set to `true` - it simplifies the logic within the model to have the same fields for the waiting list adjustment in both Inpatients and Outpatients.
+
+## Aggregation
+
+We aggregate by counting how many rows of data appear within the extraction period for each provider.
+The rows that we group by are the fields that are required within the model, and for whatever cut of results are required in the outputs.
+
+These are:
+
+- `age`
+- `sex`
+- `tretspef`
+- `sitetret`
+- `is_main_icb`
+- `is_surgical_specialty`
+- `is_adult`
+- `is_gp_ref`
+- `is_cons_cons_ref`
+- `is_first`
+- `has_procedures`
+- `type`
+- `hsagrp`
+- `group`
+- `is_wla`
+
+We create two columns:
+
+- `attendances` are the count of face to face attendances within that group.
+- `tele-attendances` are the count of tele-appointments within that group.

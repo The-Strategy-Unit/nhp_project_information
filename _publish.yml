@@ -1,0 +1,6 @@
+- source: project
+  connect:
+    - id: e0c5e8f2-c27f-4b25-ac3a-4659e9eff53f
+      url: 'https://connect.strategyunitwm.nhs.uk/content/e0c5e8f2-c27f-4b25-ac3a-4659e9eff53f/'
+    - id: a59059a0-c72a-4cd8-8843-5a4929821e2f
+      url: 'https://connect.strategyunitwm.nhs.uk/content/a59059a0-c72a-4cd8-8843-5a4929821e2f/'

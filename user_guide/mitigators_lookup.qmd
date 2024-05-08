@@ -1,0 +1,69 @@
+---
+title: "Mitigators lookup"
+order: 5
+---
+
+This page contains an interactive table with a sortable and searchable lookup of mitigators. Click the 'Download CSV' button to download a copy with the current filters applied (if any).
+
+The table contains mitigator codes, which exist to make it easier to refer to and discuss mitigators. These codes take the form 'IP-AA-001', for example. Each code is composed of an activity type ('IP' is inpatient, for example), a mitigator type ('AA' is activity avoidance) and a three-digit number (assigned on the basis of alphabetical order within activity and mitigator types).
+
+The variable names for each strategy are also included. These are used when interacting directly with the data that underlies the model and apps. The strategy names are presented to users in the inputs- and outputs-app interfaces.
+
+
+```{r}
+#| label: read-mitigators
+#| echo: false
+
+simplify_name <- function(name) {
+  name |>
+    stringr::str_to_sentence() |>
+    stringr::str_replace_all("_", " ")
+}
+
+dat <- readr::read_csv(
+  "mitigator-codes.csv",
+  show_col_types = FALSE,
+  col_select = c(
+    "activity_type",
+    "mitigators_type",
+    "strategy",
+    "strategy_name",
+    "mitigator_code"
+  )
+) |> 
+  dplyr::mutate(
+    activity_type = dplyr::case_match(
+      activity_type,
+      "ip" ~ "Inpatients",
+      "op" ~ "Outpatients",
+      "aae" ~ "Accident and Emergency"
+    ),
+    mitigators_type = simplify_name(mitigators_type),
+  ) |> 
+  dplyr::relocate(mitigator_code, .before = 1) |> 
+  dplyr::rename(
+    mitigator_type = mitigators_type,
+    strategy_variable = strategy
+  ) |> 
+  dplyr::rename_with(simplify_name)
+
+htmltools::tagList(
+  htmltools::tags$button(
+    "Download CSV",
+    onclick = "Reactable.downloadDataCSV('mitigators-data')"
+  ),
+  reactable::reactable(
+    elementId = "mitigators-data",
+    data = dat,
+    defaultSorted = "Mitigator code",
+    searchable = TRUE,
+    filterable = TRUE,
+    columns = list(
+      "Mitigator code" = reactable::colDef(maxWidth = 105),
+      "Activity type"  = reactable::colDef(maxWidth = 105),
+      "Mitigator type" = reactable::colDef(maxWidth = 100)
+    )
+  )
+) |> 
+  htmltools::browsable()
+```

@@ -1,0 +1,23 @@
+---
+title: "Double counting"
+order: 1
+---
+
+The NHP model applies a number of adjustments to hospital activity in a baseline year, with each adjustment designed to reflect a change in the populations needs, demand for healthcare or the supply of healthcare in the future. The manifold nature of these changes introduces the risk of double-counting effects. If the overlap between two change factors is not recognised, then the combined effects may be overestimated. This page sets out these risks, the mitigations that are encoded in the model structure and how those can be addressed through intelligent parametrisation of the model.
+
+## Mitigating risks by handling discrete event data
+
+One of the key safeguards against the risk of double-counting effects emerges from the core functionality of the model. The model handles discrete hospital events (e.g., an inpatient stay, bed-day, procedure, an outpatient or ED attendance) rather than aggregate summaries of hospital activity. The model operates by removing, duplicating (by sampling with / without replacement) or adjusting these discrete events, preserving the detailed administrative and clinical information within the record for later analysis. This approach brings data handling challenges but eliminates one of the key sources of potential double counting that are present in models that operate on aggregations of hospital activity. 
+
+A common example of this lies in the interaction between admission avoidance and length of stay reduction strategies. In a model that handles aggregations of hospital activity, it is possible to overestimate the combined effect of these changes. In a model that handles discrete events, a hospital spell can only be removed once and it is not possible to improve the efficiency of a spell that does not in the future, take place. 
+
+## Mitigating risks through intelligent parametrisation
+
+The second mitigation relates to the ways in which the changes that the user is asked to parameterise, are expressed. Users will be asked to estimate the effect of a particular change, having taken account of the earlier changes they have already specified. When requesting a parameter for a particular effect, the modelling tool and process will use forms of words such as "in and of itself" or "having adjusted for" to remind the user to submit a parameter relating to the isolated effect of that change. Whilst increasing the cognitive challenge of setting the parameter, this mitigation provides some protection against the risk of double-counting.
+
+## Residual risks and potential solutions
+
+There are, however, some double counting risks that remain despite these mitigations. These tend to arise when two change factors are intrinsically associated. In general, the model assumes that change factors vary independently over their respective uncertainty intervals. But in some cases, there may be good reason to believe that two change factors co-vary. Under these conditions, assuming independence may generate an implausible distribution of the two change factor distributions. 
+
+A good example of this relates to the age-specific health status change factor and the smoking, obesity, and alcohol related activity mitigators. There is likely to be some association between the extent to which smoking, obesity and alcohol related admissions are in the future avoided and changes in age-specific health status. We intend to explore a solution to this issue by specifying, based on expert opinion: (1) the likely association between sets of plausibly linked variables, and (2) the extent to which their effects intersect.  We will then use this information to influence the random selection of linked change factor parameters and downscale the size of the smaller of the two change effects.  Further work is required to develop the detail of these methods and describe their application. 
+The identification of potentially associated change factors will need to be kept under review as new factors are added to the model.

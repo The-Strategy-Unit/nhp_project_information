@@ -1,0 +1,479 @@
+---
+title: Inpatient Activity mitigators
+
+---
+
+# AEC Length of Stay Reduction
+
+## Ambulatory Emergency Care
+
+The underlying principle of Ambulatory Emergency Care (AEC) is that a significant proportion of adult patients requiring emergency care can be managed safely and appropriately on the same day, either without admission to a hospital bed at all, or admission for only a number of hours. 
+Further information about AEC can be found on the [Ambulatory Emergency Care Network][1] website.
+
+[1]: https://www.ambulatoryemergencycare.org.uk/
+
+The Ambulatory Emergency Care Network has developed a directory of ambulatory emergency care for adults which identifies 58 emergency conditions that have the potential to be managed on an ambulatory basis, as an emergency day case. The directory provides, for each condition, an indicative assumption about the proportion of admissions that could be managed on an ambulatory basis.
+
+### Available Breakdowns
+
+The model groups these individual conditions into four categories:
+
+- Ambulatory emergency care (low potential) (IP-EF-002)
+- Ambulatory emergency care (moderate potential) (IP-EF-003)
+- Ambulatory emergency care (high potential) (IP-EF-001)
+- Ambulatory emergency care (very high potential) (IP-EF-004)
+
+# Admission avoidance
+
+## Alcohol related admissions
+
+Research into alcohol related mortality and admissions suggests there are a number of admissions that are attributable to excess alcohol consumption which can ultimately lead to an emergency hospital admission or even death.  
+
+Such admissions could be avoided by adopting a range of interventions including public health strategies such as raising public awareness against the harms of excessive alcohol consumption or minimum pricing policies or patient specific interventions such as primary care support and increasing addiction treatment services.
+
+### Source of Alcohol related admissions codes
+
+[Alcohol attributable condition codes are sourced from the 2020 PHE document Alcohol-attributable fractions for
+England: An update][alc_1]
+
+[alc_1]: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/958648/RELATI_1-1.pdf
+
+These admissions have been grouped into 3 categories:
+
+- wholly attributable to alcohol consumption (100%) (IP-AA-003)
+- partially attributable to alcohol consumption (Chronic conditions) (IP-AA-002)
+- partially attributable to alcohol consumption (Acute conditions) (IP-AA-001)
+
+Whilst most activity mitigation strategies identify all spells based on the specified SQL coding in this case the model only selects a proportion of spells based on the alcohol attributable fraction (AAF) for that condition[^alc_2]. As an example the AAF for cancer of the oesophagus for males aged between 35 and 44 is 52% therefore the model randomly selects 52% of spells meeting these criteria[^alc_3]. The AAFs are also sourced from the above referenced document.
+
+[^alc_2]: The alcohol attributable fractions are specified by age group, gender, and by condition and are applied accordingly. 
+[^alc_3]: Some alcohol attributable fractions are negative (that is, evidence suggests that drinking alcohol can have a preventative effect for some age/sex/condition groups). The tool does not account for this.
+
+## Ambulatory Care Sensitive Admissions
+
+Ambulatory Care Sensitive Conditions (ACSC) admissions are those that can potentially be avoided with effective management and treatment such as improved primary or community health care services such as screening, vaccination, immunisation and health monitoring. 
+Admissions of this type are identified using a basket of ICD10 codes for 19 chronic and acute conditions.
+
+These conditions are categorised into three groups; vaccine preventable conditions, chronic conditions, and acute conditions. These three groups can then be broken down into 19 health groups.
+
+### Vaccine Preventable (IP-AA-006)
+
+1.  Influenza and Pneumonia
+2.  Other vaccine-preventable
+
+### Chronic (IP-AA-005)
+
+3.  Asthma
+4.  Congestive heart failure
+5.  Diabetes complications
+6.  Chronic obstructive pulmonary disease
+7.  Angina
+8.  Iron-deficiency anaemia
+9.  Hypertension
+10. Nutritional deficiencies
+
+### Acute (IP-AA-004)
+
+11. Dehydration and gastroenteritis
+12. Pyelonephritis
+13. Perforated/bleeding ulcer
+14. Cellulitis
+15. Pelvic inflammatory disease
+16. Ear, nose and throat infections
+17. Dental conditions
+18. Convulsions and epilepsy
+19. Gangrene
+
+### Source of Ambulatory Care Sensitive Admissions codes
+
+The list of conditions used within this factor comes from the [NHS Institute for Innovation and Improvement from the document below][asc_1]. 
+
+The full condition list and coding logic can be found within the [appendix][asc_2].
+
+The list of conditions that comprise Ambulatory Care Sensitive Conditions used within this model is one of several that are available for example a slightly Different set of conditions are used in the [NHS Outcomes Framework][asc_3].
+
+
+[asc_1]: https://webarchive.nationalarchives.gov.uk/ukgwa/20220301011245/https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/innovative-uses-of-data/demand-on-healthcare/ambulatory-care-sensitive-conditions
+[asc_2]: https://webarchive.nationalarchives.gov.uk/ukgwa/20210206234503/https://digital.nhs.uk/binaries/content/assets/website-assets/data-and-information/data-tools-and-services/data-services/innovative-uses-of-data/acsc-appendix-a.pdf
+[asc_3]:https://digital.nhs.uk/data-and-information/publications/statistical/nhs-outcomes-framework/february-2021/domain-2-enhancing-quality-of-life-for-people-with-long-term-conditions-nof/2.3.i-unplanned-hospitalisation-for-chronic-ambulatory-care-sensitive-conditions
+
+
+## Cancelled Operations (IP-AA-007)
+
+Operations can be cancelled after a patient has been admitted this is inefficient for the provider and costly for the commissioner as they both incur an unnecessary opportunity cost. 
+Cancelled operations can be for a variety of clinical, administrative or patient related reasons.
+Some of these admissions could be avoided through for example improved administration and scheduling or enhanced pre-op patient optimisation and assessment.
+
+These spells are identified via the HRG codes which identity spells where the planned procedure was not carried out.
+
+### Differences between years
+
+HRG codes are subject to change these should therefore be reviewed periodically.
+
+### Source of Cancelled Operations codes
+
+HRG codes are published annually by [NHS England][co_1].
+
+[co_1]: https://www.england.nhs.uk/publication/national-tariff-payment-system-documents-annexes-and-supporting-documents/
+
+## End of Life Care Related Admissions
+
+The evidence is clear that most people would prefer to die at home but despite some improvements in recent years most deaths still occur in hospital.
+
+Enabling people to die at home can reduce the burden on hospital resources and on commissioners' budgets. The model identifies admissions where alternative support in an alternative setting may have been possible. These spells are those where no procedure is carried out and there is no indication that the patient experienced any trauma and the patient dies in hospital.
+
+### Available Breakdowns
+
+1. Patients who die within 0-2 days of admission (IP-AA-008)
+2. Patients who die within 3-14 days of admission (IP-AA-009)
+
+## Evidence-Based Interventions 
+
+The Evidence-based Interventions programme is an initiative led by the Academy of Medical Royal Colleges to improve the quality of care. It is designed to reduce the number of medical or surgical interventions as well as some other tests and treatments which the evidence tells us are inappropriate for some patients in some circumstances.
+
+The programme identified a range of tests, treatments and procedures that could in some instances be unnecessary and as such avoidable through for example improved policies, pathway redesign, or referral management.
+
+The model adapts SQL code developed by the programme to identify spells where relevant surgical procedures (along with specified diagnoses) are undertaken. It groups those procedures into surgical specialties.
+
+### Available breakdowns
+
+- ENT (IP-AA-010)
+- General Surgery (IP-AA-011)
+- GI surgery (IP-AA-012)
+- MSK (IP-AA-013)
+- Urology (IP-AA-014)
+- Vascular (IP-AA-015)
+
+### Source of Evidence-Based Interventions codes
+
+Codes used within the model to identify spells of this type can be found on the [AOMRC website][ebi_1].
+
+[ebi_1]: https://ebi.aomrc.org.uk/
+
+## Falls Related Admissions (IP-AA-016)
+
+Some falls that result in an emergency admission to hospital are potentially avoidable if the appropriate preventative services are in place. 
+A range of evidence based services and interventions exist that can reduce falls in the elderly. Implementation across the country is variable and as such there remains significant scope to reduce the incidence of falls further. 
+Examples of preventative services include home risk assessments for trip hazards, strength and balance training for those at risk and falls telemonitoring. 
+
+Falls related admissions are identified in the model in a number of ways:
+
+- Spells where there is a falls related ICD10 cause code and a traumatic injury (explicit), 
+- Spells where the primary diagnosis is `R296` (Tendency to fall)
+- Spells where there is no external cause ICD10 code but there is a diagnosis of one of a number of fractures that are commonly associated with a fall
+
+Within the model the three sets of admissions are grouped, in this case, into a single sub factor.
+
+### Source of Falls Related Admissions codes
+
+The codes for explicit falls are taken from the [PHE outcome indicator framework][fra_1].
+
+[fra_1]: https://fingertips.phe.org.uk/profile/public-health-outcomes-framework/data#page/6/gid/1000042/pat/6/par/E12000004/ati/102/are/E06000015/iid/22401/age/27/sex/4
+
+## Frail Elderly Related Admissions
+
+Older people are major users of acute health care. Some older people are at a higher risk of poor outcomes due to frailty. Addressing frailty remains a high priority for Healthcare systems which continue to develop services and interventions that identify and support frail patients in order to maintain their functionality and independence, thereby slowing or avoiding deterioration that often results in the need for hospital care. Frailty is also one of the core pathways where the development of virtual wards is focused and therefore patients in this activity cohort may be suitable for admission to a frailty virtual ward. 
+
+The model identifies admissions that may be related to frailty by adapting an approach developed by Gilbert, Thomas et al.[^fera_1]
+
+The model identifies all emergency admissions for patients aged over 75 and generates a total frailty score for each spell based on diagnoses recorded for admissions during the previous 2 years. Frailty scores for each prior admission are assigned a score taken a table of ICD10 risk scores within the paper above. For example a patient with 2 previous admissions where the first had a recorded diagnosis of F00 Dementia and the second had a diagnosis of W19 unspecified fall is awarded a score of 7.1 for the first admission and 3.2 for the second giving a total frailty score of 10.3. 
+
+Spells are categorised as either intermediate frailty risk (total score > 5) or high intermediate risk (total score > 15). 
+
+### Available breakdowns
+
+- Intermediate level frailty (IP-AA-018)
+- High level frailty (IP-AA-017)
+
+[^fera_1]: Gilbert, T., Neuburger, J., Kraindler, J., Keeble, E., Smith, P., Ariti, C., Arora, S., Street, A., Parker, S., Roberts, H.C. and Bardsley, M., 2018. Development and validation of a Hospital Frailty Risk Score focusing on older people in acute care settings using electronic hospital records: an observational study. *The Lancet*, 391(10132), pp.1775-1782.
+
+## Intentional Self Harm Related Admissions (IP-AA-019)
+
+Emergency admissions to hospital resulting from acts of self harm may be preventable, if appropriate support is available in the community or accessible through primary care.
+
+The model identifies admissions with a cause code relating to intentional self harm/poisoning.  
+
+### Source of Intentional Self Harm Related Admissions codes
+
+The [ICD10 diagnosis coding framework][ish_1] includes a range of explicit self harm codes.
+
+[ish_1]: https://icd.who.int/browse10/2019/en#/X60-X84
+
+## Medically Unexplained Admissions (IP-AA-020)
+
+Around 1 in 4 people who visit their GP have symptoms that the GP is [unable to explain][mua_1] even after conducting appropriate testing. 
+Sometimes the symptoms are severe enough to precipitate an admission to hospital yet ultimately an underlying physical cause cannot be determined. 
+
+Some of these symptoms may have a psychological cause and as such, may be avoidable through improved access to psychological therapy services or through population health measures that promote psychological well being. 
+
+The model identifies admissions where the primary diagnosis is one of a small basket of symptoms where a physiological cause is in many cases undetectable.  
+
+[mua_1]: https://www.rcpsych.ac.uk/mental-health/problems-disorders/medically-unexplained-symptoms
+
+## Medicines Related Admissions
+
+Between 5 and 10%[^mra_1] of all hospital admissions may be medicines related. Such admissions can occur due to drug therapy failure, adverse reactions to drug therapy, failure to adhere to prescribed regimen or unintentional overdose. 
+Admissions of this type could be prevented with better self management on the patients' part or improved medicines management.
+
+The model identifies these admissions using two approaches. The first identifies admissions where the presence of one or more of a number of ICD10 cause codes indicate the use of a medicine is a factor in the admission.
+
+Admissions where there is an explicit cause code probably underestimate the true number of medicines related admissions. Therefore, the second approach identifies admissions where a medicines related cause is not explicitly recorded but may be a factor in the admission. In order to do this, the model identifies admissions with a specific combination of primary and secondary diagnoses that are indicative of a medicine related cause. For example the long term use of high dose NSAIDs is a possible cause of an admission with a primary diagnosis of gastric ulcer and a secondary diagnosis of arthritis. The list of diagnoses used within the coding of this factor is based on exploratory work undertaken by the Strategy Unit. Other valid combinations could potentially be added to current set.  
+
+[^mra_1]: Kongkaew, C., Noyce, P.R. and Ashcroft, D.M., 2008. Hospital admissions associated with adverse drug reactions: a systematic review of prospective observational studies. *Annals of Pharmacotherapy*, 42(7-8), pp.1017-1025.
+
+### Available breakdowns
+
+- Medicines related admissions - Explicitly coded (IP-AA-021)
+- Medicines related admissions - Implicitly coded
+  - Admissions potentially related to NSAIDs (IP-AA-025)
+  - Admissions potentially related to Anti-Diabetics (IP-AA-022)
+  - Admissions potentially related to Benzodiazepines (IP-AA-023)
+  - Admissions potentially related to Diuretics (IP-AA-024)
+
+
+## Obesity Related Admissions (IP-AA-026)
+
+Obesity is a factor that increases the risk of developing a wide range of conditions. 
+Reducing the level of obesity within the population though greater investment in lifestyle management services and health promotion would reduce the number of admissions for conditions that are at least in part attributable to obesity. 
+The National Audit Office publication [Tackling Obesity in England 2001][ora_1] identified conditions that are attributable to obesity. 
+The publication provides an indication, for each condition, of the proportion of cases that may be attributable to obesity. 
+
+Whilst most activity mitigation strategies identify all spells based on the specified SQL coding, in this case the model only selects a proportion of spells based on the obesity attributable fraction (OAF) for that condition. 
+As an example, the OAF for hypertension is 36%. Therefore, the model randomly selects 36% of spells meeting these criteria. The OAFs are also sourced from the above referenced document.
+
+[ora_1]: https://webarchive.nationalarchives.gov.uk/ukgwa/20170207052351/https://www.nao.org.uk/wp-content/uploads/2001/02/0001220.pdf
+
+## Mental health admissions via Emergency Department (IP-AA-027)
+
+Patients with mental health conditions are sometimes admitted to an inpatient bed after attending an emergency department. 
+The reasons for admission can be for a range of reasons including self harm, acute psychosis, or drug and alcohol related issues. 
+These patients may benefit more from appropriate treatment in the community or an alternative psychiatric facility.
+Provision of a psychiatric liaison type service (sometimes known as RAID) could avoid admissions of this type. 
+
+This model identifies patients who may benefit from psychiatric liaison  as those with a primary diagnosis in ICD10 chapter F (mental and behavioural disorders) who were admitted from ED and did not undergo a procedure.
+
+## Readmissions Within 28 Days of Discharge (IP-AA-028)
+
+Emergency readmission to hospital is typically regarded as an unfavourable outcome. 
+There are a range of interventions that have been shown to be effective in reducing the level of readmissions, including patient education, timely outpatient appointments, medication reconciliation, and telephone follow ups.
+The model identifies patients who are readmitted within 28 days of being discharged from hospital. 
+
+Some of these patients may have been discharged from a different hospital than the one being modelled.
+
+## Smoking Related Admissions (IP-AA-029)
+
+Smoking is the biggest single cause of preventable death and ill-health within England. 
+Reducing smoking prevalence, through investment in smoking cessation services and public health interventions aimed at reducing take up, will reduce admissions for a wide range of smoking attributable conditions. 
+In addition, historical measures such as national smoking bans will continue to have an impact in future.
+
+### Source of Smoking Related Admissions codes
+
+The 2018 Royal college of physicians report [Hiding in plain sight][rcp_hps] provides a list of conditions and their associated ICD10 codes that can be attributable to smoking. The model uses this list to identify spells in the model that could be avoided. 
+
+[rcp_hps]: https://www.rcplondon.ac.uk/projects/outputs/hiding-plain-sight-treating-tobacco-dependency-nhs
+
+Whilst most activity mitigation strategies identify all spells based on the specified SQL coding, in this case the model only selects a proportion of spells based on the smoking attributable fraction (SAF) for that condition. 
+As an example, the AAF for cancer of the larynx for males is 43%. Therefore, the model randomly selects 43% of spells meeting these criteria. The SAFs are also sourced from the above referenced document.
+
+## Admission with no overnight stay and no procedure
+
+Emergency admissions which are discharged on the same day of admission and where no procedure is undertaken could be are avoidable if the appropriate preventative services are in place. 
+The model identifies admissions of this type and categorises them into adult and child.
+
+### Available breakdowns
+
+- Admission with no overnight stay and no procedure (adults) (IP-AA-032) 
+- Admission with no overnight stay and no procedure (children) (IP-AA-033)
+
+## Virtual Wards Admission Avoidance
+
+Virtual wards allow patients to receive the care they need at home, safely and conveniently rather than in hospital. They also provide systems with a significant opportunity to narrow the gap between demand and capacity for secondary care beds, by providing an alternative to admission and/or early discharge. 
+
+Whilst virtual wards may be beneficial for patients on a variety of clinical pathways, guidance has been produced relating to three pathways which represent the majority of patients who may be clinically suitable to benefit from a virtual ward. These pathways are Frailty, Acute Respiratory Infections (ARI) and Heart failure. 
+
+This activity avoidance mitigator identifies patients who may be suitable for admission to an ARI or Heart Failure virtual ward. 
+
+### Available breakdowns
+
+- Acute Respiratory Infection (IP-AA-030)
+- Heart Failure (IP-AA-031)
+
+# Mean Length of Stay (LOS) Reduction
+
+## National Length of Stay (LOS) trends
+
+Figure 1 shows that average LOS for **elective inpatients** has reduced from 9.0 days to 0.6 days over the 30 year period illustrated, which equates to a 94% reduction and a Cumulative Annual Growth Rate (CAGR) of -8.7%. Limiting that to just the last 20 years shows a 75% reduction and a CAGR of -6.6%. 
+
+![Fig. 1: Trends in average LOS for elective  inpatient activity 1989/1990 to 2019/20](LOS_1.png)
+
+Figure 2 shows that average LOS for **emergency inpatients** has reduced from 20.6 days to 4.8 days over the 30 year period illustrated, which equates to a 76% reduction and a CAGR of -4.7%. Limiting that to just the last 20 years shows a 47% reduction and a CAGR of -3.2%. 
+
+![Fig. 2 Trends in average LOS for emergency inpatient activity 1989/1990 to 2019/20](LOS_2.png)
+**Length of Stay (LOS) trends excluding 0 LOS spells**
+
+Figure 3 shows that average LOS for **elective inpatients (excluding 0 LOS spells)** has reduced from 14.3 days to 5.4 days over the 30 year period illustrated, which equates to a 62% reduction and a CAGR of -3.2%. Limiting that to just the last 20 years shows a 33% reduction and a CAGR of -1.9%. 
+
+![Fig. 3 Trends in average LOS for elective inpatient activity (excluding 0 LOS spells) 1989/1990 to 2019/20](LOS_3.png)
+Figure 4 shows that average LOS for **emergency inpatients (excluding 0 LOS spells)** has reduced from 22.2 days to 7.4 days over the 30 year period illustrated, which equates to a 77% reduction and a CAGR of -3.6%. Limiting that to just the last 20 years shows a 32% reduction and a CAGR of -1.9%. 
+
+![Fig. 3 Trends in average LOS for emergency inpatients (excluding 0 LOS spells) 1989/1990 to 2019/20](LOS_4.png)
+
+## Emergency admission of older people (IP-EF-009)
+
+The model identifies all patients aged over 75 admitted as an emergency. These patients typically have long lengths of stay and thus represent a significant efficiency opportunity through process improvements, interventions or pathway developments that help to reduce Length of Stay (LOS). Frail elderly is also one of the core pathways where the development of virtual wards is focused and therefore patients in this activity cohort may be suitable for earlier discharge through admission to a step down virtual ward. 
+
+## Enhanced Recovery
+
+[Enhanced Recovery][er_1] (ER) is an evidence-based model that is intended to help patients recover from major elective surgery quicker than they normally would do. 
+It is based on the following principles:
+
+- the patient is in the best possible condition for surgery
+- the patient has the best possible management during and after their operation
+- the patient experiences the best post-operative rehabilitation
+
+Whilst many procedures would benefit from adopting enhanced recovery approaches, the most common specialties where enhanced recovery programmes have been implemented are musculoskeletal (MSK), colorectal surgery, gynaecology and urology, as these were the areas targeted by the Department of Health enhanced recovery programme. 
+The 2011 programme report specified a number of high volume procedures within these specialties that would be the focus of ER programmes and it is these that are included within th ER efficiency factors. 
+In addition, we have subsequently also included a number of breast surgery procedures as more recent [NHS information][er_2] identifies this as an area where ER programmes are commonly in place.
+
+[er_1]: https://www.gov.uk/government/publications/enhanced-recovery-partnership-programme
+[er_2]: https://www.nhs.uk/conditions/enhanced-recovery/
+
+### Available breakdowns
+
+- Bladder (IP-EF-010)
+- Breast (IP-EF-011)
+- Colectomy (IP-EF-012)
+- Hip (IP-EF-013)
+- Hysterectomy (IP-EF-014)
+- Knee (IP-EF-015)
+- Prostate (IP-EF-016)
+- Rectum (IP-EF-017)
+
+## Excess Bed Days
+
+Sometimes a patient will stay in hospital for longer than expected. 
+Expected lengths of stay are calculated for each spell based on the  upper quartile length of stay for the Healthcare Resource Group (HRG) plus 1.5 times the inter-quartile range of length of stay. 
+This is known as the "Trim point". 
+
+Hospitals are reimbursed for additional days in excess of the trim point via an excess bed day payment. 
+Excess Bed Days can also be costly for providers as the payment does not cover the full costs of the additional stay. 
+
+In some instances, excess bed days may be avoidable; for example, where the excess bed days are as a result of delayed discharges or suboptimal rehabilitation support.
+
+### Available breakdowns
+
+- Elective (IP-EF-018)
+- Emergency (IP-EF-019)
+
+### Data sources
+
+Trim Points are updated annually and can be found in the [National Tariff workbooks][ebd_1].
+
+[ebd_1]: https://www.england.nhs.uk/publication/past-national-tariffs-documents-and-policies/
+
+## Admissions with mental health comorbidities (IP-EF-024)
+
+Patients with mental health problems admitted to hospital in an emergency can have longer lengths of stay (LOS) due to added complexities this creates in treating and supporting such patients. 
+Psychiatric liaison services (sometimes referred to as RAID) can help to reduce the LOS for such patients by providing support to ward staff whilst in hospital, and facilitating timely discharge through the provision of appropriate post discharge support. 
+
+The model identifies patients who may benefit as those with a recorded mental or behavioural diagnosis.
+
+## Stroke Early Supported Discharge (IP-EF-025)
+
+Early supported discharge is an intervention for adults after a stroke that allows their care to be transferred from an inpatient environment to a community setting. 
+It enables people to continue their rehabilitation therapy at home, with the same intensity and expertise that they would receive in hospital. 
+The model identifies patients who have a stroke related HRG code who may benefit from a reduced inpatient LOS through supported discharge.
+
+## General LoS Reduction
+
+Historically there has been a sustained and continuing reduction in average length of stay (LOS). The model allows users to make assumptions about future reductions in LOS relating to some specific activity cohorts, such as over 75 patients admitted as an emergency, but it is recognised that continued LOS reductions may also continue to be achieved for patients outside of these specific cohorts. This mitigator therefore allows users to set assumptions about the expected reduction in the average LOS for emergency and elective spells that are not covered by the other specific efficiency mitigators. The assumed % reduction is applied to the average LOS which, in this case, is calculated excluding 0 LOS spells as these cannot be further reduced. The charts on this page also show the average LOS calculated in this way.
+
+### Available breakdowns
+
+- Elective Admissions (IP-EF-020)
+- Emergency Admissions (IP-EF-021)
+
+## Virtual Wards LOS reduction
+
+Virtual wards allow patients to receive the care they need at home, safely and conveniently rather than in hospital. They also provide systems with a significant opportunity to narrow the gap between demand and capacity for secondary care beds, by providing an alternative to admission and/or early discharge. 
+
+Whilst virtual wards may be beneficial for patients on a variety of clinical pathways guidance has been produced relating to three pathways which represent the majority of patients who may be clinically suitable to benefit from a virtual ward. These pathways are Frailty, Acute Respiratory Infections (ARI) and Heart failure. 
+
+This efficiency mitigator identifies patients who may be suitable for earlier discharge through admission to step down ARI or Heart Failure virtual wards. 
+
+### Available breakdowns
+
+- Acute Respiratory Infection (ARI) (IP-EF-026)
+- Heart Failure (IP-EF-027)
+
+# Pre-Operative (Pre-Op) Length of Stay (LOS) Reduction
+
+## Pre-Op Length of Stay
+
+In most cases patients do not need to be admitted before the day of surgery. This model identifies elective admissions that are admitted either 1 day prior to surgery, or 2 days prior to surgery. 
+Patients who are admitted more than 2 days prior to surgery are not included as it is assumed that in these cases there is a valid clinical reason for the extended pre-op LOS.
+
+### Available breakdowns
+
+- Pre-op Length of Stay of 1 day (IP-EF-022)
+- Pre-op Length of Stay of 2 days (IP-EF-023)
+
+# Day Procedures
+
+Day surgery is now established practice with rates continuing to increase. Due to advances in anaesthesia and surgical techniques, it is the standard pathway of care for many complex patients and procedures traditionally treated through inpatient pathways.
+
+Day surgery represents high-quality patient care with excellent patient satisfaction. Shorter hospital stays and early mobilization reduce rates of hospital-acquired infection and venous thromboembolism. Patients overwhelmingly endorse day surgery, with smaller waiting times, less risk of cancellation, lower rates of infection, and the preference of their own surroundings to convalesce.
+
+The tool identifies elective spells with a procedure where there is potential to deliver that activity in a different setting. It classifies those spells into four types based on an analysis of national data:
+
+- Day Procedures: Usually performed in Outpatients (IP-EF-008) - Procedures that are usually (>50% of all spells/attendances nationally) carried out in an outpatient procedure room
+- Day Procedures: Usually performed as a Daycase (IP-EF-007) - Procedures that are usually (>50% of all spells/attendances nationally) carried out in a day case setting
+- Day Procedures: Occasionally performed in Outpatients (IP-EF-006) - Procedures occasionally (>5% of all spells/attendances nationally, excluding any procedures in Type A or B) carried out as a day case or in a procedure room (outpatient) setting
+- Day Procedures: Occasionally performed as a Daycase (IP-EF-005) - Procedures occasionally (>5% of all spells/attendances nationally, excluding any procedures in Type A or B) carried out in a day case setting.
+
+The input tool requires users to set assumptions about the future proportion of cases undertaken in the "non target" setting for each of the above types.
+
+For Usually or Occasionally performed in Outpatients spells, the assumption would be the assumed future proportion of spells undertaken as an inpatient or daycase (or the % reduction if setting the assumption relatively).
+
+For Usually or Occasionally performed as a Dayscase spells, the assumption would be the assumed future proportion of spells undertaken as an ordinary inpatient (or the % reduction if setting the assumption relatively).
+
+## Classification methodology
+
+Some elective procedures could be performed in a daycase setting in the future, and some elective/daycase procedures could be performed in an outpatient procedure room.
+
+We have counted all activity in 2019/20 where the primary procedure code starts with an A through T, split into one of three groups:
+
+* elective inpatients: admission method starting with a 1, patient classification of 1
+* daycases: admission method starting with a 1, patient classification of 2
+* outpatients: outpatient attendance with a HRG that does not start with WF or U
+
+We then have a table that contains a row per procedure, a column for each group containing the counts for that group, and a total column. For example:
+
+| procedure_code | ip   | dc   | op   | total |
+| :------------- | ---: | ---: | ---: | ----: |
+| A000           | 10   | 20   | 30   | 60    |
+
+As a data quality step, if a procedure has a total less than 100 (in the entirity of England in 2019/20) then we remove this procedure from our analysis.
+
+We then classify the procedures based on the following:
+
+* if a procedure has more than 50% of the procedures performed in outpatients, then classify it as "usually outpatients"
+* if a procedure has more than 50% of the procedures performed as a daycase, then classify it as "usually daycase"
+* if a procedure is not in either of the two "usually" groups, but more than 5% of the time it is performed in outpatients, then classify it as "occasionally outpatients"
+* if a procedure is not in either of the two "usually" groups, but more than 5% of the time it is performed in daycase, then classify it as "occasionally daycase"
+
+If a procedure does not match any of these groups then it is not classified.
+
+For each of these groups, we perform a one-sided binomial test, and if we have a p-value greater than 0.001 then we reject it from that group.
+
+Note that while a procedure can only exist in one of the "usually" groups, and a procedure cannot belong to a "usually" and an "occasionally" group, a procedure could belong to bother occasionally groups.
+
+## Modelling process
+
+### Usually/Occasionally Daycase
+
+Procedures that are flagged as usually/occasionally daycase, but are performed as an elective inpatient admission are converted to be performed as a daycase, and the length of stay is reduced to 0.
+
+### Usually/Occasionally Outpatients
+
+Procedures that are flagged as usually/occasionally outpatients, but are performed as an elective inpatient admission or daycase admission are converted to be performed in outpatients. These rows are removed from the inpatients counts and are added to outpatients instead.

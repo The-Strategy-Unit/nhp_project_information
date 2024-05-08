@@ -1,0 +1,57 @@
+---
+title: Outpatient Activity Mitigators
+---
+
+# Outpatient Consultant to consultant referrals
+
+Many consultant to consultant referrals are appropriate and are made for appropriate clinical reasons which support good patient management. 
+However, some of these referrals may not be the best option for patients, and may result in unnecessary waits for appointments when alternative management could have taken place outside of the hospital setting. 
+Within the model, 4 sub factors of this type are available:
+
+- Outpatient Consultant to consultant referrals (adult, non-surgical) (OP-AA-001)
+- Outpatient Consultant to consultant referrals (adult, surgical) (OP-AA-002)
+- Outpatient Consultant to consultant referrals (children, non-surgical) (OP-AA-003)
+- Outpatient Consultant to consultant referrals (children, surgical) (OP-AA-004)
+
+# Outpatient Convert to Tele-Attendance
+
+Not every outpatient appointment requires the patient to be physically present. 
+In particular, some routine follow up appointments such as those that follow procedures or those aimed at monitoring treatment progress could be carried out virtually. 
+Virtual attendances deliver many benefits including:
+
+- protecting patients, staff and the community, 
+- reducing costs for patients and their carers/families, 
+- improving patient satisfaction,
+- reducing carbon emissions from travelling to appointments,
+- increased opportunities for flexible working for clinicians.
+
+Within the model 4 sub factors of this type are available:
+
+- Outpatient Convert to Tele-Attendance (Adult, Non-Surgical) (OP-EF-001)
+- Outpatient Convert to Tele-Attendance (Adult, Surgical) (OP-EF-002)
+- Outpatient Convert to Tele-Attendance (Children, Non-Surgical) (OP-EF-003)
+- Outpatient Convert to Tele-Attendance (Children, Surgical) (OP-EF-004)
+
+# Outpatient Followup Appointment Reduction
+
+Outpatient attendances are by far the most voluminous activity undertaken in the NHS. 
+They can be simply categorised into those that are new or first consultations initiated following a referral (usually from a GP) and those that are "follow ups", such as consultations following a surgical procedure to assess progress or outcomes or to assess the effectiveness of an ongoing treatment programme.
+Whilst many (most) follow up attendances are entirely appropriate it is generally accepted that some are unnecessary and there remains wide variation in follow up to new ratios. 
+Within the model 4 sub factors of this type are available:
+
+- Outpatient Followup Appointment Reduction (Adult, Non-Surgical) (OP-AA-005)
+- Outpatient Followup Appointment Reduction (Adult, Surgical) (OP-AA-006)
+- Outpatient Followup Appointment Reduction (Children, Non-Surgical) (OP-AA-007)
+- Outpatient Followup Appointment Reduction (Children, Surgical) (OP-AA-008)
+
+# Outpatient GP Referred First Attendance Reduction
+
+Inappropriate referrals from a GP into secondary care can account for a material proportion of outpatient activity resulting in sub optimal treatment, delays and inefficient use of consultant time. 
+Many of these referrals could be more appropriately dealt with in other services or managed in primary care.  
+Many commissioners have sought to reduce the rate at which GPs refer patients to secondary care by introducing referral management services, peer review of referrals and more detailed referral guidelines. 
+These attendances are broken in to 4 subcategories.
+
+- Outpatient GP Referred First Attendance Reduction (Adult, Non-Surgical) (OP-AA-009)
+- Outpatient GP Referred First Attendance Reduction (Adult, Surgical) (OP-AA-010)
+- Outpatient GP Referred First Attendance Reduction (Children, Non-Surgical) (OP-AA-011)
+- Outpatient GP Referred First Attendance Reduction (Children, Surgical) (OP-AA-012)

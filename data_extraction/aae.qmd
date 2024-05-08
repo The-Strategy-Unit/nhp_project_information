@@ -1,0 +1,105 @@
+---
+title: Accident and Emergency
+order: 203
+---
+
+Data is sourced from Hospital Episode Statistics (HES) Accident and Emergency (AE) dataset.
+We extract aggregrated attendance level data for a given year.
+
+## Pre-processing
+
+### Age
+
+In the model we join to other datasets by age. However, these other datasets cap out at different ages, with the
+lowest-common denominator being 90 years.
+Anyone aged over 90 is assigned to have an age of 90.
+
+The age field in HES encodes the age of neonatal patients with values over 7000.
+In these cases we set the age to 0.
+
+### Provider code
+
+Over time, some NHS organisations merge.
+This information is provided in the [organisation successors][ods_succ] from the Organisation Data Service (ODS).
+
+[ods_succ]: https://digital.nhs.uk/services/organisation-data-service/export-data-files/csv-downloads/miscellaneous
+
+We use the successors lists to map historical data to the current organisation.
+For example, if provider `A` merged with provider `B` in 2023, when we extract data from 2019 we would remap any data
+for `A` to `B`.
+
+### Frequent Attenders
+
+A table is generated to indicate whether an individual is a frequent attender to A&E by looking back and counting how many other attendances that individual has had in the last year.
+
+If, on that attendance, they have had 3 or more prior attendances in the last 12 months, then that attendnace is marked as being a frequent attender.
+
+## Filtering
+
+We select records where the `SEX` is either 1 or 2 (Male/Female). This causes some records to be lost where the sex is
+not known, or is neither male or female. However, the population growth part of the model depends upon this field having
+one of the two stated values above.
+
+We select records where the `aeattendcat` field is `"1"` (First A&E attendance).
+This filters out planned and unplanned follow-up's.
+
+## Derived fields
+
+### `is_low_cost_referred_or_discharged`
+
+- if the `sushrg` field is one of `"VB06Z"`, `"VB09Z"`, `"VB10Z"`, or `"VB11Z"`, and the `aeattenddisp` field is one of `"02"` or `"03"`, then `1`
+- otherwise, `0`
+
+### `is_left_before_treatment`
+    
+- if the `aeattenddisp` field is `"12"`, then `1`
+- otherwise, `0`
+
+### `is_frequent_attender`
+
+See the pre-processing steps.
+
+### `is_ambulance`
+
+- if the `aearrivalmode` field is `"1"`, then `1`
+- otherwise, `0`
+
+### `hsagrp`
+
+- if the `age` field is greater than or equal to 18:
+  - if the `is_ambulance` field is `1`, then `"adult_ambulance"`
+  - otherwise `"adult_walk-in"`
+- otherwise:
+  - if the `is_ambulance` field is `1`, then `"child_ambulance"`
+  - otherwise `"child_walk-in"`
+  
+### `group`
+
+- if the `is_ambulance` field is `1`, then `"ambulance"`
+- otherwise `"walk-in"`
+
+### `tretspef`
+
+To simplifiy the model code, we introduce a treatment specialty to A&E attendances of `"Other"`.
+
+## Aggregation
+
+We aggregate by counting how many rows of data appear within the extraction period for each provider.
+The rows that we group by are the fields that are required within the model, and for whatever cut of results are required in the outputs.
+
+These are:
+
+- `age`
+- `sex`
+- `sitetret`
+- `is_main_icb`
+- `aedepttype`
+- `is_low_cost_referred_or_discharged`
+- `is_left_before_treatment`
+- `is_frequent_attender`
+- `is_ambulance`
+- `hsagrp`
+- `group`
+- `tretspef`
+
+We create a single column, `attendances`, which counts the number of attendances within that group.

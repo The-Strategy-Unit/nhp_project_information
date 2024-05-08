@@ -1,0 +1,72 @@
+---
+title: "Modelling utilisation rates"
+order: 10
+---
+
+## Baseline utilisation rates {#baseline-util-rate}
+
+Demographic effects are calculated independently by sex, and service line or point of delivery (POD). An algorithm assigns all inpatient, outpatient, and A&E activity to one of 24 mutually exclusive service lines. Data frames of activity or utilisation rates in the baseline year (activity counts by single year of age divided by the baseline catchment population) are created, separately for males and females, for each service line:
+
+* Inpatient
+    * Regular attender
+    * Birth episode
+    * Child episode (paediatric specialty)
+    * Maternity
+    * Emergency
+    * Transfer
+    * Ordinary elective
+    * Day case
+*	Outpatient
+    * Child (<18), surgical, first attendance
+    * Child (<18), surgical follow-up attendance
+    * Child (<18), surgical, outpatient procedure
+    * Child (<18), non-surgical, first attendance
+    * Child (<18), non-surgical follow-up attendance
+    * Child (<18), non-surgical, outpatient procedure
+    * Adult, surgical, first attendance
+    * Adult, surgical follow-up attendance
+    * Adult, surgical, outpatient procedure
+    * Adult, non-surgical, first attendance
+    * Adult, non-surgical follow-up attendance
+    * Adult, non-surgical, outpatient procedure
+*	A&E
+    * Child (<18) walk-in
+    * Child (<18) ambulance
+    * Adult walk-in
+    * Adult ambulance
+
+## Modelling utilisation rates
+
+Generalised Additive Models (GAMs) - a flexible but interpretable class of statistical model that extends the linear model to allow for more complex (non-linear) relationships - are used to model the relationship between age and utilisation in the baseline year.
+
+These models are used later to predict utilisation rates for ['adjusted' ages](#adjust-health-status). The code to build the models is available in the [nhp_model repository](https://github.com/The-Strategy-Unit/nhp_model/blob/main/model/hsa_gams.py).
+
+## Projected life tables
+
+Alongside population projections, 'past and projected period and cohort life tables' is the other input to this module. Life tables are published by the ONS and rely on the same assumptions about future mortality as the national population projections. This means there is a life table that matches the principal projection and two additional life tables consistent with high and low assumptions for life expectancy (see [Variant projections](demographic_modelling.html#variant-projs)).
+
+Cohort life tables - the average number of additional years a person would live considering assumed future changes in mortality for their cohort over the remainder of their life - are used to guide the setting of the [health status adjustment](#adjust-health-status) factor. 
+
+## Adjusting for health status {#adjust-health-status}
+
+We adjust age-specific utilisation rates to account for changes in population health status. The scale and direction of this adjustment is supplied by the model user. The GAMs created in Modelling utilisation rates are used to predict utilisation rates in the final year. The models are fed the final year population with adjusted ages (adjusted ages are chronological age minus the health status adjustment parameter).
+
+Utilisation rates are only adjusted from age 55 years and upward. 
+
+Some service lines (see [Baseline utilisation rates](#baseline-util-rate) for complete list) are not adjusted for changes in health status. The following groups are ignored: birth episode, child episode, maternity, all child outpatient groups and all child A&E groups.
+
+Please see [this paper](https://connect.strategyunitwm.nhs.uk/modeling-changes-in-population-health-status/model-pop-health-status.html) for further information on the Health Status Adjustment.
+
+## Application in model
+
+The steps listed below describe what happens in the model to move from user inputs to a single change factor/multiplier for each record. This factor is then used alongside other change factors (for example, admission avoidance change factor) and a Poisson sampling procedure to select individual records for removal or duplication.
+
+a.	User selects a hospital trust
+b.	Model calculates the trust's catchment population
+c.	User selects a baseline year and final year (the model horizon)
+d.	User selects a population projection variant. A user can select more than one projection variant. If more than one variant is selected, then weights must also be supplied for each variant.
+e.	The model calculates a standard population multiplier using the population projections (final year / baseline). This is referred to as the 'demographic growth factor'
+f.	The model assigns the most appropriate life table variant, to match the projection variant chosen in (d).
+g.	User supplies a health status adjustment parameter
+h.	Generalised Additive Model (GAM) used to model the relationship between age and utilisation in the baseline year by Point of Delivery (POD) or Health Status Adjustment (HSA) group.
+i.	The model calculates a health status adjustment multiplier. This is referred to as 'health status adjustment change factor' and is applied on top of the 'demographics growth factor' to obtain a single multiplier by age/sex within HSA groups.

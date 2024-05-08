@@ -1,0 +1,192 @@
+---
+title: "Model updates"
+order: 4
+---
+
+# Update 2024/04/24
+
+## v.1.1 of NHP model, inputs and outputs apps
+
+The changes listed below are available in v.1.1 of the model. If continuing work on an existing v.1.0 scenario (from before 26th April 2024), or creating a new scenario based on an existing v.1.0 scenario, users will use v.1.0 of the model.
+If starting a new scenario from 26th April 2024, users will default to the v.1.1 version of the inputs app and model.
+
+Due to conflicts between the mitigators in v.1.0 and v.1.1, it is not possible to copy a v.1.0 scenario into v.1.1, or to create a new v.1.1 scenario based on an existing v.1.0 scenario.
+
+**How can I see which version of the model and inputs app is being used?** 
+
+Check the URL:
+
+- If it starts with `https://connect.strategyunitwm.nhs.uk/nhp/v1-0/` then it is v.1.0. 
+- If it starts with `https://connect.strategyunitwm.nhs.uk/nhp/v1-1/` then it is v.1.1.
+
+## Numbering of mitigators
+
+Following feedback from schemes, we have now added identifying codes for each mitigator. These are all listed on [this page](../user_guide/mitigators_lookup.html) and will be seen on the inputs and outputs apps v.1.1 as well.
+
+## New Virtual Ward mitigators
+
+Virtual wards allow patients to receive the care they need at home, safely and conveniently rather than in hospital. They also provide systems with a significant opportunity to narrow the gap between demand and capacity for secondary care beds, by providing an alternative to admission and/or early discharge. There are four new Virtual Ward activity mitigators now available in the model v.1.1:
+
+-	[Virtual Wards Admission Avoidance (Acute Respiratory Infection) (IP-AA-030)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-admission-avoidance)
+-	[Virtual Wards Admission Avoidance (Heart Failure) (IP-AA-031)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-admission-avoidance)
+-	[Virtual Wards LoS Reduction (Acute Respiratory Infection) (IP-EF-026)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-los-reduction)
+-	[Virtual Wards LoS Reduction (Heart Failure) (IP-EF-027)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-los-reduction)
+
+##  New Day procedures mitigators
+
+Day surgery is now established practice with rates continuing to increase. Due to advances in anaesthesia and surgical techniques, it is the standard pathway of care for many complex patients and procedures traditionally treated through inpatient pathways. There are four new day procedures mitigators now available in the model v.1.1. Further information is [available here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures).
+
+-	Day Procedures: Occasionally performed as a Daycase (IP-EF-005)
+-	Day Procedures: Usually performed as a Daycase (IP-EF-007)
+-	Day Procedures: Occasionally performed in Outpatients (IP-EF-006)
+-	Day Procedures: Usually performed in Outpatients (IP-EF-008)
+
+## Site level information now available for A&E
+
+A&E activity can now be split by site in the model results. We have accomplished this by moving to a different dataset. There may be slight differences in the amount of A&E activity recorded for each trust in the baseline year 2019/20 in v1.1 of the model as compared with v.1.0, but [our analysis](../resources/nhp_ae_datasets.html) has shown that the differences are minimal for NHP schemes. This change also ensures that we will be better prepared for a move to the 2022/23 baseline year, when the data is made available.
+
+## Downloadable reports from outputs app
+
+Users can now download two reports in HTML format from the outputs app v.1.1: 
+
+-	Parameters report containing the input parameters for the selected model run
+-	Outputs report containing the charts and tables for the selected model run and selected sites.
+
+## Fix to General LoS reduction mitigator
+
+We have fixed a bug causing the General LoS Reduction mitigator to apply to too many rows of patient data. This mitigator should only be applied if the row of activity is not impacted by any other LoS reduction mitigators.
+
+# Update 2024/04/04
+
+## Inputs app 1.0.1
+
+-   Users who have submitted their initial model parameters and attended their first refinement workshops will be granted the ability to run the model themselves. Once given this functionality, these users can now select another variant of non-demographic growth. Further details and the analysis underpinning this alternative variant are forthcoming and this page will be updated when it is available.
+
+-   Fixed an error causing the incorrect number of procedures to show for each mitigator.
+
+-   For the Outpatient Convert to Tele-Attendance mitigators, the diagnosis/procedures tables and charts were previously showing the amount of activity for tele-appointments. However, the area of opportunity is in the reduction of face-to-face appointments; therefore, the tables and charts have been updated to show the face-to-face appointment numbers instead.
+
+## Outputs app 1.0.1
+
+-   A tab showing length-of-stay summary is now available. This breaks down the model results into the following categories, allowing for more nuanced interpretation.
+
+    -   0-day
+
+    -   1-7 days
+
+    -   8-14 days
+
+    -   15-21 days
+
+    -   22+ days
+
+-   Other smaller changes have also been implemented, including more explanatory text for bed days, better sorting of values in the Excel download, and more robust URL links to results.
+
+## Planned developments
+
+-   Introducing new activity mitigators, including virtual ward and day procedures.
+
+-   Using the Emergency Care Data Set (ECDS) for our Accident and Emergency (A&E) data, instead of the older HES AE dataset. This will allow us to split A&E activity by site.
+
+-   Introducing numbering of mitigators to aid their discussion and reduce confusion.
+
+# Update 2024/03/07
+
+Version 1.0 of the NHP demand and capacity model and its associated inputs and outputs apps has been released. Thank you for your patience during the downtime.
+
+## What has changed?
+
+1.  Improved impact of changes / waterfall charts. These charts are based on simulations and are never 100% accurate - but we are doing more computation now to make them more accurate and detailed. These results can now be filtered by site, and by point of delivery (POD).
+
+2.  We can now have more than one version of the app released at the same time. This helps with maintenance and enables us to roll out new features without disrupting previous work. Users will be directed to the correct version of the app automatically. Please note that old URLs for specific model run results will no longer work and users must manually select the scenario they wish to view from the outputs app using the dropdown boxes. The URLs for the inputs and outputs apps are the same as before:
+
+-   Inputs app: <https://connect.strategyunitwm.nhs.uk/nhp/inputs/>
+-   Outputs app: <https://connect.strategyunitwm.nhs.uk/nhp/outputs/>
+
+3.  The day case mitigators have been temporarily removed. This will enable us to improve their analytical function. The description of the mitigators will remain unchanged and we hope to reintroduce them after 18th March. The mitigators affected are:
+
+-   Elective surgery - recommended mainly day case
+-   Elective surgery - recommended occasional day case
+-   Elective surgery - recommended mainly outpatient procedure
+-   Elective surgery - recommended mainly outpatient procedure or day case
+
+### If your scheme has not yet run the model
+
+-   Please enter your model parameters as usual using the [NHP model inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). Scenarios that you were working on prior to the update should still be viewable and editable. Note that day case mitigators have been removed temporarily; we hope to reintroduce them from March 18th.
+
+### If your scheme has already run the model
+
+-   Please enter your model parameters as usual using the [NHP model inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). Scenarios that you were working on prior to the update should still be viewable and editable. Note that day case mitigators have been removed temporarily; we hope to reintroduce them from March 18th. Any schemes that have completed their refinement workshops should also now have access to the Run Model option.
+
+-   All scenarios have now been rerun with model v.1.0. These have more detailed impact of changes / waterfall diagrams. Day case mitigators have also been removed, so the results will be slightly different. These results can be viewed using the [NHP model outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). The results of old model runs with day case mitigators and less detailed impact of changes / waterfall diagrams are available on request.
+
+## Planned future developments
+
+We hope to introduce downloadable reports from the outputs app soon, summarising model results. We are also working on showing the impact of changes / waterfall diagrams with 0-day LOS and day case bed days split out.
+
+# Update 2024/03/01
+
+There is a **temporary shutdown of the model between 5pm Friday 1st March and 9am Thursday 7th March**. Users will not be able to access the model during this time. This includes both the NHP inputs and NHP outputs apps. The shutdown will enable us to make several model upgrades.
+
+Users should save the scenarios they are working on before 5pm on Friday 1st March, by stopping work on them and closing the app. Their work will remain available to access when the model goes live again at 9am on Thursday 7th March.
+
+We will be **pausing use of the day case mitigators from 5pm Friday 1st March until 18th March**. This will enable us to improve their analytical function. The description of the mitigators will remain unchanged. The mitigators affected are:
+
+-   Elective surgery - recommended mainly day case
+-   Elective surgery - recommended occasional day case
+-   Elective surgery - recommended mainly outpatient procedure
+-   Elective surgery - recommended mainly outpatient procedure or day case
+
+For models run before Friday 1st March, outputs will remain unchanged and will include these mitigators. Trusts that have used these mitigators (avoiding 30-50% of activity) have found that their impact on inpatient bed days is approximately 1% of the total.
+
+For models run between 7th and 18th March, day case mitigators will not be included in the model parameters.
+
+The improved day case mitigators will be reintroduced to the inputs app and model after 18th March.
+
+**What will be new after March 7th?**
+
+-   Users will be able to switch between different versions of the inputs and outputs apps. This is to ensure continuity for the different tranches, as development of the apps and model is ongoing. There will be a slight change to the app interfaces, with an additional selection page added to both the inputs and outputs apps.
+-   Following user feedback, we are providing more detailed step counts calculations within the model, which show the impact of the different model parameters on model results. This has required a complete recoding of how step counts are calculated within the model. This change will also result in more detailed "impact of changes" waterfall diagrams in the outputs app.
+
+# Update 2024/02/20
+
+## Inputs app 0.6.8
+
+-   Added a "Supporting rationale" text box to the "Model Run" page to enable users of the app to provide further context for their model parameters.
+-   We have removed the "upload parameters" option temporarily as we work on a more stable solution to enable users to build on another user's scenario.
+-   Fixed a minor bug affecting the download of the baseline data CSV file.
+
+## Outputs app 0.6.3
+
+To prepare for the technical and refinement workshops for Tranche 1, a lot of work has been done to improve the outputs app. This work aims to facilitate understanding of the model results through improvements to the labelling, ordering, and visualisation of data. Minor changes to the graphics and tables may be observed by users of the outputs app during this period. Despite these changes, the underlying model results data remains the same.
+
+## Project information site
+
+-   Addition of ECDF explanation on Glossary and definitions page
+-   Analysis underpinning the Non-Demographic Growth model parameters has been added
+-   More information added to FAQ page
+
+## Planned developments currently in progress:
+
+We are currently working on the ability to release different versions of the input and output apps simultaneously. This is particularly important as different tranches are at different stages of their progress through the NHP D&C model process, and we want to ensure consistency for each organisation.
+
+We are also working on the creation of a downloadable file from the outputs app, and on the creation of a more user-friendly "landing page" when accessing the inputs app.
+
+# Update 2024/02/08
+
+## Inputs app
+
+-   Baseline data for each trust is now available to download as a CSV, following feedback from participating trusts.
+-   The 2018-19 baseline year has been removed, as it is arguably of little analytical value. Its removal will make model development and data extraction a smoother process moving forward.
+-   Non-demographic growth will no longer be applied for inpatients maternity activity. The parameter is set at 1 which represents no change. This assumption is currently under review and may be revised in later versions of the model.
+-   A General Length of Stay (LOS) mitigator has been added, which will allow trusts to estimate how much they will reduce the average length of stay for any admissions greater than 0 days in length. This is for emergency and elective admissions.
+
+## Project information site
+
+-   Information about the new general length of stay mitigator has been added.
+-   An FAQ page has been added to help highlight questions asked by trusts that might be useful to other trusts.
+-   A Glossary page has been added to help explain commonly used terms throughout the NHP model and its associated apps.
+
+## Planned developments currently in progress
+
+-   We are currently working on the model outputs app, to ensure that it meets the needs of end users.

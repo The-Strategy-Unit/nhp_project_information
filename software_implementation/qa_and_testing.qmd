@@ -1,0 +1,115 @@
+---
+title: "QA and testing"
+---
+
+## QA summary
+
+The QA work within the project is described in workstream 3 of the 23/4 MOU as:
+
+> Light-touch sense-checking as well as more formal, comprehensive QA of model code and high-priority outputs when required. This will include a requirement for full QA of outputs for all... Cohort 4 hospitals with contingency for lighter-touch QA throughout the process
+
+In order to quality assure the model and outputs there are three main components that need to be quality assured:
+
+* The data on which the model run is based, as well as the parameters input into the model
+* The actual model code
+* The outputs of the model code
+
+These components are spread over several repositories of code as shown following
+
+* Data and parameters
+    * nhp_strategies
+    * nhp_inputs
+* Model code
+    * nhp_model
+    * nhp_demogr_module_inputs
+* Outputs of model code
+    * nhp_outputs
+
+More information about the QA process for these three components of the project are given following.
+
+## Data and parameters
+
+The model results are a product of the inputs- that is the data and the parameters, and the model code. It is therefore essential that the inputs are verified as being accurate.
+
+### Data
+
+There are four main data sources in use within the project. 
+
+* Hospital Episode Statistics (HES)
+* Bed Availability and Occupancy (KH03) Collection
+* Quarterly Monitoring of Cancelled Operations Return (QMCO)
+* Office for National Statistics Population Projections
+
+The ONS population projections are widely regarded as being the best available at a national level and come with quality assurance from ONS. Similarly, HES, KH03, and QMCO are curated by NHS bodies.
+
+#### Consistency checks
+
+Data is further verfied by consistency checks carried out by hospital trusts using the model. Information about their baseline activity is provided to trusts and they are able to check their own records of activity against the data used in the model. Any inconsistencies are explored and resolved with each trust before the model is run.
+
+### Parameters
+
+The model parameters themselves need to be set correctly in order to produce accurate outputs. Some of the parameters in the model are set once in the model, and others are set by the trust in their local context. 
+
+#### Model parameters
+
+The following parameters are set at the model level and will run at the same level across all model runs
+
+* Health status adjustment
+* COVID adjustment (which adjusts activity in 2019/20 to reflect what it would have been if COVID had not happened)
+* Non demographic adjustment
+
+In the case of COVID adjustment the methodology is the standard methdology for adjustment given by NHSE. Health status adjustment and non demographic adjustment parameters are both based on analytic work which has been approved by NHP. For [more information on the parameters](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/setting_the_parameters.html) please see elsewhere in this documentation.
+
+The following parameters are set by individual trusts
+
+* Baseline adjustments
+* Population changes
+* Waiting list imbalances
+* Expatriation/ repatriation
+* Inequalities
+* Activity mitigators
+* Bed occupancy
+
+In all cases these parameters are set after an extensive support process from a team allied to the team building the model, and the parameters are set with appropriate involvement of stakeholders and with governance processes as determined locally.
+
+## Testing of model code
+
+### External QA
+
+A QA review of the model code has been carried out and was positive ("Very well-written code, in line with Duck Book and with reproducible analytical pipeline guidelines (Silver+)"). Specific areas for further reviews were highlighted and these were added to the QA plan:
+
+* Consideration on dealing with systemic effects... warn users that uncertainty assigned to individual strategies may not reflect fully in uncertainty (e.g. 90% CI) of full-run, in case their view of pessimistic and optimistic ends of the range relates to a correlated scenario (e.g. widespread funding cuts; workforce constraints)
+* Consideration on interactions between strategies (second order), whether because they interact in terms of odds of implementation or on odds of effectiveness
+* Further lay language on known limits of the model to model operators, e.g. lack of stock and flow modelling of beds
+* Further actions on ensuring that users understand the level of uncertainty associated with input parameters as opposed to uncertainty associated with monte carlo noise
+
+### Unit tests
+
+We have implemented unit tests for the nhp_model and nhp_outputs repositories. These tests are there to verify each individual function (or component) works as intended in isolation to the rest of the code. This is to give us assurance that each function works as intended.
+
+These tests are run continuously during development and are checked prior to any code release. All tests must run 100% successfully before any code is added to the code base.
+
+The model engine has unit tests created using the pytest framework, and the outputs app uses the {testthat} package.
+
+#### Test coverage
+
+We use code coverage to verify that every line of code is covered by a test. That is, our unit tests go down each logical branch within our code. Results are uploaded to [codecov.io](https://codecov.io). The report will show us any lines of code that are not reached by a test. Ensuring 100% code coverage gives us good assurance that our code behaves as intended.
+
+## Testing of outputs
+
+Outputs have been tested for legibility and usefulness as well as for accuracy as described following.
+
+### User acceptance testing
+
+The outputs of the model have been considered as part of the external QA process and were reported to be "well laid out and provides understandable outputs to the end-user". Improvements have been made to the outputs based on user feedback and the changes are recorded in the [issues of the project GitHub](https://github.com/The-Strategy-Unit/nhp_outputs/issues). 
+
+### Accuracy
+
+The outputs of the model have been shown to be consistent with expectations as well as to show the expected effects of changes in parameters as part of sensitivity testing of the model. 
+
+## Future QA work
+
+The model is expected to evolve and as a consequence QA review will be a continuous process. Code testing and coverage will be kept under constant review, and user acceptance of outputs will be carried out whenever any changes are made to the outputs. Some QA processes will be repeated after the model has undergone significant changes, namely:
+
+* Checking of outputs and sensitivity
+* External QA of code
