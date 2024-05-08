@@ -25,7 +25,7 @@ Yes. Users will need to remember each of the scenario names and provide these to
 
 ## Can users input their own population projections? 
 
-It is expected that users will choose one of the ONS population projections available in the inputs app. There is a principal projection (set as default) plus 19 alternative ONS variants to choose from. Where an alternative variant is selected, schemes should provide a rationale and secure the formal agreement of system and regional partners for their preferred position.  In exceptional circumstances, it may become possible for schemes to request the use of a locally developed projection. However, for this to be considered, schemes would have to provide an evidence base for not using ONS projections and demonstrate that robust methods were deployed. It is expected that by July 2024, the model will be able to accommodate locally developed projections if submitted in a standard format.    
+It is expected that users will choose one of the ONS population projections available in the inputs app. There is a principal projection (set as default) plus 19 alternative ONS variants to choose from. Where an alternative variant is selected, schemes should provide a rationale and secure the formal agreement of system and regional partners for their preferred position.  In exceptional circumstances, it may become possible for schemes to request the use of a locally developed projection. However, for this to be considered, schemes would have to provide an evidence base for not using ONS projections and demonstrate that robust methods were deployed.    
 
 ## Why do we use a 2019/20 baseline year?
 
