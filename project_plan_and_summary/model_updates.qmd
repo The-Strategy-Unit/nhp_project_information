@@ -3,6 +3,20 @@ title: "Model updates"
 order: 4
 ---
 
+
+# Update 2024/05/10
+
+## Open source repositories
+
+We are pleased to announce that some repositories relating to the NHP model are now public and open source.
+These are:
+
+- [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information): The repository for this website
+- [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql): The repository containing the SQL code for identifying activity relating to each of the [activity mitigators](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/mitigators_lookup.html).
+- [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs): The repository containing the analysis underpinning the various [demographic adjustments](../modelling_methodology/demographic_modelling/demographic_modelling.qmd) in the model.
+
+A full list of the repositories relating to the NHP model is available [here](../software_implementation/components-overview.qmd), although some are still private. We are currently advocating for the entire model to be made open source.
+
 # Update 2024/04/24
 
 ## v.1.1 of NHP model, inputs and outputs apps
