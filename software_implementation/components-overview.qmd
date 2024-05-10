@@ -3,45 +3,59 @@ title: "Overview of components"
 order: 1
 ---
 
-Given the size of the project, there are numerous GitHub repositories relating to NHP, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, do contact a member of the Strategy Unit Data Science team.
+Given the size of the project, there are numerous GitHub repositories relating to NHP, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, do contact a member of the Strategy Unit Data Science team. Please note that some repositories are currently set to private.
+
+# Diagram showing repository relationships
+
+The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
+
+![Diagram of NHP model architecture](NHP_diagram_public.png){fig-alt="A diagram showing the connections between the various repositories"}
 
 # Repositories relating to model inputs
 
--   [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs)
+-   [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs) [OPEN]
 
 This repository contains the code that specifies changes in the size, age/sex structure and health status of a hospital's catchment population. The code is written in R and makes use of data sources from the Office for National Statistics.
 
--   [nhp_strategies](https://github.com/The-Strategy-Unit/nhp_strategies)
+-   [nhp_strategies](https://github.com/The-Strategy-Unit/nhp_strategies) [PRIVATE]
 
-This code is used to determine which healthcare activity belongs to a category that might be mitigated in the future, e.g. alcohol related admissions. The code is written in SQL and run in an R based [{targets}](https://cran.r-project.org/web/packages/targets/index.html) pipeline.
+This code is used to determine which healthcare activity belongs to a category that might be mitigated in the future, e.g. alcohol related admissions. The code is written in SQL and run in an R based [{targets}](https://cran.r-project.org/web/packages/targets/index.html) pipeline. This repository is not open as it contains DELETE statements which could potentially be harmful.
 
--   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs)
+-   [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) [OPEN]
 
-This repository provides an interface for users to provide the parameters to feed into the model. It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
+This code is the open version of the `nhp_strategies` repository above, which does not contain any potentially harmful DELETE statements. 
+
+-   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) [PRIVATE]
+
+This repository provides an interface for users to provide the parameters to feed into the model, the [NHP inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
 # Repositories relating to the model run
 
--   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/)
+-   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/) [PRIVATE]
 
-    This repository contains the code that implements the methodologies to model future activity for hospitals. It takes all the input data, including the parameters set by users, and uses the monte carlo simulation method to produce estimates of future activity. This repository is written in Python.
+This repository contains the code that implements the methodologies to model future activity for hospitals. It takes all the input data, including the parameters set by users, and uses the Monte Carlo simulation method to produce estimates of future activity. This repository is written in Python.
+
+-   [nhp_api](https://github.com/The-Strategy-Unit/nhp_api/) [PRIVATE]
+
+This repository contains the Azure Functions for the API that triggers the running of the model on Azure Container Instances. 
 
 # Repositories relating to model outputs
 
--   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs)
+-   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs) [PRIVATE]
 
-This repository is a Shiny dashboard enabling exploration of the results of a single model run.
+This repository provides an interface for users to explore the results of the model, the [NHP outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
--   [nhp_comparer](https://github.com/The-Strategy-Unit/nhp_comparer)
+-   [nhp_comparer](https://github.com/The-Strategy-Unit/nhp_comparer) [PRIVATE]
 
 This repository is a Streamlit dashboard enabling the comparison of the input parameters and results of two different model runs.
 
+-   [nhp_peers_params](https://github.com/The-Strategy-Unit/nhp_peers_params) [PRIVATE]
+
+This repository creates Quarto reports comparing the mitigators set by the schemes using the NHP model.
+
 # Repositories relating to documentation
 
--   [nhp_documentation](https://github.com/The-Strategy-Unit/nhp_documentation)
-
-This repository contains details of how activities which could be affected by activity mitigators are flagged when loading and processing the input data for each trust. It is built in Quarto and details the SQL and R code used.
-
--   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information)
+-   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information) [OPEN]
 
 This is the repository hosting the content you are reading now. The aim is to provide a high level overview of the project as a whole.
 
