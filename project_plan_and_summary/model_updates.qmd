@@ -18,6 +18,23 @@ These are:
 A full list of the repositories relating to the NHP model is available [here](../software_implementation/components-overview.qmd), 
 although some are still private. We are currently in discussions about open sourcing the entire model.
 
+## v1.1.1 of NHP inputs and outputs apps
+
+### Inputs
+
+The non-demographic adjustment section of the inputs app was updated to:
+
+* set Variant 2 as the default for non-elective inpatients (for more information about Variant 2 see [the modelling methodology](../modelling_methodology/non-demographic_growth.html))
+* show the 10 and 90% confidence intervals in the the table of parameter values
+
+### Outputs
+
+The outputs app was updated to:
+
+* provide results by bed days in the summary-by-year table
+* let you select any combination of points-of-delivery in the activity distribution and activity-in-detail tabs
+* add a tabset in the activity summary tab to let you toggle between median and principal values
+
 # Update 2024/04/24
 
 ## v.1.1 of NHP model, inputs and outputs apps
