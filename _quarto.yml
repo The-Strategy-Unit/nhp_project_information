@@ -59,6 +59,8 @@ website:
           - data_extraction/aae.qmd
           - data_extraction/inpatients.qmd
           - data_extraction/outpatients.qmd
+      - section: "Contact us"
+        file: contact.qmd
   page-navigation: true
   page-footer:
     right: "[NHP Model Project Information](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)© 2023 by [The Strategy Unit](https://www.strategyunitwm.nhs.uk/) is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)"
