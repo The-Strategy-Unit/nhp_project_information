@@ -97,7 +97,7 @@ We are currently developing an output which quantifies (in detail) the activity 
 
 ## How are outputs provided?
 
-This will be made clearer in the outputs/refinement workshop. For inpatients and outpatients, outputs are provided which can be broken down by sitetret (ODS Site Code), pod (point of delivery), and tretspef (Treatment Function Codes), as well as demographic factors (sex and age). Detailed data visualisation and exploration is available via the outputs app, and model results are also available to download in JSON and Excel formats.
+This will be made clearer in the outputs/refinement workshop. For inpatients and outpatients, outputs are provided which can be broken down by sitetret (ODS Site Code), pod (point of delivery), and tretspef (Treatment Function Codes), as well as demographic factors (sex and age). Detailed data visualisation and exploration is available via the outputs app, and model results are also available to download in JSON and Excel formats. An example of the Excel results using dummy data is available [to download here](example_outputs.xlsx).
 
 ## When do users see model outputs? 
 
