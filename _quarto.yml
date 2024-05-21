@@ -53,6 +53,8 @@ website:
         file: software_implementation/components-overview.qmd
         contents:
           - software_implementation/qa_and_testing.qmd
+      - section: "Quality Assurance"
+        file: quality_assurance/overview.qmd
       - section: "Data extraction"
         file: data_extraction/index.qmd
         contents:
