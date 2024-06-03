@@ -10,6 +10,14 @@ assignees: ''
 
 We have three types of releases: major, minor and patch following semantic versioning. Major releases must meet criteria for patch, minor and major. Minor releases must meet criteria for patch and minor.
 
+We:
+
+-	name Git tags and release titles in the form 'v1.2.3'
+-	typically use the 'generate release notes' button in GitHub to autofill the release description
+-	add update notes to the 'model updates' page of the NHP model project information site
+- communicate all changes to key stakeholders and end users via the Model Relationship Manager system.
+
+
 # Patch
 
 ## Data
@@ -37,6 +45,7 @@ Patch releases should not involve changes to end-to-end process.
 
 ## Data
 - [ ] Has been copied to Azure into v.X.Y.Z 
+- [ ] Changes have been recorded in data log
 
 ## Inputs
 - [ ] GH Actions variables updated to vX.Y.Z 
@@ -51,7 +60,7 @@ Patch releases should not involve changes to end-to-end process.
 - [ ] Run at least 2 random scenarios from previous release and check results are similar to previous release.
 
 ## Outputs
-- [ ] Download reuslts of new model scenario in Excel format
+- [ ] Download results of new model scenario in Excel format
 
 # Major
 - [ ] User testing conducted
