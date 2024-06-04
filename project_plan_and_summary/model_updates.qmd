@@ -30,7 +30,7 @@ On the Excel download from the outputs app, model results are now available brok
 
 - In the inputs app, the Outpatient Convert to Tele-Attendance mitigator charts were including attendances with procedures. The strategy itself in the model only applies to activity with no procedures. The tables and charts for these mitigators should now match the activity which will be affected in the model. 
 
-- The A&E Patients Left Before Being Treated mitigators now utilise the SNOMED codes "1066301000000103", "1066311000000101" and “1066321000000107”. Previously, they only used the SNOMED code 1066321000000107.
+- The A&E Patients Left Before Being Treated mitigators now utilise the SNOMED codes "1066301000000103", "1066311000000101" and "1066321000000107". Previously, they only used the SNOMED code "1066321000000107".
 
 # Update 2024/05/10
 
