@@ -36,7 +36,6 @@ The model results are a product of the inputs- that is the data and the paramete
 There are four main data sources in use within the project. 
 
 * Hospital Episode Statistics (HES)
-* Bed Availability and Occupancy (KH03) Collection
 * Quarterly Monitoring of Cancelled Operations Return (QMCO)
 * Office for National Statistics Population Projections
 
@@ -68,7 +67,6 @@ The following parameters are set by individual trusts
 * Expatriation/ repatriation
 * Inequalities
 * Activity mitigators
-* Bed occupancy
 
 In all cases these parameters are set after an extensive support process from a team allied to the team building the model, and the parameters are set with appropriate involvement of stakeholders and with governance processes as determined locally.
 

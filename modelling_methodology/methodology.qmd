@@ -30,7 +30,3 @@ Healthcare need and demand might also change as a result of a series of non-demo
 
 ### Activity mitigators
 Hospital trusts and local health systems frequently plan to reduce hospital activity or resource use, by improving efficiency, diverting patients to receive care in more local settings outside of hospital, by preventing needs upstream or by restricting access to low-value procedures.  The component of the model allows users to adjust specific forms of hospital activity or resource use that commonly form the focus of these schemes.
-
-### Resource utilisation rates
-Having determined the level of future activity after the transformations described above, the model estimates the level of capacity (beds) required to deliver it. This is based on the user-provided estimation of resource utilisation - more information on this is available in the [Capacity Conversion section](capacity_conversion/beds.qmd).
-

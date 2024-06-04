@@ -1,8 +1,0 @@
----
-title: Theatres Capacity Conversion
----
-
-Versions of the model prior to 0.6 included theatres capacity conversion. However, the decision was made to remove this in November 2023, as the methodology has not been fully agreed. Thanks to Git and version control, the documentation on how this was previously handled is available on GitHub. 
-
-This page will be updated when the methodology is finalized and incorporated to the model.
-

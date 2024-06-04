@@ -11,7 +11,7 @@ There are two main types of inputs for the model:
 
 -   Historical national hospital activity data: This will be sourced from Hospital Episode Statistics (HES) data, and will be the main source for input data. It provides record/person-level data on historical hospital activity.
 -   ONS population and life expectancy projections: This may be supplemented by local/regional projections, such as housing growth estimates.
--   Other published data sets: This includes, for example, NHS trust bed and theatre numbers (including occupancy rates), Referral to Treatment (RTT) data, and lookup tables mapping CCGs, trusts, sites and local authorities. Note that some of these datasets (such as RTT data) will be used to provide contextual information for users setting model parameters, rather than directly driving the model engine and outputs.
+-   Other published data sets: This includes Referral to Treatment (RTT) data and lookup tables mapping CCGs, trusts, sites and local authorities. Note that some of these datasets (such as RTT data) will be used to provide contextual information for users setting model parameters, rather than directly driving the model engine and outputs.
 
 For more detail on the data used in the project see the [data summary page](../modelling_methodology/data_summary.qmd).
 
@@ -34,7 +34,6 @@ The model will use the estimations of activity increase/decrease found in the pa
 The model will generate the following key outputs for each scheme and set of scenarios:
 
 -   A description of future hospital activity levels across a range of future years, based on the principal forecast from the tool. This will contain high-level summary statistics such as counts of admissions, outpatient attendances and bed days, along with more detailed information providing a breakdown by activity type, month, specialty, patient age, diagnosis, and so on.
--   A description of future capacity requirements across a range of future years. This will contain high-level summary statistics such as the number of beds required by different activity types by quarter.
 -   A description of the potential variation in the high-level summary statistics given the uncertainty in the underpinning inputs, assumptions and estimates.
 -   A summary of input assumptions and estimates, including how central estimates and probability distributions compare with those used in modelling for other local health systems participating in the NHP.
 -   A detailed extract of the full model outputs, including record level data for each scenario/run of the Monte-Carlo simulation.
