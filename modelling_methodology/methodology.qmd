@@ -14,7 +14,7 @@ The process of anticipating and specifying changes in hospital activity and reso
 
 The diagram below sets out the transformations applied by the model.  Whilst some of these transformations are available in the current model release, others will be built into future model releases. Please note that although the transformations appear sequential, in reality they are all applied simultaneously.
 
-![Diagram of model process](model_graphic_v06.png){fig-alt="Diagram showing the processes of the model"}
+![Diagram of model process](../resources/NHP_model_1-2.png){fig-alt="Diagram showing the processes of the model"}
 
 ### Demand supply imbalances
 These transformations allow users to acknowledge that activity in the baseline year may have been out of step with demand for healthcare.  These imbalances might be expressed in terms of patients waiting for care, travelling excessively to receive care, or choosing to buy care from the private sector.  If not otherwise considered, then these imbalances will be built into the modelled future activity.  Model parameters allow the user to adjust the baseline dataset to correct for these baseline imbalances.
