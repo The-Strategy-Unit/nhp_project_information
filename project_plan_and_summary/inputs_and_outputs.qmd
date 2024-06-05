@@ -38,4 +38,4 @@ The model will generate the following key outputs for each scheme and set of sce
 -   A summary of input assumptions and estimates, including how central estimates and probability distributions compare with those used in modelling for other local health systems participating in the NHP.
 -   A detailed extract of the full model outputs, including record level data for each scenario/run of the Monte-Carlo simulation.
 
-Note that some of these outputs, in particular record level data, will be restricted to the NHP Demand and Capacity Modelling Team, whereas other high-level summary outputs will be shared more widely with key stakeholders.
+Note that some of these outputs, in particular record level data, will be restricted to the NHP Demand Modelling Team, whereas other high-level summary outputs will be shared more widely with key stakeholders.
