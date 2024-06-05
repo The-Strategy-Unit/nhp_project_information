@@ -9,10 +9,6 @@ This page clarifies the terminology that is used throughout the model and its as
 
 Bed days are defined as `discharge_date - admission_date + 1`.
 
-## Beds available
-
-The methodology for this calculation is [available here](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/capacity_conversion/beds.html).
-
 ## Distribution of projections
 
 The results of the (usually 256) Monte Carlo simulation runs, each of which will randomly sample from the 80% confidence intervals supplied as the model parameters. The "central projection" is the median result from the 256 runs.  
