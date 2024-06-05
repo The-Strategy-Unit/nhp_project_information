@@ -9,10 +9,13 @@ order: 4
 
 All scenarios on the inputs app that are currently on v.1.1 will be automatically upgraded to v.1.2. Users who have run a scenario on v.1.1 may wish to re-run their scenario on v.1.2.
 
+Users on v.1.0 will need to create a new scenario from scratch in order to utilise the newest available version of the model. 
+
 **How can I see which version of the model and inputs app is being used?**
 
 Check the URL:
 
+- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-0/ then it is v.1.0.
 - If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-1/ then it is v.1.1.
 - If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-2/ then it is v.1.2.
 
