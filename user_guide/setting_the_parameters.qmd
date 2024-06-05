@@ -143,17 +143,6 @@ Includes the following types of activities, which are broken down further into s
 - Left before seen
 - Low cost discharged
 
-## Capacity conversion
-
-### Bed occupancy
-
-- Mandatory, set by users
-- Confidence interval, possible values 0 - 100%
-
-The NHP model currently converts projected hospital bed days to general and acute beds. The model user can set estimated future occupancy rates by specialty or group of specialties, the full calculation is available [here](../modelling_methodology/capacity_conversion/beds.html).
-
-For example, the estimated future occupancy rate for Maternity wards might be given as an 80% confidence interval of 65% - 90%.
-
 ## Time profiles
 
 - Mandatory, set by users (defaults to linear)
