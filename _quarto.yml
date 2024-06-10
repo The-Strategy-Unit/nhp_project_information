@@ -1,7 +1,8 @@
 project:
-  type: website
+  type: website     
 
 website:
+  site-url: "https://connect.strategyunitwm.nhs.uk/nhp/project_information"
   open-graph: true
   title: "NHP model project information"
   description: "Documentation for the Demand and Capacity Model created by the Strategy Unit to support NHS England's New Hospitals Programme"
@@ -55,6 +56,8 @@ website:
           - software_implementation/qa_and_testing.qmd
       - section: "Quality Assurance"
         file: quality_assurance/overview.qmd
+        contents:
+          - quality_assurance/assumptions-log.qmd
       - section: "Data extraction"
         file: data_extraction/index.qmd
         contents:

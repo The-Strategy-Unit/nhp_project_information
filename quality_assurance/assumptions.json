@@ -1,0 +1,32 @@
+[
+ {
+  "ID": 1,
+  "Description": "Covid Adjustment",
+  "Methodology": "/modelling_methodology/covid_adjustment.qmd",
+  "Quality rating": "high",
+  "Quality  description": "We follow guidance set by NHS England",
+  "Impact rating": "low",
+  "Impact description": "The covid adjustment only affects on month in the baseline data. ",
+  "Risk rating": "low"
+ },
+ {
+  "ID": 2,
+  "Description": "Non-demographic growth",
+  "Methodology": "https://www.google.com",
+  "Quality rating": "medium",
+  "Quality  description": "NDG has been estimated after an extensive research project",
+  "Impact rating": "medium",
+  "Impact description": "The NDG variable is one of the larger weighted parameters in the model",
+  "Risk rating": "medium"
+ },
+ {
+  "ID": 3,
+  "Description": "HES data",
+  "Methodology": "/modelling_methodology/data_summary.qmd",
+  "Quality rating": "high",
+  "Quality  description": "HES data is ",
+  "Impact rating": "high",
+  "Impact description": "HES data is a core component of the model",
+  "Risk rating": "medium"
+ }
+]
