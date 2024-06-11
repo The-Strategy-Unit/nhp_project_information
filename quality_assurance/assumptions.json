@@ -1,42 +1,37 @@
 [
  {
-  "ID": 1,
-  "Description": "Covid Adjustment",
-  "Link": "/modelling_methodology/covid_adjustment.html",
-  "Quality rating": "excellent",
-  "Impact rating": "low",
-  "Risk rating": "low"
+  "id": 1,
+  "description": "Covid Adjustment",
+  "link": "/modelling_methodology/covid_adjustment.html",
+  "quality": "excellent",
+  "impact": "low"
  },
  {
-  "ID": 2,
-  "Description": "Non-demographic growth",
-  "Link": "/modelling_methodology/non-demographic_growth.html",
-  "Quality rating": "good",
-  "Impact rating": "medium",
-  "Risk rating": "medium"
+  "id": 2,
+  "description": "Non-demographic growth",
+  "link": "/modelling_methodology/non-demographic_growth.html",
+  "quality": "good",
+  "impact": "medium"
  },
  {
-  "ID": 3,
-  "Description": "HES data",
-  "Link": "/modelling_methodology/data_summary.html",
-  "Quality rating": "excellent",
-  "Impact rating": "high",
-  "Risk rating": "medium"
+  "id": 3,
+  "description": "HES data",
+  "link": "/modelling_methodology/data_summary.html",
+  "quality": "excellent",
+  "impact": "high"
  },
   {
-  "ID": 4,
-  "Description": "Population projection data",
-  "Link": "/modelling_methodology/demographic_modelling/demographic_modelling.html#population-projections",
-  "Quality rating": "excellent",
-  "Impact rating": "high",
-  "Risk rating": "medium"
+  "id": 4,
+  "description": "Population projection data",
+  "link": "/modelling_methodology/demographic_modelling/demographic_modelling.html#population-projections",
+  "quality": "excellent",
+  "impact": "high"
  },
   {
-  "ID": 5,
-  "Description": "Health status adjustment",
-  "Link": "/modelling_methodology/demographic_modelling/modelling_utilisation_rates.html#adjust-health-status",
-  "Quality rating": "excellent",
-  "Impact rating": "medium",
-  "Risk rating": "medium"
+  "id": 5,
+  "description": "Health status adjustment",
+  "link": "/modelling_methodology/demographic_modelling/modelling_utilisation_rates.html#adjust-health-status",
+  "quality": "excellent",
+  "impact": "medium"
  }
 ]
