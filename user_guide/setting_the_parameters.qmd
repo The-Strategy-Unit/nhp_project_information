@@ -154,17 +154,13 @@ For example, for the parameter Repatriation (Local) for Inpatients Elective Opht
 
 
 ```{r}
-#| echo: false
 #| fig-cap: "Illustration of time profile changes"
 #| warning: false
-
-
 
 library(dplyr)
 library(ggplot2)
 library(tibble)
 library(tidyr)
-
 
 H <- 2035
 B <- 2018

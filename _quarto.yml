@@ -76,6 +76,7 @@ format:
 
 execute:
   freeze: false
+  echo: false
 
 
 callout-appearance: simple

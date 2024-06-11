@@ -12,7 +12,6 @@ The variable names for each strategy are also included. These are used when inte
 
 ```{r}
 #| label: read-mitigators
-#| echo: false
 
 simplify_name <- function(name) {
   name |>
