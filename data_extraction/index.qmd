@@ -3,7 +3,8 @@ title: Data extraction overview
 order: 200
 ---
 
-We store Hospital Episodes Statistics (HES) data in the MLCSU's datawarehouse.
+We store Hospital Episodes Statistics (HES) data in the MLCSU's data warehouse. 
+The NHS Data Dictionary is available to [view online](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics/hospital-episode-statistics-data-dictionary).
 There are a number of scripts in this project which are used to extract the data.
 
 All of these repositories utilise the `{targets}` package to orchestrate the data extraction.

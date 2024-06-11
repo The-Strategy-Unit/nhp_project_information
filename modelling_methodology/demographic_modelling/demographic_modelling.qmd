@@ -5,7 +5,7 @@ order: 3
 
 ## Purpose
 
-The NHP activity and capacity model includes a component which adjusts hospital activity based on anticipated changes in the population size and age/sex structure. The current version of the model contains a full set of the subnational population projection variants published by ONS. 
+The NHP Demand model includes a component which adjusts hospital activity based on anticipated changes in the population size and age/sex structure. The current version of the model contains a full set of the subnational population projection variants published by ONS. 
 
 ## Population projections
 
@@ -37,7 +37,7 @@ If maternity activity is modeled in the same way as other types of activity then
 
 ## Summary
 
-The NHP activity and capacity model includes a component which adjusts hospital activity based on anticipated changes in the population size and age/sex structure.  The current version of the model contains a full set of the subnational population projection variants published by ONS.  ONS publish some additional population variants at a national level. We have imputed sub-national versions of these variants and made these available within the NHP model.
+The NHP Demand model includes a component which adjusts hospital activity based on anticipated changes in the population size and age/sex structure.  The current version of the model contains a full set of the subnational population projection variants published by ONS.  ONS publish some additional population variants at a national level. We have imputed sub-national versions of these variants and made these available within the NHP model.
 
 ## User selection of demographic projections
 

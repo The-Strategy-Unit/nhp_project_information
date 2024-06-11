@@ -5,9 +5,7 @@ order: 1
 
 # What does the NHP model do?
 
-In a nutshell, the NHP model estimates future hospital activity, and converts this activity into estimated future capacity requirements.
-
-To do this, it uses as its basis activity from a baseline year (2019/20).
+In a nutshell, the NHP model estimates future hospital activity. To do this, it uses as its basis activity from a baseline year (2019/20).
 
 Users provide input parameters, estimating the probability of whether specific types of activity will increase or decrease. Other change factors are also taken into consideration, such as demographic and non-demographic growth.
 
@@ -17,4 +15,4 @@ It will then run as many Monte Carlo simulations as have been selected by the us
 
 More detail on how the parameters are applied to individual records from the baseline data is [available here](../modelling_methodology/modelling_uncertainty.qmd).
 
-After each model run we get estimated future hospital activity. The numerous runs that happen during the Monte Carlo simulations are summarised to give an overall estimation of likely future activity. This is then converted into estimated capacity requirements.
+After each model run we get estimated future hospital activity. The numerous runs that happen during the Monte Carlo simulations are summarised to give an overall estimation of likely future activity. 

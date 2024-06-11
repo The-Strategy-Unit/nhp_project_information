@@ -6,7 +6,6 @@ order: 3
 Project deliverables include:
 
 * A model for estimating detailed future demand activity, along with uncertainty in these estimates, in line with an agreed-upon specification. This model will provide and include: 
-    *	A high-level estimate of the capacity needed to meet this demand activity, informed by demographic growth forecasts, existing performance, capacity, waiting times, local unmet need, and non-demographic factors such as digital and technological innovation 
     *	Continuous improvement and model development in parallel to testing and early roll-out with NHP schemes 
     *	Tools to support the setting and agreeing of assumptions by stakeholders (the 'Inputs app')
     *	Educational materials and technical documentation to support knowledge transfer to NHP analysts and Trusts within the programme, and model quality assurance 

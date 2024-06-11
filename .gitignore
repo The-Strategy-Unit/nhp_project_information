@@ -52,3 +52,6 @@ rsconnect/
 .quarto/
 _site/
 /.quarto/
+
+# VSCode settings
+.vscode/
