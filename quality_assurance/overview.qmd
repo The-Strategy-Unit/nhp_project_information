@@ -20,7 +20,7 @@ In order to quality assure the model and outputs there are three main components
 - [QA plan](https://github.com/orgs/The-Strategy-Unit/projects/6/views/1)
 - [QA log](https://github.com/orgs/The-Strategy-Unit/projects/6/views/2)
 - [Assumptions log](/quality_assurance/assumptions-log.qmd)
-- Previous versions of the model code are version controlled and available on GitHub(). You can view an overview of the [repository structure](/software_implementation/assumptions-log.qmd)
+- Previous versions of the model code are version controlled and available on [GitHub](https://github.com/The-Strategy-Unit). You can view an overview of the [repository structure](/software_implementation/assumptions-log.qmd)
 - The code is documented with 100% test coverage.
 
 Some items on the QA plan & log are associated with private repositories.

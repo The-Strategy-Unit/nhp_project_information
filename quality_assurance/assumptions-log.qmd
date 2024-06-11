@@ -1,5 +1,5 @@
 ---
-title: "Assumptions Log"
+title: "Assumptions log"
 ---
 
 The purpose of an assumptions log is to justify any decisions made about the data and methodologies used. 
