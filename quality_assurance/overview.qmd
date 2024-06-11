@@ -1,20 +1,27 @@
 ---
-title: "Quality Assurance"
+title: "Quality assurance"
 ---
 
-Quality Assurance is an important part of the NHP model. As we role out
+Quality Assurance is an important part of the NHP model.
+As we role out model updates we are constantly reviewing and updating our QA work.
 
-The key documents
+The QA work within the project is described in workstream 3 of the 23/4 MOU as:
+
+> Light-touch sense-checking as well as more formal, comprehensive QA of model code and high-priority outputs when required. This will include a requirement for full QA of outputs for all... Cohort 4 hospitals with contingency for lighter-touch QA throughout the process
+
+In order to quality assure the model and outputs there are three main components that need to be quality assured:
+
+- The data on which the model run is based, as well as the parameters input into the model
+- The actual model code
+- The outputs of the model code
+
+## QA documentation
 
 - [QA plan](https://github.com/orgs/The-Strategy-Unit/projects/6/views/1)
 - [QA log](https://github.com/orgs/The-Strategy-Unit/projects/6/views/2)
 - [Assumptions log](/quality_assurance/assumptions-log.qmd)
+- Previous versions of the model code are version controlled and available on GitHub(). You can view an overview of the [repository structure](/software_implementation/assumptions-log.qmd)
+- The code is documented with 100% test coverage.
 
-Some items on the QA plan & log are associated with private repositories
-
-- Link to repo overview diagramme
-- Reminder that version control gives a log of development
-- Documentation is available at a code level in the repos (when open)
-
-
-
+Some items on the QA plan & log are associated with private repositories.
+We are working towards making these repositories public.

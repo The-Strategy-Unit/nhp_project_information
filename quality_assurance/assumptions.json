@@ -2,31 +2,41 @@
  {
   "ID": 1,
   "Description": "Covid Adjustment",
-  "Methodology": "/modelling_methodology/covid_adjustment.qmd",
-  "Quality rating": "high",
-  "Quality  description": "We follow guidance set by NHS England",
+  "Link": "/modelling_methodology/covid_adjustment.html",
+  "Quality rating": "excellent",
   "Impact rating": "low",
-  "Impact description": "The covid adjustment only affects on month in the baseline data. ",
   "Risk rating": "low"
  },
  {
   "ID": 2,
   "Description": "Non-demographic growth",
-  "Methodology": "https://www.google.com",
-  "Quality rating": "medium",
-  "Quality  description": "NDG has been estimated after an extensive research project",
+  "Link": "/modelling_methodology/non-demographic_growth.html",
+  "Quality rating": "good",
   "Impact rating": "medium",
-  "Impact description": "The NDG variable is one of the larger weighted parameters in the model",
   "Risk rating": "medium"
  },
  {
   "ID": 3,
   "Description": "HES data",
-  "Methodology": "/modelling_methodology/data_summary.qmd",
-  "Quality rating": "high",
-  "Quality  description": "HES data is ",
+  "Link": "/modelling_methodology/data_summary.html",
+  "Quality rating": "excellent",
   "Impact rating": "high",
-  "Impact description": "HES data is a core component of the model",
+  "Risk rating": "medium"
+ },
+  {
+  "ID": 4,
+  "Description": "Population projection data",
+  "Link": "/modelling_methodology/demographic_modelling/demographic_modelling.html#population-projections",
+  "Quality rating": "excellent",
+  "Impact rating": "high",
+  "Risk rating": "medium"
+ },
+  {
+  "ID": 5,
+  "Description": "Health status adjustment",
+  "Link": "/modelling_methodology/demographic_modelling/modelling_utilisation_rates.html#adjust-health-status",
+  "Quality rating": "excellent",
+  "Impact rating": "medium",
   "Risk rating": "medium"
  }
 ]

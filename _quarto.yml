@@ -1,5 +1,5 @@
 project:
-  type: website     
+  type: website
 
 website:
   site-url: "https://connect.strategyunitwm.nhs.uk/nhp/project_information"
@@ -49,15 +49,11 @@ website:
           - section: "Demographic modelling"
             contents:
               - auto: modelling_methodology/demographic_modelling/*.qmd
-
-      - section: "Software implementation"
-        file: software_implementation/components-overview.qmd
-        contents:
-          - software_implementation/qa_and_testing.qmd
       - section: "Quality Assurance"
         file: quality_assurance/overview.qmd
         contents:
           - quality_assurance/assumptions-log.qmd
+          - quality_assurance/components-overview.qmd
       - section: "Data extraction"
         file: data_extraction/index.qmd
         contents:
