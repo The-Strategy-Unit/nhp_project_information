@@ -2,25 +2,22 @@
 title: "Quality assurance"
 ---
 
-Quality Assurance is an important part of the NHP model.
-As we role out model updates we are constantly reviewing and updating our QA work.
+The model has been quality assured and checked by appropriate individuals internally and externally throughout. The model assumptions and specification were and are regularly reviewed by NHP (DHSC & latterly NHSE). Code review has been carried out internally and externally, and code review will be carried out on an ongoing basis as more elements are added to the model. Code is thoroughly tested using a test suite before any code is added to the model. The data has been checked against SUS data and trusts who have engaged with the model have also checked the data against their own data. Review of the legibility and usefulness of the outputs has also been carried out internally and externally, and sensitivity testing shows that the model behaves as expected.					
 
-The QA work within the project is described in workstream 3 of the 23/4 MOU as:
 
-> Light-touch sense-checking as well as more formal, comprehensive QA of model code and high-priority outputs when required. This will include a requirement for full QA of outputs for all... Cohort 4 hospitals with contingency for lighter-touch QA throughout the process
+## Key Documentation
 
-In order to quality assure the model and outputs there are three main components that need to be quality assured:
-
-- The data on which the model run is based, as well as the parameters input into the model
-- The actual model code
-- The outputs of the model code
-
-## QA documentation
-
+- [User Guide](/)
+- [Technical Guide](https://github.com/The-Strategy-Unit/nhp_model/tree/main/docs)
 - [QA plan](https://github.com/orgs/The-Strategy-Unit/projects/6/views/1)
 - [QA log](https://github.com/orgs/The-Strategy-Unit/projects/6/views/2)
 - [Assumptions log](/quality_assurance/assumptions-log.qmd)
-- Previous versions of the model code are version controlled and available on [GitHub](https://github.com/The-Strategy-Unit). You can view an overview of the [repository structure](/quality_assurance/components-overview.qmd).
+- [Change Log](https://github.com/The-Strategy-Unit/nhp_model/commits/main/)
 
-Some items on the QA plan & log are associated with private repositories.
-We are working towards making these repositories public.
+Some items are associated with private repositories. We are working towards making these repositories public as part of our [open source policy](/quality_assurance/components-overview.qmd#open-source-policy).
+
+## Roles & Responsibilities
+
+- Model Senior Responsible Officer (MSRO): [Peter Spilsbury](https://www.strategyunitwm.nhs.uk/author/peter-spilsbury)
+- Model owner: [Chris Beeley](https://www.strategyunitwm.nhs.uk/author/chris-beeley)
+- Analysis team: [Data Science team](https://the-strategy-unit.github.io/data_science/about.html) at The Strategy Unit
