@@ -1,0 +1,104 @@
+---
+title: "Assumptions log"
+---
+
+The purpose of an assumptions log is to justify any decisions made about the data and methodologies used. 
+
+Our assumptions log has the following columns
+
+- ID: Unique reference for our assumptions
+- Description: Short description of the assumption linked to the justification and evidence
+- Quality rating: Excellent, Good or Poor
+- Impact rating: Low, Medium or High
+- Risk rating: Determined by quality rating and impact rating
+
+This project website is version controlled and therefore historical versions of the assumption log can be found on [GitHub](https://github.com/The-Strategy-Unit/nhp_project_information).
+
+
+```{css}
+.tag {
+  display: inline-block;
+  padding: 0.125rem 0.75rem;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.status-excellent {
+  background: hsl(116, 60%, 90%);
+  color: hsl(116, 30%, 25%);
+}
+
+.status-good {
+  background: hsl(26, 70%, 90%);
+  color: hsl(26, 45%, 30%);
+}
+
+.status-poor {
+  background: hsl(350, 70%, 90%);
+  color: hsl(350, 45%, 30%);
+}
+
+.status-low {
+  background: hsl(116, 60%, 90%);
+  color: hsl(116, 30%, 25%);
+}
+
+.status-medium {
+  background: hsl(26, 70%, 90%);
+  color: hsl(26, 45%, 30%);
+}
+
+.status-high {
+  background: hsl(350, 70%, 90%);
+  color: hsl(350, 45%, 30%);
+}
+
+```
+
+
+```{r}
+calc_risk <- function(quality, impact) {
+  dplyr::case_when(
+  quality %in% c("good", "excellent") & impact == "low" ~ "low",
+  quality == "poor" & impact == "low" ~ "medium",
+  quality %in% c("good", "excellent") & impact == "medium" ~ "medium",
+  quality == "excellent" & impact == "high" ~ "medium",
+  quality %in% c("poor", "good") & impact == "high" ~ "high",
+  quality == "poor" & impact == "medium" ~ "high"
+)
+}
+
+assumptions <-
+  jsonlite::fromJSON("assumptions.json") |>
+  tibble::as_tibble() |>
+  dplyr::mutate(risk = calc_risk(quality, impact))
+
+assumptions |>
+  dplyr::select(-link) |>
+  reactable::reactable(
+    columns = list( 
+      id = reactable::colDef(name = "ID", maxWidth = 50),
+      description = reactable::colDef(name = "Description", minWidth = 200, html = TRUE,
+      cell = function(value, index) {
+        sprintf('<a href="%s" target="_blank">%s</a>', assumptions$link[index], value)
+      }),
+      quality = reactable::colDef(name = "Quality",
+      cell = function(value) {
+        class <- paste0("tag status-", tolower(value))
+        htmltools::div(class = class, value)
+      }),
+      impact = reactable::colDef(name = "Impact",
+      cell = function(value) {
+        class <- paste0("tag status-", tolower(value))
+        htmltools::div(class = class, value)
+      }),
+      risk = reactable::colDef(name = "Risk",
+      cell = function(value) {
+        class <- paste0("tag status-", tolower(value))
+        htmltools::div(class = class, value)
+      })
+    ),
+    outlined = TRUE
+  )
+```

@@ -5,13 +5,13 @@ order: 1
 
 Given the size of the project, there are numerous GitHub repositories relating to NHP, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, do contact a member of the Strategy Unit Data Science team. Please note that some repositories are currently set to private.
 
-# Diagram showing repository relationships
+## Diagram showing repository relationships
 
 The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
 
 ![Diagram of NHP model architecture](NHP_diagram_public.png){fig-alt="A diagram showing the connections between the various repositories"}
 
-# Repositories relating to model inputs
+## Repositories relating to model inputs
 
 -   [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs) [OPEN]
 
@@ -29,7 +29,7 @@ This code is the open version of the `nhp_strategies` repository above, which do
 
 This repository provides an interface for users to provide the parameters to feed into the model, the [NHP inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
-# Repositories relating to the model run
+## Repositories relating to the model run
 
 -   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/) [PRIVATE]
 
@@ -39,7 +39,7 @@ This repository contains the code that implements the methodologies to model fut
 
 This repository contains the Azure Functions for the API that triggers the running of the model on Azure Container Instances. 
 
-# Repositories relating to model outputs
+## Repositories relating to model outputs
 
 -   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs) [PRIVATE]
 
@@ -53,13 +53,13 @@ This repository is a Streamlit dashboard enabling the comparison of the input pa
 
 This repository creates Quarto reports comparing the mitigators set by the schemes using the NHP model.
 
-# Repositories relating to documentation
+## Repositories relating to documentation
 
 -   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information) [OPEN]
 
 This is the repository hosting the content you are reading now. The aim is to provide a high level overview of the project as a whole.
 
-# Open source policy
+## Open source policy
 
 The policy of the Strategy Unit (MLCSU) and [national policy](https://www.gov.uk/government/publications/data-saves-lives-reshaping-health-and-social-care-with-data/data-saves-lives-reshaping-health-and-social-care-with-data#working-with-partners-to-develop-innovations-that-improve-health-and-care) both encourage sharing of code:
 

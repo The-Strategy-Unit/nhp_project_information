@@ -13,6 +13,8 @@ Projections are used to understand how the size and age/sex structure of the pop
 
 Sub-national population projections include counts by single year of age to age 89, whereas the national projections include counts to age 104. To model activity by single year of age to age 99 we distribute the 90-plus population within each local authority district based on England data.
 
+The ONS population projections datasets are widely regarded as being the best available at a national level and come with quality assurance from ONS.
+
 ## Hospital catchments {#hosp-catchments}
 
 A single hospital site will have a good understanding of the communities of patients it serves - based on spatial proximity or patterns of clinical presentation - but this 'catchment' population may not map neatly to administrative boundaries. Therefore, we construct a weighted population catchment for each hospital trust from local authority level projections.
