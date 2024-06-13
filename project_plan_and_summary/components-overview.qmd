@@ -1,6 +1,6 @@
 ---
 title: "Overview of components"
-order: 1
+order: 6
 ---
 
 Given the size of the project, there are numerous GitHub repositories relating to NHP, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, do contact a member of the Strategy Unit Data Science team. Please note that some repositories are currently set to private.

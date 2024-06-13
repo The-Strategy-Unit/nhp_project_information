@@ -16,19 +16,15 @@ website:
     style: "floating"
     search: true
     contents:
-      - text: "Project overview"
-        file: project_plan_and_summary/plan_and_summary.qmd
+      - section: "Project overview"
         contents:
-          - project_plan_and_summary/inputs_and_outputs.qmd
-          - project_plan_and_summary/factors_and_limitations.qmd
-          - project_plan_and_summary/project_outputs.qmd
-          - project_plan_and_summary/model_updates.qmd
-      - text: 'User guide'
+          auto: project_plan_and_summary/*
+      - section: "User guide"
         contents:
           auto: user_guide/*
       - section: "Modelling methodology"
-        file: modelling_methodology/methodology.qmd
         contents:
+          - modelling_methodology/methodology.qmd
           - modelling_methodology/demand_supply.qmd
           - modelling_methodology/double_counting.qmd
           - modelling_methodology/modelling_uncertainty.qmd
@@ -46,17 +42,12 @@ website:
           - section: "Demographic modelling"
             contents:
               - auto: modelling_methodology/demographic_modelling/*.qmd
-      - section: "Quality Assurance"
-        file: quality_assurance/overview.qmd
-        contents:
-          - quality_assurance/assumptions-log.qmd
-          - quality_assurance/components-overview.qmd
       - section: "Data extraction"
-        file: data_extraction/index.qmd
         contents:
-          - data_extraction/aae.qmd
-          - data_extraction/inpatients.qmd
-          - data_extraction/outpatients.qmd
+          auto: data_extraction/*
+      - section: "Quality assurance"
+        contents:
+          auto: quality_assurance/*
       - contact.qmd
   page-navigation: true
   page-footer:

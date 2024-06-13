@@ -1,9 +1,9 @@
 ---
-title: "Quality assurance"
+title: "Summary of QA"
+order: 1
 ---
 
 The model has been quality assured and checked by appropriate individuals internally and externally throughout. The model assumptions and specification were and are regularly reviewed by NHP (DHSC & latterly NHSE). Code review has been carried out internally and externally, and code review will be carried out on an ongoing basis as more elements are added to the model. Code is thoroughly tested using a test suite before any code is added to the model. The data has been checked against SUS data and trusts who have engaged with the model have also checked the data against their own data. Review of the legibility and usefulness of the outputs has also been carried out internally and externally, and sensitivity testing shows that the model behaves as expected.					
-
 
 ## Key Documentation
 
@@ -14,7 +14,7 @@ The model has been quality assured and checked by appropriate individuals intern
 - [Assumptions log](/quality_assurance/assumptions-log.qmd)
 - [Change Log](https://github.com/The-Strategy-Unit/nhp_model/commits/main/)
 
-Some items are associated with private repositories. We are working towards making these repositories public as part of our [open source policy](/quality_assurance/components-overview.qmd#open-source-policy).
+Some items are associated with private repositories. We are working towards making these repositories public as part of our [open source policy](/project_plan_and_summary/components-overview.qmd#open-source-policy).
 
 ## Roles & Responsibilities
 
