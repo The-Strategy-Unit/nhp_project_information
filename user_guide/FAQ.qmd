@@ -87,6 +87,14 @@ The high-level outputs are by year. The point where this becomes significant is 
 
 The report we will co-produce with schemes at the end of the initial stage includes a section where the approach to this is set out. And there are of course more and less sophisticated ways that can be deployed if pragmatism is needed due to timelines. 
 
+## Can the model break down inpatients activity by month to provide an indication of demand throughout the year?
+
+We currently provide forecasts of activity at the annual level. However, hospitals might be interested in understanding their activity levels at a more granular level, such as monthly. For example, to better understand the variations in activity between summer and winter.
+
+Our model works by sampling the original baseline activity data. This sampling approach can result in data which looks "spiky". These aren't real peaks and troughs, but simply noise created from our sampling approach. Over the timescale of a year, these bumps even out, creating a balanced estimate of activity. However, as we model at more granular timescales, the sample size gets smaller and the artifical spikes can become more prominent.
+
+In order to provide activity levels at a monthly level, we would first need to investigate if that timescale is large enough to smooth out any artifical spikes.
+
 ## How are a Trust's peers selected? 
 
 The Trust peers displayed in the inputs app (in the comparative charts for the activity mitigators) are derived from an earlier Excel version of this tool: [Trust Peer Finder Tool](https://app.powerbi.com/view?r=eyJrIjoiMjdiOWQ4YTktNmNiNC00MmIwLThjNzktNWVmMmJmMzllNmViIiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9). 
@@ -94,6 +102,16 @@ The Trust peers displayed in the inputs app (in the comparative charts for the a
 ## Does the model quantify the projected activity removed from the hospital? 
 
 We are currently developing an output which quantifies (in detail) the activity which in effect is assumed to be removed from hospital and provided elsewhere. This is seen as a powerful tool for systems in considering how they assure themselves of the overall plans. This is planned for release in the coming months. 
+
+## Why are Outpatient Did Not Attends (DNAs) excluded from the model?
+
+Of the 103 million outpatient appointments booked in 2021/22, [7.6% ended in a ‘Did Not Attend’](https://www.england.nhs.uk/long-read/reducing-did-not-attends-dnas-in-outpatient-services/#:~:text=Of%20the%20103%20million%20outpatient%20appointments%20booked%20in%202021/22%2C%207.6%25%20ended%20in%20a%20%E2%80%98Did%20Not%20Attend%E2%80%99%3B%20this%20equates%20to%20an%20average%20of%20650%2C000%20monthly%20appointment%20slots.). So why do we exclude them from the model?
+Hospitals tend to have a good understanding of the rates of their outpatient DNAs, and they account for this by slightly overscheduling appointments. This means that outpatient DNAs don't really impact activity levels. 
+
+DNAs for inpatients (e.g. cancelled operations) are included in the NHP model, because these do generally waste resources, as theatres may have already been booked, and this can cause lost activity.
+
+Including outpatient DNAs in the model would add another level of complexity, and most end-users would want them removed from the final results anyway.
+
 
 ## How are outputs provided?
 
