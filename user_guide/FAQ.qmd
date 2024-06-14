@@ -108,7 +108,7 @@ We are currently developing an output which quantifies (in detail) the activity 
 Of the 103 million outpatient appointments booked in 2021/22, [7.6% ended in a ‘Did Not Attend’](https://www.england.nhs.uk/long-read/reducing-did-not-attends-dnas-in-outpatient-services/#:~:text=Of%20the%20103%20million%20outpatient%20appointments%20booked%20in%202021/22%2C%207.6%25%20ended%20in%20a%20%E2%80%98Did%20Not%20Attend%E2%80%99%3B%20this%20equates%20to%20an%20average%20of%20650%2C000%20monthly%20appointment%20slots.). So why do we exclude them from the model?
 Hospitals tend to have a good understanding of the rates of their outpatient DNAs, and they account for this by slightly overscheduling appointments. This means that outpatient DNAs don't really impact activity levels. 
 
-DNAs for inpatients (e.g. cancelled operations) are included in the NHP model, because these do generally waste resources, as theatres may have already been booked, and this can cause lost activity.
+On-the-day cancellations of inpatient surgery are included in the NHP model, because these do generally waste resources, as theatres may have already been booked, and this can cause lost activity.
 
 Including outpatient DNAs in the model would add another level of complexity, and most end-users would want them removed from the final results anyway.
 
