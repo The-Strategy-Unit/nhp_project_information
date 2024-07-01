@@ -9,9 +9,5 @@ The data sources utilised in the model are listed below.
 
 The model uses the pseudonymised, hospital event-level dataset known as [Hospital Episode Statistics](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics) as its primary source of information about hospital activity in the baseline period. The dataset contains detailed administrative, demographic, geographic and clinical information about NHS-funded hospital events.  These data are supplied for use by NHS Digital.  The use of the data is dictated by a Data Sharing Agreement. 
 
-Data on hospital bed numbers and bed occupancy are derived from the [KH03 returns](https://www.england.nhs.uk/statistics/statistical-work-areas/bed-availability-and-occupancy/) that are published by NHS England.  Data on theatre numbers are taken from the [QMCO returns](https://digital.nhs.uk/data-and-information/data-collections-and-data-sets/data-collections/quarterly-monitoring-of-cancelled-operations-return-qmco).  These returns are published by NHS England and are available in the public domain.
-
-Data on the number of elective cases, sessions and four-hour sessions in operating theatres are collected from NHS Trusts on a weekly basis by NHS England.  These data are supplied by NHS England for use in this project.
-
 [Sub-national population projects and national variants of these projections](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/variantnationalpopulationprojectionsfortheukandsubnationalpopulationprojectionsandhouseholdprojectionsforenglanduserguide) are supplied by the Office of National Statistics.
 

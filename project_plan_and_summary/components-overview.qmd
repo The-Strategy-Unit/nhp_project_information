@@ -9,7 +9,7 @@ Given the size of the project, there are numerous GitHub repositories relating t
 
 The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
 
-![Diagram of NHP model architecture](NHP_diagram_public.png){fig-alt="A diagram showing the connections between the various repositories"}
+![Diagram of NHP model architecture](../resources/NHP_diagram_public_2-0.png){fig-alt="A diagram showing the connections between the various repositories"}
 
 ## Repositories relating to model inputs
 
