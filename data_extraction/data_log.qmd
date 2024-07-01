@@ -1,0 +1,65 @@
+---
+title: Data log
+order: 250
+---
+
+This page contains information about changes to the data underpinning the NHP model. If there are no changes logged for a particular version (such as 1.0) then the changes were only to the model code, and not to the underlying data.
+
+## Version 2.0
+
+Date updated: 04/07/2024
+
+### Inpatients
+
+A bug was identified in the data where the Virtual Wards efficiency mitigators were wrongly flagged as activity avoidance mitigators. This meant that if any Virtual Wards efficiency mitigators were set, these were not having any impact on the model results. This error was corrected and the data re-extracted.
+
+## Version 1.1
+
+Date updated: 23/04/2024
+
+### A&E
+
+Moved to ECDS data. 
+
+### Inpatients
+
+- Virtual Ward and Day Procedures mitigators added. 
+
+- Data was re-extracted and there were two missing specialties from the RTT specialties list in the model but not inputs. In the model to date, these specialties were mapped to one of the three other groups. 
+
+- Changes to the way in which Well Babies are flagged and excluded, new logic given below:
+ 
+ 
+ ```
+    -- remove well babies babies
+    NOT (
+            -- neonatal level of care is 0
+            i.WELL_BABY_IND = 'Y'
+        OR
+            -- healthy baby HRG
+            i.SUSHRG = 'PB03Z'
+        OR
+        (
+            -- well baby specialty on a birth episode
+                i.TRETSPEF = '424'
+            AND
+                i.EPITYPE = '3'
+        )
+    );
+    
+    
+```
+
+Previously, we just had WELL_BABY_IND = 'N' (note the converse logic in this group).
+
+The issue with the Well Baby indicator is it requires the provider to have a single birth episode (`epiorder` = 1 & is last episode in spell), as well as a neonatal level of care of 0.
+ 
+A large amount of trusts incorrectly complete the neonatal level of care field, so we have altered the logic to include more potential cases, including the healthy baby HRG, and episodes where the treatment specialty is 424 (Well Baby service) and it is a birth episode (`epitype` = 3).
+
+## Version 0.6.3
+
+Date updated: 31/01/2024
+
+### Inpatients
+
+General Length of Stay mitigator added.
