@@ -5,6 +5,8 @@ order: 5
 
 This page contains an interactive table with a sortable and searchable lookup of mitigators. Click the 'Download CSV' button to download a copy with the current filters applied (if any).
 
+The mitigators on this page are correct for model versions 1.1 and later. There were 84 mitigators in model version 1.0, as opposed to the current 92. The mitigators that were added in version 1.1 were the Virtual Ward and Day Procedures mitigators, as detailed in [this model update](/project_plan_and_summary/model_updates.qmd#new-virtual-ward-mitigators).
+
 The table contains mitigator codes, which exist to make it easier to refer to and discuss mitigators. These codes take the form 'IP-AA-001', for example. Each code is composed of an activity type ('IP' is inpatient, for example), a mitigator type ('AA' is activity avoidance) and a three-digit number (assigned on the basis of alphabetical order within activity and mitigator types).
 
 The variable names for each strategy are also included. These are used when interacting directly with the data that underlies the model and apps. The strategy names are presented to users in the inputs- and outputs-app interfaces.
