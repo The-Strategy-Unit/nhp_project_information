@@ -25,9 +25,9 @@ The s-curve shows the range of results (or values) obtained from all the model r
 
 ## Impact of changes
 
-High-level estimates of the number of rows that are added/removed due to each parameter. These should be regarded as very rough estimates, and treated with a pinch of salt. 
+High-level estimates of the number of rows that are added/removed due to each parameter. These should be regarded as very rough estimates. Sometimes referred to as the "waterfall diagram" in the outputs app.
 
-Detailed technical explanation: The “step counts” in the model are created during the phase of the model where we create the factors. When we add a step to the model we mutate a column, then take the mean of this mutate column to get a scalar value. We compare this scalar to the prior scalar to work out the effect of this step (the step count). However, the parameters are just the values that are used for the lambda parameter of a random Poisson distribution. Here, we try to convert factors of lambda to the number of rows that were added/removed due to that factor. However, because it is a random process, there is no direct relationship. We end up with an error term which is redistributed across all the steps to make the end result be consistent. 
+Detailed technical explanation: The "step counts" in the model are created during the phase of the model where we create the factors. When we add a step to the model we mutate a column, then take the mean of this mutate column to get a scalar value. We compare this scalar to the prior scalar to work out the effect of this step (the step count). However, the parameters are just the values that are used for the lambda parameter of a random Poisson distribution. Here, we try to convert factors of lambda to the number of rows that were added/removed due to that factor. However, because it is a random process, there is no direct relationship. The difference between the model's final results and the estimates created in the step counts is shown as the "model interaction term" in the waterfall / impact of changes diagram.
 
 ## Inpatient admissions
 
