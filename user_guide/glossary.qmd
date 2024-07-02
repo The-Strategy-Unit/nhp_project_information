@@ -50,7 +50,7 @@ The key outputs of the model are estimates of future hospital activity. The prin
 
 For model v2.0 onwards, the principal projection is the average (mean) of all the 256 Monte Carlo simulations which have been run for a scenario. In the outputs, users will see a principal projection figure for all the different types of activity which the model forecasts. This approach to determining the principal projection was adopted in July 2024. It ensures that the principal projection will sit in the middle of the activity distribution (i.e. it will be very close to the 50th percentile or median).
 
-For model versions up to and including v1.3, the principal projection was determined by a single model run which took the midpoint of all the parameter confidence intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.  
+For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter confidence intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.  
 
 This is not to be confused with the ONS principal population projection. 
 
