@@ -13,6 +13,8 @@ Date updated: 04/07/2024
 
 A bug was identified in the data where the Virtual Wards efficiency mitigators were wrongly flagged as activity avoidance mitigators. This meant that if any Virtual Wards efficiency mitigators were set, these were not having any impact on the model results. This error was corrected and the data re-extracted.
 
+A bug was identified in the way that "main ICB" was calculated for providers that succeeded other providers after 2019. The activity that was selected for calculating the main ICB only used the recorded provider code in HES data, but if that provider didn't exist prior to 2019 no data could be selected. We now use the "succeeded" provider codes in this calculation.
+
 ## Version 1.2
 
 Date updated: 06/06/2024
