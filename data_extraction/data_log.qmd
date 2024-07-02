@@ -13,6 +13,22 @@ Date updated: 04/07/2024
 
 A bug was identified in the data where the Virtual Wards efficiency mitigators were wrongly flagged as activity avoidance mitigators. This meant that if any Virtual Wards efficiency mitigators were set, these were not having any impact on the model results. This error was corrected and the data re-extracted.
 
+## Version 1.2
+
+Date updated: 06/06/2024
+
+### A&E
+
+The A&E Patients Left Before Being Treated mitigators now utilise the SNOMED codes "1066301000000103", "1066311000000101" and "1066321000000107". Previously, they only used the SNOMED code "1066321000000107". 
+
+### Outpatients
+
+In the inputs app, the Outpatients mitigators were showing all attendances, not just those without procedures. This has been corrected. There were no changes required in the actual model data.
+
+### Inpatients
+
+Bedday rows removed; these were previously used for capacity conversion. Since this functionality was taken out, the bedday rows were no longer required. This may impact on random sampling, meaning that the same scenario run on v1.1 and v1.2 could have different results due to the absence of these rows. However on the whole the impact should be minimal.
+
 ## Version 1.1
 
 Date updated: 23/04/2024
