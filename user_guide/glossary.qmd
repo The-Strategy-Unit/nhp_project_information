@@ -25,9 +25,10 @@ The s-curve shows the range of results (or values) obtained from all the model r
 
 ## Impact of changes
 
-High-level estimates of the number of rows that are added/removed due to each parameter. These should be regarded as very rough estimates, and treated with a pinch of salt. 
+High-level estimates of the number of rows that are added/removed due to each parameter. These should be regarded as very rough estimates. This is sometimes referred to as the "waterfall diagram" in the outputs app.
 
-Detailed technical explanation: The “step counts” in the model are created during the phase of the model where we create the factors. When we add a step to the model we mutate a column, then take the mean of this mutate column to get a scalar value. We compare this scalar to the prior scalar to work out the effect of this step (the step count). However, the parameters are just the values that are used for the lambda parameter of a random Poisson distribution. Here, we try to convert factors of lambda to the number of rows that were added/removed due to that factor. However, because it is a random process, there is no direct relationship. We end up with an error term which is redistributed across all the steps to make the end result be consistent. 
+Detailed technical explanation: The "step counts" in the model are created during the phase of the model where we create the factors. When we add a "step" to the model we work out which rows of activity are affected by the step, creating a new column per step with the factors for that row. We then take the weighted mean of each new column to get a scalar value, grouped by point of delivery and site of treatment. 
+We take this weighted mean, subtract 1, and multiply by the baseline to get the estimated simple effect of the step in isolation from all other steps. When these simple effects are summed, they do not equal the total effect, as in the model the factors are actually multiplied together and not summed. Therefore, we include a model interaction term to describe the effect of multiplying the factors together as well as the residual from random sampling.
 
 ## Inpatient admissions
 
@@ -46,7 +47,13 @@ CASE
 
 ## Principal projection
 
-A single model run which takes as its parameters the midpoint of all the parameter estimates. So for example if the estimated expatriation of inpatient elective opthalmology activity is 80% - 100%, the model will take the value of 90% for this parameter for the principal run. Not to be confused with the ONS principal population projection.
+The key outputs of the model are estimates of future hospital activity. The principal projection can be thought of as the 'best guess' or most likely estimate based on the parameters set.
+
+For model v2.0 onwards, the principal projection is the average (mean) of all the 256 Monte Carlo simulations which have been run for a scenario. In the outputs, users will see a principal projection figure for all the different types of activity which the model forecasts. This approach to determining the principal projection was adopted in July 2024. It ensures that the principal projection will sit in the middle of the activity distribution (i.e. it will be very close to the 50th percentile or median).
+
+For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter confidence intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.  
+
+This is not to be confused with the ONS principal population projection. 
 
 ## Summary by year
 

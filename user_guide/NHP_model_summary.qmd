@@ -5,14 +5,20 @@ order: 1
 
 # What does the NHP model do?
 
-In a nutshell, the NHP model estimates future hospital activity. To do this, it uses as its basis activity from a baseline year (2019/20).
+Essentially, the NHP model estimates future hospital activity. It is a probabilistic model which factors in the inherent uncertainty associated with making forecasts about future demand. As such, some of the inputs must be given in the form of ranges (80% confidence intervals) and the outputs provide a [principal projection](/user_guide/glossary.qmd#principal-projection) as well as a description of the variation in the estimated future activity. The main [outputs](/user_guide/FAQ.qmd#how-are-outputs-provided) are high-level summary statistics such as counts of admissions, bed-days, outpatient and A&E attendances as well as more detailed information providing a breakdown by site, activity type, age group, and treatment specialty.  
 
-Users provide input parameters, estimating the probability of whether specific types of activity will increase or decrease. Other change factors are also taken into consideration, such as demographic and non-demographic growth.
+In addition to the forecasting of hospital activity, schemes will be offered the use of tools to assist them in their task of converting the forecasted demand into capacity. 
 
-The model runs a '**principal model run**' which takes as its parameters the midpoint of all the parameter estimates. So for example if the estimated expatriation of inpatient elective opthalmology activity is 80% - 100%, the model will take the value of 90% for this parameter for the principal run.
+# What does the model NOT do? 
 
-It will then run as many Monte Carlo simulations as have been selected by the user (usually 256). During these Monte Carlo simulations, the parameters will be randomly sampled from the confidence intervals provided, assuming a normal distribution. So for example if the estimated expatriation of inpatient elective opthalmology activity is 80% - 100%, some runs might take 80% as the value for this parameter, and some might take 100% as the value for this parameter. Most runs will take values somewhere in the middle, however.
+The model does **not** provide users with estimations of accommodation requirements such as the number of beds, rooms, wards, theatres etc. The task of converting the projected demand into capacity is the responsibility of the scheme.   
 
-More detail on how the parameters are applied to individual records from the baseline data is [available here](../modelling_methodology/modelling_uncertainty.qmd).
+# How does the model generate its outputs? 
 
-After each model run we get estimated future hospital activity. The numerous runs that happen during the Monte Carlo simulations are summarised to give an overall estimation of likely future activity. 
+The model uses HES data and handles discrete hospital events rather than aggregate summaries of hospital activity. It currently uses the [baseline year 2019/20](/user_guide/FAQ.qmd#why-do-we-use-a-201920-baseline-year) and uses this as the basis to model future hospital activity up to the [horizon year](/user_guide/FAQ.qmd#which-year-should-be-selected-as-the-horizon-year) chosen by the scheme. Users provide input parameters, estimating the extent to which specific types of activity will increase or decrease. These assumptions are given in the form of 80% confidence intervals.  Other change factors are also taken into consideration, such as demographic and non-demographic growth. Some parameters can not be adjusted by the user because they have been determined nationally.  
+
+The model uses Monte Carlo simulations – it runs as many simulations as have been selected by the user, with the default being 256. In these simulations, values are sampled from each of the input parameters – these values are taken from anywhere within the confidence intervals the user has given. However, it assumes normally distributed parameters, which means most simulations take values around the middle of the confidence interval. Each simulation provides an estimation of a possible future of hospital activity at the horizon year. 
+
+From model v2.0, it is the average (mean) of all the simulations which produces the principal projection – the most likely estimate of activity in the horizon year. It is the figures of the principal projection which will be the starting point for schemes converting this projected demand into capacity. The model outputs also inform the user of the potential variation in future activity, as displayed in beeswarm plots and S-curve charts. For many of the outputs, the values of the lower and upper confidence intervals are also available. As such, the outputs of the model reflect the uncertainty in the underpinning inputs, assumptions and estimates.  
+
+More detail on how the parameters are applied to individual records from the baseline data is [available here](/modelling_methodology/modelling_uncertainty.qmd). 

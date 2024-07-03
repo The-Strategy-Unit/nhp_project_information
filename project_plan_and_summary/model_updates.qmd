@@ -3,6 +3,49 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2024/07/04
+
+## v.2.0 of NHP model, inputs and outputs apps
+
+All scenarios on the inputs app that are currently on v.1.2 will be automatically upgraded to v.2.0. Users who have run a scenario on v.1.2 may wish to re-run their scenario on v.2.0. 
+
+Users on v.1.1 of the model or earlier will need to create a new scenario from scratch in order to utilise the newest available version of the model. 
+
+**How can I see which version of the model and inputs app is being used?**
+
+Check the URL:
+
+- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-0/ then it is v.1.0.
+- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-1/ then it is v.1.1.
+- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-2/ then it is v.1.2.
+- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v2-0/ then it is v.2.0.
+
+## New definition of principal projection
+
+The key outputs of the model are estimates of future hospital activity. The principal projection can be thought of as the 'best guess' or most likely estimate based on the parameters set.
+
+For model v2.0 onwards, the principal projection is the average (mean) of all the 256 Monte Carlo simulations which have been run for a scenario. In the outputs, users will see a principal projection figure for all the different types of activity which the model forecasts. This approach to determining the principal projection ensures that the it will sit in the middle of the activity distribution (that is, it will be very close to the 50th percentile or median).
+
+For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter confidence intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.
+
+This is not to be confused with the ONS principal population projection.
+
+## New waterfall charts
+
+We have updated the methodology for determining the impact of each of the parameters in the model on the actual results. The "waterfall charts" seen in the outputs app should therefore be a more accurate, although still highly approximate, indication of the amount of activity that has been added or removed due to each parameter. 
+
+The NHP model is multiplicative. The interaction between the various factors in the model has in the past been redistributed across all the steps. However, we found this created inconsistencies in specific scenarios. To address this, we now show the Model Interaction Term as a separate value in the waterfall charts.
+
+## Other changes
+
+**Virtual Ward Efficiencies mitigators: bug fixed**
+
+A bug was identified in the data where the Virtual Wards efficiency mitigators were wrongly flagged as activity avoidance mitigators. This meant that if any Virtual Wards efficiency mitigators were set, these were not having any impact on the model results. This error was corrected and the data re-extracted.
+
+**Time profiles temporarily removed**
+
+The time profiles, or year-by-year estimates of activity in the years between the baseline and horizon year, were based on the old definition of the principal model run. As we have moved away from this definition, we will need to revise how time profiles are approached in the model. This work will be completed in August 2024.
+
 # Update 2024/06/06
 
 ## v.1.2 of NHP model, inputs and outputs apps
