@@ -36,6 +36,8 @@ We have updated the methodology for determining the impact of each of the parame
 
 The NHP model is multiplicative. The interaction between the various factors in the model has in the past been redistributed across all the steps. However, we found this created inconsistencies in specific scenarios. To address this, we now show the Model Interaction Term as a separate value in the waterfall charts.
 
+Further detail on the methodology is [available here](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/glossary.html#impact-of-changes).
+
 ## Other changes
 
 **Virtual Ward Efficiencies mitigators: bug fixed**
