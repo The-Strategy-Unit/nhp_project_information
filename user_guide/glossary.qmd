@@ -50,13 +50,13 @@ where
 
 $$ X \sim Pois(1.08)$$
 
-The Poisson sampling is random, and as such will provide slightly different results every time. In one model run, it may return the value 1160, meaning that the number of rows has been increased by 160. This would be an estimate of future activity provided by the model.
+The Poisson sampling is random, and as such will provide slightly different results every time. In one model run, it may return the value 1085, meaning that the number of rows has been decreased by 15 (as a result of both compounding and randomness). This would be an estimate of future activity provided by the model.
 
-There is therefore a difference between the impact of the factors taken in isolation (1100) and the model’s results using the compounded factors, with random sampling (1160). 
+There is therefore a difference between the impact of the factors taken in isolation (1100) and the model's results using the compounded factors, with random sampling (1085).
 
-1160 – 1100 = 60.
+1085 – 1100 = -15.
 
-This difference of 60 cannot be directly explained, as it is attributed to the compounded effect of the two factors together, together with the randomness inherent in the Poisson sampling step. It is this value which is encapsulated in the model interaction term.
+This difference of -15 cannot be directly explained, as it is attributed to the compounded effect of the two factors together, together with the randomness inherent in the Poisson sampling step. It is this value which is encapsulated in the model interaction term.
 
 :::
 
