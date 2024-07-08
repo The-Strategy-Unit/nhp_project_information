@@ -8,8 +8,8 @@ Having set the model parameters, the model calculates, for each record in the ba
 ## Handling uncertainty
 
 It is not possible to estimate with precision, many of the model parameters. Changes are subject to uncertainty and are often contingent on other changes.  Users can reflect their uncertainty in the parameters passed to the model by, for example, providing a 80% confidence interval for a parameter. In other cases, users may be asked to indicate the frequency with which certain scenarios might occur.
-The model handles these uncertainty intervals or frequency distributions, with a Monte-Carlo simulation.  Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions.  The users can specify how many Monte-Carlo simulations they wish to run.  The model results take two forms. 
-(1) a principal projection: a deterministic model based on selecting the mid-point of each uncertainty interval or most frequent option from a frequency distribution
+The model handles these uncertainty intervals or frequency distributions, with a Monte-Carlo simulation.  Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions.  The users can specify how many Monte-Carlo simulations they wish to run.  The model results take two forms.   
+(1) a principal projection: the average (mean) of all the Monte Carlo simulations which have been run  
 (2) a distribution of results, one for each of the Monte-Carlo simulations, illustrating how key metrics might vary under alternative model parameters.
 
 ## A worked example
