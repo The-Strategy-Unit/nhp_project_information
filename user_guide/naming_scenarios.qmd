@@ -1,0 +1,38 @@
+---
+title: "How to name model scenarios"
+order: 3
+---
+
+# Naming your model runs
+
+Naming your model runs carefully can be an important part of helping you and the model rollout team to understand what is in your model, and when and how you created and ran it. It's important to realise that at outputs stage you will have access to the name of the model and the date and time of when it was run, but not the date and time when you created it. It's important to know also that you can run and rerun a model with the same name and all of the model outputs will persist, you will be able to select which to view from all of the model run datetimes. 
+
+It is therefore possible to have models with different parameters but the same name. This is desirable if you have a specific scenario and you want to tweak the outputs without changing the name but it is important to remember at the outputs stage. 
+
+There are lots of different things to consider when naming model runs, and there won't be one approach that suits everybody. In general, we suggest only including things in the model name if they will be meaningful to you in three months' time. For example, the date of creation might be meaningful - because you might have designed a two phase process for settling parameters and so you want to keep track of which scenario was prepared at each moment. Or it may not be meaningful at all because you are using a different process - like combining the views of several people at a fixed point. 
+
+We suggest that you consider including the following: 
+
+- The date of model creation - in a simple YYYYMMDD format such as 20240530 
+
+- The non demographic variant in the model- for example NDG2 or NDG1 
+
+- Any relevant information about other parameters in simple form - such as HIGHMIG for the high migration population projection, WAITINGON for waiting list adjustment set to "On" 
+
+- A simple description of the type or extent of the mitigators which have been set, such as HIGHMIT for high mitigation, LOWOPMIT for low outpatient mitigation 
+
+- Elements can be separated with hyphens 
+
+Example model names might be: 
+
+- 20240530-NDG2-HIGHMIG 
+
+- Pre-workshop-NDG1-NOAEMIT-LOWIPMIT (a scenario produced before an internal workshop with NDG variant 1, no A&E mitigation, and low inpatient mitigation) 
+
+## Including words like "final" 
+
+On the whole we recommend that you avoid using the word "final" or similar in a model name. The reason for this is because what is a "final" model today may not be a "final" model in the future, and this could cause confusion for you and us. You may wish to include things like "SOC" or "FBC" in the name to indicate where you are in the process- but even then do bear in mind there may end up being two or more "SOC" runs. 
+
+## Recording a run as final 
+
+In order to make sure that we understand what your final model is please send the name of the model, plus its run date and time, to your Model Relationship Manager. We recommend that as with the mitigators, you maintain your own records throughout to avoid confusion.
