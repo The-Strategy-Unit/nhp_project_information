@@ -9,6 +9,58 @@ This page clarifies the terminology that is used throughout the model and its as
 
 Bed days are defined as `discharge_date - admission_date + 1`.
 
+## Confidence intervals
+
+A confidence interval (CI) is an interval which is expected to typically contain the parameter being estimated. In the context of the NHP Demand and Capacity model, we show results in terms of a principal projection, as well as 90% (upper) and 10% (lower) confidence intervals showing the range of possibilities in the modelled future. For example, if the model's principal projection for beddays is 200,000 and the upper and lower confidence intervals are 210,000 and 190,000, then this indicates that we are 80% confident that the true value will be within this range.
+
+On the 'Distribution of projections' section of the outputs app, we have the tabs 'activity summary' (a summary table) and 'activity distribution' (contains the S-curve). Summing the values for the upper and lower confidence intervals on the summary table can give different results to the numbers seen on the S-curve chart for the upper and lower confidence intervals. 
+
+The reason for this is that the summary table calculates the lower and upper values separately for each point of delivery (POD), which means you’re effectively taking a summary of a summary by adding these values together. This contrasts with calculating the lower and upper for all inpatient Point of Deliveries (PODs) together, where all the data is used to generate the summary values and information is not 'lost'. In other words, we can expect the two types of calculation to yield slightly different results.
+
+::: {.callout-note collapse="true"}
+## A worked example
+
+Consider this table, which has dummy PODs (A, B and C) and calculates a sum total per row:
+
+|     A        |     B        |     C        |      Total       |
+|--------------|--------------|--------------|------------------|
+|     20       |     58       |     148      |     226          |
+|     16       |     59       |     148      |     223          |
+|     11       |     52       |     174      |     237          |
+|     17       |     52       |     142      |     211          |
+|     12       |     66       |     101      |     179          |
+|     7        |     60       |     192      |     259          |
+|     17       |     65       |     196      |     278          |
+|     14       |     68       |     188      |     270          |
+|     12       |     66       |     103      |     181          |
+|     15       |     54       |     159      |     228          |
+|     8        |     65       |     114      |     187          |
+|     8        |     62       |     130      |     200          |
+|     10       |     68       |     196      |     274          |
+|     7        |     58       |     135      |     200          |
+|     13       |     59       |     122      |     194          |
+|     5        |     65       |     153      |     223          |
+|     14       |     68       |     142      |     224          |
+|     16       |     67       |     109      |     192          |
+|     14       |     64       |     135      |     213          |
+|     10       |     70       |     143      |     223          |
+|     20       |     63       |     184      |     267          |
+
+: Table 1
+
+If you take the 10th and 90th percentiles within each of the columns in the above table, you get these values:
+
+|     Centile    |     A     |     B     |     C      |     Total    |
+|----------------|-----------|-----------|------------|--------------|
+|     10th       |     7     |     54    |     109    |     187      |
+|     90th       |     17    |     68    |     192    |     270      |
+
+: Table 2
+
+So the percentile values for Table 1's "Total" column are 187 and 270. But if you simply add up the A, B and C values calculated in Table 2, then you get totals of 170 and 277.
+
+:::
+
 ## Distribution of projections
 
 The results of the (usually 256) Monte Carlo simulation runs, each of which will randomly sample from the 80% confidence intervals supplied as the model parameters. The "central projection" is the median result from the 256 runs.  
