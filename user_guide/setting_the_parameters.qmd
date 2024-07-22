@@ -1,6 +1,6 @@
 ---
 title: "Setting the model parameters"
-order: 1
+order: 4
 ---
 
 The model accepts input parameters, which can be set by users. These are set via the [nhp_inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). This page lists all the input parameters currently accepted by the model.
