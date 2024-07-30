@@ -45,8 +45,7 @@ one of the two stated values above.
 
 We select the last episode in spell, determined in the pre-processing step.
 
-We select records where `WELL_BABY_IND='N'`. That is, we filter out well-baby records. Rows where there is a value of
-'Y' are new-born babies who are healthy and not requiring any medical interventions.
+We filter out "well baby" records. These are records for newborn babies who are healthy and not requiring any medical interventions. We do this using the `WELL_BABY_IND` column, as well as other filtering as detailed in [the data log](/data_extraction/data_log.qmd#inpatients-2).
 
 ## Derived fields
 
