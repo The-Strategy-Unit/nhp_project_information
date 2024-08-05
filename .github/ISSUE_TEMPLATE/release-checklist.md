@@ -23,6 +23,9 @@ We:
 ## Data
 Patch releases should not involve changes to data.
 
+## Admin model run
+- [ ] Any impact on `nhp_admin_model_run` has been checked and addressed
+
 ## Inputs
 - [ ] Scenarios can be created from scratch
 - [ ] New scenarios can be created from existing
