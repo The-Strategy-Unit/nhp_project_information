@@ -148,9 +148,7 @@ Includes the following types of activities, which are broken down further into s
 - Mandatory, set by users (defaults to linear)
 - Selection between the four options
 
-As well as producing estimates of activity in the target future year (also called the horizon year), the model also produces 'time profiles', or estimations of the change in activity between the start year and end year. These time profiles utilise the parameters from the principal model run (taking the midpoint of all confidence intervals) and can account for different rates of change for different parameters.
-
-For example, for the parameter Repatriation (Local) for Inpatients Elective Ophthalmology, if the confidence interval is set to 100-120%, then the principal model run would take the value of 110% for this parameter. If the horizon year is set for 2035, then the model will project a 10% increase in activity as a result of local repatriation in 2035. The time profile selected would determine the rate of change due to this mitigator from 100% in the baseline year (2019), up to 110% in the horizon year (2035).
+As well as producing estimates of activity in the horizon year, the model also produces 'time profiles', or estimations of the change in activity between the start year and end year. These time profiles utilise the estimated [impact of each model parameter in isolation](glossary.qmd#impact-of-changes), and can account for different rates of change for different parameters. The image below shows an illustration of the impact of the different time profile options on the given rate of change for a single parameter, given the horizon year of 2035.
 
 
 ```{r}
