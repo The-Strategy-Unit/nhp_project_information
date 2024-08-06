@@ -14,12 +14,16 @@ The JSON results file has three keys:
 - `results`  The actual model results, a set of 7 key-value pairs.
     - `default`  An array containing the model results grouped by `sitetret`, `measure`, and `pod`. Shows the results of the `principal` model run and the `baseline` value. Also shows the results of each of the Monte Carlo simulations in `model_runs`, the `lwr_ci`, `median` and `upr_ci` values from the Monte Carlo simulation runs, and the estimated year-by-year growth from baseline year to horizon year using the [principal projection parameters](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/glossary.html#principal-projection) in `time_profiles`.
     - `sex+age_group`  An array containing the model results as found in `default`, but also including breakdowns by `age_group` and `sex`. The age groups used are:
-        - 0-4
-        - 5-14
-        - 15-34
+        - 0
+        - 1-4
+        - 5-9
+        - 10-15
+        - 16-17
+        - 18-34
         - 35-49
         - 50-64
-        - 65-84
+        - 65-74
+        - 75-84
         - 85+
         - Unknown
     - `age` An array containing the model results as found in `default`, but also including breakdowns by the age, in integers.
