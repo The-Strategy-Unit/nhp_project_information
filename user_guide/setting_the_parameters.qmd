@@ -35,7 +35,7 @@ The model accounts for how hospital activity levels might shift as a result of d
 - Mandatory, set by users
 - 100% that can be distributed across the 20 different options
 
-This input allows users to choose from the population projection variants produced by ONS. The principal projection (not to be confused with the [principal model run](NHP_model_summary.qmd)) will be used across 100% of runs, as default. This is the recommended approach.
+This input allows users to choose from the population projection variants produced by ONS. The principal population projection (not to be confused with the model's [principal projection](/user_guide/glossary.qmd#principal-projection) of future activty) will be used across 100% of runs, as default. This is the recommended approach.
 
 Should trusts wish to pick an alternative variant that will be applied to their model they should select a single variant and set the slider for that variant to 100%. This means that for 100% of the Monte Carlo simulations, this alternative variant will be used. To set 60% of the runs to use Principal Projection and 40% of the runs to use High Fertility, then the slider should be set to 60 for the former and 40 for the latter.
 
