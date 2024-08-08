@@ -75,11 +75,33 @@ The s-curve shows the range of results (or values) obtained from all the model r
 
 3. You can also find the surprisingly low and high values from the s-curve by reading across from the two y-axis values - 10% and 90% - to the corresponding two x-values. Say these x-values are 6000 and 7300. This means that there is an 80% (=90%-10%) chance that x values fall between 6000 to 7300.
 
-## Impact of changes
+## Impact of changes 
 
-The Impact of Changes tab on the outputs app shows the "step counts" from the model results, which are high-level estimates of the number of rows that are added/removed due to each parameter. This is sometimes referred to as the "waterfall diagram" in the outputs app. It's important to note that these numbers are not exact because of the effect of randomness and compounding, as detailed following.
+The waterfall diagram shown on Impact of Changes tab of the outputs dashboard shows the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts at the horizon year. These contributions are indicative because it is not possible to attribute a particular healthcare activity to a particular factor.
 
-The waterfall chart shows the impact of the individual factors on projected future activity, if they were to happen in isolation. However, within the model, the factors are all applied to the baseline at the same time, which results in a compound effect. Additionally, due to the random sampling, the values may not always add up exactly. The effect of compounding and the random sampling are shown on the waterfall chart as a "model interaction term".
+The model works by considering the effect of all model factors (demographic growth, non demographic growth, activity avoidance, and others) simultaneously. Each has a simple effect on its own as well as giving rise to a compound effect when its effect is combined with all of the other model components. This compounding effect is a real world phenomenon that more simplistic models ignore. Within our model this compound effect is explicitly accounted for and is shown as a separate bar within the waterfall chart.
+
+::: {.callout-note collapse="true"}
+
+### Simple example
+
+To better explain the effect of compounding take as an example demographic growth and non demographic growth. Demographic growth refers to an increase in healthcare activity owing to a change in the size or age/ sex mix of a given population. Non demographic growth refers to the tendency for given members of a population to receive more healthcare over time (because of new technology, patient expectations, and other factors).
+
+Imagine there are 100 individuals in the baseline year, consuming 10 units of healthcare each year (these could be inpatient stays, treatments, A&E attendances, or any other unit represented in the model). Imagine at the horizon year there will be 10% more people because of demographic growth (we will ignore age/ sex mix in this example) and the people will be consuming 10% more units of healthcare because of non demographic growth.
+In the baseline year there are 1000 units of healthcare being consumed, 100 individuals consuming 10 each. Considered separately:
+
+* Demographic growth only: 10% more people means 110 people consuming 10 units each, which gives 1100 units of healthcare activity at the horizon (+100)
+* Non demographic growth only: 10% non demographic growth means 11 units of healthcare for 100 people, which also gives 1100 units of activity (+100)
+
+This gives +200 if you add both effects together giving 1200 units in total.
+
+However, in actual fact there are 110 people consuming 11 units of healthcare at the horizon year, which gives 1210 units of healthcare at the horizon year (+210) 10 more than seen from just adding the two factors together . There is no “correct” place to attribute this extra 10 units of healthcare. It’s just as much to do with demographic growth as it is with non demographic growth. This extra 10 units arises from their compound effect.
+
+This, of course, is a highly over simplistic example. In fact, the effects of all of the factors (demographic growth, non demographic growth, activity avoidance, and the others) are taken into account simultaneously within the model. There is no specific place to put this activity which occurs as a compound effect between the factors.
+
+For a more detailed explanation please see the following worked example and technical explanation.
+
+:::
 
 ::: {.callout-note collapse="true"}
 ## Model interaction term worked example
@@ -114,6 +136,10 @@ This difference of -15 cannot be directly explained, as it is attributed to the 
 
 ::: {.callout-note collapse="true"}
 ## Detailed technical explanation
+
+The Impact of Changes tab on the outputs app shows the "step counts" from the model results, which are high-level estimates of the number of rows that are added/removed due to each parameter. This is represented in the "waterfall diagram" in the outputs app. It's important to note that these numbers are not exact because of the effect of randomness and compounding, as detailed following.
+
+The waterfall chart shows the impact of the individual factors on projected future activity, if they were to happen in isolation. However, within the model, the factors are all applied to the baseline at the same time, which results in a compound effect. Additionally, due to the random sampling, the values may not always add up exactly. The effect of compounding and the random sampling are shown on the waterfall chart as a "model interaction term".
 
 The "step counts" in the model are created during the phase of the model where we create the factors. When we add a "step" to the model we work out which rows of activity are affected by the step, creating a new column per step with the factors for that row. We then take the weighted mean of each new column to get a scalar value, grouped by point of delivery and site of treatment. 
 
