@@ -7,7 +7,7 @@ This page contains information about changes to the data underpinning the NHP mo
 
 ## Version 2.1
 
-Date updated: 09/08/2024
+Date updated: 08/08/2024
 
 ### Inpatients
 
