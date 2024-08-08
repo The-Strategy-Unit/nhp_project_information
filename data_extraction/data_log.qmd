@@ -32,7 +32,30 @@ Else, `has_procedure = 1`
 
 #### Last episode in spell
 
-We have improved the flagging of which episode is used as the last episode in spell. This has been done using the following methodology:
+We have improved the flagging of which episode is used as the last episode in spell. This has been done using the published [Methodology to create provider and CIP spells from HES APC data](https://files.digital.nhs.uk/B6/4A484B/Methodology%20to%20create%20provider%20and%20CIP%20spells%20from%20HES%20APC%20data%20v2.pdf) from NHS Digital, September 2021.
+```.
+
+The methodology is all laid out in the linked document. The Sql used is below (slightly modified because we have some additional linkage tables in our own datawarehouse that aren't standard):
+
+``` sql
+SELECT
+  t.EPIKEY
+FROM (
+  SELECT
+    i.EPIKEY,
+    RN = ROW_NUMBER() OVER (
+      PARTITION BY i.token_person_id, i.ADMIDATE, i.PROCODE3, ISNULL(i.PROVSPNOPS, i.PROVSPNO)
+      ORDER BY i.EPISTART DESC, i.EPIORDER DESC, i.EPIEND DESC, i.EPIKEY DESC
+    )
+  FROM
+    tbInpatients i
+  WHERE
+    i.EPISTAT = '3' -- Finished consultant episode
+  AND
+    i.CLASSPAT IN ('1', '2', '5')
+) t
+  WHERE
+      t.RN = 1;
 
 
 
