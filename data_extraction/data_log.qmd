@@ -41,17 +41,17 @@ SELECT
   t.EPIKEY
 FROM (
   SELECT
-    i.EPIKEY,
+    EPIKEY,
     RN = ROW_NUMBER() OVER (
-      PARTITION BY i.token_person_id, i.ADMIDATE, i.PROCODE3, ISNULL(i.PROVSPNOPS, i.PROVSPNO)
-      ORDER BY i.EPISTART DESC, i.EPIORDER DESC, i.EPIEND DESC, i.EPIKEY DESC
+      PARTITION BY token_person_id, ADMIDATE, PROCODE3, PROVSPNOPS
+      ORDER BY EPISTART DESC, EPIORDER DESC, EPIEND DESC, EPIKEY DESC
     )
   FROM
-    tbInpatients i
+    apc
   WHERE
-    i.EPISTAT = '3' -- Finished consultant episode
+    EPISTAT = '3' -- Finished consultant episode
   AND
-    i.CLASSPAT IN ('1', '2', '5')
+    CLASSPAT IN ('1', '2', '5')
 ) t
   WHERE
       t.RN = 1;
