@@ -5,6 +5,71 @@ order: 250
 
 This page contains information about changes to the data underpinning the NHP model. If there are no changes logged for a particular version (such as 1.0) then the changes were only to the model code, and not to the underlying data.
 
+## Version 2.1
+
+Date updated: 08/08/2024
+
+### Inpatients
+
+#### Procedures
+
+We have improved the flagging of which inpatient activity is classified as procedure or not.
+This is now done using the following code:
+
+If the procedure code meets the following criteria, then `has_procedure = 0`:
+
+```
+                p.OPCODE LIKE 'O1[1-46]%'
+            OR  p.OPCODE LIKE 'O28%'
+            OR  p.OPCODE LIKE 'O3[01346]%'
+            OR  p.OPCODE LIKE 'O4[2345678]%'
+            OR  p.OPCODE LIKE 'O5[23]%'
+            OR  p.OPCODE LIKE 'X[6-9]%'
+            OR  p.OPCODE LIKE '[UYZ%]'
+```
+
+Else, `has_procedure = 1`
+
+#### Last episode in spell
+
+We have improved the flagging of which episode is used as the last episode in spell. This has been done using the published [Methodology to create provider and CIP spells from HES APC data](https://files.digital.nhs.uk/B6/4A484B/Methodology%20to%20create%20provider%20and%20CIP%20spells%20from%20HES%20APC%20data%20v2.pdf) from NHS Digital, September 2021.
+
+The methodology is all laid out in the linked document, under the section "Creating provider spells from episodes". The Sql used is below:
+
+```sql
+SELECT
+  t.EPIKEY
+FROM (
+  SELECT
+    EPIKEY,
+    RN = ROW_NUMBER() OVER (
+      PARTITION BY token_person_id, ADMIDATE, PROCODE3, PROVSPNOPS
+      ORDER BY EPISTART DESC, EPIORDER DESC, EPIEND DESC, EPIKEY DESC
+    )
+  FROM
+    apc
+  WHERE
+    EPISTAT = '3' -- Finished consultant episode
+  AND
+    CLASSPAT IN ('1', '2', '5')
+) t
+  WHERE
+      t.RN = 1;
+```
+
+#### Patient age
+
+Some mitigators are based on patient age. We have moved away from only using ADMIAGE for patient age as this field is missing for some data. 
+We now calculate patient age using the following SQL:
+
+```sql
+CASE
+    WHEN (i.ADMIAGE = 999 OR i.ADMIAGE IS NULL)
+        THEN IIF(i.STARTAGE > 7000, 0, i.STARTAGE)
+    ELSE i.ADMIAGE
+END AGE,
+```
+
 ## Version 2.0
 
 Date updated: 04/07/2024
