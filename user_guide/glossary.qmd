@@ -75,7 +75,7 @@ The s-curve shows the range of results (or values) obtained from all the model r
 
 3. You can also find the surprisingly low and high values from the s-curve by reading across from the two y-axis values - 10% and 90% - to the corresponding two x-values. Say these x-values are 6000 and 7300. This means that there is an 80% (=90%-10%) chance that x values fall between 6000 to 7300.
 
-## Introducing the waterfall diagram
+## Impact of changes 
 
 The waterfall diagram shown on Impact of Changes tab of the outputs dashboard shows the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts at the horizon year. These contributions are indicative because it is not possible to attribute a particular healthcare activity to a particular factor.
 
@@ -84,6 +84,7 @@ The model works by considering the effect of all model factors (demographic grow
 ### Simple example
 
 To better explain the effect of compounding take as an example demographic growth and non demographic growth. Demographic growth refers to an increase in healthcare activity owing to a change in the size or age/ sex mix of a given population. Non demographic growth refers to the tendency for given members of a population to receive more healthcare over time (because of new technology, patient expectations, and other factors).
+
 Imagine there are 100 individuals in the baseline year, consuming 10 units of healthcare each year (these could be inpatient stays, treatments, A&E attendances, or any other unit represented in the model). Imagine at the horizon year there will be 10% more people because of demographic growth (we will ignore age/ sex mix in this example) and the people will be consuming 10% more units of healthcare because of non demographic growth.
 In the baseline year there are 1000 units of healthcare being consumed, 100 individuals consuming 10 each. Considered separately:
 
@@ -93,6 +94,7 @@ In the baseline year there are 1000 units of healthcare being consumed, 100 indi
 This gives +200 if you add both effects together giving 1200 units in total.
 
 However, in actual fact there are 110 people consuming 11 units of healthcare at the horizon year, which gives 1210 units of healthcare at the horizon year (+210) 10 more than seen from just adding the two factors together . There is no “correct” place to attribute this extra 10 units of healthcare. It’s just as much to do with demographic growth as it is with non demographic growth. This extra 10 units arises from their compound effect.
+
 This, of course, is a highly over simplistic example. In fact, the effects of all of the factors (demographic growth, non demographic growth, activity avoidance, and the others) are taken into account simultaneously within the model. There is no specific place to put this activity which occurs as a compound effect between the factors.
 
 For a more detailed explanation please see the following worked example and technical explanation.
