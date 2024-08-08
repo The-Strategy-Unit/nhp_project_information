@@ -13,9 +13,7 @@ We extract spell level data for a given year.
 We use the last episode in spell, but the field `SPELEND` has issues where some admissions end up with multiple episodes
 having a `SPELEND` flag assigned. This would lead to an inflated amount of admissions in our model if left as is.
 
-We generate a new indicator for last episodes in spell by using the field `SUSSPELLID` and the `EPIORDER` fields.
-For each `SUSSPELLID`, we assign a `ROW_NUMBER()` ordered by `EPIORDER` in descending order.
-If there are multiple records with the same `EPIORDER`, only one record will be selected as the last episode in spell.
+We use the published [Methodology to create provider and CIP spells from HES APC data](https://files.digital.nhs.uk/B6/4A484B/Methodology%20to%20create%20provider%20and%20CIP%20spells%20from%20HES%20APC%20data%20v2.pdf) from NHS Digital, September 2021. Further details are in the [data log](data_log.qmd#last-episode-in-spell).
 
 ### Age
 
