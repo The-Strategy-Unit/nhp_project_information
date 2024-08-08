@@ -81,6 +81,8 @@ The waterfall diagram shown on Impact of Changes tab of the outputs dashboard sh
 
 The model works by considering the effect of all model factors (demographic growth, non demographic growth, activity avoidance, and others) simultaneously. Each has a simple effect on its own as well as giving rise to a compound effect when its effect is combined with all of the other model components. This compounding effect is a real world phenomenon that more simplistic models ignore. Within our model this compound effect is explicitly accounted for and is shown as a separate bar within the waterfall chart.
 
+::: {.callout-note collapse="true"}
+
 ### Simple example
 
 To better explain the effect of compounding take as an example demographic growth and non demographic growth. Demographic growth refers to an increase in healthcare activity owing to a change in the size or age/ sex mix of a given population. Non demographic growth refers to the tendency for given members of a population to receive more healthcare over time (because of new technology, patient expectations, and other factors).
@@ -96,6 +98,8 @@ However, in actual fact there are 110 people consuming 11 units of healthcare at
 This, of course, is a highly over simplistic example. In fact, the effects of all of the factors (demographic growth, non demographic growth, activity avoidance, and the others) are taken into account simultaneously within the model. There is no specific place to put this activity which occurs as a compound effect between the factors.
 
 For a more detailed explanation please see the following worked example and technical explanation.
+
+:::
 
 ::: {.callout-note collapse="true"}
 ## Model interaction term worked example
