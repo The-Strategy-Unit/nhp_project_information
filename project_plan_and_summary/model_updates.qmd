@@ -3,6 +3,44 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2024/08/09
+
+## v.2.1 of NHP model, inputs and outputs apps
+
+### Inputs app
+
+- Added a link to the scenario-naming guidance when inputting a scenario name
+- Addressed an error that occurs when there is not enough data to produce charts and tables
+
+### Model
+
+- Improvements to data processing, which are outlined in the [data log](/data_extraction/data_log.qmd).
+- New age groupings have been introduced, in response to feedback from schemes. The new age groupings are:
+    - 0
+    - 1-4
+    - 5-9
+    - 10-15
+    - 16-17
+    - 18-34
+    - 35-49
+    - 50-64
+    - 65-74
+    - 75-84
+    - 85+
+    - Unknown
+
+### Outputs app
+
+- New age groupings have been incorporated to the Excel download, reports, charts and tables
+- The Excel download of results now includes scenario metadata, such as the scenario name, runtime, and user.
+
+### Other developments
+
+We have worked to move our data and data processing pipelines into Databricks, so that we can use Spark. These changes are not visible to end users, but are vital infrastructure improvements to enable further developments to the model.
+
+We have validated a new methodology for calculating the time profiles, which are a year-by-year estimation of activity from the baseline year to the horizon year using the principal projection. This is not available to view in the outputs app currently but will be implemented in the next model update.
+
+
 # Update 2024/07/04
 
 ## v.2.0 of NHP model, inputs and outputs apps
