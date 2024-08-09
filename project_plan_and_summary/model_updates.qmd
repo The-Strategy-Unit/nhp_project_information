@@ -40,6 +40,13 @@ We have worked to move our data and data processing pipelines into Databricks, s
 
 We have validated a new methodology for calculating the time profiles, which are a year-by-year estimation of activity from the baseline year to the horizon year using the principal projection. This is not available to view in the outputs app currently but will be implemented in the next model update.
 
+## How do I upgrade?
+
+Any scenarios from v1.1, v1.2 and v2.0 will automatically be upgraded to v2.1 when they are loaded on the inputs app.
+
+If your scenario is a v1.0 scenario, please email your Model Relationship Manager with the details of the scenario that you want to upgrade.
+
+You can see your scenario model version on the Home page of the inputs app, after loading a scenario, in the Model Options table where it states the app_version.
 
 # Update 2024/07/04
 
