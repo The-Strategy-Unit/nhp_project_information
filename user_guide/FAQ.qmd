@@ -39,14 +39,6 @@ Currently, the year used for baseline data is 2019/20. We plan to include new ba
 
 The model uses inpatient spells and occupied bed days, defined as `discharge_date - admission_date + 1`. So, someone who is admitted and discharged on the same day has 1 bedday, someone who is discharged the day after they are admitted will have 2 beddays.
 
-## What if there is activity at the trust that is not represented in the baseline year?
-
-Where there is no activity in your baseline for the model to oversample from to uplift activity, there are two options. 
-
-You could choose to include the additional activity in another group. For example, for oral surgery it could be added to the uplift for "Other Surgical". "Other Surgical" includes a number of treatment specialties related to oral surgery, such as Oral and Maxillofacial surgery. It should be remembered that the approach to uplift activity samples from existing activity within the relevant group, so including oral surgery in this group will mean that the resulting additional activity will not all be oral surgery as it will sample from all of the activity within this group. This might include spells from other treatment specialties within the "Other Surgical" group, including cardiothoracic surgery or paediatric surgery. Whilst in terms of overall volumes of outpatient activity in the outputs this would be correct, the detail of the additional activity would not exactly reflect the transferred activity.
-
-Alternatively, you could choose to not account for this activity using the repatriation function and instead account for the additional activity outside of the model by adding in the activity to the outputs at a later date. You would of course also need to adjust it for demographic and non-demographic changes, and any other likely mitigations relating to this activity.
-
 ## Does the model account for new services that were not delivered in the baseline year? 
 
 Where a trust will be delivering a new service that was not previously delivered by the hospital, schemes will need to add this in after the model has been run. This is because the repatriation factor in the model works by oversampling from existing activity, and in these instances, there will be no activity to sample from. 
