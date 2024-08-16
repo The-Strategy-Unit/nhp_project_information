@@ -85,11 +85,11 @@ We determine the group based on the `admimeth` field.
 
 If the `tretspef` is in the list of RTT specialties[^RTT], then leave as is, otherwise, set it to:
 
-- if the `group` (see above) is `"maternity"`, then `"Maternity"`
+- if the `group` (see above) is `"maternity"`, then `"Other (Medical)"`
 - if it starts with a `"1"`, but isn't `"180"`, `"190"`, or `"192"`, then `"Other (Surgical)"`
-- if it is `"560"`, then `"Other"`
+- if it is `"560"` with a `group` other than `"maternity"`, then `"Other"`
 - if it is `"180"`, `"190"`, `"192"`, `"831"`, `"833"`, or `"834"`, then `"Other (Medical)"`
-- if it starts with a `"2"`, "`3"`, "`4"`, "`5"`, "`6"`, then `"Other (Medical)"`
+- if it starts with a `"2"`, `"3"`, `"4"`, `"5"` (but not `560`), `"6"`, then `"Other (Medical)"`
 - otherwise, `"Other"`
 
 [^RTT]: For a complete list see page 40 of the NHS England [*Recording and reporting referral to treatment (RTT) waiting times for consultant-led elective care* guidance](https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2023/10/20231020-Recording-and-Reporting-guidance-October-2023-Choice-Update-Final.pdf).
