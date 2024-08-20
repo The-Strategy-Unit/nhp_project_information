@@ -71,7 +71,7 @@ The key outputs of the model are estimates of future hospital activity. The prin
 
 For model v2.0 onwards, the principal projection is the average (mean) of all the 256 Monte Carlo simulations which have been run for a scenario. In the outputs, users will see a principal projection figure for all the different types of activity which the model forecasts. This approach to determining the principal projection ensures that the it will sit in the middle of the activity distribution (that is, it will be very close to the 50th percentile or median).
 
-For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter confidence intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.
+For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter prediction intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.
 
 This is not to be confused with the ONS principal population projection.
 
@@ -159,7 +159,7 @@ although some are still private. We are currently in discussions about open sour
 The non-demographic adjustment section of the inputs app was updated to:
 
 * set Variant 2 as the default for non-elective inpatients (for more information about Variant 2 see [the modelling methodology](../modelling_methodology/non-demographic_growth.html))
-* show the 10 and 90% confidence intervals in the the table of parameter values
+* show the 10 and 90% prediction intervals in the the table of parameter values
 
 ### Outputs
 

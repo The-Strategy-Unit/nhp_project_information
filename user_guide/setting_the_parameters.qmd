@@ -16,7 +16,7 @@ The baseline data is sourced from Hospital Episodes Statistics (HES) data via th
 ### Baseline adjustment
 
 - Optional, set by users
-- Confidence interval, possible values 0 - 2 (Note that this will be changed to a point estimate in a future release)
+- Prediction interval, possible values 0 - 2 (Note that this will be changed to a point estimate in a future release)
 
 If for some reason the HES data for a provider trust in the baseline year was not an accurate representation of typical activity, this can be adjusted using the 'baseline adjustment' parameter. Users can provide a percentage adjustment to the baseline data currently extracted for the trust for each Point of Delivery (POD)/specialty. However, this should be only used in exceptional cases. 
 
@@ -70,7 +70,7 @@ More information is available [here](modelling_methodology/demand_supply.html).
 ### Expatriation / repatriation
 
 - Optional, set by users 
-- Confidence intervals. Expected expatriation values between 0-100%, repatriation values between 100-200%.
+- Prediction intervals. Expected expatriation values between 0-100%, repatriation values between 100-200%.
 
 These adjustments account for anticipated decreases in activity due to a move to another provider, or anticipated increases in activity from other providers. Further details are available [here](../modelling_methodology/demand_supply.html#expatriation-repatriation). 
 
@@ -107,11 +107,11 @@ Information on non-demographic growth is available [here](../modelling_methodolo
 ## Activity mitigators
 
 - Optional, set by users
-- Confidence intervals, possible values 0 - 100%.
+- Prediction intervals, possible values 0 - 100%.
 
 Trusts may implement activity avoidance strategies, such as interventions to reduce falls in older people or changes in treatment treatment pathways aimed at reducing length of stay. A subset of the trust's activities may be affected by each of these activity mitigators.
 
-For each activity mitigator, users are asked to provide estimates of how much they think the associated activities will be reduced. For example, if the estimated activity mitigation for Admission Avoidance: Cancelled Operations is given as a confidence interval of 50%-70%, this means that users are 80% sure that that the number of cancelled operations will be reduced by between 30-50% in the target year, as compared with the baseline.
+For each activity mitigator, users are asked to provide estimates of how much they think the associated activities will be reduced. For example, if the estimated activity mitigation for Admission Avoidance: Cancelled Operations is given as a prediction interval of 50%-70%, this means that users are 80% sure that that the number of cancelled operations will be reduced by between 30-50% in the horizon year, as compared with the baseline.
 
 A value of 100% means no change, whilst one of 0% means that all activity is mitigated.
 
