@@ -3,6 +3,22 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2024/08/29
+
+## v2.1.1 of outputs app
+
+### Change in terminology - prediction interval
+
+We have changed from using the phrase confidence interval in favour of the term prediction interval. We haven't changed the way that we calculate our intervals, we've just updated our terminology to be more statistically correct.
+
+The term confidence interval has a specific meaning in statistics, it is an interval associated with a non-random but unknown parameter.
+
+An example of a non-random, unknown parameter is the number of people in the U.K. with diabetes yesterday. There is no randomness here, this is a fixed event which has happened, but we don't know the true count. We can conduct surveys, or perform tests on a sample of the population to try and to quantify this, but since we can't count every person in the UK and perform perfect tests, we still have some uncertainty.
+
+By contrast, a prediction interval is an interval associated with a random variable yet to be observed. In the NHP model, one random variable is the number of beddays in the horizon year. As this number is a prediction for the future, many sources of randomness could come into play.
+
+A more technical explanation of the differences is available in a [blog post by Professor Rob Hyndman.](https://robjhyndman.com/hyndsight/intervals/)
+
 # Update 2024/08/09
 
 ## v.2.1 of NHP model, inputs and outputs apps
