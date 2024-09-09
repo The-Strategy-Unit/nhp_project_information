@@ -16,9 +16,9 @@ The baseline data is sourced from Hospital Episodes Statistics (HES) data via th
 ### Baseline adjustment
 
 - Optional, set by users
-- Prediction interval, possible values 0 - 2 (Note that this will be changed to a point estimate in a future release)
+- Point estimate, possible values 0 - 3
 
-If for some reason the HES data for a provider trust in the baseline year was not an accurate representation of typical activity, this can be adjusted using the 'baseline adjustment' parameter. Users can provide a percentage adjustment to the baseline data currently extracted for the trust for each Point of Delivery (POD)/specialty. However, this should be only used in exceptional cases. 
+If for some reason the HES data for a provider trust in the baseline year was not an accurate representation of typical activity, this can be adjusted using the 'baseline adjustment' parameter. Users can provide a point estimate adjustment to the baseline data currently extracted for the trust for each Point of Delivery (POD)/specialty. However, this should be only used in exceptional cases. 
 
 ### Covid adjustment
 
@@ -70,7 +70,7 @@ More information is available [here](modelling_methodology/demand_supply.html).
 ### Expatriation / repatriation
 
 - Optional, set by users 
-- Prediction intervals. Expected expatriation values between 0-100%, repatriation values between 100-200%.
+- Prediction intervals. Expected expatriation values between 0-100%, repatriation values between 100-500%.
 
 These adjustments account for anticipated decreases in activity due to a move to another provider, or anticipated increases in activity from other providers. Further details are available [here](../modelling_methodology/demand_supply.html#expatriation-repatriation). 
 
