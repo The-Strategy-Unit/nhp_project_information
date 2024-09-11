@@ -298,29 +298,29 @@ This activity avoidance mitigator identifies patients who may be suitable for ad
 - Acute Respiratory Infection (IP-AA-030)
 - Heart Failure (IP-AA-031)
 
-# Mean Length of Stay (LOS) Reduction
+# Mean Length of Stay (LoS) Reduction
 
-## National Length of Stay (LOS) trends
+## National Length of Stay (LoS) trends
 
-Figure 1 shows that average LOS for **elective inpatients** has reduced from 9.0 days to 0.6 days over the 30 year period illustrated, which equates to a 94% reduction and a Cumulative Annual Growth Rate (CAGR) of -8.7%. Limiting that to just the last 20 years shows a 75% reduction and a CAGR of -6.6%. 
+Figure 1 shows that average LoS for **elective inpatients** has reduced from 9.0 days to 0.6 days over the 30 year period illustrated, which equates to a 94% reduction and a Cumulative Annual Growth Rate (CAGR) of -8.7%. Limiting that to just the last 20 years shows a 75% reduction and a CAGR of -6.6%. 
 
-![Fig. 1: Trends in average LOS for elective  inpatient activity 1989/1990 to 2019/20](LOS_1.png)
+![Fig. 1: Trends in average LoS for elective  inpatient activity 1989/1990 to 2019/20](LOS_1.png)
 
-Figure 2 shows that average LOS for **emergency inpatients** has reduced from 20.6 days to 4.8 days over the 30 year period illustrated, which equates to a 76% reduction and a CAGR of -4.7%. Limiting that to just the last 20 years shows a 47% reduction and a CAGR of -3.2%. 
+Figure 2 shows that average LoS for **emergency inpatients** has reduced from 20.6 days to 4.8 days over the 30 year period illustrated, which equates to a 76% reduction and a CAGR of -4.7%. Limiting that to just the last 20 years shows a 47% reduction and a CAGR of -3.2%. 
 
-![Fig. 2 Trends in average LOS for emergency inpatient activity 1989/1990 to 2019/20](LOS_2.png)
-**Length of Stay (LOS) trends excluding 0 LOS spells**
+![Fig. 2 Trends in average LoS for emergency inpatient activity 1989/1990 to 2019/20](LOS_2.png)
+**Length of Stay (LoS) trends excluding 0 LoS spells**
 
-Figure 3 shows that average LOS for **elective inpatients (excluding 0 LOS spells)** has reduced from 14.3 days to 5.4 days over the 30 year period illustrated, which equates to a 62% reduction and a CAGR of -3.2%. Limiting that to just the last 20 years shows a 33% reduction and a CAGR of -1.9%. 
+Figure 3 shows that average LoS for **elective inpatients (excluding 0 LoS spells)** has reduced from 14.3 days to 5.4 days over the 30 year period illustrated, which equates to a 62% reduction and a CAGR of -3.2%. Limiting that to just the last 20 years shows a 33% reduction and a CAGR of -1.9%. 
 
-![Fig. 3 Trends in average LOS for elective inpatient activity (excluding 0 LOS spells) 1989/1990 to 2019/20](LOS_3.png)
-Figure 4 shows that average LOS for **emergency inpatients (excluding 0 LOS spells)** has reduced from 22.2 days to 7.4 days over the 30 year period illustrated, which equates to a 77% reduction and a CAGR of -3.6%. Limiting that to just the last 20 years shows a 32% reduction and a CAGR of -1.9%. 
+![Fig. 3 Trends in average LoS for elective inpatient activity (excluding 0 LoS spells) 1989/1990 to 2019/20](LOS_3.png)
+Figure 4 shows that average LoS for **emergency inpatients (excluding 0 LoS spells)** has reduced from 22.2 days to 7.4 days over the 30 year period illustrated, which equates to a 77% reduction and a CAGR of -3.6%. Limiting that to just the last 20 years shows a 32% reduction and a CAGR of -1.9%. 
 
-![Fig. 3 Trends in average LOS for emergency inpatients (excluding 0 LOS spells) 1989/1990 to 2019/20](LOS_4.png)
+![Fig. 4 Trends in average LoS for emergency inpatients (excluding 0 LoS spells) 1989/1990 to 2019/20](LOS_4.png)
 
 ## Emergency admission of older people (IP-EF-009)
 
-The model identifies all patients aged over 75 admitted as an emergency. These patients typically have long lengths of stay and thus represent a significant efficiency opportunity through process improvements, interventions or pathway developments that help to reduce Length of Stay (LOS). Frail elderly is also one of the core pathways where the development of virtual wards is focused and therefore patients in this activity cohort may be suitable for earlier discharge through admission to a step down virtual ward. 
+The model identifies all patients aged over 75 admitted as an emergency. These patients typically have long lengths of stay and thus represent a significant efficiency opportunity through process improvements, interventions or pathway developments that help to reduce Length of Stay (LoS). Frail elderly is also one of the core pathways where the development of virtual wards is focused and therefore patients in this activity cohort may be suitable for earlier discharge through admission to a step down virtual ward. 
 
 ## Enhanced Recovery
 
@@ -373,8 +373,8 @@ Trim Points are updated annually and can be found in the [National Tariff workbo
 
 ## Admissions with mental health comorbidities (IP-EF-024)
 
-Patients with mental health problems admitted to hospital in an emergency can have longer lengths of stay (LOS) due to added complexities this creates in treating and supporting such patients. 
-Psychiatric liaison services (sometimes referred to as RAID) can help to reduce the LOS for such patients by providing support to ward staff whilst in hospital, and facilitating timely discharge through the provision of appropriate post discharge support. 
+Patients with mental health problems admitted to hospital in an emergency can have longer lengths of stay (LoS) due to added complexities this creates in treating and supporting such patients. 
+Psychiatric liaison services (sometimes referred to as RAID) can help to reduce the LoS for such patients by providing support to ward staff whilst in hospital, and facilitating timely discharge through the provision of appropriate post discharge support. 
 
 The model identifies patients who may benefit as those with a recorded mental or behavioural diagnosis.
 
@@ -382,18 +382,18 @@ The model identifies patients who may benefit as those with a recorded mental or
 
 Early supported discharge is an intervention for adults after a stroke that allows their care to be transferred from an inpatient environment to a community setting. 
 It enables people to continue their rehabilitation therapy at home, with the same intensity and expertise that they would receive in hospital. 
-The model identifies patients who have a stroke related HRG code who may benefit from a reduced inpatient LOS through supported discharge.
+The model identifies patients who have a stroke related HRG code who may benefit from a reduced inpatient LoS through supported discharge.
 
 ## General LoS Reduction
 
-Historically there has been a sustained and continuing reduction in average length of stay (LOS). The model allows users to make assumptions about future reductions in LOS relating to some specific activity cohorts, such as over 75 patients admitted as an emergency, but it is recognised that continued LOS reductions may also continue to be achieved for patients outside of these specific cohorts. This mitigator therefore allows users to set assumptions about the expected reduction in the average LOS for emergency and elective spells that are not covered by the other specific efficiency mitigators. The assumed % reduction is applied to the average LOS which, in this case, is calculated excluding 0 LOS spells as these cannot be further reduced. The charts on this page also show the average LOS calculated in this way.
+Historically there has been a sustained and continuing reduction in average length of stay (LoS). The model allows users to make assumptions about future reductions in LoS relating to some specific activity cohorts, such as over 75 patients admitted as an emergency, but it is recognised that continued LoS reductions may also continue to be achieved for patients outside of these specific cohorts. This mitigator therefore allows users to set assumptions about the expected reduction in the average LoS for emergency and elective spells that are not covered by the other specific efficiency mitigators. The assumed % reduction is applied to the average LoS.
 
 ### Available breakdowns
 
 - Elective Admissions (IP-EF-020)
 - Emergency Admissions (IP-EF-021)
 
-## Virtual Wards LOS reduction
+## Virtual Wards LoS reduction
 
 Virtual wards allow patients to receive the care they need at home, safely and conveniently rather than in hospital. They also provide systems with a significant opportunity to narrow the gap between demand and capacity for secondary care beds, by providing an alternative to admission and/or early discharge. 
 
@@ -406,12 +406,12 @@ This efficiency mitigator identifies patients who may be suitable for earlier di
 - Acute Respiratory Infection (ARI) (IP-EF-026)
 - Heart Failure (IP-EF-027)
 
-# Pre-Operative (Pre-Op) Length of Stay (LOS) Reduction
+# Pre-Operative (Pre-Op) Length of Stay (LoS) Reduction
 
 ## Pre-Op Length of Stay
 
 In most cases patients do not need to be admitted before the day of surgery. This model identifies elective admissions that are admitted either 1 day prior to surgery, or 2 days prior to surgery. 
-Patients who are admitted more than 2 days prior to surgery are not included as it is assumed that in these cases there is a valid clinical reason for the extended pre-op LOS.
+Patients who are admitted more than 2 days prior to surgery are not included as it is assumed that in these cases there is a valid clinical reason for the extended pre-op LoS.
 
 ### Available breakdowns
 
