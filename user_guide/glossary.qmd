@@ -163,6 +163,12 @@ CASE
   ELSE 'follow-up'`
 ```
 
+## Regular day / night attenders
+
+Regular day / night attenders are patients admitted electively, as part of a planned series of regular admissions for an on-going regime of broadly similar treatment and who are discharged the same day. Intermittent dialysis cases and patients on regular chemotherapy/radiotherapy are examples of regular day / night admissions.
+
+They are defined in HES data by their value of `CLASSPAT`, `3` for day attenders and `4` for night attenders.
+
 ## Principal projection
 
 The key outputs of the model are estimates of future hospital activity. The principal projection can be thought of as the 'best guess' or most likely estimate based on the parameters set.

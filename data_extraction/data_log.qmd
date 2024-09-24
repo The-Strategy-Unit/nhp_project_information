@@ -5,6 +5,41 @@ order: 250
 
 This page contains information about changes to the data underpinning the NHP model. If there are no changes logged for a particular version (such as 1.0) then the changes were only to the model code, and not to the underlying data.
 
+## Version 2.2
+
+Date updated: 24/09/2024
+
+We have updated the flagging of which episode is used as the last episode in spell. The previous update in v2.1 caused regular day attenders to be excluded. 
+
+This new logic correctly includes regular attenders and also provides improvements over the < v.2.1 logic, such as better filtering of invalid episodes.
+
+```{sql}
+#| eval: FALSE
+SELECT
+  t.FYEAR, t.EPIKEY
+FROM (
+  SELECT
+   i.EPIKEY,
+   i.FYEAR,
+   RN = ROW_NUMBER() OVER (
+     PARTITION BY i.SUSSPELLID
+     ORDER BY i.EPISTART DESC, i.EPIORDER DESC, i.EPIEND DESC, i.EPIKEY DESC
+   )
+ FROM
+    tbInpatients i
+ WHERE
+   i.EPISTAT = '3'
+ AND
+   i.DISDATE IS NOT NULL
+ AND
+   i.DISMETH != '8'
+ AND
+   i.SUSSPELLID != '-1'
+) t
+WHERE
+  t.RN = 1;
+```
+
 ## Version 2.1
 
 Date updated: 08/08/2024
