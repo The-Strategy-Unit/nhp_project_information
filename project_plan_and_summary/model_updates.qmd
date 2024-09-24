@@ -11,9 +11,9 @@ order: 5
 
 ### New point of delivery categories for regular attenders
 
-Regular day/night attenders are patients admitted electively, as part of a planned series of regular admissions for an on-going regime of broadly similar treatment and who is discharged the same day. Intermittent dialysis cases and patients on regular chemotherapy/radiotherapy are examples of regular day admissions.
+Regular day/night attenders are patients admitted electively, as part of a planned series of regular admissions for an on-going regime of broadly similar treatment and who are discharged the same day. Intermittent dialysis cases and patients on regular chemotherapy/radiotherapy are examples of regular day admissions.
 
-In v2.1 we updated our definition for last episode in spell to match guidance from NHS digital. When transitioning to this new logic some regular day/night admissions were not captured. This means for some trusts these admissions were missing from the results, depending on how the trust captured these attendees in the baseline data.
+In v2.1 we updated [our definition for last episode in spell](../data_extraction/data_log.qmd#last-episode-in-spell) to match guidance from NHS digital. When transitioning to this new logic some regular day/night admissions were not captured. This means for some trusts these admissions were missing from the results, depending on how the trust captured these attendees in the baseline data.
 
 To resolve this we have added two new point-of-delivery categories:
 
