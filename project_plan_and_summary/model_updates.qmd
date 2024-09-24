@@ -11,14 +11,14 @@ order: 5
 
 ### New point of delivery categories for regular attenders
 
-Regular day/night attenders are patients admitted electively, as part of a planned series of regular admissions for an on-going regime of broadly similar treatment and who is discharged the same day. Intermittent dialysis cases and patients on regular chemotherapy/radiotherapy are examples of regular day admissions.
+Regular day/night attenders are patients admitted electively, as part of a planned series of regular admissions for an on-going regime of broadly similar treatment and who are discharged the same day. Intermittent dialysis cases and patients on regular chemotherapy/radiotherapy are examples of regular day admissions.
 
 In v2.1 we updated our definition for last episode in spell to match guidance from NHS digital. When transitioning to this new logic some regular day/night admissions were not captured. This means for some trusts these admissions were missing from the results, depending on how the trust captured these attendees in the baseline data.
 
 To resolve this we have added two new point-of-delivery categories:
 
 - Regular day attender admission
-- Regular nights attender admission
+- Regular night attender admission
 
 These will appear alongside the other POD options in the Outputs app.
 
@@ -28,7 +28,7 @@ We have also expanded our QA process to include a broader set of test data to ru
 
 ### Other updates
 
-We fixed a small bug which gave an incorrect value of beddays in step count for day cases.
+We fixed a small bug which gave an incorrect value of beddays in the step counts/impact of changes for elective activity converted to day case by the [day procedures mitigators](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures). 
 
 
 # Update 2024/08/29
