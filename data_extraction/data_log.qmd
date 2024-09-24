@@ -13,8 +13,8 @@ We have updated the flagging of which episode is used as the last episode in spe
 
 This new logic correctly includes regular attenders and also provides improvements over the < v.2.1 logic, such as better filtering of invalid episodes.
 
-```{sql}
-#| eval: FALSE
+```sql
+
 SELECT
   t.FYEAR, t.EPIKEY
 FROM (
