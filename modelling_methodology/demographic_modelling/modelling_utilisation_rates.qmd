@@ -49,7 +49,7 @@ Cohort life tables - the average number of additional years a person would live 
 
 ## Adjusting for health status {#adjust-health-status}
 
-We adjust age-specific utilisation rates to account for changes in population health status. The scale and direction of this adjustment is supplied by the model user. The GAMs created in Modelling utilisation rates are used to predict utilisation rates in the final year. The models are fed the final year population with adjusted ages (adjusted ages are chronological age minus the health status adjustment parameter).
+We adjust age-specific utilisation rates to account for changes in population health status. The scale and direction of this adjustment has been determined by the results of an expert elicitation exercise. The GAMs created in Modelling utilisation rates are used to predict utilisation rates in the final year. The models are fed the final year population with adjusted ages (adjusted ages are chronological age minus the health status adjustment parameter).
 
 Utilisation rates are only adjusted from age 55 years and upward. 
 
