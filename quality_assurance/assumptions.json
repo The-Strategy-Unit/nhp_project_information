@@ -33,5 +33,12 @@
   "link": "../../modelling_methodology/demographic_modelling/modelling_utilisation_rates.html#adjust-health-status",
   "quality": "excellent",
   "impact": "medium"
- }
+ },
+ {
+    "id": 6,
+    "description": "ODS successors list",
+    "link": "/data_extraction/outpatients.html#provider-code",
+    "quality": "excellent",
+    "impact": "medium"
+   }
 ]
