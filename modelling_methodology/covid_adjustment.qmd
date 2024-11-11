@@ -19,6 +19,6 @@ We group activity by type and group (see table below), and count how much activi
 
 For the 3 years before 2019/20, we calculate the mean amount of activity per day in February and March, and take the ratio of March to February. We then calculate the mean of these ratios ($a$).
 
-For 2019/20, we take the average amount of activity per day in February ($b$), then calculate the expected amount of activity in March ($c = a \times $b \times 31$).
+For 2019/20, we take the average amount of activity per day in February ($b$), then calculate the expected amount of activity in March ($c = a \times b \times 31$).
 
 We can then take the difference between the $c$ and the actual amount of activity in March 2020, and we divide this by the total amount of activity in 2020. Finally, we add 1 to this value: this gives us the parameter for the Coronavirus (COVID-19) adjustment in the model, the amount to sample rows by from the baseline year.
