@@ -15,7 +15,7 @@ Inpatient data:
   - Include records where `patientid` is `NULL`
   - Include readmission within 28 days for well babies
 Inpatient mitigators:
- - ambulatory emergency care: change the way we extract to use a more stable and workable code list
+ - ambulatory emergency care: change the way we extract to use a more [stable and workable code list](https://github.com/The-Strategy-Unit/nhp_data/blob/main/mitigators/ip/activity_avoidance/ambulatory_care_conditions.py)
  - evidence based interventions: update code lists
  - medicines related admissions: fix bug in old SQL (explicit codes were not excluded from implicit properly)
  - pre-op_los_1-day: Use an [updated procedure list](https://github.com/The-Strategy-Unit/nhp_data/blob/9cd4495172b5aa63e57b29ac9172d6d512a311b9/generate_inpatients.py#L27)
