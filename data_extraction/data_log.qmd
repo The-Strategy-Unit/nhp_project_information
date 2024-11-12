@@ -8,8 +8,9 @@ This page contains information about changes to the data underpinning the NHP mo
 ## Version 3.0
 
 Date updated: 13/11/2024
+We have migrated our data pre-processing pipeline from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) repositiory which will be publically archived and no longer maintained.
 
-As part of migrating our data processing from SQL to databricks, we have a made a number of changes to the data.
+As part of migrating our data pre-processing, there are a number of changes to the data.
 
 Inpatient data:
   - Include records where `patientid` is `NULL`
