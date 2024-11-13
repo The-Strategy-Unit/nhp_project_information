@@ -16,7 +16,7 @@ As part of migrating our data pre-processing, there are a number of changes to t
 
 ### Other updates
 
-A&E data now includes A&E follow-up activity. This may mean that you seen larger numbers in A&E data in v3.0 onwards. The outputs app currently does not seperate out this activity, but it is available in the data downloads.
+A&E data now includes A&E follow-up activity. This may mean that you see larger numbers in A&E data in v3.0 onwards. The outputs app currently does not seperate out this activity, but it is available in the data downloads.
 
 # Update 2024/08/24
 
