@@ -10,7 +10,7 @@ order: 5
 
 This update is a major release.
 
-The reason that it is a major release is that the pipeline for data pre-processing has been migrated from SQL to Databricks.The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) repositiory which will be publically archived and no longer maintained.
+The reason that it is a major release is that the pipeline for data pre-processing has been migrated from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) repository which will be publicly archived and no longer maintained.
 
 As part of migrating our data pre-processing, there are a number of changes to the data which are detailed in the [data log](../data_extraction/data_log.qmd).
 
