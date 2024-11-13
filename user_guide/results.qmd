@@ -5,7 +5,7 @@ order: 8
 
 Results from the model are viewable in the [NHP model outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/).
 The outputs app provides a range of visualisations and summarisations of model results; however, users may wish to also conduct their own analysis based on the more detailed raw results file, which is available to download in [JSON format](https://en.wikipedia.org/wiki/JSON).
-This page aims to explain the structure of the NHP model results JSON file. It reflects the structure of the results files from model v1.2.
+This page aims to explain the structure of the NHP model results JSON file. It reflects the structure of the results files from model v3.0.
 
 The JSON results file has three keys:
 
@@ -30,7 +30,10 @@ The JSON results file has three keys:
     - `sex+tretspef`  An array containing the model results as found in `default`, but also including breakdowns by grouped `tretspef` and `sex`. The `tretspef` groupings can be [seen here](https://connect.strategyunitwm.nhs.uk/nhp/project_information/data_extraction/inpatients.html#tretspef).
     - `tretspef_raw+los_group`  An array containing the model results for inpatients as found in `default`, but also including breakdowns by `tretspef_raw` and `los_group`. The Length of Stay groupings are:
         - 0-day
-        - 1-7 days
+        - 1-day
+        - 2-day
+        - 3-day
+        - 4-7 days
         - 15-21 days
         - 22+ days
         - 8-14 days
