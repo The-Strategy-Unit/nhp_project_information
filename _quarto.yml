@@ -17,6 +17,7 @@ website:
   sidebar:
     style: "floating"
     search: true
+    collapse-level: 1
     contents:
       - section: "Project overview"
         contents:
