@@ -15,6 +15,7 @@ As part of migrating our data pre-processing, there are a number of changes to t
 Inpatient data:
   - Include records where `patientid` is `NULL`
   - Include readmission within 28 days for well babies
+  - Fixed bug in `has_procedure` which was failing to filter codes beginning with `U`, `Y` or `Z`
 Inpatient mitigators:
  - ambulatory emergency care: change the way we extract to use a more [stable and workable code list](https://github.com/The-Strategy-Unit/nhp_data/blob/main/mitigators/ip/activity_avoidance/ambulatory_care_conditions.py)
  - evidence based interventions: update code lists
