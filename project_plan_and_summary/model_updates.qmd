@@ -4,6 +4,32 @@ order: 5
 ---
 
 
+# Update 2024/11/13
+
+## v3.0
+
+This update is a major release.
+
+The reason that it is a major release is that the pipeline for data pre-processing has been migrated from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) repository which will be publicly archived and no longer maintained.
+
+As part of migrating our data pre-processing, there are a number of changes to the data which are detailed in the [data log](../data_extraction/data_log.qmd). Each scheme will be provided with new detailed baseline files for v3.0.
+
+### Additional information to support conversion to capacity
+
+We have introduced the following information to the standard model results:
+
+- More detailed breakdown of Length of Stay category 1-7 days, into the new categories 1-day, 2-day, 3-day, and 4-7 days.
+- A&E data now includes A&E follow-up activity. This may mean that you see larger numbers in A&E data in v3.0 onwards. The outputs app currently does not separate out this activity, but it is available in the data downloads.
+
+We are also working on providing more comprehensive "detailed results", which are available on request via Model Relationship Managers. These will include the following fields:
+
+- Acuity level for A&E activity
+- Flag for delivery spells in maternity inpatients activity
+- HRG codes for inpatients
+
+### Bugfixes
+
+- Virtual Wards efficiencies mitigators were not working, this has been resolved.
 
 # Update 2024/08/24
 
