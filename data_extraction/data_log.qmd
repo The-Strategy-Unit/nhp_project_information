@@ -16,6 +16,7 @@ Inpatient data:
   - Include records where `patientid` is `NULL`
   - Include readmission within 28 days for well babies
   - Fixed bug in `has_procedure` which was failing to filter codes beginning with `U`, `Y` or `Z`
+  - Added a new flag `maternity_delivery_in_spell`, which looks to see if any episode in the spell had `maternity_episode_type=1`, the same [logic used to create the official published statistics on delivery episodes](https://digital.nhs.uk/data-and-information/publications/statistical/nhs-maternity-statistics) (applied at spell end level)
 Inpatient mitigators:
  - ambulatory emergency care: change the way we extract to use a more [stable and workable code list](https://github.com/The-Strategy-Unit/nhp_data/blob/main/mitigators/ip/activity_avoidance/ambulatory_care_conditions.py)
  - evidence based interventions: update code lists
