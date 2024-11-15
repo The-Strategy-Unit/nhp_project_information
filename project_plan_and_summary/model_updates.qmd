@@ -14,6 +14,8 @@ The reason that it is a major release is that the pipeline for data pre-processi
 
 As part of migrating our data pre-processing, there are a number of changes to the data which are detailed in the [data log](../data_extraction/data_log.qmd). Each scheme will be provided with new detailed baseline files for v3.0.
 
+Note that the data in the inputs app has not had the bugfixes that the data in the model has. However, the level of difference is small and should not affect practical usage of the model, inputs and outputs apps. We are working to update this soon.
+
 ### Additional information to support conversion to capacity
 
 We have introduced the following information to the standard model results:
