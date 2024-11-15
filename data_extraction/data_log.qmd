@@ -12,25 +12,31 @@ We have migrated our data pre-processing pipeline from SQL to Databricks. The ne
 
 As part of migrating our data pre-processing, there are a number of changes to the data.
 
-Inpatient data:
+Inpatients data:
+
   - Include records where `patientid` is `NULL`
   - Fixed bug in `has_procedure` which was failing to filter codes beginning with `U`, `Y` or `Z`
   - Added a new flag `maternity_delivery_in_spell`, which looks to see if any episode in the spell had `maternity_episode_type=1`, the same [logic used to create the official published statistics on delivery episodes](https://digital.nhs.uk/data-and-information/publications/statistical/nhs-maternity-statistics) (applied at spell end level)
-Inpatient mitigators:
+  
+Inpatients mitigators:
+
  - ambulatory emergency care: Change the way we extract to use a more [stable and workable code list](https://github.com/The-Strategy-Unit/nhp_data/blob/main/mitigators/ip/activity_avoidance/ambulatory_care_conditions.py)
  - evidence based interventions: Update code lists to reflect latest evidence
  - medicines related admissions: Fix bug in old SQL (explicit medicines related codes were not excluded from implicit queries properly)
  - pre-op_los mitigators: Use an [updated procedure list](https://github.com/The-Strategy-Unit/nhp_data/blob/9cd4495172b5aa63e57b29ac9172d6d512a311b9/generate_inpatients.py#L27)
  - alcohol_partially_attributable: Errors in the old code list meant some codes were missed, and some codes were not properly distinguishing between the mortality/morbidity cases
  - excess_beddays: An error in the way we handled the old csv meant some NA values were treated as 0, flagging most activity as being an excess bedday
-- Outpatients data
-    - Keep where `sitetret=null`
-- AAE data
-    - Include followups (flagged by `atentype.isin([2, 3, 4])`)
-    - [Include new `acuity` column](https://github.com/The-Strategy-Unit/nhp_data/commit/b3e2ef9acf40b18f5b079533e364f74fd792e1a0#diff-e2401c3d40d30e706413f4a8efac282b166111cc6b7a44ec88c952a801fe4dc6R171) which is a more human readable version of [URGENT AND EMERGENCY CARE ACUITY (SNOMED CT)](https://www.datadictionary.nhs.uk/data_elements/urgent_and_emergency_care_acuity__snomed_ct_.html)
+ 
+Outpatients data:
+
+  - Keep where `sitetret=null`
+  
+AAE data:
+
+  - Include followups (flagged by `atentype.isin([2, 3, 4])`)
+  - [Include new `acuity` column](https://github.com/The-Strategy-Unit/nhp_data/commit/b3e2ef9acf40b18f5b079533e364f74fd792e1a0#diff-e2401c3d40d30e706413f4a8efac282b166111cc6b7a44ec88c952a801fe4dc6R171) which is a more human readable version of [URGENT AND EMERGENCY CARE ACUITY (SNOMED CT)](https://www.datadictionary.nhs.uk/data_elements/urgent_and_emergency_care_acuity__snomed_ct_.html)
 
    
-
 ## Version 2.2
 
 Date updated: 24/09/2024
