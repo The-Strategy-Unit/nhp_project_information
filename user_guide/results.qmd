@@ -29,13 +29,13 @@ The JSON results file has three keys:
     - `age` An array containing the model results as found in `default`, but also including breakdowns by the age, in integers.
     - `sex+tretspef`  An array containing the model results as found in `default`, but also including breakdowns by grouped `tretspef` and `sex`. The `tretspef` groupings can be [seen here](https://connect.strategyunitwm.nhs.uk/nhp/project_information/data_extraction/inpatients.html#tretspef).
     - `tretspef_raw+los_group`  An array containing the model results for inpatients as found in `default`, but also including breakdowns by `tretspef_raw` and `los_group`. The Length of Stay groupings are:
-        - 0-day
-        - 1-day
-        - 2-day
-        - 3-day
+        - 0 days
+        - 1 day
+        - 2 days
+        - 3 days
         - 4-7 days
+        - 8-14 days
         - 15-21 days
         - 22+ days
-        - 8-14 days
     - `step_counts`  An array containing the estimated [impact of changes](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/glossary.html#impact-of-changes) caused by each parameter, also known as the `change_factor`. The data here is used for the 'waterfall diagrams' in the outputs app. The impact of each change factor is broken down by `activity_type`, `pod`, `measure`, and `sitetret`. We also break down the mitigators by each specific `strategy`. We show the estimated impact of each change factor for every Monte Carlo simulation in the `model_runs` and the estimated year-by-year impact of each change factor from baseline year to horizon year in the `time_profiles`.
     - `tretspef_raw`  An array containing the model results for outpatients as found in `default`, but also including breakdowns by grouped `tretspef_raw`.
