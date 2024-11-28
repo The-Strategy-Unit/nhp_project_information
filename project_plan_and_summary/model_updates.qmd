@@ -3,6 +3,39 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2024/11/28
+
+## v3.0.1
+
+This update is a patch release.
+
+In order to aid in the conversion of model results to capacity requirements, we offer "detailed model results" for scenarios, available on request, which show model results for the horizon year aggregated by the fields below:
+
+- Inpatients
+  - sitetret
+  - pod	
+  - age_group	
+  - sex	
+  - tretspef_raw	
+  - los_group	
+  - measure	
+  - delivery in maternity spell
+- Outpatients
+  - sitetret
+  - pod	
+  - age_group	
+  - tretspef_raw
+  - measure
+- A&E
+  - sitetret	
+  - pod	
+  - age_group	
+  - attendance_category	
+  - aedepttype	
+  - acuity	
+  - measure
+
+In order to improve these detailed outputs, we had to change some of the data underlying the model, adding an index to the OP and A&E data. This has impacted very slightly on the random sampling of the model. Any scenarios that were run between 2024/11/13 and 2024/11/27 will have very minor differences in OP and A&E results to scenarios run after 2024/11/27, even if using exactly the same parameters. These changes are less than 0.5% or less.
 
 # Update 2024/11/13
 
