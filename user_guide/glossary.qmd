@@ -179,6 +179,12 @@ For model versions up to and including v1.2, the principal projection was determ
 
 This is not to be confused with the ONS principal population projection. 
 
-## Summary by year
+## Time profiles
 
-This page shows the results of the principal projection model run, with the chosen time profiles applied to show the estimated year-by-year increase in activity over time from the baseline year to the horizon year.
+"Time profiles" refers to the way in which activity is forecasted to grow in the years between the baseline year and the horizon year. This not currently available as a standard output from the model, but is available on request. The methodology used to calculate this is given below.
+
+1. Take the step counts from the model results – also sometimes referred to as "impact of changes", which show the estimated impact of the parameter on the model results at the horizon year.
+2. Create factors for each of the model parameters depending on the [time profile](setting_the_parameters.qmd#time-profiles) selected for that specific parameter, and the number of years between baseline to horizon year. For example for a linear time profile, for a model with 10 years from the baseline to the model horizon year, the factors for each year would be [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]. For a step change time profile, for a parameter with a step change in year 7, the factors for each year would be [0, 0, 0, 0, 0, 0, 1, 1, 1].
+3. For each parameter and each year, multiply the relevant factor with the step count to determine impact of that parameter on the activity for that specific year. For example for a linear time profile parameter with a step count of 10000 in the horizon year, the estimated impact of the parameter across the 10 years from baseline year to horizon year would be 0.1 * 10000 in year 1, 0.2 * 10000 in year 2, and so on.
+4. For each year, add together the product of the factors and step counts for the specific year to arrive at an estimate for the change in activity for that year, which takes into account the time profiles selected.
+
