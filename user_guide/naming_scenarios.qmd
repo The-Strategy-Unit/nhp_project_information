@@ -7,9 +7,15 @@ order: 3
 
 Name your model runs carefully. A good name will help you and the model roll-out team understand what's in your model, when it was created and when you ran it.
 
+In particular, each model run must have a unique name, which will help prevent errors in communication or processing.
+
+
 It's important to realise that at the outputs stage you will have access to the name of the model and the date and time of when it was run, but not the date and time when you created it. 
 
-It's possible to select an existing model run from the inputs app and re-run it with tweaked parameters. This could result in model runs with the same name but different parameters, although they'll be differentiated in the outputs app by the date and time they were run.
+It's possible to select an existing model run from the inputs app and re-run it with tweaked parameters. This could result in model runs with the same name but different parameters, although they'll be differentiated in the outputs app by the date and time they were run. 
+
+If you have already run a scenario and wish to edit the parameters after this, you must change the name of the scenario. You can do this by selecting "Create new from existing" on the inputs app.
+
 
 There are lots of different things to consider when naming model runs and there won't be one approach that suits everybody. In general, we suggest only including things in the model name if they will be meaningful to you in three months' time. For example, the date of creation might be meaningful because you might have designed a two phase process for setting parameters and you want to keep track of which scenario was prepared at each moment. Or it may not be meaningful at all because you are using a different process, like combining the views of several people at a fixed point.
 
@@ -25,15 +31,14 @@ We suggest that you consider including:
 
 Example model names might be:
 
-* 20240530-NDG2-LOW (a model with non demographic variant 2 expected to yield a low estimate of demand)
+* 20240530-NDG2-LOW (a model with non demographic variant 2, expected to yield a low estimate of demand)
 
 * 20240420-NDG1-V2 (a model with non demographic variant 1, the second model run which has been produced)
 
-
-## Including words like "final" 
+## Avoid words like "final" 
 
 Do not use "final" or similar in a model name. The reason for this is because what is a "final" model today may not be a "final" model in the future, and this could cause confusion for you and us. You may wish to include things like "SOC" or "FBC" in the name to indicate where you are in the process, but even then do bear in mind there may end up being two or more "SOC" runs.
 
-## Recording a run as final 
+## Recording runs to be used in outputs reports
 
-In order to make sure that we understand what your final model is, please send the name of the model, plus its run date and time, to your Model Relationship Manager. We recommend that, as with the mitigators, you maintain your own records throughout to avoid confusion.
+In order for us to generate your outputs reports, please send the name of your confirmed scenario, plus its run date and time, to your Model Relationship Manager. We recommend that, as with the mitigators, you maintain your own records throughout to avoid confusion.
