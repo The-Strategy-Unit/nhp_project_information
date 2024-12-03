@@ -7,11 +7,15 @@ order: 3
 
 Name your model runs carefully. A good name will help you and the model roll-out team understand what's in your model, when it was created and when you ran it.
 
-In particular, we recommend that you give each model run a unique name, which will help prevent errors in communication or processing.
+In particular, each model run must have a unique name, which will help prevent errors in communication or processing.
+
 
 It's important to realise that at the outputs stage you will have access to the name of the model and the date and time of when it was run, but not the date and time when you created it. 
 
-It's possible to select an existing model run from the inputs app and re-run it with tweaked parameters. This could result in model runs with the same name but different parameters, although they'll be differentiated in the outputs app by the date and time they were run. We suggest you create a new name if you've adjusted the parameters, which will help differentiate these runs.
+It's possible to select an existing model run from the inputs app and re-run it with tweaked parameters. This could result in model runs with the same name but different parameters, although they'll be differentiated in the outputs app by the date and time they were run. 
+
+If you have already run a scenario and wish to edit the parameters after this, you must change the name of the scenario. You can do this by selecting "Create new from existing" on the inputs app.
+
 
 There are lots of different things to consider when naming model runs and there won't be one approach that suits everybody. In general, we suggest only including things in the model name if they will be meaningful to you in three months' time. For example, the date of creation might be meaningful because you might have designed a two phase process for setting parameters and you want to keep track of which scenario was prepared at each moment. Or it may not be meaningful at all because you are using a different process, like combining the views of several people at a fixed point.
 
