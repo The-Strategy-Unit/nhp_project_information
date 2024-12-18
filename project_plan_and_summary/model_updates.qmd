@@ -3,6 +3,30 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2024/12/19
+
+## v3.1
+
+### Model methodology improvement to show activity avoided
+
+We have changed the methodology used in the modelling. An explanation of the new methodology is available [here](../modelling_methodology/modelling_uncertainty.qmd) and a detailed technical explanation is [available here](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/).
+
+The reason for this change is to allow greater nuance in the reporting of activity growth and activity mitigation. We can now show the activity that was prevented due to the activity avoidance mitigators. This will be included in the model results download broken down by site, point of delivery (POD), age group, and sex.
+
+### Change to waterfall diagram methodology
+
+The waterfall diagram, found on the impact of changes tab on the outputs dashboard, shows the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts at the horizon year. 
+
+Previous versions of the waterfall diagram have included a ["model interaction term"](../user_guide/glossary.qmd#impact-of-changes) which shows the effects of compounding within the model. We now have the option to redistribute this interaction term amongst the other factors impacting the model results.
+
+### Other updates
+
+- Mitigator codes are now in the downloadable Excel files of results
+- Fixed bug in data which prevented the following model elements from working properly:
+    - Baseline adjustment
+    - IP-AA-026 Obesity Related Admissions mitigator
+    - IP-AA-029 Smoking Related Admissions mitigator
+
 # Update 2024/11/28
 
 ## v3.0.1
@@ -35,7 +59,7 @@ In order to aid in the conversion of model results to capacity requirements, we 
   - acuity	
   - measure
 
-In order to improve these detailed outputs, we had to change some of the data underlying the model, adding an index to the OP and A&E data. This has impacted very slightly on the random sampling of the model. Any scenarios that were run between 2024/11/13 and 2024/11/27 will have very minor differences in OP and A&E results to scenarios run after 2024/11/27, even if using exactly the same parameters. These changes are less than 0.5% or less.
+In order to improve these detailed outputs, we had to change some of the data underlying the model, adding an index to the OP and A&E data. This has impacted very slightly on the random sampling of the model. Any scenarios that were run between 2024/11/13 and 2024/11/27 will have very minor differences in OP and A&E results to scenarios run after 2024/11/27, even if using exactly the same parameters. These changes are less than 0.5%.
 
 # Update 2024/11/13
 
