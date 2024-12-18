@@ -7,7 +7,7 @@ website:
   repo-url: https://github.com/The-Strategy-Unit/nhp_project_information
   repo-actions: [edit, issue]
   title: "NHP model project information"
-  description: "Documentation for the Demand Model created by the Strategy Unit to support NHS England's New Hospitals Programme"
+  description: "Documentation for the Demand Model created by the Strategy Unit to support NHS England's New Hospital Programme"
   favicon: _assets/favicon.ico
   navbar:
     background: dark
