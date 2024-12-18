@@ -77,7 +77,7 @@ The s-curve shows the range of results (or values) obtained from all the model r
 
 ## Impact of changes 
 
-The waterfall diagram shown on Impact of Changes tab of the outputs dashboard shows the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts at the horizon year. These contributions are indicative because it is not possible to attribute a particular healthcare activity to a particular factor.
+The waterfall diagram shown on Impact of Changes tab of the outputs dashboard shows the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts at the horizon year. The data that informs this diagram is found on the step_counts tab in the Excel download of model results. These contributions are indicative because it is not possible to attribute a particular healthcare activity to a particular factor.
 
 The model works by considering the effect of all model factors (demographic growth, non demographic growth, activity avoidance, and others) simultaneously. Each has a simple effect on its own as well as giving rise to a compound effect when its effect is combined with all of the other model components. This compounding effect is a real world phenomenon that more simplistic models ignore. Within our model this compound effect is explicitly accounted for and is shown as a separate bar within the waterfall chart.
 
@@ -144,6 +144,17 @@ The waterfall chart shows the impact of the individual factors on projected futu
 The "step counts" in the model are created during the phase of the model where we create the factors. When we add a "step" to the model we work out which rows of activity are affected by the step, creating a new column per step with the factors for that row. We then take the weighted mean of each new column to get a scalar value, grouped by point of delivery and site of treatment. 
 
 We take this weighted mean, subtract 1, and multiply by the baseline to get the estimated simple effect of the step in isolation from all other steps. When these simple effects are summed, they do not equal the total effect, as in the model the factors are actually multiplied together and not summed. Therefore, we include a model interaction term to describe the effect of multiplying the factors together as well as the residual from random sampling.
+
+:::
+
+::: {.callout-note collapse="true"}
+## Model interaction term redistribution methodology
+
+1. Calculate the principal value (mean of the Monte Carlo Simulation runs) for the step counts in the resampling and activity avoidance stages.
+2. For each measure individually, sum the values for that group, and calculate the ratio of that value to the group total
+(i.e., for all the resampling steps, sum the principal values, and divide each step by this)
+3. Multiply this value by the model interaction term for that measure
+4. Add that fractional component to the value
 
 :::
 
