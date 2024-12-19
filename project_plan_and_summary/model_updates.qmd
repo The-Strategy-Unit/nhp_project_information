@@ -13,11 +13,9 @@ We have changed the methodology used in the modelling. An explanation of the new
 
 The reason for this change is to allow greater nuance in the reporting of activity growth and activity mitigation. We can now show the activity that was prevented due to the activity avoidance mitigators. This will be included in the model results download broken down by site, point of delivery (POD), age group, and sex.
 
-### Change to waterfall diagram methodology
+This change has meant that users will notice some differences in the waterfall diagram found on the "impact of changes" tab of the outputs dashboard. The data for this diagram is in the "step counts" tab of the Excel download of model results. The ["model interaction term"](../user_guide/glossary.qmd#impact-of-changes), which shows the effects of compounding within the model, will be different due to this change in methodology. There is also an additional model interaction term specifically for activity avoidance which can be seen in the Excel download only; this is grouped in with the rest of the activity avoidance in the main waterfall diagram. We would also expect to see a larger impact caused by activity avoidance, as the new methodology makes it easier to identify the impact of these parameters in isolation.
 
-The waterfall diagram, found on the impact of changes tab on the outputs dashboard, shows the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts at the horizon year. 
-
-Previous versions of the waterfall diagram have included a ["model interaction term"](../user_guide/glossary.qmd#impact-of-changes) which shows the effects of compounding within the model. We now have the option to redistribute this interaction term amongst the other factors impacting the model results.
+The overall results of modelling from the baseline year to the horizon year should be very similar to scenarios run on previous model versions.
 
 ### Other updates
 
