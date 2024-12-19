@@ -44,9 +44,9 @@ We show how the model arrives at this frequency using the first spell (ID = 1) a
 
 1. We then calculate the summary parameters for our model. Our model is a two-step model which uses [Binomial thinning](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/binomial-thinning.html). We use a Poisson distribution to estimate the amount of activity before mitigation, and then a Binomial distribution to apply the mitigation step. The Poisson step needs a $\lambda$ parameter, which is the product of all the factors except activity avoidance. In our example, the summary parameter would be 1.45 (= 0.96 x 1.26 x 1.20). The Binomial step needs a probability parameter $p$, which is the change factor for all activity avoidance. In our example, $p = 0.79$.
 
-1. We randomly sample from a $\text{Poisson}(\lambda)$ distribution with rate, $\lambda$, set to our summary parameter, 1.45.  The result of this random sample will be an integer value.  Let's assume that in the case the random sample produces the value 2.
+1. We randomly sample from a $\text{Poisson}(\lambda)$ distribution with rate, $\lambda$, set to our summary parameter, 1.45.  The result of this random sample will be an integer value.  Let's assume that in this case the random sample produces the value 3.
 
-1. We then randomly sample from a $\text{Binomial}(n,p)$ distribution with parameters $n = 2$, the outcome from the Poisson step, and probability $p = 0.79$, the product of all the activity mitigation. This will give us a value of either 0, 1 or 2, the number of activities remaining after mitigation. Let's assume that in this case the random sample produces the value 2.
+1. We then randomly sample from a $\text{Binomial}(n,p)$ distribution with parameters $n = 3$, the outcome from the Poisson step, and probability $p = 0.79$, the product of all the activity mitigation. This will give us a value of either 0, 1, 2 or 3, the number of activities remaining after mitigation. Let's assume that in this case the random sample produces the value 2.
 
 1. We replicate the record with this frequency.  So the record would be represented twice in our modelled future year.
 
