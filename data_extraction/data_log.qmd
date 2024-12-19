@@ -25,7 +25,7 @@ Inpatients data:
   
 Inpatients mitigators:
 
- - ambulatory emergency care: Change the way we extract to use a more [stable and workable code list](https://github.com/The-Strategy-Unit/nhp_data/blob/main/mitigators/ip/activity_avoidance/ambulatory_care_conditions.py)
+ - ambulatory emergency care: Change the way we extract to use a more [stable and workable code list](https://github.com/The-Strategy-Unit/nhp_data/blob/main/mitigators/ip/efficiency/ambulatory_emergency_care.py)
  - evidence based interventions: Update code lists to reflect latest evidence
  - medicines related admissions: Fix bug in old SQL (explicit medicines related codes were not excluded from implicit queries properly)
  - pre-op_los mitigators: Use an [updated procedure list](https://github.com/The-Strategy-Unit/nhp_data/blob/9cd4495172b5aa63e57b29ac9172d6d512a311b9/generate_inpatients.py#L27)
