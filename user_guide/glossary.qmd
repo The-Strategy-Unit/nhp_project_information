@@ -147,17 +147,6 @@ We take this weighted mean, subtract 1, and multiply by the baseline to get the 
 
 :::
 
-::: {.callout-note collapse="true"}
-## Model interaction term redistribution methodology
-
-1. Calculate the principal value (mean of the Monte Carlo Simulation runs) for the step counts in the resampling and activity avoidance stages.
-2. For each measure individually, sum the values for that group, and calculate the ratio of that value to the group total
-(i.e., for all the resampling steps, sum the principal values, and divide each step by this)
-3. Multiply this value by the model interaction term for that measure
-4. Add that fractional component to the value
-
-:::
-
 
 ## Inpatient admissions
 
