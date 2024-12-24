@@ -260,6 +260,8 @@ The model identifies patients who are readmitted within 28 days of being dischar
 
 Some of these patients may have been discharged from a different hospital than the one being modelled.
 
+This mitigator does not impact readmissions where the first admission was flagged as a [Well baby](/data_extraction/data_log.qmd#version-1.1).
+
 ## Smoking Related Admissions (IP-AA-029)
 
 Smoking is the biggest single cause of preventable death and ill-health within England. 
