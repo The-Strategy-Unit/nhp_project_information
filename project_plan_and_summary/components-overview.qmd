@@ -9,7 +9,7 @@ Given the size of the project, there are numerous GitHub repositories relating t
 
 The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
 
-![Diagram of NHP model architecture](../resources/NHP_diagram_public_2-0.png){fig-alt="A diagram showing the connections between the various repositories"}
+![Diagram of NHP model architecture](../resources/NHP_diagram_public_v3-1.png){fig-alt="A diagram showing the connections between the various repositories"}
 
 ## Repositories relating to model inputs
 
@@ -17,13 +17,9 @@ The diagram below shows the relationship between the different repositories and 
 
 This repository contains the code that specifies changes in the size, age/sex structure and health status of a hospital's catchment population. The code is written in R and makes use of data sources from the Office for National Statistics.
 
--   [nhp_strategies](https://github.com/The-Strategy-Unit/nhp_strategies) [PRIVATE]
+-   [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) [OPEN]
 
-This code is used to determine which healthcare activity belongs to a category that might be mitigated in the future, e.g. alcohol related admissions. The code is written in SQL and run in an R based [{targets}](https://cran.r-project.org/web/packages/targets/index.html) pipeline. This repository is not open as it contains DELETE statements which could potentially be harmful.
-
--   [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) [OPEN]
-
-This code is the open version of the `nhp_strategies` repository above, which does not contain any potentially harmful DELETE statements. 
+This code contains all the data processing pipelines for the model, including the mitigators. It is written in Pyspark and runs on Databricks.
 
 -   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) [PRIVATE]
 
@@ -45,13 +41,9 @@ This repository contains the Azure Functions for the API that triggers the runni
 
 This repository provides an interface for users to explore the results of the model, the [NHP outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
--   [nhp_comparer](https://github.com/The-Strategy-Unit/nhp_comparer) [PRIVATE]
+-   [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app) [PRIVATE]
 
-This repository is a Streamlit dashboard enabling the comparison of the input parameters and results of two different model runs.
-
--   [nhp_peers_params](https://github.com/The-Strategy-Unit/nhp_peers_params) [PRIVATE]
-
-This repository creates Quarto reports comparing the mitigators set by the schemes using the NHP model.
+This repository is a Shiny dashboard allowing the comparison of mitigators set by schemes using the NHP model.
 
 ## Repositories relating to documentation
 
