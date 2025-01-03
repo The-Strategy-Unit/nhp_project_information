@@ -33,4 +33,4 @@ jobs:
           git config --global user.email "quarto-github-actions-publish@example.com"
           git config --global user.name "Quarto GHA Workflow Runner"
 
-          quarto publish --no-browser
+          quarto publish --id a3a013e9-d405-46b7-a71e-1fae05a569f4 --no-browser
