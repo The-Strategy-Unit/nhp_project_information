@@ -9,7 +9,7 @@ on:
 
 jobs:
   connect-publish:
-    name: connect-publish-dev
+    name: connect-publish-preview
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -33,4 +33,4 @@ jobs:
           git config --global user.email "quarto-github-actions-publish@example.com"
           git config --global user.name "Quarto GHA Workflow Runner"
 
-          quarto publish --id a3a013e9-d405-46b7-a71e-1fae05a569f4 --no-browser
+          quarto publish connect --id a3a013e9-d405-46b7-a71e-1fae05a569f4 --no-browser
