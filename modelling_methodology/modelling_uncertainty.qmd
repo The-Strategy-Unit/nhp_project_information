@@ -7,8 +7,8 @@ Having set the model parameters, the model calculates, for each record in the ba
 
 ## Handling uncertainty
 
-It is not possible to estimate with precision, many of the model parameters. Changes are subject to uncertainty and are often contingent on other changes.  Users can reflect their uncertainty in the parameters passed to the model by, for example, providing a 80% prediction interval for a parameter. In other cases, users may be asked to indicate the frequency with which certain scenarios might occur.
-The model handles these uncertainty intervals or frequency distributions, with a Monte Carlo simulation.  Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions.  The users can specify how many Monte Carlo simulations they wish to run.  The model results take two forms.   
+It is not possible to estimate many of the model parameters with precision. Changes are subject to uncertainty and are often contingent on other changes.  Users can reflect their uncertainty in the parameters passed to the model by, for example, providing a 80% prediction interval for a parameter. In other cases, users may be asked to indicate the frequency with which certain scenarios might occur.
+The model handles these uncertainty intervals or frequency distributions with a Monte Carlo simulation.  Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions.  The users can specify how many Monte Carlo simulations they wish to run.  The model results take two forms.   
 (1) a principal projection: the average (mean) of all the Monte Carlo simulations which have been run  
 (2) a distribution of results, one for each of the Monte Carlo simulations, illustrating how key metrics might vary under alternative model parameters.
 
@@ -109,7 +109,7 @@ By definition, each of these spells occurred once in the baseline year.  Our mod
 | 3  | 93  | f      | NEL | 8              | 
 : Example showing the data after the activity avoidance Binomial sampling step
 
-9. The final step is to apply the efficiencies mitigators, which for inpatients, mostly reduce the length of stay. A reminder of the efficiencies mitigators that apply to each row is given below. For row ID 1, only one efficiency mitigator applies. For row ID 2, no efficiency mitigators apply, so this step will be skipped for this row. For the two rows with ID 3, there are two possible efficiency mitigators that could apply. Where more than one efficiency mitigator can apply to a row of data, the model will randomly select only one of the efficiencies mitigators to apply in each model iteration. 
+9. The final step is to apply the efficiencies mitigators which for inpatients mostly reduce the length of stay. A reminder of the efficiencies mitigators that apply to each row is given below. For row ID 1, only one efficiency mitigator applies. For row ID 2, no efficiency mitigators apply, so this step will be skipped for this row. For the two rows with ID 3, there are two possible efficiency mitigators that could apply. Where more than one efficiency mitigator can apply to a row of data, the model will randomly select only one of the efficiencies mitigators to apply in each model iteration. 
 
 | ID | Length of stay | Efficiency Mitigator C | Efficiency Mitigator D | Efficiency mitigator to apply |
 | -- | -------------- | ---------------------- | ---------------------- |------------------- |
