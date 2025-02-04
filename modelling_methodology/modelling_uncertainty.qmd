@@ -8,46 +8,139 @@ Having set the model parameters, the model calculates, for each record in the ba
 ## Handling uncertainty
 
 It is not possible to estimate with precision, many of the model parameters. Changes are subject to uncertainty and are often contingent on other changes.  Users can reflect their uncertainty in the parameters passed to the model by, for example, providing a 80% prediction interval for a parameter. In other cases, users may be asked to indicate the frequency with which certain scenarios might occur.
-The model handles these uncertainty intervals or frequency distributions, with a Monte-Carlo simulation.  Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions.  The users can specify how many Monte-Carlo simulations they wish to run.  The model results take two forms.   
+The model handles these uncertainty intervals or frequency distributions, with a Monte Carlo simulation.  Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions.  The users can specify how many Monte Carlo simulations they wish to run.  The model results take two forms.   
 (1) a principal projection: the average (mean) of all the Monte Carlo simulations which have been run  
-(2) a distribution of results, one for each of the Monte-Carlo simulations, illustrating how key metrics might vary under alternative model parameters.
+(2) a distribution of results, one for each of the Monte Carlo simulations, illustrating how key metrics might vary under alternative model parameters.
 
 ## A worked example
 
-We will illustrate how the model works using a simplified example.  Let's imagine our inpatient dataset in the baseline year for the subject Trust contains 100,000 spells
+We will illustrate how the model works using a simplified example.  Let's imagine our inpatient dataset in the baseline year for the subject Trust contains a only three spells and a much reduced number of columns. In this example, row ID 1 is for a male non-elective patient aged 73 who was admitted to hospital for 7 days. 
 
-| ID     | Age | Gender | ICB       | PoD | Specialty | Length of stay | ... | Discharge method | 
-| :----- | :-- | :----- | :-------- | :-- | :-------- | :------------- | :-: | :--------------- | 
-| 1      | 73  | m      | Non-local | NEL | T&O       | 7              | ... | 1                | 
-| 2      | 23  | f      | Local     | EL  | gynae     | 1              | ... | 1                | 
-| 3      | 93  | f      | Non-local | NEL | GenMed    | 8              | ... | 1                | 
-| 4      | 72  | m      | Local     | NEL | RespMed   | 6              | ... | 4                | 
-| 5      | 34  | f      | Local     | Mat | Obst      | 1              | ... | 1                | 
-| ...    | ... | ...    | ...       | ... | ...       | ...            | ... | ...              | 
-| 100000 | 82  | f      | Local     | NEL | Uro       | 2              | ... | 1                | 
+
+| ID  | Age | Gender |  PoD | Length of stay |
+| :-- | :-- | :----- |  :-- | :------------- |
+| 1   | 73  | m      |  NEL | 7              |
+| 2   | 23  | f      |  EL  | 1              |
+| 3   | 93  | f      |  NEL | 8              |
+: Example baseline data
 
 **Changes in event frequency**
 
 By definition, each of these spells occurred once in the baseline year.  Our model estimates the frequency with which each of these spells might occur in some future year, by applying the model change factors as determined by the model user.  
 
-We show how the model arrives at this frequency using the first spell (ID = 1) as an example.  This record describes an elective admission of a man aged 73.  He was treated in the trauma and orthopeadics specialty and stayed in hospital for 7 days before returning home.  Although the man was treated in the subject Trust, the Trust and the man's residence are located in different ICB areas.  Figure 1 and text below shows how the model determines the frequency with which a spell with these characteristics might occur in the future. Please note that this is a simplified example that does not include all of the parameters utilised by the current iteration of the model.
+1. The first stage in our modelling process is to establish which of the model change factors might apply to each record. In practice, all records are subject to a large number of change factors, including baseline adjustment, repatriation/expatriation, demographic growth, non-demographic growth, and health status adjustment, but to keep things simple in this example we will only describe a very small number of change factors. The full detail of all potential change factors is available on the [model parameters section](../user_guide/setting_the_parameters.qmd). In our simplified example, record ID 1, our 73 year old male non-elective admission, has the demographic growth, non-demographic growth change factors applied to it, as well as activity avoidance mitigator A and B, and efficiency mitigator C.
 
-![Figure 1](modelling_uncertainty-example_adjustment.png)
+| ID | Demographic growth | Non-demographic growth | Waiting list adjustment | Activity Avoidance Mitigator A | Activity Avoidance Mitigator B | Efficiency Mitigator C | Efficiency Mitigator D |
+| -- | ------------------ | ---------------------- | ----------------------- | ------------------------------ | ------------------------------ | ---------------------- | ---------------------- |
+| 1  | Y                  | Y                      | N                       | Y                              | Y                              | Y                      | N                      |
+| 2  | Y                  | Y                      | Y                       | N                              | Y                              | N                      | N                      |
+| 3  | Y                  | Y                      | N                       | N                              | N                              | Y                      | Y                      |
+: Example showing applicable change factors for each row of data
 
-1. The first stage in our modelling process is to establish which of our model change factors might apply to this record.   The record describes an elective admission, so the 'waiting list management' change factor does not apply.  However, the record is subject to the repatriation/expatriation, population size, age profile and health status change factors, the non-demographic change factor and the activity avoidance change factor.  (Note that in this example, the private healthcare dynamics and need-supply imbalance change factors are not considered, and that the non-demographic change factor is modelled as a single combined effect.)
+2. For each change factor, users pass an array of parameters to the model.  The values used for the parameters are different depending on the change factor. The parameters may be point estimates, or the parameters might describe a distribution reflecting the user's uncertainty about the extent to which this change factor might apply.  In most cases users are asked to pass their 80% prediction interval for the change factor and the distribution of the change factor parameter is assumed to be Normal. In our example, let's assume that the user's parameters for activity avoidance mitigator A is 0.8-0.9.  From this information a Normal distribution is constructed. Similar distributions are constructed for each of the applicable change factors which are expressed in terms of prediction intervals.    In our example below, the demographic growth and waiting list adjustment change factors are given as point estimates, whereas the non-demographic growth and mitigator change factors are given as 80% prediction intervals.
 
-1. For each change factor, users pass an array of parameters to the model.  The structure of these arrays is dependent on the change factor.  For example, parameters for the repatriation/expatriation change factor are dependent on the patient's ICB (local or not), specialty and point of delivery.  Whereas parameters for the non-demographic change factor are dependent on point of delivery only.  An overview of these parameters are set out in the [model parameters section](../user_guide/setting_the_parameters.qmd). Note that the activity avoidance change factor is comprised of a number of subfactors, each focused on a subset of activity that might be avoided in the future.  None, one or several of these subfactors may apply to a given spell.  
+| ID | Demographic growth[^1] | Non-demographic growth | Waiting list adjustment | Activity Avoidance Mitigator A | Activity Avoidance Mitigator B | Efficiency Mitigator C | Efficiency Mitigator D |
+| -- | ------------------ | ---------------------- | ----------------------- | ------------------------------ | ------------------------------ | ---------------------- | ---------------------- |
+| 1  | 1.09               | 1.0194 - 1.0240        | N                       | 0.8-0.9                        | 0.7-0.9                        | 0.6-0.7                | N                      |
+| 2  | 1.03               | 1.0053 – 1.0071        | 1.0217                  | N                              | 0.7-0.9                        | N                      | N                      |
+| 3  | 1.2                | 1.0194 - 1.0240        | N                       | N                              | 0.7-0.9                        | 0.6-0.7                | 0.8-0.95               |
+: Example showing parameters as point estimates and prediction intervals for each change factor
 
-1. Having established, for each change factor, the characteristics of the spell that determine which user parameter applies, the parameters that have been set by the user are retrieved.  The parameters may be point estimates, or the parameters might describe a distribution reflecting the user's uncertainty about the extent to which this change factor might apply.  In most cases users are asked to pass their 80% prediction interval for the change factor and the distribution of the change factor parameter is assumed to be Normal. In our example, let's assume that the user's parameters for the repatriation/expatriation parameters (80% prediction interval for a Normal distribution), are 0.91 and 0.99. This would indicate that the user believes that there is a 10% chance that more than 9% of non-local emergency admissions to trauma & orthopaedics would be expatriated in future, and a 10% chance that fewer than 1% of such cases will be expatriated.  From this information a Normal distribution is constructed. Similar distributions are constructed for each of the applicable change factors.  Note that special rules apply to derive distributions for the demographic change factors.
 
-1. Next we randomly sample a single value from these distributions.  Let's assume that sampled values are 0.96, 1.26, 1.20 and 0.79 for the repatriation/expatriation, demographic, non-demographic and activity mitigator change factors respectively.  [Note that the process by which the demographic parameter is obtained is somewhat more involved].
+3. The next step in the model is to randomly sample a single value from the model parameters that are given as distributions. We use random sampling, so the number used for the first model iteration will be different from the number used for the second, third and fourth model iterations.
 
-1. We then calculate the summary parameters for our model. Our model is a two-step model which uses [Binomial thinning](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/binomial-thinning.html). We use a Poisson distribution to estimate the amount of activity before mitigation, and then a Binomial distribution to apply the mitigation step. The Poisson step needs a $\lambda$ parameter, which is the product of all the factors except activity avoidance. In our example, the summary parameter would be 1.45 (= 0.96 x 1.26 x 1.20). The Binomial step needs a probability parameter $p$, which is the change factor for all activity avoidance. In our example, $p = 0.79$.
+| ID | Demographic growth | Non-demographic growth | Waiting list adjustment | Activity Avoidance Mitigator A | Activity Avoidance Mitigator B | Efficiency Mitigator C | Efficiency Mitigator D |
+| -- | ------------------ | ---------------------- | ----------------------- | ------------------------------ | ------------------------------ | ---------------------- | ---------------------- |
+| 1  | 1.09               | 1.02                   | N                       | 0.88                           | 0.75                           | 0.67                   | N                      |
+| 2  | 1.03               | 1.0057                 | 1.0217                  | N                              | 0.75                           | N                      | N                      |
+| 3  | 1.2                | 1.02                   | N                       | N                              | 0.75                           | 0.67                   | 0.9                    |
+: Example showing parameters sampled for a single model run for each row of activity
 
-1. We randomly sample from a $\text{Poisson}(\lambda)$ distribution with rate, $\lambda$, set to our summary parameter, 1.45.  The result of this random sample will be an integer value.  Let's assume that in this case the random sample produces the value 3.
+4. We then calculate the summary parameters for our model. Our model is a two-step model which uses [Binomial thinning](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/binomial-thinning.html). For the first step, we use a Poisson distribution to estimate the amount of activity before mitigators are applied. The Poisson step needs a $\lambda$ parameter, which is the product of all the factors except the mitigators. For row ID 1 in our example, the summary parameter would be 1.09 * 1.02 = 1.1118. For row ID 2 in our example, the summary parameter would be 1.03 * 1.0057 * 1.0217 = 1.0583. For row ID 3 in our example, the summary parameter would be 1.2 * 1.02 = 1.224.
 
-1. We then randomly sample from a $\text{Binomial}(n,p)$ distribution with parameters $n = 3$, the outcome from the Poisson step, and probability $p = 0.79$, the product of all the activity mitigation. This will give us a value of either 0, 1, 2 or 3, the number of activities remaining after mitigation. Let's assume that in this case the random sample produces the value 2.
+| ID | Age | Gender | PoD | Length of stay | Summary parameter for activity growth |
+| -- | --- | ------ | --- | -------------- | ----------------- |
+| 1  | 73  | m      | NEL | 7              | 1.1118            |
+| 2  | 23  | f      | EL  | 1              | 1.0583            |
+| 3  | 93  | f      | NEL | 8              | 1.224             |
+: Example showing baseline data with summary parameter for each row
 
-1. We replicate the record with this frequency.  So the record would be represented twice in our modelled future year.
+5. We randomly sample from a $\text{Poisson}(\lambda)$ distribution with rate, $\lambda$, set to our summary parameters for each row.  The result of this random sample will be an integer value.  Let's assume that in this case the random sample produces the values in the table below for each row. Note that there is some randomness inherent in this process, and the result of the Poisson sampling, even with the same summary parameter used as lambda, will produce different results in different model iterations.
 
-These stages are repeated for each record in the baseline dataset and for each run of the Monte-Carlo simulation.
+| ID | Age | Gender | PoD | Length of stay | Result of Poisson sampling using summary parameter as lambda |
+| -- | --- | ------ | --- | -------------- | ----------------- |
+| 1  | 73  | m      | NEL | 7              | 2                 |
+| 2  | 23  | f      | EL  | 1              | 1                 |
+| 3  | 93  | f      | NEL | 8              | 3                 |
+: Example showing baseline data with result of Poisson sampling step for each row
+
+6. The result of the Poisson sampling step tells us how many times to replicate each row. This gives us the projected activity before any mitigators are applied, for the horizon year. An example of the new data is below.
+
+| ID | Age | Gender | PoD | Length of stay | 
+| -- | --- | ------ | --- | -------------- | 
+| 1  | 73  | m      | NEL | 7              | 
+| 1  | 73  | m      | NEL | 7              | 
+| 2  | 23  | f      | EL  | 1              | 
+| 3  | 93  | f      | NEL | 8              | 
+| 3  | 93  | f      | NEL | 8              | 
+| 3  | 93  | f      | NEL | 8              | 
+: Example showing the data after the Poisson sampling step
+
+7. The next step is to apply the activity avoidance mitigators. We multiply together the activity mitigator factors to get one summary parameter for the activity avoidance parameters. So for row ID 1, the activity avoidance summary parameter is 0.88 * 0.75 = 0.66. There is only one activity avoidance mitigator that applies to row ID 2 and 3, so this is not multiplied with anything. We randomly sample from a $\text{Binomial}(n,p)$ distribution with parameters $n = 1$, and probability $p$, where p is the activity avoidance summary parameter, the product of all the activity avoidance mitigators. This will give us a value which tells us if that row should remain after activity avoidance has been applied. Again, note that there is some randomness inherent in this step - the result of the Binomial sampling, even with the same summary parameter used as $p$, will be different between different model iterations.
+
+| ID | Activity Avoidance Mitigator A | Activity Avoidance Mitigator B | Activity avoidance summary parameter | Result of Binomial sampling step |
+| -- |------------------------------- | ------------------------------ | ------------------------------------ | -------------------------------- |
+| 1  |  0.88                          | 0.75                           | 0.66                                 | 1                                |
+| 1  |  0.88                          | 0.75                           | 0.66                                 | 1                                |
+| 2  |  N/A                           | 0.75                           | 0.75                                 | 1                                |
+| 3  |  N/A                           | 0.75                           | 0.75                                 | 1                                |
+| 3  |  N/A                           | 0.75                           | 0.75                                 | 1                                |
+| 3  |  N/A                           | 0.75                           | 0.75                                 | 0                                |
+: Example showing the Binomial sampling step applying the activity avoidance mitigators
+
+8. In our example, of the two rows with ID 1 following the Poisson sampling step, both remain after the activity avoidance Binomial sampling step. The one row with ID 2 remains in the data, and of the three rows with ID 3, two remain after the activity avoidance Binomial sampling step.
+
+| ID | Age | Gender | PoD | Length of stay | 
+| -- | --- | ------ | --- | -------------- | 
+| 1  | 73  | m      | NEL | 7              | 
+| 1  | 73  | m      | NEL | 7              |
+| 2  | 23  | f      | EL  | 1              | 
+| 3  | 93  | f      | NEL | 8              | 
+| 3  | 93  | f      | NEL | 8              | 
+: Example showing the data after the activity avoidance Binomial sampling step
+
+9. The final step is to apply the efficiencies mitigators, which for inpatients, mostly reduce the length of stay. A reminder of the efficiencies mitigators that apply to each row is given below. For row ID 1, only one efficiency mitigator applies. For row ID 2, no efficiency mitigators apply, so this step will be skipped for this row. For the two rows with ID 3, there are two possible efficiency mitigators that could apply. Where more than one efficiency mitigator can apply to a row of data, the model will randomly select only one of the efficiencies mitigators to apply in each model iteration. 
+
+| ID | Length of stay | Efficiency Mitigator C | Efficiency Mitigator D | Efficiency mitigator to apply |
+| -- | -------------- | ---------------------- | ---------------------- |------------------- |
+| 1  | 7              | 0.67                   | N/A                    | C                  |
+| 1  | 7              | 0.67                   | N/A                    | C                  |
+| 2  | 1              | N/A                    | N/A                    | N/A                |
+| 3  | 8              | 0.67                   | 0.9                    | C                  |
+| 3  | 8              | 0.67                   | 0.9                    | D                  |
+: Data after the activity avoidance Binomial sampling step, showing applicable efficiency mitigators for each row
+
+10. We sample from a $\text{Binomial}(n,p)$ distribution with parameters $n = LOS$, the Length of Stay for the row, and probability $p$ where p is the sampled value for the efficiency mitigator for each row. So for row ID 1, $n$ would be 7 and $p$ would be 0.67 for the efficiencies Binomial sampling step. The result of this Binomial sampling tells us what the new Length of Stay (LOS) should be for each row. As with the previous sampling steps, there is some randomness inherent in this process.
+
+| ID | Length of stay | Value used as $p$ | Result of Binomial sampling step |
+| -- | -------------- | ----------------  | -------------------------------  |
+| 1  | 7              | 0.67              | 5                                |
+| 1  | 7              | 0.67              | 4                                |
+| 3  | 8              | 0.67              | 5                                |
+| 3  | 8              | 0.9               | 8                                |
+: Example showing efficiencies Binomial sampling step
+
+11. Here we can see the final data after all the steps are completed, for one model iteration. This shows the projected activity for the horizon year, having taken into account all of the different model parameters.
+
+| ID | Age | Gender | PoD | Length of stay | 
+| -- | --- | ------ | --- | -------------- | 
+| 1  | 73  | m      | NEL | 5              | 
+| 1  | 73  | m      | NEL | 4              | 
+| 2  | 23  | f      | EL  | 1              | 
+| 3  | 93  | f      | NEL | 5              | 
+| 3  | 93  | f      | NEL | 8              | 
+: Example showing the data after one model iteration.
+
+These stages are repeated for each record in the baseline dataset and for each run of the Monte Carlo simulation. We then aggregate the results of all the Monte Carlo simulations, using the mean as the principal projection. 
+
+[^1]: The demographic growth methodology is [described on this page](demographic_modelling/demographic_modelling.qmd).
