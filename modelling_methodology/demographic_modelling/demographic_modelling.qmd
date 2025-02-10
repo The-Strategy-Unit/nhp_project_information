@@ -45,7 +45,7 @@ In most cases we expect users to select and use ONS's principal population proje
 
 ## How demographic growth is applied in the model: a worked example
 
-The ONS population projections that have been adapted for each provider output data in something like the following format. Note that there would be more rows of data, with data for each age from 0-90, for each sex. There would also in practice be more columns of data, for every year from the baseline year to the most last year available from the ONS subnational population projections. We have simplified it considerably for this example.
+The ONS population projections that have been adapted for each provider output data in something like the following format. Note that there are more rows of data than are shown here, with data for each age from 0-90, for each sex. There is also in the full projection more columns of data, for every year from the baseline year to the most last year available from the ONS subnational population projections. We have simplified it considerably for this example.
 
 | Gender | Age | 2019 | 2029 | 2039 |
 | --- | --- | ---- | ---- | ---- |
