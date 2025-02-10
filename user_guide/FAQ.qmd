@@ -116,3 +116,19 @@ The initial outputs of a first 'run' will be explored during a technical outputs
 ## Can users download their assumptions to retain for governance purposes? 
 
 Yes, completed model parameters can be downloaded as a JSON file by clicking the 'download params' button in the run model section of the inputs app, which is made available to users after their first refinement workshop. Model parameters can also be downloaded from the outputs app, from the Downloads page.
+
+## Why can't we see a detailed breakdown of exactly which activity was avoided by each mitigator?
+
+Details of the modelling methodology can be seen on the [modelling uncertainty page](../modelling_methodology/modelling_uncertainty.qmd). 
+
+All of the activity avoidance mitigators apply at the same time. If more than one activity avoidance mitigator applies to a row of data, then their values are multiplied together to produce an activity avoidance summary parameter. This activity avoidance summary parameter is then used as $p$ when we randomly sample from a $\text{Binomial}(n,p)$ distribution, where $n = 1$. 
+
+With the efficiencies mitigators, if more than one efficiency mitigator applies to a row of data, the model randomly selects which mitigator to apply in each run. It then uses the sampled value for the efficiency mitigator as $p$ when sampling from a $\text{Binomial}(n,p)$ distribution, where $n = LOS$, the Length of Stay for the row. 
+
+It is therefore not possible to exactly state which mitigator has removed specific types of activity. We can provide high-level estimates of activity removed through the [step counts/impact of changes](glossary.qmd#impact-of-changes), and a breakdown of avoided activity by age and sex in the model results. We have not yet implemented the ability to see a breakdown of activity removed by the efficiency mitigators in the model results.
+
+
+
+
+
+
