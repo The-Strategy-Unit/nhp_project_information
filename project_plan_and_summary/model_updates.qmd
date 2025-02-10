@@ -3,6 +3,24 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/02/10
+
+## v3.2
+
+### 2023/24 baseline year now available
+
+We have received 2023/24 [HES (Hospital Episode Statistics)](https://digital.nhs.uk/services/hospital-episode-statistics) data and it is now available to select as a baseline year on the [inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). You must request and review your detailed 2023/24 baseline data before selecting 2023/24 as the baseline year. Please contact [mlcsu.su.datascience@nhs.net](mailto:mlcsu.su.datascience@nhs.net?subject=NHP request: 2023/24 detailed baseline data&body=I am requesting the 2023/24 detailed baseline data for [insert scheme name].) to request your 2023/24 detailed baseline data.
+
+### Mitigator information in inputs app updated
+
+We have updated the data pipeline for the inputs app, meaning that data shown to support the setting of each mitigator should now be an accurate reflection of the data used in the model. There was a disconnect in v3.0 and v3.1 of the model between the data shown in the inputs app, and the data used in the model.
+
+### Bug fixes
+
+We have fixed a bug which allowed invalid values over 1 to be set when setting mitigators in the inputs app. This was caused by the toggle between relative and absolute values.
+
+We have fixed a bug preventing baseline adjustment from working correctly for A&E and Outpatients.
+
 # Update 2024/12/19
 
 ## v3.1
