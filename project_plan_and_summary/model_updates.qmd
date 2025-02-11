@@ -3,7 +3,7 @@ title: "Model updates"
 order: 5
 ---
 
-# Update 2025/02/10
+# Update 2025/02/12
 
 ## v3.2
 
