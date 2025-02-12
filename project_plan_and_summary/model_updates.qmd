@@ -15,6 +15,12 @@ We have received 2023/24 [HES (Hospital Episode Statistics)](https://digital.nhs
 
 We have updated the data pipeline for the inputs app, meaning that data shown to support the setting of each mitigator should now be an accurate reflection of the data used in the model. There was a disconnect in v3.0 and v3.1 of the model between the data shown in the inputs app, and the data used in the model.
 
+### Other updates
+
+We have removed maternity activity from being impacted by outpatients mitigators. Maternity activity is identified with treatment specialty codes `424`, `501`, `505`, and `560`.
+
+We now include other attendance categories in A&E data. Where we previously only filtered to attendance category `1` (first attendances) in A&E data, we now include attendance categories `2`, `3`, `4` and `X`.
+
 ### Bug fixes
 
 We have fixed a bug which allowed invalid values over 1 to be set when setting mitigators in the inputs app. This was caused by the toggle between relative and absolute values.
