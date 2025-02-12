@@ -40,9 +40,6 @@ We select records where the `SEX` is either 1 or 2 (Male/Female). This causes so
 not known, or is neither male or female. However, the population growth part of the model depends upon this field having
 one of the two stated values above.
 
-We select records where the `aeattendcat` field is `"1"` (First A&E attendance).
-This filters out planned and unplanned follow-up's.
-
 ## Derived fields
 
 ### `is_low_cost_referred_or_discharged`
