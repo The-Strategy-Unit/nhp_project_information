@@ -15,38 +15,42 @@ The variable names for each strategy are also included. These are used when inte
 ```{r}
 #| label: read-mitigators
 
-simplify_name <- function(name) {
-  name |>
-    stringr::str_to_sentence() |>
-    stringr::str_replace_all("_", " ")
+get_container <- function(container_name) {
+  
+  ep_uri <- Sys.getenv("AZ_STORAGE_EP")
+  app_id <- Sys.getenv("AZ_APP_ID")
+  
+  token <- AzureAuth::get_azure_token(
+    "https://storage.azure.com",
+    tenant = Sys.getenv("AZ_TENANT_ID"),
+    app = app_id,
+    auth_type = "device_code",
+    use_cache = TRUE
+  )
+  
+  Sys.getenv("AZ_STORAGE_EP") |>
+    AzureStor::blob_endpoint(token = token) |>
+    AzureStor::storage_container(container_name)
+  
 }
 
-dat <- readr::read_csv(
-  "mitigator-codes.csv",
-  show_col_types = FALSE,
-  col_select = c(
-    "activity_type",
-    "mitigators_type",
-    "strategy",
-    "strategy_name",
-    "mitigator_code"
+support_container <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT") |> 
+  get_container()
+
+lookup <- AzureStor::storage_read_csv(
+  support_container,
+  "mitigator-lookup.csv",
+  show_col_types = FALSE
+)
+
+dat <- lookup |> 
+  dplyr::select(
+    "Mitigator code",
+    "Activity type",
+    "Mitigator type",
+    "Strategy variable",
+    "Strategy name"
   )
-) |> 
-  dplyr::mutate(
-    activity_type = dplyr::case_match(
-      activity_type,
-      "ip" ~ "Inpatients",
-      "op" ~ "Outpatients",
-      "aae" ~ "Accident and Emergency"
-    ),
-    mitigators_type = simplify_name(mitigators_type),
-  ) |> 
-  dplyr::relocate(mitigator_code, .before = 1) |> 
-  dplyr::rename(
-    mitigator_type = mitigators_type,
-    strategy_variable = strategy
-  ) |> 
-  dplyr::rename_with(simplify_name)
 
 htmltools::tagList(
   htmltools::tags$button(
