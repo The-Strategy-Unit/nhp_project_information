@@ -32,8 +32,7 @@ support_container <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT") |>
 
 lookup <- AzureStor::storage_read_csv(
   support_container,
-  "mitigator-lookup.csv",
-  show_col_types = FALSE
+  "mitigator-lookup.csv"
 )
 
 dat <- lookup |> 
