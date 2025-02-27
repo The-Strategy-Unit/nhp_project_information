@@ -13,7 +13,9 @@ The variable names for each strategy are also included. These are used when inte
 
 
 ```{r}
-#| label: read-mitigators
+#| label: mitigators-table
+
+library(readr)  # forces readr in AzureStor::storage_read_csv
 
 get_container <- function(container_name) {
   
@@ -32,7 +34,8 @@ support_container <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT") |>
 
 lookup <- AzureStor::storage_read_csv(
   support_container,
-  "mitigator-lookup.csv"
+  "mitigator-lookup.csv",
+  show_col_types = FALSE  # readr must be loaded
 )
 
 dat <- lookup |> 
