@@ -153,7 +153,7 @@ Codes used within the model to identify spells of this type can be found on the 
 ## Falls Related Admissions (IP-AA-016)
 
 Some falls that result in an emergency admission to hospital are potentially avoidable if the appropriate preventative services are in place. 
-A range of evidence based services and interventions exist that can reduce falls in the elderly. Implementation across the country is variable and as such there remains significant scope to reduce the incidence of falls further. 
+A range of evidence based services and interventions exist that can reduce falls in older people. Implementation across the country is variable and as such there remains significant scope to reduce the incidence of falls further. 
 Examples of preventative services include home risk assessments for trip hazards, strength and balance training for those at risk and falls telemonitoring. 
 
 Falls related admissions are identified in the model in a number of ways:
@@ -170,13 +170,13 @@ The codes for explicit falls are taken from the [PHE outcome indicator framework
 
 [fra_1]: https://fingertips.phe.org.uk/profile/public-health-outcomes-framework/data#page/6/gid/1000042/pat/6/par/E12000004/ati/102/are/E06000015/iid/22401/age/27/sex/4
 
-## Frail Elderly Related Admissions
+## Older People with Frailty Admissions
 
-Older people are major users of acute health care. Some older people are at a higher risk of poor outcomes due to frailty. Addressing frailty remains a high priority for Healthcare systems which continue to develop services and interventions that identify and support frail patients in order to maintain their functionality and independence, thereby slowing or avoiding deterioration that often results in the need for hospital care. Frailty is also one of the core pathways where the development of virtual wards is focused and therefore patients in this activity cohort may be suitable for admission to a frailty virtual ward. 
+Older people are major users of acute health care. Some older people are at a higher risk of poor outcomes due to frailty. Addressing frailty remains a high priority for Healthcare systems which continue to develop services and interventions that identify and support people living with frailty in order to maintain their functionality and independence, thereby slowing or avoiding deterioration that often results in the need for hospital care. Frailty is also one of the core pathways where the development of virtual wards is focused and therefore patients in this activity cohort may be suitable for admission to a frailty virtual ward. 
 
 The model identifies admissions that may be related to frailty by adapting an approach developed by Gilbert, Thomas et al.[^fera_1]
 
-The model identifies all emergency admissions for patients aged over 75 and generates a total frailty score for each spell based on diagnoses recorded for admissions during the previous 2 years. Frailty scores for each prior admission are assigned a score taken a table of ICD10 risk scores within the paper above. For example a patient with 2 previous admissions where the first had a recorded diagnosis of F00 Dementia and the second had a diagnosis of W19 unspecified fall is awarded a score of 7.1 for the first admission and 3.2 for the second giving a total frailty score of 10.3. 
+The model identifies all emergency admissions for patients aged 75 and over and generates a total frailty score for each spell based on diagnoses recorded for admissions during the previous 2 years. Frailty scores for each prior admission are assigned a score taken a table of ICD10 risk scores within the paper above. For example a patient with 2 previous admissions where the first had a recorded diagnosis of F00 Dementia and the second had a diagnosis of W19 unspecified fall is awarded a score of 7.1 for the first admission and 3.2 for the second giving a total frailty score of 10.3. 
 
 Spells are categorised as either intermediate frailty risk (total score > 5) or high intermediate risk (total score > 15). 
 
@@ -320,9 +320,9 @@ Figure 4 shows that average LoS for **emergency inpatients (excluding 0 LoS spel
 
 ![Fig. 4 Trends in average LoS for emergency inpatients (excluding 0 LoS spells) 1989/1990 to 2019/20](LOS_4.png)
 
-## Emergency admission of older people (IP-EF-009)
+## Emergency Admission of Older People (IP-EF-009)
 
-The model identifies all patients aged over 75 admitted as an emergency. These patients typically have long lengths of stay and thus represent a significant efficiency opportunity through process improvements, interventions or pathway developments that help to reduce Length of Stay (LoS). Frail elderly is also one of the core pathways where the development of virtual wards is focused and therefore patients in this activity cohort may be suitable for earlier discharge through admission to a step down virtual ward. 
+The model identifies all patients aged 75 and over admitted as an emergency. These patients typically have long lengths of stay and thus represent a significant efficiency opportunity through process improvements, interventions or pathway developments that help to reduce Length of Stay (LoS). Frailty is also one of the core pathways where the development of virtual wards is focused and therefore patients in this activity cohort may be suitable for earlier discharge through admission to a step down virtual ward. 
 
 ## Enhanced Recovery
 
@@ -373,7 +373,7 @@ Trim Points are updated annually and can be found in the [National Tariff workbo
 
 [ebd_1]: https://www.england.nhs.uk/publication/past-national-tariffs-documents-and-policies/
 
-## Admissions with mental health comorbidities (IP-EF-024)
+## Admissions with Mental Health Comorbidities (IP-EF-024)
 
 Patients with mental health problems admitted to hospital in an emergency can have longer lengths of stay (LoS) due to added complexities this creates in treating and supporting such patients. 
 Psychiatric liaison services (sometimes referred to as RAID) can help to reduce the LoS for such patients by providing support to ward staff whilst in hospital, and facilitating timely discharge through the provision of appropriate post discharge support. 
@@ -388,7 +388,7 @@ The model identifies patients who have a stroke related HRG code who may benefit
 
 ## General LoS Reduction
 
-Historically there has been a sustained and continuing reduction in average length of stay (LoS). The model allows users to make assumptions about future reductions in LoS relating to some specific activity cohorts, such as over 75 patients admitted as an emergency, but it is recognised that continued LoS reductions may also continue to be achieved for patients outside of these specific cohorts. This mitigator therefore allows users to set assumptions about the expected reduction in the average LoS for emergency and elective spells that are not covered by the other specific efficiency mitigators. The assumed % reduction is applied to the average LoS.
+Historically there has been a sustained and continuing reduction in average length of stay (LoS). The model allows users to make assumptions about future reductions in LoS relating to some specific activity cohorts, such as patients aged 75 and over who are admitted as an emergency, but it is recognised that continued LoS reductions may also continue to be achieved for patients outside of these specific cohorts. This mitigator therefore allows users to set assumptions about the expected reduction in the average LoS for emergency and elective spells that are not covered by the other specific efficiency mitigators. The assumed % reduction is applied to the average LoS.
 
 ### Available breakdowns
 
