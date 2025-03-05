@@ -5,6 +5,8 @@ order: 1
 
 # What does the NHP model do?
 
+A one page explainer [is available here](https://connect.strategyunitwm.nhs.uk/nhp_model_explainer/).
+
 Essentially, the NHP model estimates future hospital activity. It is a probabilistic model which factors in the inherent uncertainty associated with making forecasts about future demand. As such, some of the inputs must be given in the form of ranges (80% prediction intervals) and the outputs provide a [principal projection](/user_guide/glossary.qmd#principal-projection) as well as a description of the variation in the estimated future activity. The main [outputs](/user_guide/FAQ.qmd#how-are-outputs-provided) are high-level summary statistics such as counts of admissions, bed-days, outpatient and A&E attendances as well as more detailed information providing a breakdown by site, activity type, age group, and treatment specialty.  
 
 In addition to the forecasting of hospital activity, schemes will be offered the use of tools to assist them in their task of converting the forecasted demand into capacity. 
