@@ -24,7 +24,7 @@ If for some reason the HES data for a provider trust in the baseline year was no
 
 - Mandatory, fixed
 
-This adjustment accounts for decreased hospital activity during the 2019/20 baseline year due to the COVID-19 pandemic. The adjustments shown are those recommended by NHSE and they are applied automatically within the model.
+This adjustment accounts for decreased hospital activity during the 2019/20 baseline year due to the COVID-19 pandemic. The adjustments shown are those recommended by NHSE and they are applied automatically within the model. This adjustment is turned off for other baseline years.
 
 ## Population changes
 

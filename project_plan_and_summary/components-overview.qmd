@@ -9,7 +9,7 @@ Given the size of the project, there are numerous GitHub repositories relating t
 
 The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
 
-![Diagram of NHP model architecture](../resources/NHP_diagram_public_v3-1.png){fig-alt="A diagram showing the connections between the various repositories"}
+![Diagram of NHP model architecture](../resources/NHP_diagram_public_v3-2.png){fig-alt="A diagram showing the connections between the various repositories"}
 
 ## Repositories relating to model inputs
 
@@ -41,9 +41,13 @@ This repository contains the Azure Functions for the API that triggers the runni
 
 This repository provides an interface for users to explore the results of the model, the [NHP outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
--   [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app) [PRIVATE]
+-   [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app) [OPEN]
 
 This repository is a Shiny dashboard allowing the comparison of mitigators set by schemes using the NHP model.
+
+-   [nhp_final_reports](https://github.com/The-Strategy-Unit/nhp_final_reports) [CLOSED]
+
+This repository contains code to auto-populate with scheme-specific content the NHP 'final report' template (sometimes referred to as the 'outputs report'). Generates scheme-specific (and possibly site-specific) charts, tables and values from final model-run data and inserts these into the final-report template (docx) using {officer}.
 
 ## Repositories relating to documentation
 
