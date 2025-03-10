@@ -1,0 +1,19 @@
+---
+title: "Inequalities"
+order: 1
+---
+
+## Reducing Inequalities in Activity Rates
+
+### Background
+
+Health inequalities are unfair, avoidable group-level differences in health outcomes.\
+All NHS providers have a duty to work to reduce these inequalities in future, and the [New Hospitals Programme](https://www.gov.uk/government/publications/new-hospital-programme-review-outcome/new-hospital-programme-equality-impact-assessment#:~:text=Women%2C%20children%2C%20the%20elderly%2C,use%20hospital%20services%20in%20general) is a key way in which the schemes enrolled can work to address these differences.
+
+When predicting future demand for acute care, we have the choice of whether to assume existing inequalities in acute care activity will persist, or to make assumptions around their reduction. If we assume that inequality in activity rates will be rectified (an upward slope of activity rates against deprivation being flattened to become horizontal) by the horizon year, we can make further assumptions about how this change may come about. This is agnostic to the specific ways in which schemes will choose to modify their activity to achieve this aim, but it does assume that any changes made will be grossly successful in removing HRG-specific inequality. This represents an assumption of the successful application of [proportional universalism](https://www.instituteofhealthequity.org/resources-reports/towards-health-equity-a-framework-for-the-application-of-proportionate-universalism).
+
+### Method
+
+Within each Healthcare Resource Group (HRG) in each scheme, the activity rate in the baseline year is plotted against deciles of [Index of Multiple Deprivation](https://www.gov.uk/government/collections/english-indices-of-deprivation) (IMD[^1] , based on the [Lower Super Output Area](https://www.ons.gov.uk/methodology/geography/ukgeographies/statisticalgeographies) (LSOA) of patient residence, where quintile 1 is the most deprived 10% of LSOAs) and a straight line is fitted through the ten points. This rate is calculated as the count of that activity per decile of deprivation in the baseline year, divided by the estimated catchment population for the hospital in that resides in that deprivation decile. If the line trends upwards from decile 1 to 10, this HRG is added to the list of those where significant inequality was evident. See Figure 1 for a visual depiction.
+
+[^1]: [IMD19](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) in the current model version.
