@@ -13,85 +13,189 @@ Bed days are defined as `discharge_date - admission_date + 1`.
 
 A prediction interval (PI) is an interval which is expected to typically contain the variable being estimated. In the context of the NHP Demand and Capacity model, we show results in terms of a principal projection, as well as 90% (upper) and 10% (lower) prediction intervals showing the range of possibilities in the modelled future. For example, if the model's principal projection for beddays is 200,000 and the upper and lower prediction intervals are 210,000 and 190,000, then this indicates the actual number of beddays in the horizon year should lie between this interval with probability 0.8.
 
-On the 'Distribution of projections' section of the outputs app, we have the tabs 'activity summary' (a summary table) and 'activity distribution' (contains the S-curve). Summing the values for the upper and lower prediction intervals on the summary table can give different results to the numbers seen on the S-curve chart for the upper and lower prediction intervals. 
+### Combining distributions
 
-The reason for this is that the summary table calculates the lower and upper values separately for each point of delivery (POD), which means you’re effectively taking a summary of a summary by adding these values together. This contrasts with calculating the lower and upper for all inpatient Point of Deliveries (PODs) together, where all the data is used to generate the summary values and information is not 'lost'. In other words, we can expect the two types of calculation to yield slightly different results.
+On the 'Distribution of projections' section of the outputs app, we have the tabs 'activity summary' (a summary table) and 'activity distribution' (contains the S-curve). Summing the values for the upper and lower prediction intervals on the summary table will give different results to the numbers seen on the S-curve chart for the upper and lower prediction intervals. It is not statistically valid to combine these distributions by summing the prediction intervals.
+
+The reason for this is that the summary table calculates the lower and upper values separately for each point of delivery (POD), which means you’re effectively taking a summary of a summary by adding these values together. This contrasts with calculating the lower and upper for all inpatient Point of Deliveries (PODs) together, where all the data is used to generate the summary values and information is not 'lost'. In other words, we can expect the two types of calculation to yield different results.
 
 ::: {.callout-note collapse="true"}
 ## A worked example
 
 Consider this table, which has dummy PODs (A, B and C) and calculates a sum total per row:
 
-|     A        |     B        |     C        |      Total       |
-|--------------|--------------|--------------|------------------|
-|     20       |     58       |     148      |     226          |
-|     16       |     59       |     148      |     223          |
-|     11       |     52       |     174      |     237          |
-|     17       |     52       |     142      |     211          |
-|     12       |     66       |     101      |     179          |
-|     7        |     60       |     192      |     259          |
-|     17       |     65       |     196      |     278          |
-|     14       |     68       |     188      |     270          |
-|     12       |     66       |     103      |     181          |
-|     15       |     54       |     159      |     228          |
-|     8        |     65       |     114      |     187          |
-|     8        |     62       |     130      |     200          |
-|     10       |     68       |     196      |     274          |
-|     7        |     58       |     135      |     200          |
-|     13       |     59       |     122      |     194          |
-|     5        |     65       |     153      |     223          |
-|     14       |     68       |     142      |     224          |
-|     16       |     67       |     109      |     192          |
-|     14       |     64       |     135      |     213          |
-|     10       |     70       |     143      |     223          |
-|     20       |     63       |     184      |     267          |
+| A   | B   | C   | Total |
+|-----|-----|-----|-------|
+| 20  | 58  | 148 | 226   |
+| 16  | 59  | 148 | 223   |
+| 11  | 52  | 174 | 237   |
+| 17  | 52  | 142 | 211   |
+| 12  | 66  | 101 | 179   |
+| 7   | 60  | 192 | 259   |
+| 17  | 65  | 196 | 278   |
+| 14  | 68  | 188 | 270   |
+| 12  | 66  | 103 | 181   |
+| 15  | 54  | 159 | 228   |
+| 8   | 65  | 114 | 187   |
+| 8   | 62  | 130 | 200   |
+| 10  | 68  | 196 | 274   |
+| 7   | 58  | 135 | 200   |
+| 13  | 59  | 122 | 194   |
+| 5   | 65  | 153 | 223   |
+| 14  | 68  | 142 | 224   |
+| 16  | 67  | 109 | 192   |
+| 14  | 64  | 135 | 213   |
+| 10  | 70  | 143 | 223   |
+| 20  | 63  | 184 | 267   |
 
 : Table 1
 
 If you take the 10th and 90th percentiles within each of the columns in the above table, you get these values:
 
-|     Centile    |     A     |     B     |     C      |     Total    |
-|----------------|-----------|-----------|------------|--------------|
-|     10th       |     7     |     54    |     109    |     187      |
-|     90th       |     17    |     68    |     192    |     270      |
+| Centile | A   | B   | C   |
+|---------|-----|-----|-----|
+| 10th    | 7   | 54  | 109 |
+| 90th    | 17  | 68  | 192 |
 
 : Table 2
 
-So the percentile values for Table 1's "Total" column are 187 and 270. But if you simply add up the A, B and C values calculated in Table 2, then you get totals of 170 and 277.
+
+To correctly combine the prediction intervals for these three PODs, we must first calculate the standard deviation of each POD separately, using the following equation:
+
+$$\sigma{_A} = \frac{PI_{90_A} - PI_{10_A}} {Z_{90}-Z_{10}}$$
+
+where $PI_{90_A}$ represents the 90th percentile for POD A and $Z_{90}$ represents the z-score of the 90th percentile (of a Normal distribution), and so on.
+
+We combine the means of the PODs by simply summing them.
+
+To combine the standard deviations, we sum the squared standard deviations as follows:
+
+$$\ \sum{\sigma_{all}} = \sqrt(\sigma_A^2 + \sigma_B^2 + \sigma_C^2)$$
+
+The final step is to calculate the 10th and 90th percentiles of this new combined distribution:
+
+$$\ PI_{10}^{new} = \mu + (Z_{10}\times \sigma_{all})$$
+
+$$\ PI_{90}^{new} = \mu + (Z_{90}\times \sigma_{all})$$
+
+where $\mu$ denotes the overall mean.
+
+Table 3 below shows how the new prediction intervals of the combined PODs 
+calculated via the method above ("Combined") differs to those generated by simply 
+summing the 90th and 10th percentiles from each POD ("Summed").
+
+| Centile | A   | B   | C   | Combined | Summed |
+|---------|-----|-----|-----|----------|--------|
+| 10th    | 7   | 54  | 109 | 181      | 170    |
+| 90th    | 17  | 68  | 192 | 266      | 277    |
+
+: Table 3
+
+::: {.callout-note collapse="true"} 
+## Expand to see an example of how to calculate the above using R code
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(tidyverse)
+
+#create the synthetic data
+synth_data <- tibble::tribble(
+                 ~A,  ~B,   ~C, ~Total,
+                20L, 58L, 148L,   226L,
+                16L, 59L, 148L,   223L,
+                11L, 52L, 174L,   237L,
+                17L, 52L, 142L,   211L,
+                12L, 66L, 101L,   179L,
+                 7L, 60L, 192L,   259L,
+                17L, 65L, 196L,   278L,
+                14L, 68L, 188L,   270L,
+                12L, 66L, 103L,   181L,
+                15L, 54L, 159L,   228L,
+                 8L, 65L, 114L,   187L,
+                 8L, 62L, 130L,   200L,
+                10L, 68L, 196L,   274L,
+                 7L, 58L, 135L,   200L,
+                13L, 59L, 122L,   194L,
+                 5L, 65L, 153L,   223L,
+                14L, 68L, 142L,   224L,
+                16L, 67L, 109L,   192L,
+                14L, 64L, 135L,   213L,
+                10L, 70L, 143L,   223L,
+                20L, 63L, 184L,   267L
+                )
+#Calculate each POD's 10th percentile
+P10_A = quantile(synth_data$A, 0.1, names = F)
+P10_B = quantile(synth_data$B, 0.1, names = F)
+P10_C = quantile(synth_data$C, 0.1, names = F)
+
+#Calculate each POD's 90th percentile
+P90_A = quantile(synth_data$A, 0.9, names = F)
+P90_B = quantile(synth_data$B, 0.9, names = F)
+P90_C = quantile(synth_data$C, 0.9, names = F)
+
+#Sum the means
+Mean_sum <- mean(synth_data$A) + mean(synth_data$B) + mean(synth_data$C)
+
+#Calculate the cut-offs for a Normal distribution
+z_p10 <- qnorm(0.10)
+z_p90 <- qnorm(0.90)
+
+#Calculate the standard deviation for each POD
+sd_A <- (P90_A - P10_A) / (z_p90 - z_p10)
+sd_B <- (P90_B - P10_B) / (z_p90 - z_p10)
+sd_C <- (P90_C - P10_C) / (z_p90 - z_p10)
+
+# Calculate the overall standard deviation
+sd_sum <- sqrt(sd_A^2 + sd_B^2 + sd_C^2)
+
+# Calculate PI10 and PI90 for the summed distribution
+P10_sum <- Mean_sum + z_p10 * sd_sum
+P90_sum <- Mean_sum + z_p90 * sd_sum
+
+# Output results 
+list(
+  Mean_sum = Mean_sum,
+  sd_sum = sd_sum,
+  P10_sum = P10_sum,
+  P90_sum = P90_sum
+)
+```
+
+:::
 
 :::
 
 ## Distribution of projections
 
-The results of the (usually 256) Monte Carlo simulation runs, each of which will randomly sample from the 80% prediction intervals supplied as the model parameters. The "central projection" is the median result from the 256 runs.  
+The results of the (usually 256) Monte Carlo simulation runs, each of which will randomly sample from the 80% prediction intervals supplied as the model parameters. The "central projection" is the median result from the 256 runs.
 
 ## Empirical Cumulative Distribution Function (ECDF) Curve / S-Curve
 
-The s-curve shows the range of results (or values) obtained from all the model runs on the x-axis and their likelihood of occurring as (cumulative) percentages (0% to 100%) on the y-axis. There are three main ways of reading the s-curve. 
+The s-curve shows the range of results (or values) obtained from all the model runs on the x-axis and their likelihood of occurring as (cumulative) percentages (0% to 100%) on the y-axis. There are three main ways of reading the s-curve.
 
-1. Start from the x-axis. Pick a value from the x-axis (say its 4500) and climb vertically to that point on the s-curve and then read the corresponding y-value - say this is 75%. This means there is a 75% chance that the x-value is less than or equal to 4500. In other words 75% of model runs produced a result of less than or equal to 4500.
+1.  Start from the x-axis. Pick a value from the x-axis (say its 4500) and climb vertically to that point on the s-curve and then read the corresponding y-value - say this is 75%. This means there is a 75% chance that the x-value is less than or equal to 4500. In other words 75% of model runs produced a result of less than or equal to 4500.
 
-2. Start from the y-axis. Pick a given percentage chance value from the y-axis and then find the corresponding x-value. For example, if you want what model results that were obtained 85% of the time, find 85% on the y-axis and then read the corresponding x-value - say this is 5900. This means that there is a 85% chance that the x-value is less than or equal to 5900.
+2.  Start from the y-axis. Pick a given percentage chance value from the y-axis and then find the corresponding x-value. For example, if you want what model results that were obtained 85% of the time, find 85% on the y-axis and then read the corresponding x-value - say this is 5900. This means that there is a 85% chance that the x-value is less than or equal to 5900.
 
-3. You can also find the surprisingly low and high values from the s-curve by reading across from the two y-axis values - 10% and 90% - to the corresponding two x-values. Say these x-values are 6000 and 7300. This means that there is an 80% (=90%-10%) chance that x values fall between 6000 to 7300.
+3.  You can also find the surprisingly low and high values from the s-curve by reading across from the two y-axis values - 10% and 90% - to the corresponding two x-values. Say these x-values are 6000 and 7300. This means that there is an 80% (=90%-10%) chance that x values fall between 6000 to 7300.
 
-## Impact of changes 
+## Impact of changes
 
 The waterfall diagram shown on Impact of Changes tab of the outputs dashboard shows the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts at the horizon year. The data that informs this diagram is found on the step_counts tab in the Excel download of model results. These contributions are indicative because it is not possible to attribute a particular healthcare activity to a particular factor.
 
 The model works by considering the effect of all model factors (demographic growth, non demographic growth, activity avoidance, and others) simultaneously. Each has a simple effect on its own as well as giving rise to a compound effect when its effect is combined with all of the other model components. This compounding effect is a real world phenomenon that more simplistic models ignore. Within our model this compound effect is explicitly accounted for and is shown as a separate bar within the waterfall chart.
 
 ::: {.callout-note collapse="true"}
-
 ### Simple example
 
 To better explain the effect of compounding take as an example demographic growth and non demographic growth. Demographic growth refers to an increase in healthcare activity owing to a change in the size or age/ sex mix of a given population. Non demographic growth refers to the tendency for given members of a population to receive more healthcare over time (because of new technology, patient expectations, and other factors).
 
-Imagine there are 100 individuals in the baseline year, consuming 10 units of healthcare each year (these could be inpatient stays, treatments, A&E attendances, or any other unit represented in the model). Imagine at the horizon year there will be 10% more people because of demographic growth (we will ignore age/ sex mix in this example) and the people will be consuming 10% more units of healthcare because of non demographic growth.
-In the baseline year there are 1000 units of healthcare being consumed, 100 individuals consuming 10 each. Considered separately:
+Imagine there are 100 individuals in the baseline year, consuming 10 units of healthcare each year (these could be inpatient stays, treatments, A&E attendances, or any other unit represented in the model). Imagine at the horizon year there will be 10% more people because of demographic growth (we will ignore age/ sex mix in this example) and the people will be consuming 10% more units of healthcare because of non demographic growth. In the baseline year there are 1000 units of healthcare being consumed, 100 individuals consuming 10 each. Considered separately:
 
-* Demographic growth only: 10% more people means 110 people consuming 10 units each, which gives 1100 units of healthcare activity at the horizon (+100)
-* Non demographic growth only: 10% non demographic growth means 11 units of healthcare for 100 people, which also gives 1100 units of activity (+100)
+-   Demographic growth only: 10% more people means 110 people consuming 10 units each, which gives 1100 units of healthcare activity at the horizon (+100)
+-   Non demographic growth only: 10% non demographic growth means 11 units of healthcare for 100 people, which also gives 1100 units of activity (+100)
 
 This gives +200 if you add both effects together giving 1200 units in total.
 
@@ -100,7 +204,6 @@ However, in actual fact there are 110 people consuming 11 units of healthcare at
 This, of course, is a highly over simplistic example. In fact, the effects of all of the factors (demographic growth, non demographic growth, activity avoidance, and the others) are taken into account simultaneously within the model. There is no specific place to put this activity which occurs as a compound effect between the factors.
 
 For a more detailed explanation please see the following worked example and technical explanation.
-
 :::
 
 ::: {.callout-note collapse="true"}
@@ -108,15 +211,15 @@ For a more detailed explanation please see the following worked example and tech
 
 Let’s assume in one model run that we have factors *a* and *b* which both impact on the same 1000 rows of activity, with the values 1.2 and 0.9.
 
-The impact of factor *a* in isolation would be an addition of 200 rows, as 1.2 * 1000 = 1200, and 1200-1000 = 200.
+The impact of factor *a* in isolation would be an addition of 200 rows, as 1.2 \* 1000 = 1200, and 1200-1000 = 200.
 
-The impact of factor *b* in isolation would be a reduction of 100 rows, as 0.9 * 1000 = 900, and 900-1000 = -100.
+The impact of factor *b* in isolation would be a reduction of 100 rows, as 0.9 \* 1000 = 900, and 900-1000 = -100.
 
 If we take the two factors in isolation, there would therefore be an addition of 100 rows in total, as 1000 + 200 – 100 = 1100.
 
 In our simplified example model, the two factors are multiplied together and used as the lambda parameter in the Poisson resampling step.
 
-1.2 * 0.9 = 1.08
+1.2 \* 0.9 = 1.08
 
 $$ n_{future} = \sum_{i = 1}^{1000}x_i$$
 
@@ -131,7 +234,6 @@ There is therefore a difference between the impact of the factors taken in isola
 1085 – 1100 = -15.
 
 This difference of -15 cannot be directly explained, as it is attributed to the compounded effect of the two factors together, together with the randomness inherent in the Poisson sampling step. It is this value which is encapsulated in the model interaction term.
-
 :::
 
 ::: {.callout-note collapse="true"}
@@ -141,12 +243,10 @@ The Impact of Changes tab on the outputs app shows the "step counts" from the mo
 
 The waterfall chart shows the impact of the individual factors on projected future activity, if they were to happen in isolation. However, within the model, the factors are all applied to the baseline at the same time, which results in a compound effect. Additionally, due to the random sampling, the values may not always add up exactly. The effect of compounding and the random sampling are shown on the waterfall chart as a "model interaction term".
 
-The "step counts" in the model are created during the phase of the model where we create the factors. When we add a "step" to the model we work out which rows of activity are affected by the step, creating a new column per step with the factors for that row. We then take the weighted mean of each new column to get a scalar value, grouped by point of delivery and site of treatment. 
+The "step counts" in the model are created during the phase of the model where we create the factors. When we add a "step" to the model we work out which rows of activity are affected by the step, creating a new column per step with the factors for that row. We then take the weighted mean of each new column to get a scalar value, grouped by point of delivery and site of treatment.
 
 We take this weighted mean, subtract 1, and multiply by the baseline to get the estimated simple effect of the step in isolation from all other steps. When these simple effects are summed, they do not equal the total effect, as in the model the factors are actually multiplied together and not summed. Therefore, we include a model interaction term to describe the effect of multiplying the factors together as well as the residual from random sampling.
-
 :::
-
 
 ## Inpatient admissions
 
@@ -154,9 +254,9 @@ The way in which these are classified and grouped is defined on [this page](http
 
 ## Outpatient attendances
 
-These are divided into first, follow-up, and procedures. Added together, these 3 equal the total amount of outpatient activity. A single appointment cannot appear in procedures and first, or procedures and follow-up, or first and follow up. The way in which we define these is with the following code: 
+These are divided into first, follow-up, and procedures. Added together, these 3 equal the total amount of outpatient activity. A single appointment cannot appear in procedures and first, or procedures and follow-up, or first and follow up. The way in which we define these is with the following code:
 
-```
+```         
 CASE 
   WHEN SUSHRG NOT LIKE 'WF%' AND SUSHRG NOT LIKE 'U%' THEN 'procedure' 
   WHEN atentype IN ('1', '21') THEN 'first' 
@@ -175,16 +275,15 @@ The key outputs of the model are estimates of future hospital activity. The prin
 
 For model v2.0 onwards, the principal projection is the average (mean) of all the 256 Monte Carlo simulations which have been run for a scenario. In the outputs, users will see a principal projection figure for all the different types of activity which the model forecasts. This approach to determining the principal projection was adopted in July 2024. It ensures that the principal projection will sit in the middle of the activity distribution (i.e. it will be very close to the 50th percentile or median).
 
-For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter prediction intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.  
+For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter prediction intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.
 
-This is not to be confused with the ONS principal population projection. 
+This is not to be confused with the ONS principal population projection.
 
 ## Time profiles
 
 "Time profiles" refers to the way in which activity is forecasted to grow in the years between the baseline year and the horizon year. This not currently available as a standard output from the model, but is available on request. The methodology used to calculate this is given below.
 
-1. Take the step counts from the model results – also sometimes referred to as "impact of changes", which show the estimated impact of the parameter on the model results at the horizon year.
-2. Create factors for each of the model parameters depending on the [time profile](setting_the_parameters.qmd#time-profiles) selected for that specific parameter, and the number of years between baseline to horizon year. For example for a linear time profile, for a model with 10 years from the baseline to the model horizon year, the factors for each year would be [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]. For a step change time profile, for a parameter with a step change in year 7, the factors for each year would be [0, 0, 0, 0, 0, 0, 1, 1, 1].
-3. For each parameter and each year, multiply the relevant factor with the step count to determine impact of that parameter on the activity for that specific year. For example for a linear time profile parameter with a step count of 10000 in the horizon year, the estimated impact of the parameter across the 10 years from baseline year to horizon year would be 0.1 * 10000 in year 1, 0.2 * 10000 in year 2, and so on.
-4. For each year, add together the product of the factors and step counts for the specific year to arrive at an estimate for the change in activity for that year, which takes into account the time profiles selected.
-
+1.  Take the step counts from the model results – also sometimes referred to as "impact of changes", which show the estimated impact of the parameter on the model results at the horizon year.
+2.  Create factors for each of the model parameters depending on the [time profile](setting_the_parameters.qmd#time-profiles) selected for that specific parameter, and the number of years between baseline to horizon year. For example for a linear time profile, for a model with 10 years from the baseline to the model horizon year, the factors for each year would be \[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9\]. For a step change time profile, for a parameter with a step change in year 7, the factors for each year would be \[0, 0, 0, 0, 0, 0, 1, 1, 1\].
+3.  For each parameter and each year, multiply the relevant factor with the step count to determine impact of that parameter on the activity for that specific year. For example for a linear time profile parameter with a step count of 10000 in the horizon year, the estimated impact of the parameter across the 10 years from baseline year to horizon year would be 0.1 \* 10000 in year 1, 0.2 \* 10000 in year 2, and so on.
+4.  For each year, add together the product of the factors and step counts for the specific year to arrive at an estimate for the change in activity for that year, which takes into account the time profiles selected.
