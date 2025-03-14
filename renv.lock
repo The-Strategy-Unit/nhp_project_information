@@ -9,6 +9,76 @@
     ]
   },
   "Packages": {
+    "AzureAuth": {
+      "Package": "AzureAuth",
+      "Version": "1.3.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "httr",
+        "jose",
+        "jsonlite",
+        "openssl",
+        "rappdirs",
+        "utils"
+      ],
+      "Hash": "3ce531ce76e84cf7f86c4deb01f225ce"
+    },
+    "AzureGraph": {
+      "Package": "AzureGraph",
+      "Version": "1.3.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "AzureAuth",
+        "R",
+        "R6",
+        "curl",
+        "httr",
+        "jsonlite",
+        "openssl",
+        "utils"
+      ],
+      "Hash": "9e5449c6a5d0a7d3a03097667ff63850"
+    },
+    "AzureRMR": {
+      "Package": "AzureRMR",
+      "Version": "2.4.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "AzureAuth",
+        "AzureGraph",
+        "R",
+        "R6",
+        "httr",
+        "jsonlite",
+        "parallel",
+        "utils",
+        "uuid"
+      ],
+      "Hash": "5a24a1da5e363cb279807ccc67af511e"
+    },
+    "AzureStor": {
+      "Package": "AzureStor",
+      "Version": "3.7.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "AzureRMR",
+        "R",
+        "R6",
+        "httr",
+        "mime",
+        "openssl",
+        "utils",
+        "vctrs",
+        "xml2"
+      ],
+      "Hash": "ddb01acbe698467420adec8580198916"
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-61",
@@ -84,6 +154,15 @@
         "utils"
       ],
       "Hash": "c493baca86321dfdd7acc9d236562caf"
+    "askpass": {
+      "Package": "askpass",
+      "Version": "1.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "sys"
+      ],
+      "Hash": "c39f4155b3ceb1a9a2799d700fbd4b6a"
     },
     "base64enc": {
       "Package": "base64enc",
@@ -243,6 +322,16 @@
         "R"
       ],
       "Hash": "d65efa2a203bb99faa78690eee928f30"
+    },
+    "curl": {
+      "Package": "curl",
+      "Version": "5.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "411ca2c03b1ce5f548345d2fc2685f7a"
     },
     "digest": {
       "Package": "digest",
@@ -486,6 +575,21 @@
       ],
       "Hash": "04291cc45198225444a397606810ac37"
     },
+    "httr": {
+      "Package": "httr",
+      "Version": "1.4.7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "curl",
+        "jsonlite",
+        "mime",
+        "openssl"
+      ],
+      "Hash": "ac107251d9d9fd72f0ca8049988f1d7f"
+    },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.7",
@@ -496,6 +600,17 @@
         "utils"
       ],
       "Hash": "0080607b4a1a7b28979aecef976d8bc2"
+    },
+    "jose": {
+      "Package": "jose",
+      "Version": "1.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "jsonlite",
+        "openssl"
+      ],
+      "Hash": "cf5ae308441d505b8c7e4b08e0e510aa"
     },
     "jquerylib": {
       "Package": "jquerylib",
@@ -687,6 +802,16 @@
       ],
       "Hash": "e23fb9ecb1258207bcb763d78d513439"
     },
+    "openssl": {
+      "Package": "openssl",
+      "Version": "2.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "askpass"
+      ],
+      "Hash": "2bcca3848e4734eb3b16103bc9aa4b8e"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.10.1",
@@ -791,7 +916,7 @@
       "Package": "readr",
       "Version": "2.1.5",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "R6",
@@ -918,6 +1043,13 @@
       ],
       "Hash": "960e2ae9e09656611e0b8214ad543207"
     },
+    "sys": {
+      "Package": "sys",
+      "Version": "3.4.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "de342ebfebdbf40477d0758d05426646"
+    },
     "tibble": {
       "Package": "tibble",
       "Version": "3.2.1",
@@ -1007,6 +1139,16 @@
       ],
       "Hash": "62b65c52671e6665f803ff02954446e9"
     },
+    "uuid": {
+      "Package": "uuid",
+      "Version": "1.2-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "34e965e62a41fcafb1ca60e9b142085b"
+    },
     "vctrs": {
       "Package": "vctrs",
       "Version": "0.6.5",
@@ -1094,6 +1236,19 @@
         "rlang"
       ],
       "Hash": "a3a1b41cfc948bd88dc5b1e4ae8d491e"
+    },
+    "xml2": {
+      "Package": "xml2",
+      "Version": "1.3.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "methods",
+        "rlang"
+      ],
+      "Hash": "1d0336142f4cd25d8d23cd3ba7a8fb61"
     },
     "yaml": {
       "Package": "yaml",

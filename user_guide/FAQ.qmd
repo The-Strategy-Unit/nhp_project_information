@@ -29,11 +29,11 @@ It is expected that users will choose one of the ONS population projections avai
 
 ## Why do we use a 2019/20 baseline year?
 
-COVID-19 had a significant impact on healthcare activity and 2019/20 is the most recent available year via HES with minimal impact from COVID. We use this as the baseline year, with some adjustment to account for the impact of COVID towards the end of the 2019/20 on hospital activity.
+COVID-19 had a significant impact on healthcare activity and 2019/20 is the most recent available year via HES with minimal impact from COVID. We use this as the baseline year, with some adjustment to account for the impact of COVID towards the end of the 2019/20 on hospital activity. As of model v3.2, 2023/24 is also available to use as a baseline year.
 
 ## Are there plans for other baseline years?
 
-Currently, the year used for baseline data is 2019/20. We plan to include new baselines when they become available via HES and we have been informed that we should receive 2022/23 data by July 2024. When 22/23 baseline data is available, it may have implications for schemes currently going through the process. If the decision is made that a 22/23 baseline is mandated, it is likely to mean assumptions will need to be revisited, especially given that [22/23 looks significantly different to 2019/20](https://www.health.org.uk/publications/long-reads/longer-hospital-stays-and-fewer-admissions). However, we hope that in this event, it would not require a complete repetition of the work schemes have already undertaken. We will let schemes know at the earliest opportunity the outcome of any decisions made regarding when, if and who will switch to 22/23 baseline year. 
+As of model v3.2, the years available to use for the baseline are 2019/20 and 2023/24. We plan to include new baselines when they become available via HES. Using different baseline years for modelling means that assumptions will need to be revisited.
 
 ## Does the model use inpatient spells & LoS or beddays?
 
