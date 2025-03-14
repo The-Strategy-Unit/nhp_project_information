@@ -5,29 +5,30 @@ order: 1
 
 ## Reducing Inequalities in Activity Rates
 
+::: {.callout-caution}
+
+This functionality is not currently available to all users. Information provided here is intended to support local discussions around setting inequalities parameters. If you have further questions, please contact your model relationship manager.
+
+:::
+
 ### Background
 
 [Health inequalities](https://www.england.nhs.uk/about/equality/equality-hub/national-healthcare-inequalities-improvement-programme/what-are-healthcare-inequalities/) are unfair, avoidable group-level differences in health outcomes.\
 All NHS providers have a duty to work to reduce these inequalities in future, and the [New Hospitals Programme](https://www.gov.uk/government/publications/new-hospital-programme-review-outcome/new-hospital-programme-equality-impact-assessment#:~:text=Women%2C%20children%2C%20the%20elderly%2C,use%20hospital%20services%20in%20general) allows schemes to model the effect of addressing inequalities, which will prevent them from building a hospital which is too small once health inequalities have been addressed.
 
-When predicting future demand for acute care, we have the choice of whether to assume existing inequalities in acute care activity will persist, or to make assumptions around their reduction. If we assume that inequality in activity rates will be rectified (an upward slope of activity rates against deprivation being flattened to become horizontal) by the horizon year, we can make further assumptions about how this change may come about. This is agnostic to the specific ways in which schemes will choose to modify their activity to achieve this aim, but it does assume that any changes made will be successful in removing group-specific inequality. This represents an assumption of the successful application of [proportional universalism](https://www.instituteofhealthequity.org/resources-reports/towards-health-equity-a-framework-for-the-application-of-proportionate-universalism). The following method is derived from the Strategy Unit report ["Strategies to reduce inequalities in access to planned hospital procedures"](https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures)
+When predicting future demand for acute care, we have the choice of whether to assume existing inequalities in acute care activity will persist, or to make assumptions around their reduction. If we assume that inequality in activity rates will be rectified (an upward slope of activity rates against deprivation being flattened to become horizontal) by the horizon year, we can make further assumptions about how this change may come about. This is agnostic to the specific ways in which schemes will choose to modify their activity to achieve this aim, but it does assume that any changes made will be successful in removing group-specific inequality. This represents an assumption of the successful application of [proportional universalism](https://www.instituteofhealthequity.org/resources-reports/towards-health-equity-a-framework-for-the-application-of-proportionate-universalism). The following method is derived from the Strategy Unit report ["Strategies to reduce inequalities in access to planned hospital procedures"](https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures).
 
 ### Method
 
-Within each Healthcare Resource Group (HRG) in each scheme, the activity rate in the baseline year is plotted against quintiles of [Index of Multiple Deprivation](https://www.gov.uk/government/collections/english-indices-of-deprivation) (IMD[^1] , based on the [Lower Super Output Area](https://www.ons.gov.uk/methodology/geography/ukgeographies/statisticalgeographies) (LSOA) of patient residence, where quintile 1 is the most deprived 20% of LSOAs) and a straight line is fitted[^2] through the five points. This rate is calculated as the count of that activity per quintile of deprivation in the baseline year, divided by the estimated catchment population for the hospital that resides in that deprivation quintile. If the line trends upwards from quintile 1 to 5, this HRG is added to the list of those where significant inequality was evident[^3]. See @fig-1 for a visual depiction.
-
-Where the linear model gradient is significant but negative, this does indicate
-inequality, however the model does not attempt to make activity adjustments where 
-the regression model coefficient is negative because it is thought that these 
-circumstances are more likely to be driven by unusual patterns of need or access 
-to private healthcare rather than systematic bias in favour of those living in 
-more deprived areas.
+Within each Healthcare Resource Group (HRG) in each scheme, the activity rate in the baseline year is plotted against quintiles of [Index of Multiple Deprivation](https://www.gov.uk/government/collections/english-indices-of-deprivation) (IMD[^1] , based on the [Lower Super Output Area](https://www.ons.gov.uk/methodology/geography/ukgeographies/statisticalgeographies) (LSOA) of patient residence, where quintile 1 is the most deprived 20% of LSOAs) and a straight line is fitted[^2] through the five points. This rate is calculated as the count of that activity per quintile of deprivation in the baseline year, divided by the estimated catchment population for the hospital that resides in that deprivation quintile. Currently, activity counts are caculated based on summing activity across inpatient elective activity and outpatients procedures only. If the fitted line trends upwards from quintile 1 to 5, this HRG is added to the list of those where significant inequality was evident[^3]. See @fig-1 for a visual depiction.
 
 [^1]: [IMD19](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) in the current model version.
 
 [^2]: Method uses weighted least squares for heteroskedastic errors, where weighting is by [hospital catchment population size](https://github.com/The-Strategy-Unit/nhp_data/blob/main/inputs_data/inequalities.py) by IMD quintile.
 
 [^3]: HRG added to the selectable list only if: - at least 3 IMD quintiles are represented in the baseline data, - counts of HRG activity must exceed 50, and - the statistical significance (p-value) of the slope parameter of the fitted line is \<0.05 with a linear gradient \>0.
+
+Where the linear model gradient is significant but negative, this does indicate inequality, however the model does not attempt to make activity adjustments where the regression model coefficient is negative because it is thought that these circumstances are more likely to be driven by unusual patterns of need or access to private healthcare rather than systematic bias in favour of those living in more deprived areas.
 
 ```{r}
 #| echo: false
@@ -37,23 +38,36 @@ more deprived areas.
 #| warning: false
 
 library(gt)
+library(dplyr)
 
 #set up some dummy data
-data <- data.frame(activity = c(0.0008, 0.0015, 0.0020, 0.0031, 0.0035),
-                   quintile = seq(1,5,1))
+data <- data.frame(quintile = seq(1,5,1),
+                   population = c(154565,
+                                  84885,
+                                  69171,
+                                  77929,
+                                  45067),
+                   activity_count = c(122,
+                                      96,
+                                      109,
+                                      150,
+                                      88)) |>
+  mutate(activity_rate = round(activity_count/population,  4))
 
 #create a linear model to plot and predict from
-model <- lm(activity ~ quintile, data = data)
+model <- lm(activity_rate ~ quintile, data = data)
 upper <- predict(model, newdata = data.frame(quintile = 5))
 lower <- predict(model, newdata = data.frame(quintile = 1))
-mid <- mean(data$activity)
+mid <- mean(data$activity_rate)
 
 data |>
   gt::gt() |> 
   gt::tab_header("Synthetic activity rate per IMD quintile") |> 
   gt::tab_footnote("IMD Index of Multiple Deprivation") |>
-  gt::cols_label(activity = "Activity rate",
-                 quintile = "IMD Quintile")
+  gt::cols_label(quintile = "IMD Quintile",
+                 population = "Population",
+                 activity_count = "Count of Activity",
+                 activity_rate = "Activity rate")
 ```
 
 ```{r}
@@ -67,9 +81,9 @@ data |>
 library(ggplot2)
 
 #plotting
-plot <- ggplot(data, aes(x = as.factor(quintile), y = activity)) +
+plot <- ggplot(data, aes(x = as.factor(quintile), y = activity_rate)) +
   geom_point(size = 3, colour = "blue") +
-  geom_smooth(aes(x = as.numeric(quintile), y = activity), method = "lm", 
+  geom_smooth(aes(x = as.numeric(quintile), y = activity_rate), method = "lm", 
               colour = "orange", linetype = "dashed", se = F) +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -85,36 +99,40 @@ plot <- ggplot(data, aes(x = as.factor(quintile), y = activity)) +
 suppressMessages(print(plot))
 ```
 
-For each HRG where significant inequality in activity rates in the baseline year 
-is found, the user has the option to decide whether removal of this inequality 
-will occur by the horizon year, via one of the following options:
+For each HRG where significant inequality in activity rates in the baseline year is found, the user has the option to decide whether removal of this inequality will occur by the horizon year, via one of the following options:
 
-A.  **‘Level-up’**: by the horizon year, the activity rate for this HRG will have increased in all quintiles to match the fitted activity rate in quintile 5 (the least deprived group). 
-In this situation, the rate in the least deprived quintile is not adjusted, even
-if different from the fitted value (as may happen when the needs of patients in
-this group are substantially met via private healthcare, for example.)
-B.  **‘Level-down’**: by the horizon year, the activity rate for this HRG will have reduced in all quintiles to the fitted rate of the most deprived quintile (quintile 1, with a minimum activity rate of zero).
-The rate in the least deprived quintile is not changed even where it is found to
-be different from the fitted value.
+A.  **‘Level-up’**: by the horizon year, the activity rate for this HRG will have increased in all quintiles to match the fitted activity rate in quintile 5 (the least deprived group). In this situation, the rate in the least deprived quintile is not adjusted, even if different from the fitted value (as may happen when the needs of patients in this group are substantially met via private healthcare, for example.)
+B.  **‘Level-down’**: by the horizon year, the activity rate for this HRG will have reduced in all quintiles to the fitted rate of the most deprived quintile (quintile 1, with a minimum activity rate of zero). The rate in the least deprived quintile is not changed even where it is found to be different from the fitted value.
 C.  **‘Zero-sum redistribution’**: by the horizon year, the activity rate for this HRG in all quintiles will have increased or decreased to match the mean activity rate across the whole HRG. This means that activity rates across all quintiles will be the same, and that total levels of activity remain the same as in the baseline year.
 D.  **No change**: Inequality in delivery for this HRG will remain as it is the baseline year.
 
-In effect, with these options, the model will allow users to say, “For this HRG, 
-by the horizon year we predict that inequality of activity in this HRG across 
-deprivation quintiles will be removed. If it were removed by our chosen option, 
-we would expect an increase in activity of ... over baseline.”.
-
-
+In effect, with these options, the model will allow users to say, “For this HRG, by the horizon year we predict that inequality of activity in this HRG across deprivation quintiles will be removed. If it were removed by our chosen option, we would expect an increase in activity of ... over baseline.”.
 
 ```{r}
-table <- data.frame("Predicted rates" = c("Quintile 1", "Mean", "Quintile 5"),
-                    "Fitted Rate" = c(lower, mid, upper),
+table <- data.frame("IMD Quintile" = c("1", "2", "3", "4", "5"),
+                    "Observed activity rate" = c(data$activity_rate[data$quintile == min(data$quintile)], 
+                                                 data$activity_rate[data$quintile == "2"],
+                                                 data$activity_rate[data$quintile == "3"],
+                                                 data$activity_rate[data$quintile == "4"],
+                                                 data$activity_rate[data$quintile == max(data$quintile)]),
+                    "Fitted Rate" = c(predict(model, newdata = data.frame(quintile = 1)),
+                                      predict(model, newdata = data.frame(quintile = 2)),
+                                      predict(model, newdata = data.frame(quintile = 3)),
+                                      predict(model, newdata = data.frame(quintile = 4)),
+                                      predict(model, newdata = data.frame(quintile = 5))),
+                    "Level-up" = c(rep(predict(model, newdata = data.frame(quintile = 5)),4),
+                                   data$activity_rate[data$quintile == 5]),
+                    "Level-Down" = c(rep(predict(model, newdata = data.frame(quintile = 1)),4),
+                                   data$activity_rate[data$quintile == 1]),
+                    "Zero-Sum" = rep(mean(data$activity_rate),5),
                     check.names = F) |>
   gt::gt() |>
   gt::tab_header("Fitted activity rates per quintile") |> 
-  gt::tab_footnote("IMD Index of Multiple Deprivation")
+  gt::tab_footnote("IMD Index of Multiple Deprivation") |>
+  fmt_number(columns = 2:6, decimals = 4)
 table
 ```
+
 @fig-2 below depicts these options.
 
 ```{r}
@@ -133,9 +151,11 @@ A <- plot +
   labs(subtitle = NULL)+
   geom_hline(yintercept = upper, colour = "darkgreen", linewidth = 1.5) +
   geom_segment(data = subset(data, quintile !=5),
-    aes(x = as.factor(quintile), y = activity, xend = as.factor(quintile),
-                   yend = upper),
-               arrow = arrow()) +
+    aes(x = as.factor(quintile), 
+        y = activity_rate, 
+        xend = as.factor(quintile),
+        yend = upper),
+    arrow = arrow()) +
   labs(title = "A. Level-up") 
 
 
@@ -144,7 +164,7 @@ B <- plot +
   geom_hline(yintercept = lower, colour = "darkgreen", linewidth = 1.5) +
   geom_segment(data = subset(data, quintile !=1),
                aes(x = as.factor(quintile), 
-                   y = activity, 
+                   y = activity_rate, 
                    xend = as.factor(quintile),
                    yend = lower),
                arrow = arrow()) +
@@ -154,7 +174,7 @@ C <- plot +
   labs(subtitle = NULL)+
   geom_hline(yintercept = mid, colour = "darkgreen", linewidth = 1.5) +
   geom_segment(aes(x = as.factor(quintile), 
-                   y = activity, 
+                   y = activity_rate, 
                    xend = as.factor(quintile),
                    yend = mid),
                arrow = arrow()) +
