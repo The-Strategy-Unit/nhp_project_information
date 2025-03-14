@@ -154,6 +154,7 @@
         "utils"
       ],
       "Hash": "c493baca86321dfdd7acc9d236562caf"
+    },
     "askpass": {
       "Package": "askpass",
       "Version": "1.2.1",
@@ -322,16 +323,6 @@
         "R"
       ],
       "Hash": "d65efa2a203bb99faa78690eee928f30"
-    },
-    "curl": {
-      "Package": "curl",
-      "Version": "5.2.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "411ca2c03b1ce5f548345d2fc2685f7a"
     },
     "digest": {
       "Package": "digest",
@@ -783,6 +774,16 @@
       ],
       "Hash": "ccbb8846be320b627e6aa2b4616a2ded"
     },
+    "openssl": {
+      "Package": "openssl",
+      "Version": "2.3.2",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "askpass"
+      ],
+      "Hash": "bc54d87ebf858b28de18df4bca6528d3"
+    },
     "patchwork": {
       "Package": "patchwork",
       "Version": "1.3.0",
@@ -801,16 +802,6 @@
         "utils"
       ],
       "Hash": "e23fb9ecb1258207bcb763d78d513439"
-    },
-    "openssl": {
-      "Package": "openssl",
-      "Version": "2.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "askpass"
-      ],
-      "Hash": "2bcca3848e4734eb3b16103bc9aa4b8e"
     },
     "pillar": {
       "Package": "pillar",
@@ -1236,19 +1227,6 @@
         "rlang"
       ],
       "Hash": "a3a1b41cfc948bd88dc5b1e4ae8d491e"
-    },
-    "xml2": {
-      "Package": "xml2",
-      "Version": "1.3.6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "cli",
-        "methods",
-        "rlang"
-      ],
-      "Hash": "1d0336142f4cd25d8d23cd3ba7a8fb61"
     },
     "yaml": {
       "Package": "yaml",
