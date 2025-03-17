@@ -70,6 +70,7 @@ data |>
                  activity_rate = "Activity rate")
 ```
 
+
 ```{r}
 #| echo: false
 #| fig-alt: |
@@ -106,9 +107,21 @@ B.  **‘Level-down’**: by the horizon year, the activity rate for this HRG wi
 C.  **‘Zero-sum redistribution’**: by the horizon year, the activity rate for this HRG in all quintiles will have increased or decreased to match the mean activity rate across the whole HRG. This means that activity rates across all quintiles will be the same, and that total levels of activity remain the same as in the baseline year.
 D.  **No change**: Inequality in delivery for this HRG will remain as it is the baseline year.
 
-In effect, with these options, the model will allow users to say, “For this HRG, by the horizon year we predict that inequality of activity in this HRG across deprivation quintiles will be removed. If it were removed by our chosen option, we would expect an increase in activity of ... over baseline.”.
+In effect, with these options, the model will allow users to say, “For this HRG, by the horizon year we predict that inequality of activity in this HRG across deprivation quintiles will be removed. If it were removed by our chosen option, we would expect an increase in activity of ... over baseline.”
+
+In @tab-2 below, for each option, shows the activity rate to which the activity in 
+each quintile is predicted to reach ("Target Rate") along with the "Multiplier"
+which will be applied to those rows to either increase or decrease their
+frequency in the results.  The multiplier is calculated by dividing the target
+rate (the fitted minimum, maximum or mean rate for levelling-down, levelling-up 
+and for zero-sum redistribution, respectively) by the observed activity in that
+quintile.
 
 ```{r}
+#| echo: false
+#| label: tab-2
+#| warning: false
+
 table <- data.frame("IMD Quintile" = c("1", "2", "3", "4", "5"),
                     "Observed activity rate" = c(data$activity_rate[data$quintile == min(data$quintile)], 
                                                  data$activity_rate[data$quintile == "2"],
@@ -120,18 +133,34 @@ table <- data.frame("IMD Quintile" = c("1", "2", "3", "4", "5"),
                                       predict(model, newdata = data.frame(quintile = 3)),
                                       predict(model, newdata = data.frame(quintile = 4)),
                                       predict(model, newdata = data.frame(quintile = 5))),
-                    "Level-up" = c(rep(predict(model, newdata = data.frame(quintile = 5)),4),
+                    "Level-up Target Rate" = c(rep(predict(model, newdata = data.frame(quintile = 5)),4),
                                    data$activity_rate[data$quintile == 5]),
-                    "Level-Down" = c(rep(predict(model, newdata = data.frame(quintile = 1)),4),
+                    "Level-up Multiplier" = c(predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == "1"],
+                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == "2"],
+                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == "3"],
+                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == "4"],
+                                              1),
+                    "Level-down Target Rate" = c(rep(predict(model, newdata = data.frame(quintile = 1)),4),
                                    data$activity_rate[data$quintile == 1]),
-                    "Zero-Sum" = rep(mean(data$activity_rate),5),
+                    "Level-down Multiplier" = c(1,
+                                                predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == "2"],
+                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == "3"],
+                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == "4"],
+                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == "5"]),
+                    "Zero-sum Target Rate" = rep(mean(data$activity_rate),5),
+                    "Zero-sum Multiplier" = c(mean(data$activity_rate)/data$activity_rate[data$quintile == "1"],
+                                              mean(data$activity_rate)/data$activity_rate[data$quintile == "2"],
+                                              mean(data$activity_rate)/data$activity_rate[data$quintile == "3"],
+                                              mean(data$activity_rate)/data$activity_rate[data$quintile == "4"],
+                                              mean(data$activity_rate)/data$activity_rate[data$quintile == "5"]),
                     check.names = F) |>
   gt::gt() |>
   gt::tab_header("Fitted activity rates per quintile") |> 
   gt::tab_footnote("IMD Index of Multiple Deprivation") |>
-  fmt_number(columns = 2:6, decimals = 4)
+  fmt_number(columns = 2:9, decimals = 4)
 table
 ```
+
 
 @fig-2 below depicts these options.
 
