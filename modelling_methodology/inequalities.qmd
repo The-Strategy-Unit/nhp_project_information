@@ -109,7 +109,7 @@ D.  **No change**: Inequality in delivery for this HRG will remain as it is the 
 
 In effect, with these options, the model will allow users to say, “For this HRG, by the horizon year we predict that inequality of activity in this HRG across deprivation quintiles will be removed. If it were removed by our chosen option, we would expect an increase in activity of ... over baseline.”
 
-In @tab-2 below, for each option, shows the activity rate to which the activity in 
+In the table below, for each option, shows the activity rate to which the activity in 
 each quintile is predicted to reach ("Target Rate") along with the "Multiplier"
 which will be applied to those rows to either increase or decrease their
 frequency in the results.  The multiplier is calculated by dividing the target
@@ -160,7 +160,6 @@ table <- data.frame("IMD Quintile" = c("1", "2", "3", "4", "5"),
   fmt_number(columns = 2:9, decimals = 4)
 table
 ```
-
 
 @fig-2 below depicts these options.
 
