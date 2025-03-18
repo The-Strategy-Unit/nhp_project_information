@@ -1,0 +1,174 @@
+# Gaps in Care Introduction
+
+The New Hospitals Programme (NHP) was established in 2020 to oversee the planning and financing of new NHS hospitals in England. The NHP activity modelling tool was developed to support participating NHS Trusts to robustly estimate the levels and types of activity that a hospital might be expected to accommodate in the future. These estimates form a critical component of business planning process that leads to the construction of new hospitals.
+
+The modelling tool determines how and by how much, activity will grow between an agreed baseline and horizon year. It contains several modules which describe the various ways in which activity might change. Over time, the coverage of these modules will grow so that the model is able to provide a more complete and accurate assessment of changes in activity that might occur.
+
+This paper describes how the tool might support Trusts to take account of gaps-in-care that are present in the baseline year, and which might be addressed by the model horizon year.
+
+# Background
+
+The term 'gaps-in-care' suggests that a patient is not receiving an intervention that is indicated by medical guidelines given their diagnoses and characterises. It represents a missed opportunity to improve a patient's outcomes. The alternative term, 'under-supply', is also commonly used in these contexts.
+
+The literature on gaps-in-care / undersupply, usually focuses on interventions that are delivered in primary or community setting or as part of public health programmes. Concerns about the undersupply of hospital-based interventions is less common. Typically, the concern here is with over-supply. Nonetheless there are specific hospital-based interventions that are listed in the literature on gaps-in-care / undersupply. We sought to identify these examples and set out how these interventions might be identified in routine administrative hospital datasets such as Hospital Episode Statistics.
+
+# Rationale / method
+
+We reviewed several document and websites, but settled on the [2015 NHS Atlas of Variation Compendium](https://fingertips.phe.org.uk/profile/atlas-of-variation/supporting-information/compendiums) as out primary source of information about gaps-in-care. As expected, most of the interventions listed in this source either describes instances of over-supply of health services, or of under-supply of primary, community or public health interventions. We did, however, identify four interventions in the compendium that described under-supply of hospital-based interventions. These were:
+
+-   Colonoscopies and flexible sigmoidoscopies
+-   Sleep studies
+-   Transcatheter aortic valve implantation for aortic stenosis
+-   Dual energy X-ray absorptiometry (DEXA) bone-density scans
+
+We propose to implement the 'gaps-in-care' modules with these four interventions in the first instance, and increase the coverage based on clinical feedback.
+
+# Data sources
+
+The following links are used repeatedly below when outlining how the interventions are identified in hospital activity data:
+
+-   [2015 NHS Atlas of Variation Compendium](https://fingertips.phe.org.uk/profile/atlas-of-variation/supporting-information/compendiums)
+-   [Diagnostics waiting times (DM01) guidance](https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2013/08/DM01-guidance-v-5.32.pdf)
+-   [National Institute for Cardiovascular Outcomes Research (NICOR) TAVI register](https://www.nicor.org.uk/national-cardiac-audit-programme/transcatheter-aortic-valve-implantation-tavi)
+-   [National Institute for Health and Care Excellence (NICE) guidance on TAVIs](https://www.nice.org.uk/guidance/ipg586/resources/clinical-classification-codes-pdf-4540148461)
+
+# The four interventions
+
+## Colonoscopy and flexible sigmoidoscopy procedures
+
+### Context
+
+The aim of the National Awareness and Early Diagnosis Initiative (NAEDI) is to improve cancer survival outcomes in England, including that for colorectal (bowel) cancer. Although not all colonic investigations are done because of the suspicion of cancer, ruling out colorectal cancer is considered the most important reason for such an investigation, particularly because early diagnosis of cancer of the colon is vital to improve outcomes. It was thought that investigations could be targeted at patients with specific clinical features, but studies have shown that in patients with lower gastrointestinal (GI) symptoms, selecting out those to investigate gives a poor correlation with cancer, and particularly early cancer. This suggests that the overall threshold for lower GI investigation should be lowered to improve the overall diagnostic rate for colorectal cancer, and the proportion of people diagnosed early and when the cancer is curable.
+
+There are four specific procedures outlined in the Atlas:
+
+-   Colonoscopy
+-   Flexible sigmoidoscopy
+-   Computed tomography (CT) colonoscopy / colonography
+-   Barium enema
+
+### Coding
+
+We have the relevant OPCS-4 codes defined in the guidance to the DM01 returns.
+
+| **OPCS 4.7 Code** | **Description of Test / Procedure**                                                                                   |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------|
+| H20.1             | Fibreoptic endoscopic snare resection of lesion of colon                                                              |
+| H20.2             | Fibreoptic endoscopic cauterisation of lesion of colon                                                                |
+| H20.3             | Fibreoptic endoscopic laser destruction of lesion of colon                                                            |
+| H20.4             | Fibreoptic endoscopic destruction of lesion of colon NEC                                                              |
+| H20.5             | Fibreoptic endoscopic submucosal resection of lesion of colon                                                         |
+| H20.6             | Fibreoptic endoscopic resection of lesion of colon NEC                                                                |
+| H20.8             | Other specified endoscopic extirpation of lesion of colon                                                             |
+| H20.9             | Unspecified endoscopic extirpation of lesion of colon                                                                 |
+| H22.1             | Diagnostic fibreoptic endoscopic examination of colon and biopsy of lesion of colon                                   |
+| H22.8             | Other specified endoscopic examination of colon                                                                       |
+| H22.9             | Unspecified endoscopic examination of colon                                                                           |
+| H23.1             | Endoscopic snare resection of lesion of lower bowel using fibreoptic sigmoidoscope                                    |
+| H23.2             | Endoscopic cauterisation of lesion of lower bowel using fibreoptic sigmoidoscope                                      |
+| H23.3             | Endoscopic laser destruction of lesion of lower bowel using fibreoptic sigmoidoscope                                  |
+| H23.4             | Endoscopic destruction of lesion of lower bowel using fibreoptic sigmoidoscope NEC                                    |
+| H23.5             | Endoscopic submucosal resection of lesion of lower bowel using fibreoptic sigmoidoscope                               |
+| H23.6             | Endoscopic resection of lesion of lower bowel using fibreoptic sigmoidoscope NEC                                      |
+| H23.8             | Other specified endoscopic extirpation of lesion of lower bowel using fibreoptic sigmoidoscope                        |
+| H23.9             | Unspecified endoscopic extirpation of lesion of lower bowel using fibreoptic sigmoidoscope                            |
+| H25.1             | Diagnostic endoscopic examination of lower bowel and biopsy of lesion of lower bowel using fibreoptic sigmoidoscope   |
+| H25.2             | Diagnostic endoscopic examination of lower bowel and sampling for bacterial overgrowth using fibreoptic sigmoidoscope |
+| U17.3             | Barium swallow                                                                                                        |
+| U17.4             | Barium Enema                                                                                                          |
+| U17.5             | Computed tomography of colon                                                                                          |
+
+## Sleep studies
+
+### Context
+
+Sleep studies are conducted to identify abnormal sleep patterns and pathologies, and to assess and provide therapeutic intervention. There are more than 80 recognised sleep disorders, which may affect the timing, quality and quantity of sleep. Sleep disorders can vary from mild to life-threatening. Common sleep disorders are insomnia, sleep apnoea, restless leg syndrome, narcolepsy, and sleep problems associated with Parkinson's disease, autism and many other conditions.
+
+Obstructive sleep apnoea (OSA) is the most common sleepdisorder, affecting about 4% of the population. During sleep, muscles in the upper airway relax to a greater degree than normal or parts of the airway become blocked for one of several reasons, resulting in apnoeas or pauses in breathing lasting from ten seconds to two minutes. Apnoeas can cause sleep disruption and poor-quality sleep, leading to daytime sleepiness with an increased risk of serious road traffic incidents. If left untreated, OSA can be a risk factor for stroke, cardiovascular problems or diabetes.
+
+There has been an increase of 69.5% in the commissioning of sleep studies from January 2007 to March 2013. Reasons for this increase may be the clearance of backlogs in accordance with the interim diagnostic waiting time targets and the maximum waiting time constitutional right. Other factors may increase the demand for sleep studies, e.g. The British Lung Foundation's OSA Charter, which could also raise the profile of sleep-related problems and result in additional referrals.
+
+As the real prevalence of symptomatic OSA is 4% in middle-aged men and up to 2% in middle-aged women, current rates of provision of sleep studies may be too low. When the rates of polysomnography (PSG) sleep tests were compared in five countries, the UK's rate of provision was significantly lower than that in other countries. In future, therefore, the number of sleep studies undertaken in England is likely to continue to increase.
+
+### Coding
+
+The OPCS-4 codes for sleep studies are outlined in the guidance to DM01:
+
+| **Group**                                   | **OPCS 4.7 Code** | **Description of Test / Procedure**                      |
+|---------------------------------------------|-------------------|----------------------------------------------------------|
+| 10 - Respiratory physiology - Sleep studies | A84.7             | Sleep studies NEC (not elsewhere classified)             |
+| 10 - Respiratory physiology - Sleep studies | U33.1             | Polysomnography (Includes cardiopulmonary sleep studies) |
+
+## TAVIs
+
+### Context
+
+Narrowing of the aortic valve (aortic stenosis) results in a strain on the left ventricle of the heart. As the severity of the stenosis worsens, individuals may present with symptoms of angina, breathlessness, or syncope. Once symptoms develop, prognosis is jeopardised with a high prevalence of heart failure, a requirement for hospitalisation, and sudden death. The prevalence of aortic stenosis increases with age. Many patients have concomitant coronary artery disease.
+
+The epidemiology of aortic stenosis is not fully established: about one-quarter of people over 65 years have some thickening of the aortic valve, and about 3% of people older than 75 years have severe aortic stenosis.
+
+Some people with congenitally abnormal valves can present with aortic stenosis at an earlier age, however, degenerative change in the normal valve leading to aortic stenosis often presents in the seventh and eighth decades of life.
+
+The gold standard treatment for symptomatic aortic stenosis is surgical aortic valve replacement. A large proportion of people with aortic stenosis, especially those who are elderly, have several co-morbidities, or may be frail. For this group, the risks of surgery can be unacceptably high. Recent trial results show that these patients can benefit from transcatheter aortic valve implantation (TAVI), a relatively new procedure.
+
+In TAVI, a new valve sewn onto a stented frame is mounted onto a catheter and inserted into the original aortic valve. Expansion of the stent pushes the original valve to one side, the stent holds the new valve in place over the original valve, and the new valve starts to function immediately. Implantation is from either a transvascular approach or a transthoracic approach. Most patients undergo a general anaesthetic, but a growing number of transvascular procedures are done under local anaesthetic.
+
+In trials, patients whose risk for surgery was too high had a significant reduction in mortality and a major improvement in quality of life.1,2,3,4 For patients who could be operated on but are at high risk for surgery, the outcomes of the TAVI procedure are equivalent to those of conventional surgery, at least in the medium-term. There are ongoing trials designed to explore the role of TAVI in patients with aortic stenosis at intermediate risk for surgery.
+
+At present, there is no evidence that interventions to prevent aortic stenosis, such as lowering cholesterol, have any effect.
+
+### Coding
+
+We have the [NICE guidance](https://www.nice.org.uk/guidance/ipg586/resources/clinical-classification-codes-pdf-4540148461) which provides a list of OPCS-4 and ICD-10 codes for TAVIs. However, the way these codes are combined is not clearly defined.
+
+Based on the NICE guidance, we tried various combinations of the OPCS-4 and ICD-10 codes to extract from HES and found a coding logic which produces counts that are very close to the [published NICOR figures](https://www.nicor.org.uk/~documents/route%3A/download/3691), which the Atlas rates are based on:
+
+-   In 2022/23 it has 7,555, compared to 7,699 in the registry. In 2021/22 the figures are 6,829 and 6,738, respectively.
+-   These are comprised of 5,518 elective and 2,035 non-elective (+2 maternity). This is 27% *non-elective*. The registry has 25% *urgent* cases.
+
+This leads to the following logic for identifying TAVIs:
+
+**OPCS-4 code(s):**
+
+**Transluminal approach**
+
+K26.+ Y79. + (Y53. or Y68) + U20.2
+
+**Transapical / transventricular approach**
+
+K26.+ Y49.4 + (Y53. + Y68) + U20.2
+
+**ICD-10 code:**
+
+I35.0 Aortic (valve) stenosis
+
+## DEXA bone-density scans
+
+### Context
+
+Dual-energy X-ray absorptiometry (DEXA) is the best measure of bone density and subsequent risk of fragility fracture. It is one of several techniques known as bone densitometry.
+
+There are two types of DEXA scan:
+
+-   axial or central, in which a scanning arm passes over the body to measure bone density in the centre of the skeleton;
+-   peripheral (pDEXA), in which a scanning arm or portable device measures bone density in peripheral parts of the body, such as the wrist or heel.
+
+Measurements of bone density are used:
+
+-   in the diagnosis of osteoporosis or to assess the risk of osteoporosis developing;
+-   to monitor the effectiveness of treatment for conditions such as osteoporosis;
+-   in the diagnosis of other bone disorders, such as osteopenia, an early sign of bone loss where bone mineral density is lower than normal.
+
+Osteoporosis involves a gradual loss of calcium from the bones which results in the bones becoming thinner, more fragile and more likely to break. Osteoporosis is most commonly seen in women following the menopause, although it can affect men. The risk of a fragility fracture is affected by age, weight, prior history, family history, smoking habit, and excessive consumption of alcohol. Following a suspected fragility fracture, investigation of bone density, for instance using DEXA, is advised such that osteoporosis treatment can be initiated to help prevent a subsequent fracture and the consequent considerable morbidity.
+
+### Coding
+
+The OPCS-4 codes for sleep studies are outlined in the guidance to DM01:
+
+| **OPCS 4.7 Code** | **Description of Test / Procedure** |
+|-------------------|-------------------------------------|
+| U13.1             | Bone densitometry                   |
+
+## Implementation
+
+The module will be implemented within the model as an optional input for each of the activity types outlined. This will be a parameter set locally within the inputs app. Users will set an 80% prediction interval between 100% and 500%. 100% means no change. 105% means a 5% increase in current levels of the activity in question by the horizon year. The model will then randomly sample from the normal distribution implied by the p10 and p90 to arrive at the replacement rate for the hospital activity in scope which will then be combined with the various other change factors into the value for which we sample from the Poisson distribution.
