@@ -99,10 +99,19 @@ D) Zero-sum redistribution
 ### Non-demographic adjustment
 
 - Mandatory, fixed
+- Two Variants to select from (a primary rate and a sensitivity rate)
 
-This adjustment accounts for the growth in activity which is *not* due to changes in the size and age-sex structure of the population over time. This adjustment is based on detailed analysis to quantify growth after accounting for changes in population size and structure.
+This adjustment accounts for the growth in activity which is *not* due to changes in the size and age-sex structure of the population over time. 
 
-Information on non-demographic growth is available [here](../modelling_methodology/non-demographic_growth.qmd). There are two variants currently available. Further work is planned, disaggregating the effects of the impact of new medical technologies, changes in patient expectations, and changes in clinical standards - and seeking to explain and to provide forecasts for non-demographic growth.
+Non-demographic adjustments are applied to inpatient, outpatient and A&E activity but are not applied to length of stay. 
+
+The are two 'Variants' which can be selected by the user:
+
+- Variant 2 (NDG2) is the *primary* non-demographic adjustment rate. Demand projections described in the co-authored output report will be based on the use of Variant 2. This Variant is based on detailed analysis. 
+
+- Variant 3 (NDG3) is used for *sensitivity analysis* only. The impact of using Variant 2 instead of Variant 3 on projected demand can be explored in the output report. Variant 3 is based on the results of an expert elicitation exercise.
+
+More information on non-demographic growth is available [here](../modelling_methodology/non-demographic_growth.qmd).
 
 ## Activity mitigators
 
