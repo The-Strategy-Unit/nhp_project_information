@@ -1,82 +1,38 @@
 ---
 title: "Non-Demographic Growth"
 order: 4
----
-
-## Setting 'non-demographic growth' assumptions for modelling future demand  
+--- 
  
-This note sets out the current approach to non-demographic growth (NDG) for the NHP Demand model whilst consideration is given to setting a revised national assumption. The approach is expected to change once that assumption is set. The note explains the current use of two variants for urgent and emergency care IP non-demographic growth. 
+When considering growth in healthcare activity, it is standard practice to distinguish between growth that can be directly attributed to changes in the size and makeup of the population (demographic growth) and growth that is driven by other factors (which is typically grouped together under the heading of 'non-demographic growth'). When looking back, this non-demographic growth (NDG) is the residual between observed overall growth and the element of that that can be explained by demographic change.
 
-NDG (see Appendix 1 for definition and background) is both a critical assumption and a challenging one to set. It is critical because, for advanced health systems, it has historically been a greater driver of both cost and activity increases than demographic change. It is challenging because it is a composite of a range of drivers (technology; treatment thresholds; policy; patient and clinical expectations) which aren't easy to predict.  It is also, for a publicly funded health system, in part a product of levels of funding which are a matter of future policy. Researchers have examined the components of NDG but at present there is no established 'bottom up' method for projecting it. Instead, health systems tend to look at what has happened previously and take that as a 'base rate'. That has significant limitations of course – namely, it assumes past trends will continue and it is also vulnerable to factors which might distort the historical record.  
- 
-NHP has determined that the NDG assumption for demand and capacity modelling should be set nationally on the basis that the factors which drive it are not local in nature. There is however no extant national NDG assumption set by NHSE or DHSC so NHP has needed to develop one. 
+NHP has determined that the NDG assumption for demand and capacity modelling should be set nationally on the basis that the factors which drive it are not local in nature. There is however no extant national NDG assumption set by NHSE or DHSC so NHP has needed to develop one. We have carried out detailed analyses and an expert elicitation exercise to determine the NDG adjusments which are applied to activity in the model. Our current modelling approach uses two variants. 
 
-The initial position for NHP, in the absence of any established 'bottom-up' methodology and in discussion with NHSE, was to adopt the observed trend from 2011-2019 as the 'base rate'. The calculation and methods for this are set out [here](ndg_analysis.html). It was recognised, however, that this 'base rate' assumption would have significant impact on modelled future demand and hence further analysis was called for. That recognition along with early experience of deploying the model for individual trusts led to further analysis being undertaken which raised questions about this historical trend specifically for urgent and emergency care. In this analysis, activity was divided into one of the following mitigation categories: 
+## Two variants approach for'non-demographic growth' 
 
-- potentially mitigable through substitution/redirection; 
-- potentially mitigable through prevention; 
-- non-mitigable.  
+The are two 'variants' which can be selected by the user:
 
-Contrary to expectations this showed that the greatest NDG was for potentially mitigable activity whereas non-mitigable activity (i.e. activity expected to be delivered in hospital) tracked demography. 
+- Variant 2 (NDG2) is the primary non-demographic adjustment rate. Demand projections described in the co-authored output report will be based on the use of Variant 2. 
 
-| **PoD**       | **Mitigation category**      | **Growth p.a.**         | **Difference in growth rate p.a. from non-mitigable.** |
-| ------------- | ---------------------------- | ----------------------- | ------------------------------------------------------ |
-| ED Attendance | Non-mitigable                | 0.81% (0.56%, 1.06%)    |                                                        |
-| ED Attendance | Redirection and substitution | 0.42% (0.17%, 0.67%)    | \-0.39% (-0.74%, -0.04%)                               |
-| IP Emergency  | Non-mitigable                | \-0.14% (-0.62%, 0.34%) |                                                        |
-| IP Emergency  | Amenable to prevention       | 0.53% (0.04%, 1.01%)    | 0.67% (-0.01%, 1.36%)                                  |
-| IP Emergency  | Redirection and Substitution | 3.47% (2.97%, 3.96%)    | 3.61% (2.92%, 4.32%)                                   |
+- Variant 3 (NDG3) is used for sensitivity analysis only. The impact of using Variant 2 instead of Variant 3 on projected demand can be explored in the output report. 
 
+The analyses underpinning Variant 2 are available to view [here](ndg_analysis.html) and [here](ndg2_analysis.html). The latter analysis determined the NDG rate applied to non-elective IP admissions.
+A report detailing the expert elicitation exercise underpinning Variant 3 will soon be made available to view on this page.
 
-This result appears to suggest that part of observed Urgent and Emergency Care (UEC) NDG might reasonably be hypothesised as 'failure demand'.[^1]
+The adjustment rates applied across different types of activity are shown in the table below. These are shown as annual percentage growth rates.
 
-[^1]: Demand is often treated in an undifferentiated, transactional way but closer analysis finds there are two key types: value demand (responding to what the patient needs) and failure demand (i.e. demand caused by a failure to do something, or to do something right for the patient). 
+| Activity Type             | Primary Rate<br>Variant 2<br>(P10/P90) | Sensitivity<br>Variant 3<br>(P10/P90) |
+| ------------------------- | -------------------------------------- | ------------------------------------- |
+| A&E - ambulance           | 1.31%<br>(1.21%/1.41%)                 | 1.49%<br>(-0.54%/3.52%)               |
+| A&E - walk-in             | 1.31%<br>(1.21%/1.41%)                 | 1.49%<br>(-0.54%/3.52%)               |
+| Inpatients - elective     | 0.62%<br>(0.53%/0.71%)                 | 1.35%<br>(-0.01%/2.71%)               |
+| Inpatients - maternity    | 0%                                     | 0%                                    |
+| Inpatients - non-elective | -0.14%<br>(-0.45%/0.17%)               | 1.16%<br>(-0.37%/2.69%)               |
+| Outpatients - first       | 2.49%<br>(2.28%/2.7%)                  | 2.45%<br>(0.02%/4.87%)                |
+| Outpatients - follow-up   | 2.49%<br>(2.28%/2.7%)                  | 2.45%<br>(0.02%/4.87%)                |
+| Outpatients - procedure   | 2.49%<br>(2.28%/2.7%)                  | 2.45%<br>(0.02%/4.87%)                |
 
-In addition, as we have worked with individual trusts on deploying the NHP Demand model, it has been suggested by some that there has been significant reclassification of some extant UEC activity leading to it being (consistent with policy) counted as SDEC admissions (0 Length of Stay (LoS)). To the extent this has occurred, it represents an 'artificial' inflation of NDG in the 2011-2019 period. There is no published analysis available which examines this inflationary effect. Nevertheless, we have heard it from multiple trusts and therefore must give it some credence. 
+NB NDG adjustments are not applied to length of stay. 
 
-In the light of these two factors (possible failure demand and inflationary reclassification) we have identified a need for further consideration nationally of an appropriate UEC NDG assumption. Whilst that is under consideration, we have decided to run two variants of the NHP Demand model for UEC NDG. Both use measured national rates for 2011-2019. Variant 1 is the observed historical rate for all UEC activity (the original rate); variant 2 is the observed national rate for 2011-2019 for non-mitigable activity only, but with that rate applied to all UEC admissions. Variant 2 is being used as the primary rate in the current modelling round, with variant 1 as sensitivity. The analysis underpinning Variant 2 is available to view [here](ndg2_analysis.html).
+Currently NDG adjustments are not applied for inpatients maternity activity. The parameter is set at 0% annual growth rate which represents no change. This assumption is currently under review and may be revised in later versions of the model.
 
-There are several things to note: 
-
-1. This is NOT a problem with the NHP Demand model itself - it is instead the playing out of uncertainty about an assumption that drives that model (and others). Across local models developed to date (prior to the NHP Demand model), we see significantly different rates of NDG being applied with limited rationale. We need to find a credible national assumption that can be adopted by all. 
-
-2. Using variant 2 isn't without consequence. It assumes in effect that any reclassification was a one-off, but more importantly that failure demand will not increase. That will only be true if something is done to make it true. 
-
-3. The historical NDG trend has been accompanied by an even greater rate of LoS improvement which essentially accommodated that growth without significant increase in bed numbers. Unless the rate of LoS improvement continues, increased NDG rates will start to cash out in extra beds needed. Appendix 2 shows the historical rates for LoS change - few if any trusts are planning future reductions at the same rate (citing a ' bottoming out' of the trend).  
-
-Whilst a national assumption is considered, our proposed '2 variants' approach tries to embrace what are likely the bounds of any future projection whilst retaining for now a grounding in externally verifiable analysis of the data. 
-
-We will be setting up briefing sessions on this for trusts and systems in the near future. Ahead of that, we invite any documented analysis that underpins local assumptions and that trusts/systems wish to propose for consideration as a potential national approach.  
-
-Please send this to [mlcsu.nhpanalytics@nhs.net](mailto:mlcsu.nhpanalytics@nhs.net).
-
-## Appendix 1: Definition of non-demographic growth 
- 
-When considering growth in healthcare costs and activity, it is standard practice to distinguish between growth that can be directly attributed to changes in the size and makeup of the population (demographic growth) and growth that is driven by other factors (which is typically grouped together under the heading of 'non-demographic growth'). When looking back, this 'non-demographic growth' is the residual between observed overall growth and the element of that that can be explained by demographic change.  
-
-Internationally, the existence of this 'non-demographic' growth is generally observed. When it comes to costs, it is typically seen as the biggest component of growth, with economists pointing to as much as 50-75% of healthcare cost growth being driven by factors other than population changes.  Not all of the cost element of non-demographic growth is driven by activity growth, but a significant proportion is, and typically analysis of health systems shows a proportion of activity growth that cannot be explained by changes to population size and structure. Clearly, therefore, when planning future healthcare capacity as well as when considering future healthcare expenditure, it is essential to take a view on 'non-demographic growth'. 
-
-To support thinking about what the future might hold for 'non-demographic' growth in activity levels it is important to deconstruct the factors that sit behind it. There are many factors that might impact on hospital activity growth that can be regarded as exogenous to a local health system and its population. These include the development and introduction of new medical technologies and clinical guidelines, national health policy, systemic (non-local) changes or secular trends in medical practice and patient expectations. These are not insignificant factors. To just give three examples: First, when it was deemed no longer acceptable to just treat one eye, demand for cataract surgery close to doubled; second, when the bowel screening programme was introduced, the demand for endoscopies increased at a rate far in excess of population changes; thirdly, when new treatments for conditions that were previously untreatable become available (e.g. forms of transplantation), then new streams of activity occur. Of course, some of these effects might in turn impact rates of other activities (increasing them or decreasing them). 
-
-What will also be apparent is that some of these factors are more directly controllable than others. Most of the published literature on non-demographic growth looks at cost (where in addition to the factors mentioned above, they include price effects associated with new technology, the rising costs of specialist drugs, etc). Whilst estimates vary, there is a consensus that the largest single component of real-term non-demographic cost growth is that driven by 'policy' or the setting of clinical standards. It is likely that the same applies to the activity component of that. This means that any future estimation of non- demographic growth needs to recognise that an element of it is a matter of choice (at least in principle). Other aspects, however, such as technological advancement in clinical practice or changed societal expectations, whilst maybe amenable to some control (e.g. mechanisms such as NICE) or influence, are much closer to being unavoidable in practice. 
-
-It is also important to recognise that in health systems that are publicly funded, there is a fundamental two-way relationship between demand and supply. In a funding-constrained health and care system such as the NHS, the rate of funding growth in part determines the rate of non-demographic growth... as rates of funding determine capacity and capacity constraint will ultimately moderate activity (either with excess demand resulting in waiting lists; or in revised thresholds; or by simply forcing some aspects of demand outside of the publicly funded system). 
-
-## Appendix 2: National LoS trends
-
-Figure 1 shows that average LOS for **elective inpatients** has reduced from 9.0 days to 0.6 days over the 30 year period illustrated, which equates to a 94% reduction and a Cumulative Annual Growth Rate (CAGR) of -8.7%. Limiting that to just the last 20 years shows a 75% reduction and a CAGR of -6.6%. 
-
-![Fig. 1: Trends in average LOS for elective  inpatient activity 1989/1990 to 2019/20](activity_mitigators/LOS_1.png)
-
-Figure 2 shows that average LOS for **emergency inpatients** has reduced from 20.6 days to 4.8 days over the 30 year period illustrated, which equates to a 76% reduction and a CAGR of -4.7%. Limiting that to just the last 20 years shows a 47% reduction and a CAGR of -3.2%. 
-
-![Fig. 2 Trends in average LOS for emergency inpatient activity 1989/1990 to 2019/20](activity_mitigators/LOS_2.png)
-**Length of Stay (LOS) trends excluding 0 LOS spells**
-
-Figure 3 shows that average LOS for **elective inpatients (excluding 0 LOS spells)** has reduced from 14.3 days to 5.4 days over the 30 year period illustrated, which equates to a 62% reduction and a CAGR of -3.2%. Limiting that to just the last 20 years shows a 33% reduction and a CAGR of -1.9%. 
-
-![Fig. 3 Trends in average LOS for elective inpatient activity (excluding 0 LOS spells) 1989/1990 to 2019/20](activity_mitigators/LOS_3.png)
-Figure 4 shows that average LOS for **emergency inpatients (excluding 0 LOS spells)** has reduced from 22.2 days to 7.4 days over the 30 year period illustrated, which equates to a 77% reduction and a CAGR of -3.6%. Limiting that to just the last 20 years shows a 32% reduction and a CAGR of -1.9%. 
-
-![Fig. 3 Trends in average LOS for emergency inpatients (excluding 0 LOS spells) 1989/1990 to 2019/20](activity_mitigators/LOS_4.png)
- 
+Further work is planned to disaggregate the impacts of new medical technologies, changes in patient expectations, and changes in clinical standards on non-demographic growth. 
