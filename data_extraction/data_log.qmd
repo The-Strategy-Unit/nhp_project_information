@@ -18,7 +18,7 @@ Please see the [release notes for v3.1.0](https://github.com/The-Strategy-Unit/n
 ## Version 3.0
 
 Date updated: 13/11/2024
-We have migrated our data pre-processing pipeline from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) repositiory which will be publically archived and no longer maintained.
+We have migrated our data pre-processing pipeline from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the nhp_sql repositiory which will be publically archived and no longer maintained.
 
 As part of migrating our data pre-processing, there are a number of changes to the data.
 

@@ -11,4 +11,4 @@ The processing that is conducted to produce the NHP model baseline data counts i
 
 We use HES data; further details on the fields in this dataset are available from the [HES Data Dictionary](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics/hospital-episode-statistics-data-dictionary). 
 
-If you have any queries, please [contact us](../contact.qmd). The SQL code for the mitigators is also now openly available in the [nhp_sql repository](https://github.com/The-Strategy-Unit/nhp_sql).
+If you have any queries, please [contact us](../contact.qmd). The code for the mitigators is also now openly available in the [nhp_data repository](https://github.com/The-Strategy-Unit/nhp_data).
