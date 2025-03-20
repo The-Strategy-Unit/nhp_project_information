@@ -106,7 +106,7 @@ In order to improve these detailed outputs, we had to change some of the data un
 
 This update is a major release.
 
-The reason that it is a major release is that the pipeline for data pre-processing has been migrated from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) repository which will be publicly archived and no longer maintained.
+The reason that it is a major release is that the pipeline for data pre-processing has been migrated from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the nhp_sql repository which will be publicly archived and no longer maintained.
 
 As part of migrating our data pre-processing, there are a number of changes to the data which are detailed in the [data log](../data_extraction/data_log.qmd). Each scheme will be provided with new detailed baseline files for v3.0.
 
@@ -313,7 +313,7 @@ We are pleased to announce that some repositories relating to the NHP model are 
 These are:
 
 - [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information): The repository for this website
-- [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql): The repository containing the SQL code for identifying activity relating to each of the [activity mitigators](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/mitigators_lookup.html).
+- nhp_sql: The repository containing the SQL code for identifying activity relating to each of the [activity mitigators](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/mitigators_lookup.html). NOTE: this has been superseded by [nhp_data](https://github.com/The-Strategy-Unit/nhp_data)
 - [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs): The repository containing the analysis underpinning the various [demographic adjustments](../modelling_methodology/demographic_modelling/demographic_modelling.qmd) in the model.
 
 A full list of the repositories relating to the NHP model is available [here](../project_plan_and_summary/components-overview.qmd), 
