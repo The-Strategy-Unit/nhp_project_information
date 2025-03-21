@@ -7,16 +7,23 @@ When considering growth in healthcare activity, it is standard practice to disti
 
 NHP has determined that the NDG assumption for demand and capacity modelling should be set nationally on the basis that the factors which drive it are not local in nature. There is however no extant national NDG assumption set by NHSE or DHSC so NHP has needed to develop one. We have carried out detailed analyses and an expert elicitation exercise to determine the NDG adjusments which are applied to activity in the model. Our current modelling approach uses two variants. 
 
-## Two variants approach for'non-demographic growth' 
+## Two variants approach for non-demographic growth 
 
 The are two 'variants' which can be selected by the user:
 
-- Variant 2 (NDG2) is the primary non-demographic adjustment rate. Demand projections described in the co-authored output report will be based on the use of Variant 2. 
+- **Variant 2 (NDG2)** is the *primary* non-demographic adjustment rate. Demand projections described in the co-authored output report will be based on the use of Variant 2. 
 
-- Variant 3 (NDG3) is used for sensitivity analysis only. The impact of using Variant 2 instead of Variant 3 on projected demand can be explored in the output report. 
+- **Variant 3 (NDG3)** is used for *sensitivity analysis only*. The impact of using Variant 2 instead of Variant 3 on projected demand can be explored in the output report. 
+
+To use Variant 3 for comparative purposes:
+
+1. Select 'create new from existing' from the [inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/) landing page. 
+2. Choose the 'previous scenario' you wish to run again using Variant 3. 
+3. Choose a new, unique name e.g. '(previous-scenario-name)-ndg3'.
+4. Select 'Variant 3' from the dropdown on the 'Non-demographic Adjustment' page of the inputs app. **For a true comparison, all other parameters should remain the same**.  
 
 The analyses underpinning Variant 2 are available to view [here](ndg_analysis.html) and [here](ndg2_analysis.html). The latter analysis determined the NDG rate applied to non-elective IP admissions.
-A report detailing the expert elicitation exercise underpinning Variant 3 will soon be made available to view on this page.
+A report detailing the expert elicitation exercise which underpins Variant 3 will soon be made available to view on this page.
 
 The adjustment rates applied across different types of activity are shown in the table below. These are shown as annual percentage growth rates.
 
@@ -26,7 +33,7 @@ The adjustment rates applied across different types of activity are shown in the
 | A&E - walk-in             | 1.31%<br>(1.21%/1.41%)                 | 1.49%<br>(-0.54%/3.52%)               |
 | Inpatients - elective     | 0.62%<br>(0.53%/0.71%)                 | 1.35%<br>(-0.01%/2.71%)               |
 | Inpatients - maternity    | 0%                                     | 0%                                    |
-| Inpatients - non-elective | -0.14%<br>(-0.45%/0.17%)               | 1.16%<br>(-0.37%/2.69%)               |
+| Inpatients - non-elective | -0.14%<br>(-0.45%/0.17%)               | 1.16%<br>(-0.37%/2.68%)               |
 | Outpatients - first       | 2.49%<br>(2.28%/2.7%)                  | 2.45%<br>(0.02%/4.87%)                |
 | Outpatients - follow-up   | 2.49%<br>(2.28%/2.7%)                  | 2.45%<br>(0.02%/4.87%)                |
 | Outpatients - procedure   | 2.49%<br>(2.28%/2.7%)                  | 2.45%<br>(0.02%/4.87%)                |
@@ -35,4 +42,8 @@ NB NDG adjustments are not applied to length of stay.
 
 Currently NDG adjustments are not applied for inpatients maternity activity. The parameter is set at 0% annual growth rate which represents no change. This assumption is currently under review and may be revised in later versions of the model.
 
-Further work is planned to disaggregate the impacts of new medical technologies, changes in patient expectations, and changes in clinical standards on non-demographic growth. 
+The table in the inputs app shows the NDG adjustment rates as the multiplier values rather than the annual percentage growth rates e.g. 1.0121 instead of 1.21%. 
+
+Note that the adjustment rates are distributions - they range between a P10 and a P90 value which are shown within brackets in the table above. For more information about how the model simulations randomly samples a single value from these distributions, please see the [worked example](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/modelling_uncertainty.html#a-worked-example). 
+
+Further work is planned to seperate out some of the key components of non-demographic growth such as the impact of new medical technologies, changes in patient expectations, and changes in clinical standards. 
