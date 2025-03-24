@@ -3,7 +3,7 @@ title: "Non-Demographic Growth"
 order: 4
 --- 
  
-When considering growth in healthcare activity, it is standard practice to distinguish between growth that can be directly attributed to changes in the size and makeup of the population (demographic growth) and growth that is driven by other factors (which is typically grouped together under the heading of 'non-demographic growth'). When looking back, this non-demographic growth (NDG) is the residual between observed overall growth and the element of that that can be explained by demographic change.
+When considering growth in healthcare activity, it is standard practice to distinguish between growth that can be directly attributed to changes in the size and makeup of the population (demographic growth) and growth that is driven by other factors (which is typically grouped together under the heading of 'non-demographic growth'). When looking back, this non-demographic growth (NDG) is the residual (difference) between observed overall growth and the element of that which can be explained by demographic change.
 
 NHP has determined that the NDG assumption for demand and capacity modelling should be set nationally on the basis that the factors which drive it are not local in nature. There is however no extant national NDG assumption set by NHSE or DHSC so NHP has needed to develop one. We have carried out detailed analyses and an expert elicitation exercise to determine the NDG adjusments which are applied to activity in the model. Our current modelling approach uses two variants. 
 
