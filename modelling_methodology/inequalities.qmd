@@ -1,5 +1,5 @@
 ---
-title: "Inequalities"
+title: 'Inequalities'
 order: 1
 ---
 
@@ -16,7 +16,7 @@ This functionality is not currently available to all users. Information provided
 [Health inequalities](https://www.england.nhs.uk/about/equality/equality-hub/national-healthcare-inequalities-improvement-programme/what-are-healthcare-inequalities/) are unfair, avoidable group-level differences in health outcomes.\
 All NHS providers have a duty to work to reduce these inequalities in future, and the [New Hospitals Programme](https://www.gov.uk/government/publications/new-hospital-programme-review-outcome/new-hospital-programme-equality-impact-assessment#:~:text=Women%2C%20children%2C%20the%20elderly%2C,use%20hospital%20services%20in%20general) allows schemes to model the effect of addressing inequalities, which will prevent them from building a hospital which is too small once health inequalities have been addressed.
 
-When predicting future demand for acute care, we have the choice of whether to assume existing inequalities in acute care activity will persist, or to make assumptions around their reduction. If we assume that inequality in activity rates will be rectified (an upward slope of activity rates against deprivation being flattened to become horizontal) by the horizon year, we can make further assumptions about how this change may come about. This is agnostic to the specific ways in which schemes will choose to modify their activity to achieve this aim, but it does assume that any changes made will be successful in removing group-specific inequality. This represents an assumption of the successful application of [proportional universalism](https://www.instituteofhealthequity.org/resources-reports/towards-health-equity-a-framework-for-the-application-of-proportionate-universalism). The following method is derived from the Strategy Unit report ["Strategies to reduce inequalities in access to planned hospital procedures"](https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures).
+When predicting future demand for acute care, we have the choice of whether to assume existing inequalities in acute care activity will persist, or to make assumptions around their reduction. If we assume that inequality in activity rates will be rectified (an upward slope of activity rates against deprivation being flattened to become horizontal) by the horizon year, we can make further assumptions about how this change may come about. This is agnostic to the specific ways in which schemes will choose to modify their activity to achieve this aim, but it does assume that any changes made will be successful in removing group-specific inequality. This represents an assumption of the successful application of [proportional universalism](https://www.instituteofhealthequity.org/resources-reports/towards-health-equity-a-framework-for-the-application-of-proportionate-universalism). The following method is derived from the Strategy Unit report ['Strategies to reduce inequalities in access to planned hospital procedures'](https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures).
 
 ### Method
 
@@ -62,12 +62,12 @@ mid <- mean(data$activity_rate)
 
 data |>
   gt::gt() |> 
-  gt::tab_header("Synthetic activity rate per IMD quintile") |> 
-  gt::tab_footnote("IMD Index of Multiple Deprivation") |>
-  gt::cols_label(quintile = "IMD Quintile",
-                 population = "Population",
-                 activity_count = "Count of Activity",
-                 activity_rate = "Activity rate")
+  gt::tab_header('Synthetic activity rate per IMD quintile') |> 
+  gt::tab_footnote('IMD Index of Multiple Deprivation') |>
+  gt::cols_label(quintile = 'IMD Quintile',
+                 population = 'Population',
+                 activity_count = 'Count of Activity',
+                 activity_rate = 'Activity rate')
 ```
 
 
@@ -83,18 +83,18 @@ library(ggplot2)
 
 #plotting
 plot <- ggplot(data, aes(x = as.factor(quintile), y = activity_rate)) +
-  geom_point(size = 3, colour = "blue") +
-  geom_smooth(aes(x = as.numeric(quintile), y = activity_rate), method = "lm", 
-              colour = "orange", linetype = "dashed", se = F) +
+  geom_point(size = 3, colour = 'blue') +
+  geom_smooth(aes(x = as.numeric(quintile), y = activity_rate), method = 'lm', 
+              colour = 'orange', linetype = 'dashed', se = F) +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         axis.text = element_text(size = 14),
         text = element_text(size = 14)) +
   theme_bw() +
-  labs(y = "Activity rate",
-       x = "Deprivation quintile",
-       title = "Figure 1. An example of deprivation-related inequality in activity rate",
-       subtitle = "Blue dots represent average activity rates per quintile.\nThe orange dashed line is a line of best fit through these points.") +
+  labs(y = 'Activity rate',
+       x = 'Deprivation quintile',
+       title = 'Figure 1. An example of deprivation-related inequality in activity rate',
+       subtitle = 'Blue dots represent average activity rates per quintile.\nThe orange dashed line is a line of best fit through these points.') +
   scale_y_continuous(breaks = seq(0.000,0.004, 0.0005))
 
 suppressMessages(print(plot))
@@ -110,7 +110,7 @@ D.  **No change**: Inequality in delivery for this HRG will remain as it is the 
 In effect, with these options, the model will allow users to say, “For this HRG, by the horizon year we predict that inequality of activity in this HRG across deprivation quintiles will be removed. If it were removed by our chosen option, we would expect an increase in activity of ... over baseline.”
 
 In the table below, for each option, shows the activity rate to which the activity in 
-each quintile is predicted to reach ("Target Rate") along with the "Multiplier"
+each quintile is predicted to reach ('Target Rate') along with the 'Multiplier'
 which will be applied to those rows to either increase or decrease their
 frequency in the results.  The multiplier is calculated by dividing the target
 rate (the fitted minimum, maximum or mean rate for levelling-down, levelling-up 
@@ -122,41 +122,41 @@ quintile.
 #| label: tab-2
 #| warning: false
 
-table <- data.frame("IMD Quintile" = c("1", "2", "3", "4", "5"),
-                    "Observed activity rate" = c(data$activity_rate[data$quintile == min(data$quintile)], 
-                                                 data$activity_rate[data$quintile == "2"],
-                                                 data$activity_rate[data$quintile == "3"],
-                                                 data$activity_rate[data$quintile == "4"],
+table <- data.frame('IMD Quintile' = c('1', '2', '3', '4', '5'),
+                    'Observed activity rate' = c(data$activity_rate[data$quintile == min(data$quintile)], 
+                                                 data$activity_rate[data$quintile == '2'],
+                                                 data$activity_rate[data$quintile == '3'],
+                                                 data$activity_rate[data$quintile == '4'],
                                                  data$activity_rate[data$quintile == max(data$quintile)]),
-                    "Fitted Rate" = c(predict(model, newdata = data.frame(quintile = 1)),
+                    'Fitted Rate' = c(predict(model, newdata = data.frame(quintile = 1)),
                                       predict(model, newdata = data.frame(quintile = 2)),
                                       predict(model, newdata = data.frame(quintile = 3)),
                                       predict(model, newdata = data.frame(quintile = 4)),
                                       predict(model, newdata = data.frame(quintile = 5))),
-                    "Level-up Target Rate" = c(rep(predict(model, newdata = data.frame(quintile = 5)),4),
+                    'Level-up Target Rate' = c(rep(predict(model, newdata = data.frame(quintile = 5)),4),
                                    data$activity_rate[data$quintile == 5]),
-                    "Level-up Multiplier" = c(predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == "1"],
-                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == "2"],
-                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == "3"],
-                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == "4"],
+                    'Level-up Multiplier' = c(predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == '1'],
+                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == '2'],
+                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == '3'],
+                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == '4'],
                                               1),
-                    "Level-down Target Rate" = c(rep(predict(model, newdata = data.frame(quintile = 1)),4),
+                    'Level-down Target Rate' = c(rep(predict(model, newdata = data.frame(quintile = 1)),4),
                                    data$activity_rate[data$quintile == 1]),
-                    "Level-down Multiplier" = c(1,
-                                                predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == "2"],
-                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == "3"],
-                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == "4"],
-                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == "5"]),
-                    "Zero-sum Target Rate" = rep(mean(data$activity_rate),5),
-                    "Zero-sum Multiplier" = c(mean(data$activity_rate)/data$activity_rate[data$quintile == "1"],
-                                              mean(data$activity_rate)/data$activity_rate[data$quintile == "2"],
-                                              mean(data$activity_rate)/data$activity_rate[data$quintile == "3"],
-                                              mean(data$activity_rate)/data$activity_rate[data$quintile == "4"],
-                                              mean(data$activity_rate)/data$activity_rate[data$quintile == "5"]),
+                    'Level-down Multiplier' = c(1,
+                                                predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == '2'],
+                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == '3'],
+                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == '4'],
+                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == '5']),
+                    'Zero-sum Target Rate' = rep(mean(data$activity_rate),5),
+                    'Zero-sum Multiplier' = c(mean(data$activity_rate)/data$activity_rate[data$quintile == '1'],
+                                              mean(data$activity_rate)/data$activity_rate[data$quintile == '2'],
+                                              mean(data$activity_rate)/data$activity_rate[data$quintile == '3'],
+                                              mean(data$activity_rate)/data$activity_rate[data$quintile == '4'],
+                                              mean(data$activity_rate)/data$activity_rate[data$quintile == '5']),
                     check.names = F) |>
   gt::gt() |>
-  gt::tab_header("Fitted activity rates per quintile") |> 
-  gt::tab_footnote("IMD Index of Multiple Deprivation") |>
+  gt::tab_header('Fitted activity rates per quintile') |> 
+  gt::tab_footnote('IMD Index of Multiple Deprivation') |>
   fmt_number(columns = 2:9, decimals = 4)
 table
 ```
@@ -177,39 +177,39 @@ library(patchwork)
 
 A <- plot + 
   labs(subtitle = NULL)+
-  geom_hline(yintercept = upper, colour = "darkgreen", linewidth = 1.5) +
+  geom_hline(yintercept = upper, colour = 'darkgreen', linewidth = 1.5) +
   geom_segment(data = subset(data, quintile !=5),
     aes(x = as.factor(quintile), 
         y = activity_rate, 
         xend = as.factor(quintile),
         yend = upper),
     arrow = arrow()) +
-  labs(title = "A. Level-up") 
+  labs(title = 'A. Level-up') 
 
 
 B <- plot + 
   labs(subtitle = NULL)+
-  geom_hline(yintercept = lower, colour = "darkgreen", linewidth = 1.5) +
+  geom_hline(yintercept = lower, colour = 'darkgreen', linewidth = 1.5) +
   geom_segment(data = subset(data, quintile !=1),
                aes(x = as.factor(quintile), 
                    y = activity_rate, 
                    xend = as.factor(quintile),
                    yend = lower),
                arrow = arrow()) +
-  labs(title = "B. Level-down") 
+  labs(title = 'B. Level-down') 
 
 C <- plot + 
   labs(subtitle = NULL)+
-  geom_hline(yintercept = mid, colour = "darkgreen", linewidth = 1.5) +
+  geom_hline(yintercept = mid, colour = 'darkgreen', linewidth = 1.5) +
   geom_segment(aes(x = as.factor(quintile), 
                    y = activity_rate, 
                    xend = as.factor(quintile),
                    yend = mid),
                arrow = arrow()) +
-  labs(title = "C. Zero-sum redistribution") 
+  labs(title = 'C. Zero-sum redistribution') 
 
 
-fig2 <- A/B/C + plot_layout(heights = unit(5, "cm"))
+fig2 <- A/B/C + plot_layout(heights = unit(5, 'cm'))
 suppressMessages(print(fig2))
 
 ```
