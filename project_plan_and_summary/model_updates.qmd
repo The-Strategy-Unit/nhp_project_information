@@ -9,9 +9,9 @@ order: 5
 
 ### Non-demographic growth variant 3
 
-A new non-demographic growth (NDG) variant, variant 3, is now available to select. Further details on the analysis that underpins this variant is available to view on the [Non-Demographic Growth page](../modelling_methodology/non-demographic_growth.qmd).
+A new non-demographic growth (NDG) variant, Variant 3, is now available to select. The primary rate used for current modelling remains Variant 2 with Variant 3 being used as sensitivity. Further details on the use of these variants in the model is available to view on the [Non-Demographic Growth page](../modelling_methodology/non-demographic_growth.qmd).
 
-Non-demographic growth variant 1 has now been removed. This means that it is not possible to create new scenarios from or edit existing NDG1 scenarios on the inputs app. New scenarios can only be created from existing NDG2 scenarios.
+Non-demographic growth variant 1 has now been removed. This means that it is not possible to create new scenarios from or edit existing NDG Variant 1 scenarios on the inputs app. New scenarios can only be created from existing NDG Variant 2 scenarios.
 
 ### Mitigators renamed
 
