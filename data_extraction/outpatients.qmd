@@ -120,6 +120,10 @@ If the `tretspef` is in the list of RTT specialties, then leave as is, otherwise
 
 This is set to `true` - it simplifies the logic within the model to have the same fields for the waiting list adjustment in both Inpatients and Outpatients.
 
+## Maternity activity
+
+Note that maternity activity is excluded from Outpatients mitigators. This activity is identified with treatment specialty codes `424`, `501`, `505`, and `560`.
+
 ## Aggregation
 
 We aggregate by counting how many rows of data appear within the extraction period for each provider.
