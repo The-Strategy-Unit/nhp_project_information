@@ -47,3 +47,5 @@ The table in the inputs app shows the NDG adjustment rates as the multiplier val
 Note that the adjustment rates are distributions - they range between a P10 and a P90 value which are shown within brackets in the table above. For more information about how the model simulations randomly samples a single value from these distributions, please see the [worked example](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/modelling_uncertainty.html#a-worked-example). 
 
 Further work is planned to seperate out some of the key components of non-demographic growth such as the impact of new medical technologies, changes in patient expectations, and changes in clinical standards. 
+
+To see a detailed note describing the adoption of Variant 2 as the model's primary rate for non-elective inpatient admissions, please [see here](https://github.com/The-Strategy-Unit/nhp_project_information/blob/77df9d50923e5242e95226f56112d90d1ee562bf/modelling_methodology/non-demographic_growth.qmd).
