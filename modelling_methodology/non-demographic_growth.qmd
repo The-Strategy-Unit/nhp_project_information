@@ -38,7 +38,7 @@ The adjustment rates applied across different types of activity are shown in the
 | Outpatients - follow-up   | 2.49%<br>(2.28%/2.7%)                  | 2.45%<br>(0.02%/4.87%)                |
 | Outpatients - procedure   | 2.49%<br>(2.28%/2.7%)                  | 2.45%<br>(0.02%/4.87%)                |
 
-NB NDG adjustments are not applied to length of stay. 
+Note that NDG adjustments are not applied to length of stay. 
 
 Currently NDG adjustments are not applied for inpatients maternity activity. The parameter is set at 0% annual growth rate which represents no change. This assumption is currently under review and may be revised in later versions of the model.
 
