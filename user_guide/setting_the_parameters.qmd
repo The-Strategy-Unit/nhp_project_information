@@ -65,7 +65,7 @@ This adjustment accounts for any difference between elective (inpatients and out
 1. To increase the trust's inpatient elective and outpatient activity so that its Referral To Treat (RTT) activity is sufficient to meet RTT demand (referrals) in the baseline year, OR 
 2. To leave its activity in the baseline year unchanged.
 
-More information is available [here](demand_supply.qmd).
+More information is available [here](../modelling_methodology/demand_supply.qmd).
 
 ### Expatriation / repatriation
 
