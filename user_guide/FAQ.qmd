@@ -127,7 +127,7 @@ With the efficiencies mitigators, if more than one efficiency mitigator applies 
 
 It is therefore not possible to exactly state which mitigator has removed specific types of activity. We can provide high-level estimates of activity removed through the [step counts/impact of changes](glossary.qmd#impact-of-changes), and a breakdown of avoided activity by age and sex in the model results. We have not yet implemented the ability to see a breakdown of activity removed by the efficiency mitigators in the model results.
 
-## What effect does the v3.1 model methodology change have on model comparability?
+## What effect does the v3.1 model methodology change have on model comparability? {#method-change}
 
 An improvement was made to the model so that the outputs more accurately reflect the impact that each activity mitigator has had on reducing activity.
 
@@ -146,6 +146,8 @@ The waterfall chart shows a "model interaction factor", which reflects only the 
 Additionally, the individual bar chart displaying the effect of each mitigator does not account for interaction effects, meaning the impact of each mitigator may be slightly overstated. However, the size of this interaction effect can be seen in the Excel download.
 
 NB important to note that this is an improvement as it more accurately reflects the overall level of avoided activity at the horizon year.
+
+For a more detailed explanation of the binomial thinning method see @sec-modelling_uncertainty.
 
 
 
