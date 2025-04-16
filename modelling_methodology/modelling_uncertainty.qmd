@@ -3,7 +3,7 @@ title: "Modelling uncertainty"
 order: 2
 ---
 
-{#sec-modelling_uncertainty}
+--- {#sec-modelling_uncertainty}
 
 Having set the model parameters, the model calculates, for each record in the baseline dataset, the frequency of such cases in the model horizon period.  The model then samples each record (with replacement) according to its own future frequency.  The process applies to each unit of activity in its own right (for example, an inpatient spell, an outpatient attendance and so on) as well as, for inpatient spells, the number of bed days used.  In some cases, aspects of an activity unit are altered to reflect anticipated changes (for example, changing an inpatient spell to an outpatient appointment). 
 
