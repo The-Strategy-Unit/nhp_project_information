@@ -3,6 +3,36 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/04/23
+
+## v3.4
+
+### Mitigator changes
+
+#### New Same Day Emergency Care mitigators
+
+The Directory of Ambulatory Emergency Care for adults 6th ed (2018), published by the Ambulatory Emergency Care Network, identified 58 emergency conditions that have the potential to be managed as an emergency day case delivered in a Same Day Emergency Care (SDEC) unit. We have grouped these conditions into four mitigator cohorts:
+
+- Same day emergency care (low potential) (IP-EF-028): Those that the network suggest have a low potential to be managed on an ambulatory basis (10-30% of cases) 
+- Same day emergency care (moderate potential) (IP-EF-029): Those that the network suggest have a moderate potential to be managed on an ambulatory basis (30-60% of cases)
+- Same day emergency care (high potential) (IP-EF-030): Those that the network suggest have a high potential to be managed on an ambulatory basis (60-90% of cases)
+- Same day emergency care (very high potential) (IP-EF-031): Those that the network suggest have a very high potential to be managed on an ambulatory basis (90-100% of cases)
+
+The spells identified by these mitigators exclude any with a length of stay (LOS) of >=3 days as these spells are considered less likely to be treatable within a day. These mitigators allow schemes to make an assumption about what proportion of the identified spells they think will, in future, be delivered within an SDEC facility and not as an admitted patient. The model removes this quantity of spells from the inpatients data and adds them to the A&E outputs as type 5 (SDEC) attendances enabling clear identification and quantification of future SDEC activity with the model outputs.
+
+The code used to identify spells affected by these mitigators can be found in [the nhp_data repository](https://github.com/The-Strategy-Unit/nhp_data/blob/main/raw_data/mitigators/ip/efficiency/same_day_emergency_care.py).
+
+#### Ambulatory Emergency Care mitigators removed
+
+The new Same Day Emergency Care mitigators replace the Ambulatory Emergency Care mitigators listed below, which adjusted the LOS of selected spells to 0 LOS but kept them within the inpatients dataset. The change reflects the new requirement for Trusts to record SDEC activity within the ECDS dataset.
+
+- Ambulatory emergency care (low potential) (IP-EF-002)
+- Ambulatory emergency care (moderate potential) (IP-EF-003)
+- Ambulatory emergency care (high potential) (IP-EF-001)
+- Ambulatory emergency care (very high potential) (IP-EF-004)
+
+A full list of the activity mitigators in the model is available from the [mitigators lookup page](../user_guide/mitigators_lookup.qmd).
+
 # Update 2025/03/25
 
 ## v3.3

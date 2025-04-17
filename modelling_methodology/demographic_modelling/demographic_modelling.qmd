@@ -41,7 +41,11 @@ The NHP Demand model includes a component which adjusts hospital activity based 
 
 ## User selection of demographic projections
 
-In most cases we expect users to select and use ONS's principal population projection.  Users are however, free to select, for example the high migration or low fertility projections if they wish, but these variants should be used with caution and only after familiarisation with the assumptions that underpin these non-standard projections.  In addition, users can select several of the variants and indicate how often they wish these to be used in the model's Monte-Carlo replications. 
+In most cases we expect users to select and use ONS's principal population projection.  Users are however, free to select, for example the high migration or low fertility projections if they wish, but these variants should be used with caution and only after familiarisation with the assumptions that underpin these non-standard projections.  In addition, users can select several of the variants and indicate how often they wish these to be used in the model's Monte-Carlo replications.
+
+## Custom demographic projections
+
+Users may request the use of a custom population projection for specific schemes, by contacting their Model Relationship Manager. Any proposed alternative population projection will require the evidenced support of the ICB and region.
 
 ## How demographic growth is applied in the model: a worked example
 
