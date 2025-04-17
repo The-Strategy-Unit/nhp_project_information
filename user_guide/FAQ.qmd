@@ -147,7 +147,7 @@ Additionally, the individual bar chart displaying the effect of each mitigator d
 
 NB important to note that this is an improvement as it more accurately reflects the overall level of avoided activity at the horizon year.
 
-For a more detailed explanation of the binomial thinning method see [modelling_uncertainty](#modelling_uncertainty.qmd).
+For a more detailed explanation of the binomial thinning method see [modelling_uncertainty](../modelling_methodology/modelling_uncertainty.qmd).
 
 
 
