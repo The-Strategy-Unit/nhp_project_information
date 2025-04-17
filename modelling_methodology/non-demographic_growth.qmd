@@ -66,4 +66,4 @@ This trend has been driven by a convergence of multiple factors including:
 -	Growing patient expectations, resulting in higher demand for consultant appointments. 
 -	Digital transformations, including virtual consultations, which has resulted in expanded access and flexibility.
 
-It is not unreasonable to assume such factors are likely to have a continued effect on future demand. As such our view is that the use of the baseline level of non demographic  growth [is reasonable](ndg_analysis.qmd). This position is supported by a separate elicitation exercise that resulted in similar annual growth estimates.
+It is not unreasonable to assume such factors are likely to have a continued effect on future demand. As such our view is that the use of the baseline level of non demographic  growth [is reasonable](ndg_analysis.html). This position is supported by a separate elicitation exercise that resulted in similar annual growth estimates.
