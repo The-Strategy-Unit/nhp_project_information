@@ -44,7 +44,7 @@ Currently NDG adjustments are not applied for inpatients maternity activity. The
 
 The table in the inputs app shows the NDG adjustment rates as the multiplier values rather than the annual percentage growth rates e.g. 1.0121 instead of 1.21%. 
 
-Note that the adjustment rates are distributions - they range between a P10 and a P90 value which are shown within brackets in the table above. For more information about how the model simulations randomly samples a single value from these distributions, please see the [worked example](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/modelling_uncertainty.html#a-worked-example). 
+Note that the adjustment rates are distributions - they range between a P10 and a P90 value which are shown within brackets in the table above. For more information about how the model simulations randomly samples a single value from these distributions, please see the [worked example](modelling_uncertainty.qmd#a-worked-example). 
 
 Further work is planned to separate out some of the key components of non-demographic growth such as the impact of new medical technologies, changes in patient expectations, and changes in clinical standards. 
 
@@ -66,4 +66,4 @@ This trend has been driven by a convergence of multiple factors including:
 -	Growing patient expectations, resulting in higher demand for consultant appointments. 
 -	Digital transformations, including virtual consultations, which has resulted in expanded access and flexibility.
 
-It is not unreasonable to assume such factors are likely to have a continued effect on future demand. As such our view is that the use of the baseline level of non demographic  growth [is reasonable](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/ndg_analysis.html). This position is supported by a separate elicitation exercise that resulted in similar annual growth estimates.
+It is not unreasonable to assume such factors are likely to have a continued effect on future demand. As such our view is that the use of the baseline level of non demographic  growth [is reasonable](ndg_analysis.qmd). This position is supported by a separate elicitation exercise that resulted in similar annual growth estimates.
