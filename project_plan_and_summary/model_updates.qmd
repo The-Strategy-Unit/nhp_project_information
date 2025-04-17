@@ -3,6 +3,23 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/04/03
+
+We are pleased to announce that many more repositories relating to the NHP model are now public and open source.
+These are:
+
+- [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs): The repository containing the analysis underpinning the various [demographic adjustments](../modelling_methodology/demographic_modelling/demographic_modelling.qmd) in the model.
+- [nhp_data](https://github.com/The-Strategy-Unit/nhp_data): Databricks scripts for processing data required for the New Hospitals Programme. 
+- [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs): An app to input the parameters needed to run scenarios through the New Hospital Programme demand model.
+- [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/)
+- [nhp_api](https://github.com/The-Strategy-Unit/nhp_api/): A set of Azure functions for managing Azure Container Instances.
+- [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs): An app to explore the results of scenarios run through the New Hospital Programme (NHP) demand model.
+- [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app): A Shiny app to explore and compare schemes' mitigator selections as part of the National Hospital Programme (NHP) modelling process.
+- [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information): The repository for this website
+
+A full list of the repositories relating to the NHP model is available [here](../project_plan_and_summary/components-overview.qmd), 
+although some are still private. We are currently in discussions about open sourcing the entire model.
+
 # Update 2025/03/25
 
 ## v3.3
@@ -54,7 +71,9 @@ We have changed the methodology used in the modelling. An explanation of the new
 
 The reason for this change is to allow greater nuance in the reporting of activity growth and activity mitigation. We can now show the activity that was prevented due to the activity avoidance mitigators. This will be included in the model results download broken down by site, point of delivery (POD), age group, and sex.
 
-This change has meant that users will notice some differences in the waterfall diagram found on the "impact of changes" tab of the outputs dashboard. The data for this diagram is in the "step counts" tab of the Excel download of model results. The ["model interaction term"](../user_guide/glossary.qmd#impact-of-changes), which shows the effects of compounding within the model, will be different due to this change in methodology. There is also an additional model interaction term specifically for activity avoidance which can be seen in the Excel download only; this is grouped in with the rest of the activity avoidance in the main waterfall diagram. We would also expect to see a larger impact caused by activity avoidance, as the new methodology makes it easier to identify the impact of these parameters in isolation.
+This change has meant that users will [notice some differences](#method-change) in the waterfall diagram found on the "impact of changes" tab of the outputs dashboard. 
+
+The data for this diagram is in the "step counts" tab of the Excel download of model results. The ["model interaction term"](../user_guide/glossary.qmd#impact-of-changes), which shows the effects of compounding within the model, will be different due to this change in methodology. There is also an additional model interaction term specifically for activity avoidance which can be seen in the Excel download only; this is grouped in with the rest of the activity avoidance in the main waterfall diagram. We would also expect to see a larger impact caused by activity avoidance, as the new methodology makes it easier to identify the impact of these parameters in isolation.
 
 The overall results of modelling from the baseline year to the horizon year should be very similar to scenarios run on previous model versions.
 
