@@ -44,8 +44,26 @@ Currently NDG adjustments are not applied for inpatients maternity activity. The
 
 The table in the inputs app shows the NDG adjustment rates as the multiplier values rather than the annual percentage growth rates e.g. 1.0121 instead of 1.21%. 
 
-Note that the adjustment rates are distributions - they range between a P10 and a P90 value which are shown within brackets in the table above. For more information about how the model simulations randomly samples a single value from these distributions, please see the [worked example](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/modelling_uncertainty.html#a-worked-example). 
+Note that the adjustment rates are distributions - they range between a P10 and a P90 value which are shown within brackets in the table above. For more information about how the model simulations randomly samples a single value from these distributions, please see the [worked example](modelling_uncertainty.qmd#a-worked-example). 
 
 Further work is planned to separate out some of the key components of non-demographic growth such as the impact of new medical technologies, changes in patient expectations, and changes in clinical standards. 
 
 To see a detailed note describing the adoption of Variant 2 as the model's primary rate for non-elective inpatient admissions, please [see here](https://github.com/The-Strategy-Unit/nhp_project_information/blob/77df9d50923e5242e95226f56112d90d1ee562bf/modelling_methodology/non-demographic_growth.qmd).
+
+## Non demographic growth in Outpatient activity
+
+Outpatient activity in England has seen sustained growth over the past decade significantly in excess of the impact of demographic changes, placing increasing pressure on NHS resources. The chart below illustrates that growth.
+
+![Source: [NHS England](https://digital.nhs.uk/data-and-information/publications/statistical/hospital-outpatient-activity/2023-24/summary-reports)](outpatient-appointments.jpeg)
+
+This trend has been driven by a convergence of multiple factors including:
+
+-	Rising prevalence of chronic conditions which has led to greater demand for specialist care delivered outside of hospital admissions. 
+-	Advances in diagnostics and treatment pathways that have enabled more conditions to be managed in outpatient settings. 
+-	Increasing use of hot clinics (rapid access outpatient clinics)
+-	A shift in NHS policy towards delivering care closer to home, promoting day case procedures and follow-up appointments in outpatient clinics.
+-	Increased referrals, influenced by updated clinical guidelines 
+-	Growing patient expectations, resulting in higher demand for consultant appointments. 
+-	Digital transformations, including virtual consultations, which has resulted in expanded access and flexibility.
+
+It is not unreasonable to assume such factors are likely to have a continued effect on future demand. As such our view is that the use of the baseline level of non demographic  growth [is reasonable](ndg_analysis.html). This position is supported by a separate elicitation exercise that resulted in similar annual growth estimates.
