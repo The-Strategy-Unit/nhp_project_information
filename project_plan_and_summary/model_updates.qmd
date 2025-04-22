@@ -11,7 +11,7 @@ order: 5
 
 #### New Same Day Emergency Care mitigators
 
-The Directory of Ambulatory Emergency Care for adults 6th ed (2018), published by the Ambulatory Emergency Care Network, identified 58 emergency conditions that have the potential to be managed as an emergency day case delivered in a Same Day Emergency Care (SDEC) unit. We have grouped these conditions into four mitigator cohorts:
+The *Directory of Ambulatory Emergency Care for adults 6th ed* (2018), published by the Ambulatory Emergency Care Network, identified 58 emergency conditions that have the potential to be managed as an emergency day case delivered in a Same Day Emergency Care (SDEC) unit. We have grouped these conditions into four mitigator cohorts:
 
 - Same day emergency care (low potential) (IP-EF-028): Those that the network suggest have a low potential to be managed on an ambulatory basis (10-30% of cases) 
 - Same day emergency care (moderate potential) (IP-EF-029): Those that the network suggest have a moderate potential to be managed on an ambulatory basis (30-60% of cases)

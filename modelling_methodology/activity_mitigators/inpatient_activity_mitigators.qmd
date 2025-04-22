@@ -11,7 +11,7 @@ The underlying principle of [Same Day Emergency Care (SDEC)][1] is that a signif
 
 [1]: https://www.england.nhs.uk/urgent-emergency-care/same-day-emergency-care/
 
-The [Ambulatory Emergency Care Network][2] has published a Directory of Ambulatory Emergency Care for adults, 6th ed (2018) which identifies emergency conditions that have the potential to be managed as an emergency day case delivered in an SDEC unit. We have grouped these conditions into four mitigator cohorts:
+The [Ambulatory Emergency Care Network][2] has published *Directory of Ambulatory Emergency Care for adults, 6th ed* (2018) which identifies emergency conditions that have the potential to be managed as an emergency day case delivered in an SDEC unit. We have grouped these conditions into four mitigator cohorts:
 
 - Same day emergency care (low potential) (IP-EF-028): Those that the network suggest have a low potential to be managed on an ambulatory basis (10-30% of cases) 
 - Same day emergency care (moderate potential) (IP-EF-029): Those that the network suggest have a moderate potential to be managed on an ambulatory basis (30-60% of cases)
