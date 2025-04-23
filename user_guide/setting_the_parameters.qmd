@@ -132,7 +132,7 @@ Includes the following types of activities, which are broken down further into s
 
 - Admission Avoidance
 - Mean Length of Stay reductions
-- Ambulatory Emergency Care Length of Stay reductions
+- Same Day Emergency Care activity type conversions
 - Pre-operative Length of Stay reductions
 - Day procedures
 
