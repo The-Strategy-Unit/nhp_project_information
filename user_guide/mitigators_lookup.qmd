@@ -5,11 +5,11 @@ order: 5
 
 This page contains an interactive table with a sortable and searchable lookup of mitigators. Click the 'Download CSV' button to download a copy with the current filters applied (if any).
 
-The mitigators on this page are correct for model versions 1.1 and later. There were 84 mitigators in model version 1.0. For model versions 1.1 onwards, there are 92 mitigators. The mitigators that were added in version 1.1 were the Virtual Ward and Day Procedures mitigators, as detailed in [this model update](/project_plan_and_summary/model_updates.qmd#new-virtual-ward-mitigators).
+The table shows the model versions when each mitigator was active from and active to (if deprecated). There were 84 mitigators in model version 1.0. For model versions 1.1 onwards, there are 92 mitigators. Virtual Ward and Day Procedures mitigators were added in [version 1.1](/project_plan_and_summary/model_updates.html#update-20240424). Same Day Emergency Care (SDEC) mitigators were added and Ambulatory Emergency Care (AEC) mitigators removed in [version 3.4](http://localhost:5811/project_plan_and_summary/model_updates.html#update-20250423).
 
 The table contains mitigator codes, which exist to make it easier to refer to and discuss mitigators. These codes take the form 'IP-AA-001', for example. Each code is composed of an activity type ('IP' is inpatient, for example), a mitigator type ('AA' is activity avoidance) and a three-digit number (assigned on the basis of alphabetical order within activity and mitigator types).
 
-The variable names for each strategy are also included. These are used when interacting directly with the data that underlies the model and apps. The strategy names are presented to users in the inputs- and outputs-app interfaces.
+The variable names for each strategy are also included. These are used when interacting directly with the data that underlies the model and apps. The mitigator names are presented to users in the inputs- and outputs-app interfaces.
 
 
 ```{r}
@@ -18,34 +18,45 @@ The variable names for each strategy are also included. These are used when inte
 library(readr)  # forces readr in AzureStor::storage_read_csv
 
 get_container <- function(container_name) {
-  
+
   ep_uri <- Sys.getenv("AZ_STORAGE_EP")
   app_id <- Sys.getenv("AZ_APP_ID")
   sa_key <- Sys.getenv("AZ_STORAGE_KEY")
-  
+
   ep_uri |>
     AzureStor::blob_endpoint(key = sa_key) |>
     AzureStor::storage_container(container_name)
-  
+
 }
 
-support_container <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT") |> 
+support_container <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT") |>
   get_container()
 
 lookup <- AzureStor::storage_read_csv(
   support_container,
   "mitigator-lookup.csv",
-  show_col_types = FALSE  # readr must be loaded
+  col_types = "c"
 )
 
 dat <- lookup |> 
   dplyr::select(
-    "Mitigator code",
-    "Activity type",
-    "Mitigator type",
-    "Strategy variable",
-    "Strategy name"
-  )
+    Code = mitigator_code,
+    Activity = "activity_type",
+    Type = "mitigator_type",
+    Name = "mitigator_name",
+    Variable = "mitigator_variable",
+    From = "active_from",
+    To = "active_to"
+  ) |> 
+  dplyr::mutate(
+    Activity = dplyr::if_else(
+      Activity == "aae",
+      "A&E",
+      stringr::str_to_upper(Activity)
+    ),
+    Type = Type |> stringr::str_to_title() |> stringr::str_replace("_", " ")
+  ) |> 
+  tidyr::replace_na(list(To = "-"))
 
 htmltools::tagList(
   htmltools::tags$button(
@@ -55,13 +66,15 @@ htmltools::tagList(
   reactable::reactable(
     elementId = "mitigators-data",
     data = dat,
-    defaultSorted = "Mitigator code",
+    defaultSorted = "Code",
     searchable = TRUE,
     filterable = TRUE,
     columns = list(
-      "Mitigator code" = reactable::colDef(maxWidth = 105),
-      "Activity type"  = reactable::colDef(maxWidth = 105),
-      "Mitigator type" = reactable::colDef(maxWidth = 100)
+      "Code" = reactable::colDef(maxWidth = 100),
+      "Activity" = reactable::colDef(maxWidth = 75),
+      "Type" = reactable::colDef(maxWidth = 105),
+      "From"  = reactable::colDef(maxWidth = 70),
+      "To" = reactable::colDef(maxWidth = 70)
     )
   )
 ) |> 

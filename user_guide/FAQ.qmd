@@ -127,8 +127,27 @@ With the efficiencies mitigators, if more than one efficiency mitigator applies 
 
 It is therefore not possible to exactly state which mitigator has removed specific types of activity. We can provide high-level estimates of activity removed through the [step counts/impact of changes](glossary.qmd#impact-of-changes), and a breakdown of avoided activity by age and sex in the model results. We have not yet implemented the ability to see a breakdown of activity removed by the efficiency mitigators in the model results.
 
+## What effect does the v3.1 model methodology change have on model comparability? {#method-change}
 
+An improvement was made to the model so that the outputs more accurately reflect the impact that each activity mitigator has had on reducing activity.
 
+Model versions before Version 3.1 applied modifying factors to the baseline activity levels in a single step.
+
+This means that, if a mitigator was expected to reduce one type of activity by, say, 10%, this represented a reduction of 10% of the baseline rate, rather than the inflated activity rates created by applying the growth factors (demographic and non-demographic growth).
+
+In contrast, Version 3.1 applies impact factors in two stages:
+
+Initial Projection: First, the demographic and non-demographic factors are incorporated, as well as waiting list and repatriation/expatriation factors, to project future activity before mitigation.
+
+Mitigation Application: The model then applies mitigation factors to this projected activity.
+
+The waterfall chart shows a "model interaction factor", which reflects only the interaction between factors in the first, "Initial Projection", stage. The degree of overlap of the mitigators is not shown in the waterfall chart, but is included in the "activity avoidance" bar.
+
+Additionally, the individual bar chart displaying the effect of each mitigator does not account for interaction effects, meaning the impact of each mitigator may be slightly overstated. However, the size of this interaction effect can be seen in the Excel download.
+
+NB important to note that this is an improvement as it more accurately reflects the overall level of avoided activity at the horizon year.
+
+For a more detailed explanation of the binomial thinning method see [modelling_uncertainty](../modelling_methodology/modelling_uncertainty.qmd).
 
 
 
