@@ -1,9 +1,6 @@
 ---
 title: "Model updates"
 order: 5
-editor: 
-  markdown: 
-    wrap: sentence
 ---
 
 # Update 2025/05/07
@@ -23,7 +20,7 @@ These are:
 -   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information): The repository for this website
 
 A full list of the repositories relating to the NHP model is available [here](../project_plan_and_summary/components-overview.qmd).
-You can also view our Open Code Policy [here](https://connect.strategyunitwm.nhs.uk/open-source-policy/), and read a [blog](https://www.strategyunitwm.nhs.uk/news/transforming-hospital-planning-open-source-demand-and-capacity-model) we have written describing the process of open sourcing our code.
+You can also view our Open Source Policy [here](https://connect.strategyunitwm.nhs.uk/open-source-policy/), and read a [blog](https://www.strategyunitwm.nhs.uk/news/transforming-hospital-planning-open-source-demand-and-capacity-model) we have written describing the process of open sourcing our code.
 
 # Update 2025/04/23
 
