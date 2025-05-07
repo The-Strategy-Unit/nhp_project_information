@@ -3,6 +3,25 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/05/07
+
+## OPEN Code
+
+We are pleased to announce that many more repositories relating to the NHP model are now public and open source.
+These are:
+
+-   [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs): The repository containing the analysis underpinning the various [demographic adjustments](../modelling_methodology/demographic_modelling/demographic_modelling.qmd) in the model.
+-   [nhp_data](https://github.com/The-Strategy-Unit/nhp_data): Databricks scripts for processing data required for the New Hospitals Programme.
+-   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs): An app to input the parameters needed to run scenarios through the New Hospital Programme demand model.
+-   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/)
+-   [nhp_api](https://github.com/The-Strategy-Unit/nhp_api/): A set of Azure functions for managing Azure Container Instances.
+-   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs): An app to explore the results of scenarios run through the New Hospital Programme (NHP) demand model.
+-   [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app): A Shiny app to explore and compare schemes' mitigator selections as part of the National Hospital Programme (NHP) modelling process.
+-   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information): The repository for this website
+
+A full list of the repositories relating to the NHP model is available [here](../project_plan_and_summary/components-overview.qmd).
+You can also view our Open Source Policy [here](https://connect.strategyunitwm.nhs.uk/open-source-policy/), and read a [blog](https://www.strategyunitwm.nhs.uk/news/transforming-hospital-planning-open-source-demand-and-capacity-model) we have written describing the process of open sourcing our code.
+
 # Update 2025/04/23
 
 ## v3.4
@@ -11,25 +30,29 @@ order: 5
 
 #### New Same Day Emergency Care mitigators
 
-The *Directory of Ambulatory Emergency Care for adults 6th ed* (2018), published by the Ambulatory Emergency Care Network, identified 58 emergency conditions that have the potential to be managed as an emergency day case delivered in a Same Day Emergency Care (SDEC) unit. We have grouped these conditions into four mitigator cohorts:
+The *Directory of Ambulatory Emergency Care for adults 6th ed* (2018), published by the Ambulatory Emergency Care Network, identified 58 emergency conditions that have the potential to be managed as an emergency day case delivered in a Same Day Emergency Care (SDEC) unit.
+We have grouped these conditions into four mitigator cohorts:
 
-- Same day emergency care (low potential) (IP-EF-028): Those that the network suggest have a low potential to be managed on an ambulatory basis (10-30% of cases) 
-- Same day emergency care (moderate potential) (IP-EF-029): Those that the network suggest have a moderate potential to be managed on an ambulatory basis (30-60% of cases)
-- Same day emergency care (high potential) (IP-EF-030): Those that the network suggest have a high potential to be managed on an ambulatory basis (60-90% of cases)
-- Same day emergency care (very high potential) (IP-EF-031): Those that the network suggest have a very high potential to be managed on an ambulatory basis (90-100% of cases)
+-   Same day emergency care (low potential) (IP-EF-028): Those that the network suggest have a low potential to be managed on an ambulatory basis (10-30% of cases)
+-   Same day emergency care (moderate potential) (IP-EF-029): Those that the network suggest have a moderate potential to be managed on an ambulatory basis (30-60% of cases)
+-   Same day emergency care (high potential) (IP-EF-030): Those that the network suggest have a high potential to be managed on an ambulatory basis (60-90% of cases)
+-   Same day emergency care (very high potential) (IP-EF-031): Those that the network suggest have a very high potential to be managed on an ambulatory basis (90-100% of cases)
 
-The spells identified by these mitigators exclude any with a length of stay (LOS) of >=3 days as these spells are considered less likely to be treatable within a day. These mitigators allow schemes to make an assumption about what proportion of the identified spells they think will, in future, be delivered within an SDEC facility and not as an admitted patient. The model removes this quantity of spells from the inpatients data and adds them to the A&E outputs as type 5 (SDEC) attendances enabling clear identification and quantification of future SDEC activity with the model outputs.
+The spells identified by these mitigators exclude any with a length of stay (LOS) of \>=3 days as these spells are considered less likely to be treatable within a day.
+These mitigators allow schemes to make an assumption about what proportion of the identified spells they think will, in future, be delivered within an SDEC facility and not as an admitted patient.
+The model removes this quantity of spells from the inpatients data and adds them to the A&E outputs as type 5 (SDEC) attendances enabling clear identification and quantification of future SDEC activity with the model outputs.
 
 The code used to identify spells affected by these mitigators can be found in [the nhp_data repository](https://github.com/The-Strategy-Unit/nhp_data/blob/main/raw_data/mitigators/ip/efficiency/same_day_emergency_care.py).
 
 #### Ambulatory Emergency Care mitigators removed
 
-The new Same Day Emergency Care mitigators replace the Ambulatory Emergency Care mitigators listed below, which adjusted the LOS of selected spells to 0 LOS but kept them within the inpatients dataset. The change reflects the new requirement for Trusts to record SDEC activity within the ECDS dataset.
+The new Same Day Emergency Care mitigators replace the Ambulatory Emergency Care mitigators listed below, which adjusted the LOS of selected spells to 0 LOS but kept them within the inpatients dataset.
+The change reflects the new requirement for Trusts to record SDEC activity within the ECDS dataset.
 
-- Ambulatory emergency care (low potential) (IP-EF-002)
-- Ambulatory emergency care (moderate potential) (IP-EF-003)
-- Ambulatory emergency care (high potential) (IP-EF-001)
-- Ambulatory emergency care (very high potential) (IP-EF-004)
+-   Ambulatory emergency care (low potential) (IP-EF-002)
+-   Ambulatory emergency care (moderate potential) (IP-EF-003)
+-   Ambulatory emergency care (high potential) (IP-EF-001)
+-   Ambulatory emergency care (very high potential) (IP-EF-004)
 
 A full list of the activity mitigators in the model is available from the [mitigators lookup page](../user_guide/mitigators_lookup.qmd).
 
@@ -39,16 +62,20 @@ A full list of the activity mitigators in the model is available from the [mitig
 
 ### Non-demographic growth variant 3
 
-A new non-demographic growth (NDG) variant, Variant 3, is now available to select. The primary rate used for current modelling remains Variant 2 with Variant 3 being used as sensitivity. Further details on the use of these variants in the model is available to view on the [Non-Demographic Growth page](../modelling_methodology/non-demographic_growth.qmd).
+A new non-demographic growth (NDG) variant, Variant 3, is now available to select.
+The primary rate used for current modelling remains Variant 2 with Variant 3 being used as sensitivity.
+Further details on the use of these variants in the model is available to view on the [Non-Demographic Growth page](../modelling_methodology/non-demographic_growth.qmd).
 
-Non-demographic growth variant 1 has now been removed. This means that it is not possible to create new scenarios from or edit existing NDG Variant 1 scenarios on the inputs app. New scenarios can only be created from existing NDG Variant 2 scenarios.
+Non-demographic growth variant 1 has now been removed.
+This means that it is not possible to create new scenarios from or edit existing NDG Variant 1 scenarios on the inputs app.
+New scenarios can only be created from existing NDG Variant 2 scenarios.
 
 ### Mitigators renamed
 
 Following feedback, we have renamed the following mitigators:
 
-- Frail Elderly Admissions (High Frailty Risk) (IP-AA-017) is now Older People with Frailty Admissions (High Frailty Risk) (IP-AA-017)
-- Frail Elderly Admissions (Intermediate Frailty Risk) (IP-AA-018) is now Older People with Frailty Admissions (Intermediate Frailty Risk) (IP-AA-018)
+-   Frail Elderly Admissions (High Frailty Risk) (IP-AA-017) is now Older People with Frailty Admissions (High Frailty Risk) (IP-AA-017)
+-   Frail Elderly Admissions (Intermediate Frailty Risk) (IP-AA-018) is now Older People with Frailty Admissions (Intermediate Frailty Risk) (IP-AA-018)
 
 # Update 2025/02/12
 
@@ -56,21 +83,27 @@ Following feedback, we have renamed the following mitigators:
 
 ### 2023/24 baseline year now available
 
-We have received 2023/24 [HES (Hospital Episode Statistics)](https://digital.nhs.uk/services/hospital-episode-statistics) data and it is now available to select as a baseline year on the [inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). You must request and review your detailed 2023/24 baseline data before selecting 2023/24 as the baseline year. Please contact [mlcsu.su.datascience@nhs.net](mailto:mlcsu.su.datascience@nhs.net?subject=NHP request: 2023/24 detailed baseline data&body=I am requesting the 2023/24 detailed baseline data for [insert scheme name].) to request your 2023/24 detailed baseline data.
+We have received 2023/24 [HES (Hospital Episode Statistics)](https://digital.nhs.uk/services/hospital-episode-statistics) data and it is now available to select as a baseline year on the [inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/).
+You must request and review your detailed 2023/24 baseline data before selecting 2023/24 as the baseline year.
+Please contact [mlcsu.su.datascience\@nhs.net](mailto:mlcsu.su.datascience@nhs.net?subject=NHP%20request:%202023/24%20detailed%20baseline%20data&body=I%20am%20requesting%20the%202023/24%20detailed%20baseline%20data%20for%20%5Binsert%20scheme%20name%5D.) to request your 2023/24 detailed baseline data.
 
 ### Mitigator information in inputs app updated
 
-We have updated the data pipeline for the inputs app, meaning that data shown to support the setting of each mitigator should now be an accurate reflection of the data used in the model. There was a disconnect in v3.0 and v3.1 of the model between the data shown in the inputs app, and the data used in the model.
+We have updated the data pipeline for the inputs app, meaning that data shown to support the setting of each mitigator should now be an accurate reflection of the data used in the model.
+There was a disconnect in v3.0 and v3.1 of the model between the data shown in the inputs app, and the data used in the model.
 
 ### Other updates
 
-We have removed maternity activity from being impacted by outpatients mitigators. Maternity activity is identified with treatment specialty codes `424`, `501`, `505`, and `560`.
+We have removed maternity activity from being impacted by outpatients mitigators.
+Maternity activity is identified with treatment specialty codes `424`, `501`, `505`, and `560`.
 
-We now include other attendance categories in A&E data. Where we previously only filtered to attendance category `1` (first attendances) in A&E data, we now include attendance categories `2`, `3`, `4` and `X`.
+We now include other attendance categories in A&E data.
+Where we previously only filtered to attendance category `1` (first attendances) in A&E data, we now include attendance categories `2`, `3`, `4` and `X`.
 
 ### Bug fixes
 
-We have fixed a bug which allowed invalid values over 1 to be set when setting mitigators in the inputs app. This was caused by the toggle between relative and absolute values.
+We have fixed a bug which allowed invalid values over 1 to be set when setting mitigators in the inputs app.
+This was caused by the toggle between relative and absolute values.
 
 We have fixed a bug preventing baseline adjustment from working correctly for A&E and Outpatients.
 
@@ -80,21 +113,28 @@ We have fixed a bug preventing baseline adjustment from working correctly for A&
 
 ### Model methodology improvement to show activity avoided
 
-We have changed the methodology used in the modelling. An explanation of the new methodology is available [here](../modelling_methodology/modelling_uncertainty.qmd) and a detailed technical explanation is [available here](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/).
+We have changed the methodology used in the modelling.
+An explanation of the new methodology is available [here](../modelling_methodology/modelling_uncertainty.qmd) and a detailed technical explanation is [available here](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/).
 
-The reason for this change is to allow greater nuance in the reporting of activity growth and activity mitigation. We can now show the activity that was prevented due to the activity avoidance mitigators. This will be included in the model results download broken down by site, point of delivery (POD), age group, and sex.
+The reason for this change is to allow greater nuance in the reporting of activity growth and activity mitigation.
+We can now show the activity that was prevented due to the activity avoidance mitigators.
+This will be included in the model results download broken down by site, point of delivery (POD), age group, and sex.
 
-This change has meant that users will notice some differences in the waterfall diagram found on the "impact of changes" tab of the outputs dashboard. The data for this diagram is in the "step counts" tab of the Excel download of model results. The ["model interaction term"](../user_guide/glossary.qmd#impact-of-changes), which shows the effects of compounding within the model, will be different due to this change in methodology. There is also an additional model interaction term specifically for activity avoidance which can be seen in the Excel download only; this is grouped in with the rest of the activity avoidance in the main waterfall diagram. We would also expect to see a larger impact caused by activity avoidance, as the new methodology makes it easier to identify the impact of these parameters in isolation.
+This change has meant that users will notice some differences in the waterfall diagram found on the "impact of changes" tab of the outputs dashboard.
+The data for this diagram is in the "step counts" tab of the Excel download of model results.
+The ["model interaction term"](../user_guide/glossary.qmd#impact-of-changes), which shows the effects of compounding within the model, will be different due to this change in methodology.
+There is also an additional model interaction term specifically for activity avoidance which can be seen in the Excel download only; this is grouped in with the rest of the activity avoidance in the main waterfall diagram.
+We would also expect to see a larger impact caused by activity avoidance, as the new methodology makes it easier to identify the impact of these parameters in isolation.
 
 The overall results of modelling from the baseline year to the horizon year should be very similar to scenarios run on previous model versions.
 
 ### Other updates
 
-- Mitigator codes are now in the downloadable Excel files of results
-- Fixed bug in data which prevented the following model elements from working properly:
-    - Baseline adjustment
-    - IP-AA-026 Obesity Related Admissions mitigator
-    - IP-AA-029 Smoking Related Admissions mitigator
+-   Mitigator codes are now in the downloadable Excel files of results
+-   Fixed bug in data which prevented the following model elements from working properly:
+    -   Baseline adjustment
+    -   IP-AA-026 Obesity Related Admissions mitigator
+    -   IP-AA-029 Smoking Related Admissions mitigator
 
 # Update 2024/11/28
 
@@ -104,31 +144,34 @@ This update is a patch release.
 
 In order to aid in the conversion of model results to capacity requirements, we offer "detailed model results" for scenarios, available on request, which show model results for the horizon year aggregated by the fields below:
 
-- Inpatients
-  - sitetret
-  - pod	
-  - age_group	
-  - sex	
-  - tretspef_raw	
-  - los_group	
-  - measure	
-  - delivery in maternity spell
-- Outpatients
-  - sitetret
-  - pod	
-  - age_group	
-  - tretspef_raw
-  - measure
-- A&E
-  - sitetret	
-  - pod	
-  - age_group	
-  - attendance_category	
-  - aedepttype	
-  - acuity	
-  - measure
+-   Inpatients
+    -   sitetret
+    -   pod
+    -   age_group\
+    -   sex
+    -   tretspef_raw\
+    -   los_group\
+    -   measure
+    -   delivery in maternity spell
+-   Outpatients
+    -   sitetret
+    -   pod
+    -   age_group\
+    -   tretspef_raw
+    -   measure
+-   A&E
+    -   sitetret\
+    -   pod
+    -   age_group\
+    -   attendance_category
+    -   aedepttype\
+    -   acuity\
+    -   measure
 
-In order to improve these detailed outputs, we had to change some of the data underlying the model, adding an index to the OP and A&E data. This has impacted very slightly on the random sampling of the model. Any scenarios that were run between 2024/11/13 and 2024/11/27 will have very minor differences in OP and A&E results to scenarios run after 2024/11/27, even if using exactly the same parameters. These changes are less than 0.5%.
+In order to improve these detailed outputs, we had to change some of the data underlying the model, adding an index to the OP and A&E data.
+This has impacted very slightly on the random sampling of the model.
+Any scenarios that were run between 2024/11/13 and 2024/11/27 will have very minor differences in OP and A&E results to scenarios run after 2024/11/27, even if using exactly the same parameters.
+These changes are less than 0.5%.
 
 # Update 2024/11/13
 
@@ -136,27 +179,33 @@ In order to improve these detailed outputs, we had to change some of the data un
 
 This update is a major release.
 
-The reason that it is a major release is that the pipeline for data pre-processing has been migrated from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the nhp_sql repository which will be publicly archived and no longer maintained.
+The reason that it is a major release is that the pipeline for data pre-processing has been migrated from SQL to Databricks.
+The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data).
+This repository supersedes the nhp_sql repository which will be publicly archived and no longer maintained.
 
-As part of migrating our data pre-processing, there are a number of changes to the data which are detailed in the [data log](../data_extraction/data_log.qmd). Each scheme will be provided with new detailed baseline files for v3.0.
+As part of migrating our data pre-processing, there are a number of changes to the data which are detailed in the [data log](../data_extraction/data_log.qmd).
+Each scheme will be provided with new detailed baseline files for v3.0.
 
-Note that the data in the inputs app has not had the bugfixes that the data in the model has and this means there are small differences in the numbers shown for mitigators. However, the level of difference is small and should not be material when setting mitigator assumptions. Please be aware that for the most accurate information on mitigator numbers you should refer to the detailed outputs provided in Excel
+Note that the data in the inputs app has not had the bugfixes that the data in the model has and this means there are small differences in the numbers shown for mitigators.
+However, the level of difference is small and should not be material when setting mitigator assumptions.
+Please be aware that for the most accurate information on mitigator numbers you should refer to the detailed outputs provided in Excel
 
 ### Additional information to support conversion to capacity
 
 We have introduced the following information to the standard model results:
 
-- More detailed breakdown of Length of Stay category 1-7 days, into the new categories 1-day, 2-day, 3-day, and 4-7 days.
-- A&E data now includes A&E follow-up activity and acuity levels. The addition of follow-ups may mean that you see larger numbers in A&E data in v3.0 onwards. The outputs app currently does not separate out this activity, but it is available in the data downloads, including the Excel file.
+-   More detailed breakdown of Length of Stay category 1-7 days, into the new categories 1-day, 2-day, 3-day, and 4-7 days.
+-   A&E data now includes A&E follow-up activity and acuity levels. The addition of follow-ups may mean that you see larger numbers in A&E data in v3.0 onwards. The outputs app currently does not separate out this activity, but it is available in the data downloads, including the Excel file.
 
-We are also working on providing more comprehensive "detailed results", which are available on request via Model Relationship Managers. These will include the following fields:
+We are also working on providing more comprehensive "detailed results", which are available on request via Model Relationship Managers.
+These will include the following fields:
 
-- Flag for delivery spells in maternity inpatients activity
-- HRG codes for inpatients
+-   Flag for delivery spells in maternity inpatients activity
+-   HRG codes for inpatients
 
 ### Bugfixes
 
-- Virtual Wards efficiencies mitigators were not working, this has been resolved.
+-   Virtual Wards efficiencies mitigators were not working, this has been resolved.
 
 # Update 2024/08/24
 
@@ -164,25 +213,27 @@ We are also working on providing more comprehensive "detailed results", which ar
 
 ### New point of delivery categories for regular attenders
 
-Regular day/night attenders are patients admitted electively, as part of a planned series of regular admissions for an on-going regime of broadly similar treatment and who are discharged the same day. Intermittent dialysis cases and patients on regular chemotherapy/radiotherapy are examples of regular day admissions.
+Regular day/night attenders are patients admitted electively, as part of a planned series of regular admissions for an on-going regime of broadly similar treatment and who are discharged the same day.
+Intermittent dialysis cases and patients on regular chemotherapy/radiotherapy are examples of regular day admissions.
 
-In v2.1 we updated [our definition for last episode in spell](../data_extraction/data_log.qmd#last-episode-in-spell) to match guidance from NHS digital. When transitioning to this new logic some regular day/night admissions were not captured. This means for some trusts these admissions were missing from the results, depending on how the trust captured these attendees in the baseline data.
+In v2.1 we updated [our definition for last episode in spell](../data_extraction/data_log.qmd#last-episode-in-spell) to match guidance from NHS digital.
+When transitioning to this new logic some regular day/night admissions were not captured.
+This means for some trusts these admissions were missing from the results, depending on how the trust captured these attendees in the baseline data.
 
 To resolve this we have added two new point-of-delivery categories:
 
-- Regular day attender admission
-- Regular night attender admission
+-   Regular day attender admission
+-   Regular night attender admission
 
 These will appear alongside the other POD options in the Outputs app.
 
-Trusts who have been significantly impacted by the update have been contacted by their Model Relationship Managers. 
+Trusts who have been significantly impacted by the update have been contacted by their Model Relationship Managers.
 
 We have also expanded our QA process to include a broader set of test data to run our data comparison checks on.
 
 ### Other updates
 
-We fixed a small bug which gave an incorrect value of beddays in the step counts/impact of changes for elective activity converted to day case by the [day procedures mitigators](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures). 
-
+We fixed a small bug which gave an incorrect value of beddays in the step counts/impact of changes for elective activity converted to day case by the [day procedures mitigators](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures).
 
 # Update 2024/08/29
 
@@ -190,13 +241,19 @@ We fixed a small bug which gave an incorrect value of beddays in the step counts
 
 ### Change in terminology - prediction interval
 
-We have changed from using the phrase confidence interval in favour of the term prediction interval. We haven't changed the way that we calculate our intervals, we've just updated our terminology to be more statistically correct.
+We have changed from using the phrase confidence interval in favour of the term prediction interval.
+We haven't changed the way that we calculate our intervals, we've just updated our terminology to be more statistically correct.
 
 The term confidence interval has a specific meaning in statistics, it is an interval associated with a non-random but unknown parameter.
 
-An example of a non-random, unknown parameter is the number of people in the U.K. with diabetes yesterday. There is no randomness here, this is a fixed event which has happened, but we don't know the true count. We can conduct surveys, or perform tests on a sample of the population to try and to quantify this, but since we can't count every person in the UK and perform perfect tests, we still have some uncertainty.
+An example of a non-random, unknown parameter is the number of people in the U.K.
+with diabetes yesterday.
+There is no randomness here, this is a fixed event which has happened, but we don't know the true count.
+We can conduct surveys, or perform tests on a sample of the population to try and to quantify this, but since we can't count every person in the UK and perform perfect tests, we still have some uncertainty.
 
-By contrast, a prediction interval is an interval associated with a random variable yet to be observed. In the NHP model, one random variable is the number of beddays in the horizon year. As this number is a prediction for the future, many sources of randomness could come into play.
+By contrast, a prediction interval is an interval associated with a random variable yet to be observed.
+In the NHP model, one random variable is the number of beddays in the horizon year.
+As this number is a prediction for the future, many sources of randomness could come into play.
 
 A more technical explanation of the differences is available in a [blog post by Professor Rob Hyndman.](https://robjhyndman.com/hyndsight/intervals/)
 
@@ -206,36 +263,38 @@ A more technical explanation of the differences is available in a [blog post by 
 
 ### Inputs app
 
-- Added a link to the scenario-naming guidance when inputting a scenario name
-- Addressed an error that occurs when there is not enough data to produce charts and tables
+-   Added a link to the scenario-naming guidance when inputting a scenario name
+-   Addressed an error that occurs when there is not enough data to produce charts and tables
 
 ### Model
 
-- Improvements to data processing, which are outlined in the [data log](/data_extraction/data_log.qmd).
-- New age groupings have been introduced, in response to feedback from schemes. The new age groupings are:
-    - 0
-    - 1-4
-    - 5-9
-    - 10-15
-    - 16-17
-    - 18-34
-    - 35-49
-    - 50-64
-    - 65-74
-    - 75-84
-    - 85+
-    - Unknown
+-   Improvements to data processing, which are outlined in the [data log](/data_extraction/data_log.qmd).
+-   New age groupings have been introduced, in response to feedback from schemes. The new age groupings are:
+    -   0
+    -   1-4
+    -   5-9
+    -   10-15
+    -   16-17
+    -   18-34
+    -   35-49
+    -   50-64
+    -   65-74
+    -   75-84
+    -   85+
+    -   Unknown
 
 ### Outputs app
 
-- New age groupings have been incorporated to the Excel download, reports, charts and tables
-- The Excel download of results now includes scenario metadata, such as the scenario name, runtime, and user.
+-   New age groupings have been incorporated to the Excel download, reports, charts and tables
+-   The Excel download of results now includes scenario metadata, such as the scenario name, runtime, and user.
 
 ### Other developments
 
-We have worked to move our data and data processing pipelines into Databricks, so that we can use Spark. These changes are not visible to end users, but are vital infrastructure improvements to enable further developments to the model.
+We have worked to move our data and data processing pipelines into Databricks, so that we can use Spark.
+These changes are not visible to end users, but are vital infrastructure improvements to enable further developments to the model.
 
-We have validated a new methodology for calculating the time profiles, which are a year-by-year estimation of activity from the baseline year to the horizon year using the principal projection. This is not available to view in the outputs app currently but will be implemented in the next model update.
+We have validated a new methodology for calculating the time profiles, which are a year-by-year estimation of activity from the baseline year to the horizon year using the principal projection.
+This is not available to view in the outputs app currently but will be implemented in the next model update.
 
 ## How do I upgrade?
 
@@ -249,34 +308,43 @@ You can see your scenario model version on the Home page of the inputs app, afte
 
 ## v.2.0 of NHP model, inputs and outputs apps
 
-All scenarios on the inputs app that are currently on v.1.2 will be automatically upgraded to v.2.0. Users who have run a scenario on v.1.2 may wish to re-run their scenario on v.2.0. 
+All scenarios on the inputs app that are currently on v.1.2 will be automatically upgraded to v.2.0.
+Users who have run a scenario on v.1.2 may wish to re-run their scenario on v.2.0.
 
-Users on v.1.1 of the model or earlier will need to create a new scenario from scratch in order to utilise the newest available version of the model. 
+Users on v.1.1 of the model or earlier will need to create a new scenario from scratch in order to utilise the newest available version of the model.
 
 **How can I see which version of the model and inputs app is being used?**
 
 Check the URL:
 
-- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-0/ then it is v.1.0.
-- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-1/ then it is v.1.1.
-- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-2/ then it is v.1.2.
-- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v2-0/ then it is v.2.0.
+-   If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-0/ then it is v.1.0.
+-   If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-1/ then it is v.1.1.
+-   If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-2/ then it is v.1.2.
+-   If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v2-0/ then it is v.2.0.
 
 ## New definition of principal projection
 
-The key outputs of the model are estimates of future hospital activity. The principal projection can be thought of as the 'best guess' or most likely estimate based on the parameters set.
+The key outputs of the model are estimates of future hospital activity.
+The principal projection can be thought of as the 'best guess' or most likely estimate based on the parameters set.
 
-For model v2.0 onwards, the principal projection is the average (mean) of all the 256 Monte Carlo simulations which have been run for a scenario. In the outputs, users will see a principal projection figure for all the different types of activity which the model forecasts. This approach to determining the principal projection ensures that the it will sit in the middle of the activity distribution (that is, it will be very close to the 50th percentile or median).
+For model v2.0 onwards, the principal projection is the average (mean) of all the 256 Monte Carlo simulations which have been run for a scenario.
+In the outputs, users will see a principal projection figure for all the different types of activity which the model forecasts.
+This approach to determining the principal projection ensures that the it will sit in the middle of the activity distribution (that is, it will be very close to the 50th percentile or median).
 
-For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter prediction intervals set by the user. However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.
+For model versions up to and including v1.2, the principal projection was determined by a single model run which took the midpoint of all the parameter prediction intervals set by the user.
+However, given the probabilistic nature of the model, we have found that using the average of all the simulations is a more stable method of determining the principal projection.
 
 This is not to be confused with the ONS principal population projection.
 
 ## New waterfall charts
 
-We have updated the methodology for determining the impact of each of the parameters in the model on the actual results. The "waterfall charts" seen in the outputs app should therefore be a more accurate, although still highly approximate, indication of the amount of activity that has been added or removed due to each parameter. 
+We have updated the methodology for determining the impact of each of the parameters in the model on the actual results.
+The "waterfall charts" seen in the outputs app should therefore be a more accurate, although still highly approximate, indication of the amount of activity that has been added or removed due to each parameter.
 
-The NHP model is multiplicative. The interaction between the various factors in the model has in the past been redistributed across all the steps. However, we found this created inconsistencies in specific scenarios. To address this, we now show the Model Interaction Term as a separate value in the waterfall charts.
+The NHP model is multiplicative.
+The interaction between the various factors in the model has in the past been redistributed across all the steps.
+However, we found this created inconsistencies in specific scenarios.
+To address this, we now show the Model Interaction Term as a separate value in the waterfall charts.
 
 Further detail on the methodology is [available here](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/glossary.html#impact-of-changes).
 
@@ -284,31 +352,37 @@ Further detail on the methodology is [available here](https://connect.strategyun
 
 **Virtual Ward Efficiencies mitigators: bug fixed**
 
-A bug was identified in the data where the Virtual Wards efficiency mitigators were wrongly flagged as activity avoidance mitigators. This meant that if any Virtual Wards efficiency mitigators were set, these were not having any impact on the model results. This error was corrected and the data re-extracted.
+A bug was identified in the data where the Virtual Wards efficiency mitigators were wrongly flagged as activity avoidance mitigators.
+This meant that if any Virtual Wards efficiency mitigators were set, these were not having any impact on the model results.
+This error was corrected and the data re-extracted.
 
 **Time profiles temporarily removed**
 
-The time profiles, or year-by-year estimates of activity in the years between the baseline and horizon year, were based on the old definition of the principal model run. As we have moved away from this definition, we will need to revise how time profiles are approached in the model. This work will be completed in August 2024.
+The time profiles, or year-by-year estimates of activity in the years between the baseline and horizon year, were based on the old definition of the principal model run.
+As we have moved away from this definition, we will need to revise how time profiles are approached in the model.
+This work will be completed in August 2024.
 
 # Update 2024/06/06
 
 ## v.1.2 of NHP model, inputs and outputs apps
 
-All scenarios on the inputs app that are currently on v.1.1 will be automatically upgraded to v.1.2. Users who have run a scenario on v.1.1 may wish to re-run their scenario on v.1.2.
+All scenarios on the inputs app that are currently on v.1.1 will be automatically upgraded to v.1.2.
+Users who have run a scenario on v.1.1 may wish to re-run their scenario on v.1.2.
 
-Users on v.1.0 will need to create a new scenario from scratch in order to utilise the newest available version of the model. 
+Users on v.1.0 will need to create a new scenario from scratch in order to utilise the newest available version of the model.
 
 **How can I see which version of the model and inputs app is being used?**
 
 Check the URL:
 
-- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-0/ then it is v.1.0.
-- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-1/ then it is v.1.1.
-- If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-2/ then it is v.1.2.
+-   If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-0/ then it is v.1.0.
+-   If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-1/ then it is v.1.1.
+-   If it starts with https://connect.strategyunitwm.nhs.uk/nhp/v1-2/ then it is v.1.2.
 
 **Capacity conversion removed**
 
-We have removed bed capacity from the inputs app, and calculation of beds from the model calculations and outputs. We are working on an improved capacity calculation which utilises queueing theory, which will replace this.
+We have removed bed capacity from the inputs app, and calculation of beds from the model calculations and outputs.
+We are working on an improved capacity calculation which utilises queueing theory, which will replace this.
 
 **More granular results**
 
@@ -316,24 +390,35 @@ On the Excel download from the outputs app, model results are now available brok
 
 **Bug fixes**
 
-- In the inputs app, the diagnosis tables for outpatients mitigators were showing all attendances, not just those without procedures. The strategies in the model only apply to activity with no procedures. The diagnosis tables should now match the activity which will be affected in the model.
+-   In the inputs app, the diagnosis tables for outpatients mitigators were showing all attendances, not just those without procedures.
+    The strategies in the model only apply to activity with no procedures.
+    The diagnosis tables should now match the activity which will be affected in the model.
 
-- In the inputs app, the Outpatient Convert to Tele-Attendance mitigator charts were including attendances with procedures. The strategy itself in the model only applies to activity with no procedures. The tables and charts for these mitigators should now match the activity which will be affected in the model. 
+-   In the inputs app, the Outpatient Convert to Tele-Attendance mitigator charts were including attendances with procedures.
+    The strategy itself in the model only applies to activity with no procedures.
+    The tables and charts for these mitigators should now match the activity which will be affected in the model.
 
-- The A&E Patients Left Before Being Treated mitigators now utilise the SNOMED codes "1066301000000103", "1066311000000101" and "1066321000000107". Previously, they only used the SNOMED code "1066321000000107".
+-   The A&E Patients Left Before Being Treated mitigators now utilise the SNOMED codes "1066301000000103", "1066311000000101" and "1066321000000107".
+    Previously, they only used the SNOMED code "1066321000000107".
 
 ## Planned changes to waterfall / impact of changes chart and principal projection
 
 **Waterfalls / impact of changes charts**
 
-We are updating our evidence-based approach to visualising the shifts in activity in the outputs app. This will be available in July 2024. In the meantime, occasionally when the points of delivery (PODs) are small, we find the current approach doesn't work in the way we envisaged (resulting in the bars on the waterfall chart that illustrate the effect of individual modelling factors showing incorrect data. The underlying data within the downloadable Excel and JSON of results is similarly affected). Please note and be assured that the baseline and final model estimate figures are correct.
+We are updating our evidence-based approach to visualising the shifts in activity in the outputs app.
+This will be available in July 2024.
+In the meantime, occasionally when the points of delivery (PODs) are small, we find the current approach doesn't work in the way we envisaged (resulting in the bars on the waterfall chart that illustrate the effect of individual modelling factors showing incorrect data. The underlying data within the downloadable Excel and JSON of results is similarly affected).
+Please note and be assured that the baseline and final model estimate figures are correct.
 
 **Principal projection**
 
-We are currently implementing an improved method to generate the principal projection. Again this will be available in July 2024. The new approach delivers a more stable estimate of future activity that is less affected by the randomness inherent in the probabilistic methods used within the model engine. The key impact of this improvement will be to ensure that the principal projection will always sit in the middle of the activity distributions resulting from the Monte Carlo simulation. At present, the principal projection can vary from the centre of the distribution and in some instances this variation can be material.
+We are currently implementing an improved method to generate the principal projection.
+Again this will be available in July 2024.
+The new approach delivers a more stable estimate of future activity that is less affected by the randomness inherent in the probabilistic methods used within the model engine.
+The key impact of this improvement will be to ensure that the principal projection will always sit in the middle of the activity distributions resulting from the Monte Carlo simulation.
+At present, the principal projection can vary from the centre of the distribution and in some instances this variation can be material.
 
 In the meantime, if you note that any of the activity distribution charts provided in the outputs app show a principal projection that does not sit close to the middle of the distribution (as shown by the 50th percentile in the S-curve chart) AND if that variation is considered to be material (i.e. it would result in materially more or fewer beds than if the central (50th percentile) estimate were used) then we would advise that the current principal projection data is not used as the basis for your capacity conversions and instead wait for the updated model outputs before making the final capacity calculations.
-
 
 # Update 2024/05/10
 
@@ -342,12 +427,12 @@ In the meantime, if you note that any of the activity distribution charts provid
 We are pleased to announce that some repositories relating to the NHP model are now public and open source.
 These are:
 
-- [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information): The repository for this website
-- nhp_sql: The repository containing the SQL code for identifying activity relating to each of the [activity mitigators](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/mitigators_lookup.html). NOTE: this has been superseded by [nhp_data](https://github.com/The-Strategy-Unit/nhp_data)
-- [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs): The repository containing the analysis underpinning the various [demographic adjustments](../modelling_methodology/demographic_modelling/demographic_modelling.qmd) in the model.
+-   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information): The repository for this website
+-   nhp_sql: The repository containing the SQL code for identifying activity relating to each of the [activity mitigators](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/mitigators_lookup.html). NOTE: this has been superseded by [nhp_data](https://github.com/The-Strategy-Unit/nhp_data)
+-   [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs): The repository containing the analysis underpinning the various [demographic adjustments](../modelling_methodology/demographic_modelling/demographic_modelling.qmd) in the model.
 
-A full list of the repositories relating to the NHP model is available [here](../project_plan_and_summary/components-overview.qmd), 
-although some are still private. We are currently in discussions about open sourcing the entire model.
+A full list of the repositories relating to the NHP model is available [here](../project_plan_and_summary/components-overview.qmd), although some are still private.
+We are currently in discussions about open sourcing the entire model.
 
 ## v1.1.1 of NHP inputs and outputs apps
 
@@ -355,83 +440,98 @@ although some are still private. We are currently in discussions about open sour
 
 The non-demographic adjustment section of the inputs app was updated to:
 
-* set Variant 2 as the default for non-elective inpatients (for more information about Variant 2 see [the modelling methodology](../modelling_methodology/non-demographic_growth.html))
-* show the 10 and 90% prediction intervals in the the table of parameter values
+-   set Variant 2 as the default for non-elective inpatients (for more information about Variant 2 see [the modelling methodology](../modelling_methodology/non-demographic_growth.html))
+-   show the 10 and 90% prediction intervals in the the table of parameter values
 
 ### Outputs
 
 The outputs app was updated to:
 
-* provide results by bed days in the summary-by-year table
-* let you select any combination of points-of-delivery in the activity distribution and activity-in-detail tabs
-* add a tabset in the activity summary tab to let you toggle between median and principal values
+-   provide results by bed days in the summary-by-year table
+-   let you select any combination of points-of-delivery in the activity distribution and activity-in-detail tabs
+-   add a tabset in the activity summary tab to let you toggle between median and principal values
 
 # Update 2024/04/24
 
 ## v.1.1 of NHP model, inputs and outputs apps
 
-The changes listed below are available in v.1.1 of the model. If continuing work on an existing v.1.0 scenario (from before 26th April 2024), or creating a new scenario based on an existing v.1.0 scenario, users will use v.1.0 of the model.
+The changes listed below are available in v.1.1 of the model.
+If continuing work on an existing v.1.0 scenario (from before 26th April 2024), or creating a new scenario based on an existing v.1.0 scenario, users will use v.1.0 of the model.
 If starting a new scenario from 26th April 2024, users will default to the v.1.1 version of the inputs app and model.
 
 Due to conflicts between the mitigators in v.1.0 and v.1.1, it is not possible to copy a v.1.0 scenario into v.1.1, or to create a new v.1.1 scenario based on an existing v.1.0 scenario.
 
-**How can I see which version of the model and inputs app is being used?** 
+**How can I see which version of the model and inputs app is being used?**
 
 Check the URL:
 
-- If it starts with `https://connect.strategyunitwm.nhs.uk/nhp/v1-0/` then it is v.1.0. 
-- If it starts with `https://connect.strategyunitwm.nhs.uk/nhp/v1-1/` then it is v.1.1.
+-   If it starts with `https://connect.strategyunitwm.nhs.uk/nhp/v1-0/` then it is v.1.0.
+-   If it starts with `https://connect.strategyunitwm.nhs.uk/nhp/v1-1/` then it is v.1.1.
 
 ## Numbering of mitigators
 
-Following feedback from schemes, we have now added identifying codes for each mitigator. These are all listed on [this page](../user_guide/mitigators_lookup.html) and will be seen on the inputs and outputs apps v.1.1 as well.
+Following feedback from schemes, we have now added identifying codes for each mitigator.
+These are all listed on [this page](../user_guide/mitigators_lookup.html) and will be seen on the inputs and outputs apps v.1.1 as well.
 
 ## New Virtual Ward mitigators
 
-Virtual wards allow patients to receive the care they need at home, safely and conveniently rather than in hospital. They also provide systems with a significant opportunity to narrow the gap between demand and capacity for secondary care beds, by providing an alternative to admission and/or early discharge. There are four new Virtual Ward activity mitigators now available in the model v.1.1:
+Virtual wards allow patients to receive the care they need at home, safely and conveniently rather than in hospital.
+They also provide systems with a significant opportunity to narrow the gap between demand and capacity for secondary care beds, by providing an alternative to admission and/or early discharge.
+There are four new Virtual Ward activity mitigators now available in the model v.1.1:
 
--	[Virtual Wards Admission Avoidance (Acute Respiratory Infection) (IP-AA-030)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-admission-avoidance)
--	[Virtual Wards Admission Avoidance (Heart Failure) (IP-AA-031)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-admission-avoidance)
--	[Virtual Wards LoS Reduction (Acute Respiratory Infection) (IP-EF-026)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-los-reduction)
--	[Virtual Wards LoS Reduction (Heart Failure) (IP-EF-027)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-los-reduction)
+-   [Virtual Wards Admission Avoidance (Acute Respiratory Infection) (IP-AA-030)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-admission-avoidance)
+-   [Virtual Wards Admission Avoidance (Heart Failure) (IP-AA-031)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-admission-avoidance)
+-   [Virtual Wards LoS Reduction (Acute Respiratory Infection) (IP-EF-026)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-los-reduction)
+-   [Virtual Wards LoS Reduction (Heart Failure) (IP-EF-027)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-los-reduction)
 
-##  New Day procedures mitigators
+## New Day procedures mitigators
 
-Day surgery is now established practice with rates continuing to increase. Due to advances in anaesthesia and surgical techniques, it is the standard pathway of care for many complex patients and procedures traditionally treated through inpatient pathways. There are four new day procedures mitigators now available in the model v.1.1. Further information is [available here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures).
+Day surgery is now established practice with rates continuing to increase.
+Due to advances in anaesthesia and surgical techniques, it is the standard pathway of care for many complex patients and procedures traditionally treated through inpatient pathways.
+There are four new day procedures mitigators now available in the model v.1.1.
+Further information is [available here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures).
 
--	Day Procedures: Occasionally performed as a Daycase (IP-EF-005)
--	Day Procedures: Usually performed as a Daycase (IP-EF-007)
--	Day Procedures: Occasionally performed in Outpatients (IP-EF-006)
--	Day Procedures: Usually performed in Outpatients (IP-EF-008)
+-   Day Procedures: Occasionally performed as a Daycase (IP-EF-005)
+-   Day Procedures: Usually performed as a Daycase (IP-EF-007)
+-   Day Procedures: Occasionally performed in Outpatients (IP-EF-006)
+-   Day Procedures: Usually performed in Outpatients (IP-EF-008)
 
 ## Site level information now available for A&E
 
-A&E activity can now be split by site in the model results. We have accomplished this by moving to a different dataset. There may be slight differences in the amount of A&E activity recorded for each trust in the baseline year 2019/20 in v1.1 of the model as compared with v.1.0, but [our analysis](../resources/nhp_ae_datasets.html) has shown that the differences are minimal for NHP schemes. This change also ensures that we will be better prepared for a move to the 2022/23 baseline year, when the data is made available.
+A&E activity can now be split by site in the model results.
+We have accomplished this by moving to a different dataset.
+There may be slight differences in the amount of A&E activity recorded for each trust in the baseline year 2019/20 in v1.1 of the model as compared with v.1.0, but [our analysis](../resources/nhp_ae_datasets.html) has shown that the differences are minimal for NHP schemes.
+This change also ensures that we will be better prepared for a move to the 2022/23 baseline year, when the data is made available.
 
 ## Downloadable reports from outputs app
 
-Users can now download two reports in HTML format from the outputs app v.1.1: 
+Users can now download two reports in HTML format from the outputs app v.1.1:
 
--	Parameters report containing the input parameters for the selected model run
--	Outputs report containing the charts and tables for the selected model run and selected sites.
+-   Parameters report containing the input parameters for the selected model run
+-   Outputs report containing the charts and tables for the selected model run and selected sites.
 
 ## Fix to General LoS reduction mitigator
 
-We have fixed a bug causing the General LoS Reduction mitigator to apply to too many rows of patient data. This mitigator should only be applied if the row of activity is not impacted by any other LoS reduction mitigators.
+We have fixed a bug causing the General LoS Reduction mitigator to apply to too many rows of patient data.
+This mitigator should only be applied if the row of activity is not impacted by any other LoS reduction mitigators.
 
 # Update 2024/04/04
 
 ## Inputs app 1.0.1
 
--   Users who have submitted their initial model parameters and attended their first refinement workshops will be granted the ability to run the model themselves. Once given this functionality, these users can now select another variant of non-demographic growth. Further details and the analysis underpinning this alternative variant are forthcoming and this page will be updated when it is available.
+-   Users who have submitted their initial model parameters and attended their first refinement workshops will be granted the ability to run the model themselves.
+    Once given this functionality, these users can now select another variant of non-demographic growth.
+    Further details and the analysis underpinning this alternative variant are forthcoming and this page will be updated when it is available.
 
 -   Fixed an error causing the incorrect number of procedures to show for each mitigator.
 
--   For the Outpatient Convert to Tele-Attendance mitigators, the diagnosis/procedures tables and charts were previously showing the amount of activity for tele-appointments. However, the area of opportunity is in the reduction of face-to-face appointments; therefore, the tables and charts have been updated to show the face-to-face appointment numbers instead.
+-   For the Outpatient Convert to Tele-Attendance mitigators, the diagnosis/procedures tables and charts were previously showing the amount of activity for tele-appointments.
+    However, the area of opportunity is in the reduction of face-to-face appointments; therefore, the tables and charts have been updated to show the face-to-face appointment numbers instead.
 
 ## Outputs app 1.0.1
 
--   A tab showing length-of-stay summary is now available. This breaks down the model results into the following categories, allowing for more nuanced interpretation.
+-   A tab showing length-of-stay summary is now available.
+    This breaks down the model results into the following categories, allowing for more nuanced interpretation.
 
     -   0-day
 
@@ -449,19 +549,27 @@ We have fixed a bug causing the General LoS Reduction mitigator to apply to too 
 
 -   Introducing new activity mitigators, including virtual ward and day procedures.
 
--   Using the Emergency Care Data Set (ECDS) for our Accident and Emergency (A&E) data, instead of the older HES AE dataset. This will allow us to split A&E activity by site.
+-   Using the Emergency Care Data Set (ECDS) for our Accident and Emergency (A&E) data, instead of the older HES AE dataset.
+    This will allow us to split A&E activity by site.
 
 -   Introducing numbering of mitigators to aid their discussion and reduce confusion.
 
 # Update 2024/03/07
 
-Version 1.0 of the NHP demand and capacity model and its associated inputs and outputs apps has been released. Thank you for your patience during the downtime.
+Version 1.0 of the NHP demand and capacity model and its associated inputs and outputs apps has been released.
+Thank you for your patience during the downtime.
 
 ## What has changed?
 
-1.  Improved impact of changes / waterfall charts. These charts are based on simulations and are never 100% accurate - but we are doing more computation now to make them more accurate and detailed. These results can now be filtered by site, and by point of delivery (POD).
+1.  Improved impact of changes / waterfall charts.
+    These charts are based on simulations and are never 100% accurate - but we are doing more computation now to make them more accurate and detailed.
+    These results can now be filtered by site, and by point of delivery (POD).
 
-2.  We can now have more than one version of the app released at the same time. This helps with maintenance and enables us to roll out new features without disrupting previous work. Users will be directed to the correct version of the app automatically. Please note that old URLs for specific model run results will no longer work and users must manually select the scenario they wish to view from the outputs app using the dropdown boxes. The URLs for the inputs and outputs apps are the same as before:
+2.  We can now have more than one version of the app released at the same time.
+    This helps with maintenance and enables us to roll out new features without disrupting previous work.
+    Users will be directed to the correct version of the app automatically.
+    Please note that old URLs for specific model run results will no longer work and users must manually select the scenario they wish to view from the outputs app using the dropdown boxes.
+    The URLs for the inputs and outputs apps are the same as before:
 
 -   Inputs app: <https://connect.strategyunitwm.nhs.uk/nhp/inputs/>
 -   Outputs app: <https://connect.strategyunitwm.nhs.uk/nhp/outputs/>
@@ -479,28 +587,44 @@ Version 1.0 of the NHP demand and capacity model and its associated inputs and o
 
 ### If your scheme has already run the model
 
--   Please enter your model parameters as usual using the [NHP model inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). Scenarios that you were working on prior to the update should still be viewable and editable. Note that day case mitigators have been removed temporarily; we hope to reintroduce them from March 18th. Any schemes that have completed their refinement workshops should also now have access to the Run Model option.
+-   Please enter your model parameters as usual using the [NHP model inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/).
+    Scenarios that you were working on prior to the update should still be viewable and editable.
+    Note that day case mitigators have been removed temporarily; we hope to reintroduce them from March 18th.
+    Any schemes that have completed their refinement workshops should also now have access to the Run Model option.
 
--   All scenarios have now been rerun with model v.1.0. These have more detailed impact of changes / waterfall diagrams. Day case mitigators have also been removed, so the results will be slightly different. These results can be viewed using the [NHP model outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). The results of old model runs with day case mitigators and less detailed impact of changes / waterfall diagrams are available on request.
+-   All scenarios have now been rerun with model v.1.0.
+    These have more detailed impact of changes / waterfall diagrams.
+    Day case mitigators have also been removed, so the results will be slightly different.
+    These results can be viewed using the [NHP model outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/).
+    The results of old model runs with day case mitigators and less detailed impact of changes / waterfall diagrams are available on request.
 
 ## Planned future developments
 
-We hope to introduce downloadable reports from the outputs app soon, summarising model results. We are also working on showing the impact of changes / waterfall diagrams with 0-day LOS and day case bed days split out.
+We hope to introduce downloadable reports from the outputs app soon, summarising model results.
+We are also working on showing the impact of changes / waterfall diagrams with 0-day LOS and day case bed days split out.
 
 # Update 2024/03/01
 
-There is a **temporary shutdown of the model between 5pm Friday 1st March and 9am Thursday 7th March**. Users will not be able to access the model during this time. This includes both the NHP inputs and NHP outputs apps. The shutdown will enable us to make several model upgrades.
+There is a **temporary shutdown of the model between 5pm Friday 1st March and 9am Thursday 7th March**.
+Users will not be able to access the model during this time.
+This includes both the NHP inputs and NHP outputs apps.
+The shutdown will enable us to make several model upgrades.
 
-Users should save the scenarios they are working on before 5pm on Friday 1st March, by stopping work on them and closing the app. Their work will remain available to access when the model goes live again at 9am on Thursday 7th March.
+Users should save the scenarios they are working on before 5pm on Friday 1st March, by stopping work on them and closing the app.
+Their work will remain available to access when the model goes live again at 9am on Thursday 7th March.
 
-We will be **pausing use of the day case mitigators from 5pm Friday 1st March until 18th March**. This will enable us to improve their analytical function. The description of the mitigators will remain unchanged. The mitigators affected are:
+We will be **pausing use of the day case mitigators from 5pm Friday 1st March until 18th March**.
+This will enable us to improve their analytical function.
+The description of the mitigators will remain unchanged.
+The mitigators affected are:
 
 -   Elective surgery - recommended mainly day case
 -   Elective surgery - recommended occasional day case
 -   Elective surgery - recommended mainly outpatient procedure
 -   Elective surgery - recommended mainly outpatient procedure or day case
 
-For models run before Friday 1st March, outputs will remain unchanged and will include these mitigators. Trusts that have used these mitigators (avoiding 30-50% of activity) have found that their impact on inpatient bed days is approximately 1% of the total.
+For models run before Friday 1st March, outputs will remain unchanged and will include these mitigators.
+Trusts that have used these mitigators (avoiding 30-50% of activity) have found that their impact on inpatient bed days is approximately 1% of the total.
 
 For models run between 7th and 18th March, day case mitigators will not be included in the model parameters.
 
@@ -521,7 +645,10 @@ The improved day case mitigators will be reintroduced to the inputs app and mode
 
 ## Outputs app 0.6.3
 
-To prepare for the technical and refinement workshops for Tranche 1, a lot of work has been done to improve the outputs app. This work aims to facilitate understanding of the model results through improvements to the labelling, ordering, and visualisation of data. Minor changes to the graphics and tables may be observed by users of the outputs app during this period. Despite these changes, the underlying model results data remains the same.
+To prepare for the technical and refinement workshops for Tranche 1, a lot of work has been done to improve the outputs app.
+This work aims to facilitate understanding of the model results through improvements to the labelling, ordering, and visualisation of data.
+Minor changes to the graphics and tables may be observed by users of the outputs app during this period.
+Despite these changes, the underlying model results data remains the same.
 
 ## Project information site
 
@@ -531,7 +658,8 @@ To prepare for the technical and refinement workshops for Tranche 1, a lot of wo
 
 ## Planned developments currently in progress:
 
-We are currently working on the ability to release different versions of the input and output apps simultaneously. This is particularly important as different tranches are at different stages of their progress through the NHP D&C model process, and we want to ensure consistency for each organisation.
+We are currently working on the ability to release different versions of the input and output apps simultaneously.
+This is particularly important as different tranches are at different stages of their progress through the NHP D&C model process, and we want to ensure consistency for each organisation.
 
 We are also working on the creation of a downloadable file from the outputs app, and on the creation of a more user-friendly "landing page" when accessing the inputs app.
 
