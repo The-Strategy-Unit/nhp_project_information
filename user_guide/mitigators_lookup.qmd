@@ -15,22 +15,21 @@ The variable names for each strategy are also included. These are used when inte
 ```{r}
 #| label: mitigators-table
 
-library(readr)  # forces readr in AzureStor::storage_read_csv
+library(readr) # forces readr in AzureStor::storage_read_csv
 
-get_container <- function(container_name) {
+get_support_container <- function() {
+  container_name <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT")
+  sas_token <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT_SAS")
+  storage_account <- Sys.getenv("AZ_STORAGE_ACCOUNT")
 
-  ep_uri <- Sys.getenv("AZ_STORAGE_EP")
-  app_id <- Sys.getenv("AZ_APP_ID")
-  sa_key <- Sys.getenv("AZ_STORAGE_KEY")
+  ep_uri <- glue::glue("https://{storage_account}.blob.core.windows.net")
 
   ep_uri |>
-    AzureStor::blob_endpoint(key = sa_key) |>
+    AzureStor::blob_endpoint(sas = sas_token) |>
     AzureStor::storage_container(container_name)
-
 }
 
-support_container <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT") |>
-  get_container()
+support_container <- get_support_container()
 
 lookup <- AzureStor::storage_read_csv(
   support_container,
@@ -38,7 +37,7 @@ lookup <- AzureStor::storage_read_csv(
   col_types = "c"
 )
 
-dat <- lookup |> 
+dat <- lookup |>
   dplyr::select(
     Code = mitigator_code,
     Activity = "activity_type",
@@ -47,7 +46,7 @@ dat <- lookup |>
     Variable = "mitigator_variable",
     From = "active_from",
     To = "active_to"
-  ) |> 
+  ) |>
   dplyr::mutate(
     Activity = dplyr::if_else(
       Activity == "aae",
@@ -55,7 +54,7 @@ dat <- lookup |>
       stringr::str_to_upper(Activity)
     ),
     Type = Type |> stringr::str_to_title() |> stringr::str_replace("_", " ")
-  ) |> 
+  ) |>
   tidyr::replace_na(list(To = "-"))
 
 htmltools::tagList(
@@ -73,10 +72,10 @@ htmltools::tagList(
       "Code" = reactable::colDef(maxWidth = 100),
       "Activity" = reactable::colDef(maxWidth = 75),
       "Type" = reactable::colDef(maxWidth = 105),
-      "From"  = reactable::colDef(maxWidth = 70),
+      "From" = reactable::colDef(maxWidth = 70),
       "To" = reactable::colDef(maxWidth = 70)
     )
   )
-) |> 
+) |>
   htmltools::browsable()
 ```

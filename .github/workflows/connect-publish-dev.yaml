@@ -25,17 +25,10 @@ jobs:
           QUARTO_PRINT_STACK: true
           CONNECT_SERVER: ${{ secrets.RSCONNECT_URL }}
           CONNECT_API_KEY: ${{ secrets.RSCONNECT_API_KEY }}
-          AZ_APP_ID: ${{ secrets.AZ_APP_ID }}
-          AZ_APP_SECRET: ${{ secrets.AZ_APP_SECRET }}
+          AZ_STORAGE_ACCOUNT: ${{ secrets.AZ_STORAGE_ACCOUNT }}
           AZ_STORAGE_CONTAINER_SUPPORT: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT }}
-          AZ_STORAGE_EP: ${{ secrets.AZ_STORAGE_EP }}
-          AZ_STORAGE_KEY: ${{ secrets.AZ_STORAGE_KEY }}
-          AZ_TENANT_ID: ${{ secrets.AZ_TENANT_ID }}
-        run: |
-          git config --global user.email "quarto-github-actions-publish@example.com"
-          git config --global user.name "Quarto GHA Workflow Runner"
-
-          quarto publish --id 8f2cb2e8-c576-494b-a2a1-adcce3ecd833 --no-browser
+          AZ_STORAGE_CONTAINER_SUPPORT_SAS: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT_SAS }}
+        run: quarto publish --id 8f2cb2e8-c576-494b-a2a1-adcce3ecd833 --no-browser
 
       - name: Publish to NEW RStudio Connect (and render)
         shell: bash
@@ -43,14 +36,7 @@ jobs:
           QUARTO_PRINT_STACK: true
           CONNECT_SERVER: ${{ secrets.RSCONNECT_URL_NEW }}
           CONNECT_API_KEY: ${{ secrets.RSCONNECT_API_KEY_NEW }}
-          AZ_APP_ID: ${{ secrets.AZ_APP_ID }}
-          AZ_APP_SECRET: ${{ secrets.AZ_APP_SECRET }}
+          AZ_STORAGE_ACCOUNT: ${{ secrets.AZ_STORAGE_ACCOUNT }}
           AZ_STORAGE_CONTAINER_SUPPORT: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT }}
-          AZ_STORAGE_EP: ${{ secrets.AZ_STORAGE_EP }}
-          AZ_STORAGE_KEY: ${{ secrets.AZ_STORAGE_KEY }}
-          AZ_TENANT_ID: ${{ secrets.AZ_TENANT_ID }}
-        run: |
-          git config --global user.email "quarto-github-actions-publish@example.com"
-          git config --global user.name "Quarto GHA Workflow Runner"
-
-          quarto publish --id 1feb633e-81c0-4a34-8a71-cc7338f03375 --no-browser
+          AZ_STORAGE_CONTAINER_SUPPORT_SAS: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT_SAS }}
+        run: quarto publish --id 1feb633e-81c0-4a34-8a71-cc7338f03375 --no-browser
