@@ -3,6 +3,14 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/05/13
+
+## v3.5
+
+### Updated data pipeline for population projection files
+
+We have recoded the data pipeline producing the population projection files, using PySpark on Databricks. This has meant that there are small differences in the population projection files, but these should have a very minimal impact on model results.
+
 # Update 2025/05/07
 
 ## OPEN Code
