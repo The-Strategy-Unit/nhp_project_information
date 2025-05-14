@@ -11,6 +11,10 @@ order: 5
 
 We have recoded the data pipeline producing the population projection files, using PySpark on Databricks. This has meant that there are small differences in the population projection files, but these should have a very minimal impact on model results.
 
+### Health Status Adjustment corrected
+
+There was an issue with the way in which provider activity rates were calculated for the [Health Status Adjustment](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/setting_the_parameters.html#health-status-adjustment) element of the model. This has now been rectified. The impact of this on modelling results is minimal.
+
 # Update 2025/05/07
 
 ## OPEN Code
