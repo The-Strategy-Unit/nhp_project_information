@@ -13,7 +13,7 @@ We have recoded the data pipeline producing the population projection files, usi
 
 ### Health Status Adjustment corrected
 
-There was an issue with the way in which provider activity rates were calculated for the [Health Status Adjustment](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/setting_the_parameters.html#health-status-adjustment) element of the model. This has now been rectified. The impact of this on modelling results should be minimal.
+There was an issue with the way in which provider activity rates were calculated for the [Health Status Adjustment](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/setting_the_parameters.html#health-status-adjustment) element of the model. This has now been rectified. The impact of this on modelling results is minimal.
 
 # Update 2025/05/07
 
