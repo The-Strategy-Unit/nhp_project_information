@@ -3,6 +3,22 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/06/11
+
+## v3.6
+
+### Waiting List Adjustment temporarily disabled
+
+CHRIS BEELEY TO ADD TEXT HERE
+
+## Clarifying scenario upgrade process
+
+When editing existing scenarios from v1.2 onwards, they will automatically be upgraded to the latest model version.
+
+New scenarios will automatically be created on the latest model version. 
+
+Users are encouraged to check what changes have been implemented in each model version before upgrading their existing scenarios by selecting "Edit existing". The "Create new from existing" functionality on the inputs app can also be used to work on scenarios using the latest model version, without altering the originals.
+
 # Update 2025/05/13
 
 ## v3.5
