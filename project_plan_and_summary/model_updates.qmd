@@ -3,6 +3,24 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/06/11
+
+## v3.6
+
+### Waiting List Adjustment temporarily disabled
+
+We are currently revisiting the methodology for the Waiting List Adjustment element of the model. The existing methodology is designed to take account of extreme values potentially occurring in individual years, but we are doing work to determine whether it would be better to deal with this issue in a different way. Because we want to be sure that model runs are based on the best analytical approach possible, we have temporarily disabled the Waiting List Adjustment functionality pending further work. 
+
+New scenarios created on v3.6 and scenarios upgraded from previous model versions to v3.6 will have Waiting List Adjustment disabled. Once we have ensured our approach is the best it can be, which could potentially be keeping the existing methodology, we will bring this functionality back in a future model release.
+
+## Clarifying scenario upgrade process
+
+When editing existing scenarios from v1.2 onwards, they will automatically be upgraded to the latest model version.
+
+New scenarios will automatically be created on the latest model version. 
+
+Users are encouraged to check what changes have been implemented in each model version before upgrading their existing scenarios by selecting "Edit existing". The "Create new from existing" functionality on the inputs app can also be used to work on scenarios using the latest model version, without altering the originals.
+
 # Update 2025/05/13
 
 ## v3.5
