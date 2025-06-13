@@ -21,7 +21,7 @@ A single hospital site will have a good understanding of the communities of pati
 
 A trust's final catchment population comprises a weighted sum of its catchment local authority district (LAD) populations where LADs that contribute a greater share of the trust's activity take a greater weight. Weights are assigned using inpatient activity; we assume that this activity is most broadly representative of the population served by a hospital. 
 
-To limit the number of LADs associated with a single trust (that is to avoid a long tail of LADs that contribute negligible activity) we only include LADs with a 5% or greater share of all inpatient activity. We then redistribute the retained activity to ensure the shares across LADs sum to one. The full methodology for generating the population catchment for demographic growth can be [seen here](https://github.com/The-Strategy-Unit/nhp_data/blob/main/generate_demographics.py).
+To limit the number of LADs associated with a single trust (that is to avoid a long tail of LADs that contribute negligible activity) we only include LADs with a 5% or greater share of all inpatient activity. We then redistribute the retained activity to ensure the shares across LADs sum to one. The full methodology for generating the population catchment for demographic growth can be [seen here](https://github.com/The-Strategy-Unit/nhp_data/blob/main/population_projections/provider_catchments.py).
 
 ## Variant projections {#variant-projs}
 
