@@ -3,8 +3,7 @@ title: Accident and Emergency
 order: 203
 ---
 
-Data is sourced from Hospital Episode Statistics (HES) Accident and Emergency (AE) dataset.
-We extract aggregrated attendance level data for a given year.
+For baseline data 2019/20 onwards, data is sourced from the [Emergency Care Data Set (ECDS)](https://digital.nhs.uk/data-and-information/data-collections-and-data-sets/data-sets/emergency-care-data-set-ecds). For historical trends shown in the inputs app for years prior to 2019/20, we use the Hospital Episode Statistics (HES) Accident and Emergency (AE) dataset. We extract aggregrated attendance level data for a given year.
 
 ## Pre-processing
 
