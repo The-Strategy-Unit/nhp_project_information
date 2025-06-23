@@ -19,7 +19,7 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
-      - name: Publish to NEW RStudio Connect (and render)
+      - name: Publish to RStudio Connect (and render)
         shell: bash
         env:
           QUARTO_PRINT_STACK: true
