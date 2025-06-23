@@ -1,14 +1,8 @@
 - source: project
   connect:
-    - id: e0c5e8f2-c27f-4b25-ac3a-4659e9eff53f
-      url: 'https://connect.strategyunitwm.nhs.uk/content/e0c5e8f2-c27f-4b25-ac3a-4659e9eff53f/'
-    - id: 8f2cb2e8-c576-494b-a2a1-adcce3ecd833
-      url: 'https://connect.strategyunitwm.nhs.uk/content/8f2cb2e8-c576-494b-a2a1-adcce3ecd833/'
-    - id: a3a013e9-d405-46b7-a71e-1fae05a569f4
-      url: 'https://connect.strategyunitwm.nhs.uk/content/a3a013e9-d405-46b7-a71e-1fae05a569f4/'
-    - id: 34d94a7c-fb1c-4aa6-8af9-1bc8e34b4b86
-      url: 'https://connect.su.mlcsu.org/content/34d94a7c-fb1c-4aa6-8af9-1bc8e34b4b86/'
-    - id: 1feb633e-81c0-4a34-8a71-cc7338f03375
-      url: 'https://connect.su.mlcsu.org/content/1feb633e-81c0-4a34-8a71-cc7338f03375/'
     - id: 8a793bc6-6399-4260-b2c9-10fc040fda6f
-      url: 'https://connect.su.mlcsu.org/content/8a793bc6-6399-4260-b2c9-10fc040fda6f/'
+      url: "https://connect.strategyunitwm.nhs.uk/content/8a793bc6-6399-4260-b2c9-10fc040fda6f/"
+    - id: 1feb633e-81c0-4a34-8a71-cc7338f03375
+      url: "https://connect.strategyunitwm.nhs.uk/content/1feb633e-81c0-4a34-8a71-cc7338f03375/"
+    - id: 34d94a7c-fb1c-4aa6-8af9-1bc8e34b4b86
+      url: "https://connect.strategyunitwm.nhs.uk/content/34d94a7c-fb1c-4aa6-8af9-1bc8e34b4b86/"

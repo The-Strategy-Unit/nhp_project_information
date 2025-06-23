@@ -28,15 +28,4 @@ jobs:
           AZ_STORAGE_ACCOUNT: ${{ secrets.AZ_STORAGE_ACCOUNT }}
           AZ_STORAGE_CONTAINER_SUPPORT: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT }}
           AZ_STORAGE_CONTAINER_SUPPORT_SAS: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT_SAS }}
-        run: quarto publish --id 8f2cb2e8-c576-494b-a2a1-adcce3ecd833 --no-browser
-
-      - name: Publish to NEW RStudio Connect (and render)
-        shell: bash
-        env:
-          QUARTO_PRINT_STACK: true
-          CONNECT_SERVER: ${{ secrets.RSCONNECT_URL_NEW }}
-          CONNECT_API_KEY: ${{ secrets.RSCONNECT_API_KEY_NEW }}
-          AZ_STORAGE_ACCOUNT: ${{ secrets.AZ_STORAGE_ACCOUNT }}
-          AZ_STORAGE_CONTAINER_SUPPORT: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT }}
-          AZ_STORAGE_CONTAINER_SUPPORT_SAS: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT_SAS }}
         run: quarto publish --id 1feb633e-81c0-4a34-8a71-cc7338f03375 --no-browser
