@@ -7,7 +7,7 @@ order: 5
 
 ## v3.6.1
 
-This update is a patch release. We have found an issue in the NULL handling within outpatient and A&E data within the model. In some cases this has led to lower projected demand at baseline. This update fixes the issue. We have notified any parties whose model runs would be materially affected by this bug.
+This update is a patch release. We have found an issue in the NULL handling within outpatient and A&E data within the model. In some cases this has led to lower projected demand at baseline. This update fixes the issue. 
 
 # Update 2025/06/11
 
