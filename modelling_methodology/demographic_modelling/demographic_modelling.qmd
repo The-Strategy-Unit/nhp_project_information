@@ -29,7 +29,7 @@ Alongside their main ('migration category' as of v4.0.0) projection, ONS also pu
 
 Sub-national population projections include four variant projections based on different assumptions about migration levels and trends. To provide a wider range of demographic scenarios for use in the model we create a custom set of sub-national variant projections using the [17 national variant projections produced by the ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/variantnationalpopulationprojectionsfortheukandsubnationalpopulationprojectionsandhouseholdprojectionsforenglanduserguide). We do this by applying growth rates by age, sex, and year from the national variant projections to the base population for each LAD from the sub-national projections.
 
-Where a national variant is based on the same set of assumptions as a sub-national variant, we prefer the sub-national version. The [complete set of projections](list_of_projections.qmd) available to the model is available in this documentation and includes 18 variants alongside the main ('migration category') projection.
+Where a national variant is based on the same set of assumptions as a sub-national variant, we prefer the sub-national version. The [complete set of projections](list_of_projections.qmd) available to the model is available in this documentation and includes 17 variants alongside the main ('migration category') projection.
 
 ## Birth Adjustment
 
