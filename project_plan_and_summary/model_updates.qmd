@@ -3,6 +3,36 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/07/09
+
+## v4.0.0
+
+This is a major release.
+
+### Updated subnational population projections and removal of the National population projection variant
+
+The Office for National Statistics (ONS) has released updated [subnational population projections for England](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/bulletins/subnationalpopulationprojectionsforengland/latest). 
+These are 2022-based projections by single year of age and sex for Local Authorities. 
+The ONS have advised that, due to more recently updated migration data becoming available, their ‘migration variant’ should now be used as the new ‘principal projection’, as this is a better reflection of short-term population change. 
+
+The earliest baseline year that models can use based on this change is now 2023.
+
+For this model update, we have replaced the previous principal projection with the newly released migration variant. 
+This will appear as ‘migration category’ in the app.  
+This change will impact model results but is the preferred approach as it contains more accurate predictions of population change to the horizon year. 
+If you are editing previous scenarios, you will be automatically upgraded to the latest model version, including this change of population projection.  
+
+When upgrading scenarios, **all new model runs** will use the new ‘migration category’ variant, irrespective of previous variant selections submitted in the scenario to be upgraded.  
+Therefore, you should expect there to be differences in model results when comparing older scenarios to those using v4.0.0. 
+
+We have also removed the ability to use the National projection, as this is based data that is no longer in step with the new migration category data.  
+If you have questions about this change, please contact your Model Relationship Manager in the first instance.
+
+### Code restructure and new API
+
+We have restructured our model code base significantly for this release, have also created a new Application Programme Interface (API) for the model. 
+These changes should not affect model results or app functionality.
+
 # Update 2025/07/02
 
 ## v3.6.1

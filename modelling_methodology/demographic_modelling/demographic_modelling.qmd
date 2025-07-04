@@ -25,11 +25,11 @@ To limit the number of LADs associated with a single trust (that is to avoid a l
 
 ## Variant projections {#variant-projs}
 
-Alongside their main (principal) projection, ONS also publish a range of variant projections. These variant projections are based on alternative assumptions of future fertility, mortality, and migration. We construct catchments based on variant projections using the same method as for the principal projection (see [Hospital catchments](#hosp-catchments)).
+Alongside their main ('migration category' as of v4.0.0) projection, ONS also publish a range of variant projections. These variant projections are based on alternative assumptions of future fertility, mortality, and migration. We construct catchments based on variant projections using the same method as for the main projection (see [Hospital catchments](#hosp-catchments)).
 
 Sub-national population projections include four variant projections based on different assumptions about migration levels and trends. To provide a wider range of demographic scenarios for use in the model we create a custom set of sub-national variant projections using the [17 national variant projections produced by the ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/variantnationalpopulationprojectionsfortheukandsubnationalpopulationprojectionsandhouseholdprojectionsforenglanduserguide). We do this by applying growth rates by age, sex, and year from the national variant projections to the base population for each LAD from the sub-national projections.
 
-Where a national variant is based on the same set of assumptions as a sub-national variant, we prefer the sub-national version. The [complete set of projections](list_of_projections.qmd) available to the model is available in this documentation and includes 19 variants alongside the principal projection.
+Where a national variant is based on the same set of assumptions as a sub-national variant, we prefer the sub-national version. The [complete set of projections](list_of_projections.qmd) available to the model is available in this documentation and includes 18 variants alongside the main ('migration category') projection.
 
 ## Birth Adjustment
 
@@ -41,7 +41,7 @@ The NHP Demand model includes a component which adjusts hospital activity based 
 
 ## User selection of demographic projections
 
-In most cases we expect users to select and use ONS's principal population projection.  Users are however, free to select, for example the high migration or low fertility projections if they wish, but these variants should be used with caution and only after familiarisation with the assumptions that underpin these non-standard projections.  In addition, users can select several of the variants and indicate how often they wish these to be used in the model's Monte-Carlo replications.
+In most cases we expect users to select and use ONS's main ('migration category') population projection.  Users are however, free to select, for example the high migration or low fertility projections if they wish, but these variants should be used with caution and only after familiarisation with the assumptions that underpin these non-standard projections.  In addition, users can select several of the variants and indicate how often they wish these to be used in the model's Monte-Carlo replications.
 
 ## Custom demographic projections
 
@@ -49,7 +49,7 @@ Users may request the use of a custom population projection for specific schemes
 
 ## How demographic growth is applied in the model: a worked example
 
-The ONS population projections that have been adapted for each provider output data in something like the following format. Note that there are more rows of data than are shown here, with data for each age from 0-90, for each sex. There is also in the full projection more columns of data, for every year from the baseline year to the most last year available from the ONS subnational population projections. We have simplified it considerably for this example.
+The ONS population projections that have been adapted for each provider output data in something like the following format. Note that there are more rows of data than are shown here, with data for each age from 0-90, for each sex. There is also in the full projection more columns of data, for every year from the baseline year to the last year available from the ONS subnational population projections. We have simplified it considerably for this example.
 
 | Gender | Age | 2019 | 2029 | 2039 |
 | --- | --- | ---- | ---- | ---- |
