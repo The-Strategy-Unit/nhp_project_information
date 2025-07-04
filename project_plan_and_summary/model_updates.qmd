@@ -17,20 +17,20 @@ The ONS have advised that, due to more recently updated migration data becoming 
 
 The earliest baseline year that models can use based on this change is now 2023.
 
-For this model update, we have replaced the previous principal projection with the newly released migration variant. 
+For this model update, we have replaced the previous principal projection (the National population projection variant) with the newly released migration variant. 
 This will appear as ‘migration category’ in the app.  
-This change will impact model results but is the preferred approach as it contains more accurate predictions of population change to the horizon year. 
+This change will impact all model results but is the preferred approach as it contains more accurate predictions of population change to the horizon year. 
 If you are editing previous scenarios, you will be automatically upgraded to the latest model version, including this change of population projection.  
 
 When upgrading scenarios, **all new model runs** will use the new ‘migration category’ variant, irrespective of previous variant selections submitted in the scenario to be upgraded.  
 Therefore, you should expect there to be differences in model results when comparing older scenarios to those using v4.0.0. 
 
-We have also removed the ability to use the National projection, as this is based data that is no longer in step with the new migration category data.  
+We have also removed the ability to use the National projection, as this is based on data that is no longer in step with the new migration category data.  
 If you have questions about this change, please contact your Model Relationship Manager in the first instance.
 
 ### Code restructure and new API
 
-We have restructured our model code base significantly for this release, have also created a new Application Programme Interface (API) for the model. 
+We have restructured our model code base significantly for this release and have also created a new Application Programme Interface (API) for the model. 
 These changes should not affect model results or app functionality.
 
 # Update 2025/07/02
