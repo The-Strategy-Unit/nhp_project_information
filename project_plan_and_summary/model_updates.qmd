@@ -13,25 +13,35 @@ This is a major release.
 
 The Office for National Statistics (ONS) has released updated [subnational population projections for England](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/bulletins/subnationalpopulationprojectionsforengland/latest). 
 These are 2022-based projections by single year of age and sex for Local Authorities. 
-The ONS have advised that, due to more recently updated migration data becoming available, their ‘migration variant’ should now be used as the new ‘principal projection’, as this is a better reflection of short-term population change. 
+The ONS have advised that, due to more recently updated migration data becoming available, their 'migration variant' should now be used as the new 'principal projection', as this is a better reflection of short-term population change. 
 
-The earliest baseline year that models can use based on this change is now 2023.
+The only baseline year that models can use based on this change is now 2023.
 
 For this model update, we have replaced the previous principal projection (the National population projection variant) with the newly released migration variant. 
-This will appear as ‘migration category’ in the app.  
+This will appear as 'migration category' in the app.  
 This change will impact all model results but is the preferred approach as it contains more accurate predictions of population change to the horizon year. 
 If you are editing previous scenarios, you will be automatically upgraded to the latest model version, including this change of population projection.  
 
-When upgrading scenarios, **all new model runs** will use the new ‘migration category’ variant, irrespective of previous variant selections submitted in the scenario to be upgraded.  
+When upgrading scenarios, **all new model runs** will use the new 'migration category' variant, irrespective of previous variant selections submitted in the scenario to be upgraded.  
 Therefore, you should expect there to be differences in model results when comparing older scenarios to those using v4.0.0. 
 
 We have also removed the ability to use the National projection, as this is based on data that is no longer in step with the new migration category data.  
 If you have questions about this change, please contact your Model Relationship Manager in the first instance.
 
-### Code restructure and new API
+### Code restructure 
 
-We have restructured our model code base significantly for this release and have also created a new Application Programme Interface (API) for the model. 
+We have restructured our model code base significantly for this release. 
 These changes should not affect model results or app functionality.
+
+### Change to treatement specialty column name
+
+We have instigated a change to the column names relating to the treatment specialty and its grouped versions.
+
+- The column 'tretspef_raw' column has been renamed to 'tretspef'.
+- The column 'tretspef' has been renamed to 'tretspef_grouped'.
+- The column 'sex+tretspef' has been renamed to 'sex+tretspef_grouped'.
+- The column 'tretspef_raw+los_group' has been renamed to 'tretspef+los_group'.
+
 
 # Update 2025/07/02
 

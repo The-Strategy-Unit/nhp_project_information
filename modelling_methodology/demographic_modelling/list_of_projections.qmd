@@ -9,16 +9,6 @@ order: 11
 |2|High migration|Standard|Principal|Principal|High|
 |3|Low migration|Standard|Principal|Principal|Low|
 |4|10-year migration|Standard|Principal|Principal|10-year trends|
-|5|High fertility|Custom variant|High|Principal|Principal|
-|6|Low fertility|Custom|Low|Principal|Principal|
-|7|High life expectancy|Custom|Principal|High|Principal|
-|8|Low life expectancy|Custom|Principal|Low|Principal|
-|9|High population|Custom|High|High|High|
-|10|Low population|Custom|Low|Low|Low|
-|11|Zero net migration|Custom|Principal|Principal|Zero|
-|12|Young age structure|Custom|High|Low|High|
-|13|Old age structure|Custom|Low|High|Low|
-|14|Replacement fertility|Custom|Replacement|Principal|Principal|
-|15|No mortality improvement|Custom|Principal|No improvement|Principal|
-|16|5-year migration|Standard|Principal|Principal|5-year trends|
-|17|Zero net migration|Standard|Principal|Principal|Zero|
+|5|Zero net migration|Custom|Principal|Principal|Zero|
+|6|5-year migration|Standard|Principal|Principal|5-year trends|
+
