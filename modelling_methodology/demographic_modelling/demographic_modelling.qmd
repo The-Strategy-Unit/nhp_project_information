@@ -19,7 +19,15 @@ The ONS population projections datasets are widely regarded as being the best av
 
 A single hospital site will have a good understanding of the communities of patients it serves - based on spatial proximity or patterns of clinical presentation - but this 'catchment' population may not map neatly to administrative boundaries. Therefore, we construct a weighted population catchment for each hospital trust from local authority level projections.
 
-For each local authority district (LAD) which contributes to the caseload of the trust, we look at that caseload as a proportion of all the given LAD's caseload at all hospitals. We then apply that proportion to the LAD's total population in order to arrive at a proportion of the LAD's population which is considered to be in the catchment of the given trust. These proportions are then used as weights to calculate the total catchment population of the trust from all the LADs which contribute to its caseload. 
+For each local authority, we calculate the percentage of inpatient admissions—broken down by age and sex—that are attributable to each provider for residents of that area.
+
+We then estimate each provider’s catchment population by multiplying the population of each local authority (by age and sex) by the corresponding percentage of admissions for that provider, and summing these values across all local authorities.
+
+For example, suppose Local Authority A has 100 ten-year-old males and Provider X accounts for 50% of their admissions. Local Authority B has 200 ten-year-old males, with Provider X accounting for 10% of their admissions. The estimated catchment for ten-year-old males for Provider X would be:
+
+$$
+100 \times 50\% + 200 \times 10\% = 50 + 20 = 70
+$$
 
 The full methodology for generating the population catchment for demographic growth can be [seen here](https://github.com/The-Strategy-Unit/nhp_data/blob/main/reference/provider_catchments.py).
 
