@@ -21,6 +21,17 @@ A single hospital site will have a good understanding of the communities of pati
 
 For each local authority, we calculate the percentage of inpatient admissions—broken down by age and sex—that are attributable to each provider for residents of that area.
 
+::: {.callout-note}
+$$
+\sum_{i} \sum_{j} P_{ij} \cdot s_{ij}
+$$
+
+where:
+
+* $P_{ij} = Population in age group $i$ and sex $j$ for a local authority
+* $s_{ij} = Share of all activity for that local authority in age group $i$ and sex $j$
+:::
+
 We then estimate each provider’s catchment population by multiplying the population of each local authority (by age and sex) by the corresponding percentage of admissions for that provider, and summing these values across all local authorities.
 
 For example, suppose Local Authority A has 100 ten-year-old males and Provider X accounts for 50% of their admissions. Local Authority B has 200 ten-year-old males, with Provider X accounting for 10% of their admissions. The estimated catchment for ten-year-old males for Provider X would be:
