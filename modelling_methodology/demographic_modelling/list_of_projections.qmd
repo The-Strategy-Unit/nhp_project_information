@@ -9,6 +9,6 @@ order: 11
 |2|High migration|Standard|Principal|Principal|High|
 |3|Low migration|Standard|Principal|Principal|Low|
 |4|10-year migration|Standard|Principal|Principal|10-year trends|
-|5|Zero net migration|Custom|Principal|Principal|Zero|
-|6|5-year migration|Standard|Principal|Principal|5-year trends|
+|5|5-year migration|Standard|Principal|Principal|5-year trends|
+|6|Zero net migration|Custom|Principal|Principal|Zero|
 
