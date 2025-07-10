@@ -27,7 +27,7 @@ To limit the number of LADs associated with a single trust (that is to avoid a l
 
 Alongside their main ('migration category' as of v4.0.0) projection, ONS also publish a range of variant projections. These variant projections are based on alternative assumptions of future fertility, mortality, and migration. We construct catchments based on variant projections using the same method as for the main projection (see [Hospital catchments](#hosp-catchments)).
 
-Sub-national population projections include four variant projections based on different assumptions about migration levels and trends. 
+Sub-national population projections include five variant projections based on different assumptions about migration levels and trends. 
 
 The [complete set of projections](list_of_projections.qmd) available to the model is available in this documentation and includes 5 variants alongside the main ('migration category') projection.
 
