@@ -33,7 +33,7 @@ If you have questions about this change, please contact your Model Relationship 
 We have restructured our model code base significantly for this release. 
 These changes should not affect model results or app functionality.
 
-### Change to treatement specialty column name
+### Change to treatment specialty column name
 
 We have instigated a change to the column names relating to the treatment specialty and its grouped versions. This is so that model definitions align more closely with Hospital Episode Statistics (HES) definitions.
 
