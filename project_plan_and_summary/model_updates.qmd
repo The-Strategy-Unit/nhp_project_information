@@ -35,7 +35,7 @@ These changes should not affect model results or app functionality.
 
 ### Change to treatement specialty column name
 
-We have instigated a change to the column names relating to the treatment specialty and its grouped versions.
+We have instigated a change to the column names relating to the treatment specialty and its grouped versions. This is so that model definitions align more closely with Hospital Episode Statistics (HES) definitions.
 
 - The column 'tretspef_raw' column has been renamed to 'tretspef'.
 - The column 'tretspef' has been renamed to 'tretspef_grouped'.
