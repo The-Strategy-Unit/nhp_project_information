@@ -19,9 +19,28 @@ The ONS population projections datasets are widely regarded as being the best av
 
 A single hospital site will have a good understanding of the communities of patients it serves - based on spatial proximity or patterns of clinical presentation - but this 'catchment' population may not map neatly to administrative boundaries. Therefore, we construct a weighted population catchment for each hospital trust from local authority level projections.
 
-A trust's final catchment population comprises a weighted sum of its catchment local authority district (LAD) populations where LADs that contribute a greater share of the trust's activity take a greater weight. Weights are assigned using inpatient activity; we assume that this activity is most broadly representative of the population served by a hospital. 
+For each local authority, we calculate the percentage of inpatient admissions—broken down by age and sex—that are attributable to each provider for residents of that area.
 
-To limit the number of LADs associated with a single trust (that is to avoid a long tail of LADs that contribute negligible activity) we only include LADs with a 5% or greater share of all inpatient activity. We then redistribute the retained activity to ensure the shares across LADs sum to one. The full methodology for generating the population catchment for demographic growth can be [seen here](https://github.com/The-Strategy-Unit/nhp_data/blob/main/population_projections/provider_catchments.py).
+::: {.callout-note}
+$$
+\sum_{i} \sum_{j} P_{ij} \cdot s_{ij}
+$$
+
+where:
+
+* $P_{ij} = Population in age group $i$ and sex $j$ for a local authority
+* $s_{ij} = Share of all activity for that local authority in age group $i$ and sex $j$
+:::
+
+We then estimate each provider’s catchment population by multiplying the population of each local authority (by age and sex) by the corresponding percentage of admissions for that provider, and summing these values across all local authorities.
+
+For example, suppose Local Authority A has 100 ten-year-old males and Provider X accounts for 50% of their admissions. Local Authority B has 200 ten-year-old males, with Provider X accounting for 10% of their admissions. The estimated catchment for ten-year-old males for Provider X would be:
+
+$$
+100 \times 50\% + 200 \times 10\% = 50 + 20 = 70
+$$
+
+The full methodology for generating the population catchment for demographic growth can be [seen here](https://github.com/The-Strategy-Unit/nhp_data/blob/main/reference/provider_catchments.py).
 
 ## Variant projections {#variant-projs}
 
