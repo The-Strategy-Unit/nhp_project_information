@@ -42,6 +42,15 @@ We have instigated a change to the column names relating to the treatment specia
 - The column 'sex+tretspef' has been renamed to 'sex+tretspef_grouped'.
 - The column 'tretspef_raw+los_group' has been renamed to 'tretspef+los_group'.
 
+### Change to methodology for calculating demographic and birth adjustment step counts
+
+The [step counts](../user_guide/glossary.qmd#impact-of-changes), also known as "impact of changes" or the "waterfall diagram", show the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts in the horizon year.
+
+We have improved the methodology for calculating the impact of the [birth adjustment](../modelling_methodology/demographic_modelling/demographic_modelling#birth-adjustment) in the model. 
+In previous versions of the model, we would apply the demographic growth to all activity including maternity, then when we did the birth adjustment step we would "undo" the demographic growth step for maternity activity before applying the birth adjustment. 
+This had the impact of exaggerating the impact of demographic growth in the model, and understating the impact of birth adjustment. 
+
+However, in v4.0.0 we have now separated the steps completely, so that the specific impacts of birth adjustment and demographic adjustment in the model are now more accurate in the step counts. 
 
 # Update 2025/07/02
 
