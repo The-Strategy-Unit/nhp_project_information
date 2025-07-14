@@ -59,7 +59,7 @@ Previously each trust's final catchment population comprised a weighted sum of i
 
 We now calculate the percentage of inpatient admissions—broken down by age and sex—that are attributable to each provider for residents of that area.
 
-For details please see the [demographic modelling page](#hosp-catchments).
+For details please see the [demographic modelling page](../modelling_methodology/demographic_modelling/demographic_modelling.qmd#hosp-catchments).
 
 # Update 2025/07/02
 
