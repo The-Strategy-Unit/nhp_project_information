@@ -52,6 +52,15 @@ This had the impact of exaggerating the impact of demographic growth in the mode
 
 However, in v4.0.0 we have now separated the steps completely, so that the specific impacts of birth adjustment and demographic adjustment in the model are now more accurate in the step counts. 
 
+### Update to catchment methodology
+
+We have altered our methodology for estimating trust catchments. 
+Previously each trust's final catchment population comprised a weighted sum of its catchment local authority district (LAD) populations, where LADs that contributed a greater share of the trust's activity took a greater weight.
+
+We now calculate the percentage of inpatient admissions—broken down by age and sex—that are attributable to each provider for residents of that area.
+
+For details please see the [demographic modelling page](#hosp-catchments).
+
 # Update 2025/07/02
 
 ## v3.6.1
