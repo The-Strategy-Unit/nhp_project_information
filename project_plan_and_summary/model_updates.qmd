@@ -3,6 +3,20 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/08/06
+
+## v4.0.2
+
+This update is a patch release of the inputs app.
+The population growth section now uses a dropdown box instead of sliders so that only one variant is selected.
+
+# Update 2025/07/14
+
+## v4.0.1
+
+This update is a patch release of the inputs app.
+The inputs app now reports the progress of the model after the 'run model' button has been clicked.
+
 # Update 2025/07/09
 
 ## v4.0.0
@@ -11,26 +25,26 @@ This is a major release.
 
 ### Updated subnational population projections and removal of the National population projection variant
 
-The Office for National Statistics (ONS) has released updated [subnational population projections for England](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/bulletins/subnationalpopulationprojectionsforengland/latest). 
-These are 2022-based projections by single year of age and sex for Local Authorities. 
-The ONS have advised that, due to more recently updated migration data becoming available, their 'migration variant' should now be used as the new 'principal projection', as this is a better reflection of short-term population change. 
+The Office for National Statistics (ONS) has released updated [subnational population projections for England](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/bulletins/subnationalpopulationprojectionsforengland/latest).
+These are 2022-based projections by single year of age and sex for Local Authorities.
+The ONS have advised that, due to more recently updated migration data becoming available, their 'migration variant' should now be used as the new 'principal projection', as this is a better reflection of short-term population change.
 
 The only baseline year that models can use based on this change is now 2023.
 
-For this model update, we have replaced the previous principal projection (the National population projection variant) with the newly released migration variant. 
-This will appear as 'migration category' in the app.  
-This change will impact all model results but is the preferred approach as it contains more accurate predictions of population change to the horizon year. 
-If you are editing previous scenarios, you will be automatically upgraded to the latest model version, including this change of population projection.  
+For this model update, we have replaced the previous principal projection (the National population projection variant) with the newly released migration variant.
+This will appear as 'migration category' in the app.
+This change will impact all model results but is the preferred approach as it contains more accurate predictions of population change to the horizon year.
+If you are editing previous scenarios, you will be automatically upgraded to the latest model version, including this change of population projection.
 
-When upgrading scenarios, **all new model runs** will use the new 'migration category' variant, irrespective of previous variant selections submitted in the scenario to be upgraded.  
-Therefore, you should expect there to be differences in model results when comparing older scenarios to those using v4.0.0. 
+When upgrading scenarios, **all new model runs** will use the new 'migration category' variant, irrespective of previous variant selections submitted in the scenario to be upgraded.
+Therefore, you should expect there to be differences in model results when comparing older scenarios to those using v4.0.0.
 
-We have also removed the ability to use the National projection, as this is based on data that is no longer in step with the new migration category data.  
+We have also removed the ability to use the National projection, as this is based on data that is no longer in step with the new migration category data.
 If you have questions about this change, please contact your Model Relationship Manager in the first instance.
 
-### Code restructure 
+### Code restructure
 
-We have restructured our model code base significantly for this release. 
+We have restructured our model code base significantly for this release.
 These changes should not affect model results or app functionality.
 
 ### Change to treatment specialty column name
@@ -46,15 +60,15 @@ We have instigated a change to the column names relating to the treatment specia
 
 The [step counts](../user_guide/glossary.qmd#impact-of-changes), also known as "impact of changes" or the "waterfall diagram", show the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts in the horizon year.
 
-We have improved the methodology for calculating the impact of the [birth adjustment](../modelling_methodology/demographic_modelling/demographic_modelling#birth-adjustment) in the model. 
-In previous versions of the model, we would apply the demographic growth to all activity including maternity, then when we did the birth adjustment step we would "undo" the demographic growth step for maternity activity before applying the birth adjustment. 
-This had the impact of exaggerating the impact of demographic growth in the model, and understating the impact of birth adjustment. 
+We have improved the methodology for calculating the impact of the [birth adjustment](../modelling_methodology/demographic_modelling/demographic_modelling#birth-adjustment) in the model.
+In previous versions of the model, we would apply the demographic growth to all activity including maternity, then when we did the birth adjustment step we would "undo" the demographic growth step for maternity activity before applying the birth adjustment.
+This had the impact of exaggerating the impact of demographic growth in the model, and understating the impact of birth adjustment.
 
-However, in v4.0.0 we have now separated the steps completely, so that the specific impacts of birth adjustment and demographic adjustment in the model are now more accurate in the step counts. 
+However, in v4.0.0 we have now separated the steps completely, so that the specific impacts of birth adjustment and demographic adjustment in the model are now more accurate in the step counts.
 
 ### Update to catchment methodology
 
-We have altered our methodology for estimating trust catchments. 
+We have altered our methodology for estimating trust catchments.
 Previously each trust's final catchment population comprised a weighted sum of its catchment local authority district (LAD) populations, where LADs that contributed a greater share of the trust's activity took a greater weight.
 
 We now calculate the percentage of inpatient admissions—broken down by age and sex—that are attributable to each provider for residents of that area.
@@ -65,7 +79,7 @@ For details please see the [demographic modelling page](../modelling_methodology
 
 ## v3.6.1
 
-This update is a patch release. We have found an issue in the NULL handling within outpatient and A&E data within the model. In some cases this has led to lower projected demand at baseline. This update fixes the issue. 
+This update is a patch release. We have found an issue in the NULL handling within outpatient and A&E data within the model. In some cases this has led to lower projected demand at baseline. This update fixes the issue.
 
 # Update 2025/06/11
 
@@ -73,7 +87,7 @@ This update is a patch release. We have found an issue in the NULL handling with
 
 ### Waiting List Adjustment temporarily disabled
 
-We are currently revisiting the methodology for the Waiting List Adjustment element of the model. The existing methodology is designed to take account of extreme values potentially occurring in individual years, but we are doing work to determine whether it would be better to deal with this issue in a different way. Because we want to be sure that model runs are based on the best analytical approach possible, we have temporarily disabled the Waiting List Adjustment functionality pending further work. 
+We are currently revisiting the methodology for the Waiting List Adjustment element of the model. The existing methodology is designed to take account of extreme values potentially occurring in individual years, but we are doing work to determine whether it would be better to deal with this issue in a different way. Because we want to be sure that model runs are based on the best analytical approach possible, we have temporarily disabled the Waiting List Adjustment functionality pending further work.
 
 New scenarios created on v3.6 and scenarios upgraded from previous model versions to v3.6 will have Waiting List Adjustment disabled. Once we have ensured our approach is the best it can be, which could potentially be keeping the existing methodology, we will bring this functionality back in a future model release.
 
@@ -81,7 +95,7 @@ New scenarios created on v3.6 and scenarios upgraded from previous model version
 
 When editing existing scenarios from v1.2 onwards, they will automatically be upgraded to the latest model version.
 
-New scenarios will automatically be created on the latest model version. 
+New scenarios will automatically be created on the latest model version.
 
 Users are encouraged to check what changes have been implemented in each model version before upgrading their existing scenarios by selecting "Edit existing". The "Create new from existing" functionality on the inputs app can also be used to work on scenarios using the latest model version, without altering the originals.
 
