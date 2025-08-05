@@ -22,3 +22,4 @@ If you're a member of the Strategy Unit, you can contact the Data Science team f
 We authenticate with the Azure container using SAS tokens, which expire after 1 month.
 If the GitHub action fails due to an authentication error, you will need to run `update_secrets.ps1` in your terminal.
 Note that you will need to have [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows) and the [gh CLI](https://cli.github.com/) installed and set up for this script to work.
+You may need to run `az login` to authenticate with Azure before running the script.
