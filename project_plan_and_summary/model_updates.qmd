@@ -3,6 +3,13 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/09/03
+
+## v4.1.0
+
+The covid adjustment has been removed from the model and is no longer visible in the inputs app.
+The adjustment was no longer needed because the earliest available baseline year is currently 2023/24.
+
 # Update 2025/08/06
 
 ## v4.0.2
