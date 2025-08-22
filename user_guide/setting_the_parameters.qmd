@@ -20,12 +20,6 @@ The baseline data is sourced from Hospital Episodes Statistics (HES) data via th
 
 If for some reason the HES data for a provider trust in the baseline year was not an accurate representation of typical activity, this can be adjusted using the 'baseline adjustment' parameter. Users can provide a point estimate adjustment to the baseline data currently extracted for the trust for each Point of Delivery (POD)/specialty. However, this should be only used in exceptional cases. 
 
-### Covid adjustment
-
-- Mandatory, fixed
-
-This adjustment accounts for decreased hospital activity during the 2019/20 baseline year due to the COVID-19 pandemic. The adjustments shown are those recommended by NHSE and they are applied automatically within the model. This adjustment is turned off for other baseline years.
-
 ## Population changes
 
 The model accounts for how hospital activity levels might shift as a result of demographic growth. This includes adjustments relating to population size changes, population age/sex distribution, and population age-specific health status.

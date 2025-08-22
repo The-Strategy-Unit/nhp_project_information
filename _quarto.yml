@@ -40,7 +40,6 @@ website:
           - section: "Data quality"
             contents:
             - modelling_methodology/data_summary.qmd
-            - modelling_methodology/covid_adjustment.qmd
             - modelling_methodology/baseline_data_validation.qmd
           - section: "Demographic modelling"
             contents:

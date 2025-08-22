@@ -1,48 +1,41 @@
 [
  {
   "id": 1,
-  "description": "Covid Adjustment",
-  "link": "../modelling_methodology/covid_adjustment.html",
-  "quality": "excellent",
-  "impact": "low"
- },
- {
-  "id": 2,
   "description": "Non-demographic growth",
   "link": "../modelling_methodology/non-demographic_growth.html",
   "quality": "good",
   "impact": "medium"
  },
  {
-  "id": 3,
+  "id": 2,
   "description": "HES data",
   "link": "../modelling_methodology/data_summary.html",
   "quality": "excellent",
   "impact": "high"
  },
   {
-  "id": 4,
+  "id": 3,
   "description": "Population projection data",
   "link": "../modelling_methodology/demographic_modelling/demographic_modelling.html#population-projections",
   "quality": "excellent",
   "impact": "high"
  },
   {
-  "id": 5,
+  "id": 4,
   "description": "Health status adjustment",
   "link": "../modelling_methodology/demographic_modelling/modelling_utilisation_rates.html#adjust-health-status",
   "quality": "excellent",
   "impact": "medium"
  },
  {
-    "id": 6,
+    "id": 5,
     "description": "ODS successors list",
     "link": "../data_extraction/outpatients.html#provider-code",
     "quality": "excellent",
     "impact": "medium"
    },
  {
-   "id": 7,
+   "id": 6,
    "description": "ECDS data",
    "link": "../data_extraction/aae.html",
    "quality": "excellent",
