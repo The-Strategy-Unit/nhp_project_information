@@ -27,13 +27,11 @@ Yes. Users will need to remember each of the scenario names and provide these to
 
 It is expected that users will choose one of the ONS population projections available in the inputs app. There is a principal projection (set as default) plus 19 alternative ONS variants to choose from. Where an alternative variant is selected, schemes should provide a rationale and secure the formal agreement of system and regional partners for their preferred position.  In exceptional circumstances, it may become possible for schemes to request the use of a locally developed projection. However, for this to be considered, schemes would have to provide an evidence base for not using ONS projections and demonstrate that robust methods were deployed.    
 
-## Why do we use a 2019/20 baseline year?
-
-COVID-19 had a significant impact on healthcare activity and 2019/20 is the most recent available year via HES with minimal impact from COVID. We use this as the baseline year, with some adjustment to account for the impact of COVID towards the end of the 2019/20 on hospital activity. As of model v3.2, 2023/24 is also available to use as a baseline year.
-
 ## Are there plans for other baseline years?
 
-As of model v3.2, the years available to use for the baseline are 2019/20 and 2023/24. We plan to include new baselines when they become available via HES. Using different baseline years for modelling means that assumptions will need to be revisited.
+2023/24 is the most recent available year via HES and currently the only option in the model.
+We plan to include new baselines when they become available via HES. 
+Using different baseline years for modelling means that assumptions will need to be revisited.
 
 ## Does the model use inpatient spells & LoS or beddays?
 
