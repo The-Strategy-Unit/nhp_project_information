@@ -9,7 +9,7 @@ Given the size of the project, there are numerous GitHub repositories relating t
 
 The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
 
-![Diagram of NHP model architecture](../resources/NHP_diagram_public_v3-2.png){fig-alt="A diagram showing the connections between the various repositories"}
+![Diagram of NHP model architecture](../resources/nhp_infrastructure_v4-1.png){fig-alt="A diagram showing the connections between the various repositories"}
 
 ## Repositories relating to model inputs
 
@@ -49,6 +49,10 @@ This repository is a Shiny dashboard allowing the comparison of mitigators set b
 
 This repository contains code to auto-populate with scheme-specific content the NHP 'final report' template (sometimes referred to as the 'outputs report'). Generates scheme-specific (and possibly site-specific) charts, tables and values from final model-run data and inserts these into the final-report template (docx) using {officer}.
 
+-   [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) [OPEN]
+
+This repository contains Python code for producing various products relating to the NHP model. It also includes quality assurance (QA) scripts.
+
 ## Repositories relating to documentation
 
 -   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information) [OPEN]
@@ -63,4 +67,3 @@ The policy of the Strategy Unit (MLCSU) and [national policy](https://www.gov.uk
 
 Source: [Data Saves Lives](https://www.gov.uk/government/publications/data-saves-lives-reshaping-health-and-social-care-with-data/data-saves-lives-reshaping-health-and-social-care-with-data#working-with-partners-to-develop-innovations-that-improve-health-and-care)
 
-At the moment the codebase referred to in this documentation is closed, but we hope to make it open in the near future.
