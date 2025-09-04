@@ -14,7 +14,7 @@ The adjustment was no longer needed because the earliest available baseline year
 
 ### Delivery episodes added into downloadable model results
 
-The downloadable Excel results file now includes the number of spells with delivery episodes in the modelled horizon year. The code for identifying this activity is [available here](https://github.com/The-Strategy-Unit/nhp_data/blob/0da3d518ebbbefd669340a55705185958877844d/raw_data/inpatients.py#L17-L25).
+The downloadable Excel results file now includes the number of spells with delivery episodes in the modelled horizon year. The code for identifying this activity is [available in the GitHub repository](https://github.com/The-Strategy-Unit/nhp_data/blob/7581b2d94e1385d6485820fd5ea6fa70d10cd95d/raw_data/inpatients.py#L17-L24).
 
 # Update 2025/08/06
 
