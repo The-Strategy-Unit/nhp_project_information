@@ -7,7 +7,7 @@ order: 5
 
 ## v4.2.0
 
-### Waiting lists adjustments in the NHP Model
+### Waiting-list adjustments in the NHP Model
 
 Until recently, the NHP model has included functionality that allowed participating trusts to [correct for imbalances at baseline](../modelling_methodology/demand_supply.qmd) between the rates of referral for planned care activity, and rates of inpatient and outpatient activity that remove people from elective waiting lists.
 Whilst this adjustment performs adequately in most situations, we have recently become aware of several examples where this adjustment generates unexpected results.
