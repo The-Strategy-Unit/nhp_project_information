@@ -9,12 +9,12 @@ order: 5
 
 ### Waiting lists adjustments in the NHP Model
 
-Until recently, the NHP model has included functionality that allowed participating trusts to [correct for imbalances at baseline](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/demand_supply.html) between the rates of referral for planned care activity, and rates of inpatient and outpatient activity that remove people from elective waiting lists.
+Until recently, the NHP model has included functionality that allowed participating trusts to [correct for imbalances at baseline](../modelling_methodology/demand_supply.qmd) between the rates of referral for planned care activity, and rates of inpatient and outpatient activity that remove people from elective waiting lists.
 Whilst this adjustment performs adequately in most situations, we have recently become aware of several examples where this adjustment generates unexpected results.
 The underlying issue appears to arise from inconsistencies between a Trust's Referral-to-Treatment statistics and its Hospital Episode Statistics.
 We are exploring potential solutions and will make more robust functionality available in a later release of the model.
 
-In the meantime, we recommend that Trusts perform their own calculations to estimate the imbalance between referrals and planned care activities in the baseline year, and implement these using [the baseline adjustment functionality in the model](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/setting_the_parameters.html#baseline-adjustments).
+In the meantime, we recommend that Trusts perform their own calculations to estimate the imbalance between referrals and planned care activities in the baseline year, and implement these using [the baseline adjustment functionality in the model](../user_guide/setting_the_parameters.qmd#baseline-adjustments).
 If you have any questions about this process, please contact [mlcsu.nhpanalytics@nhs.net](mailto:mlcsu.nhpanalytics@nhs.net).
 
 # Update 2025/09/03
