@@ -456,7 +456,7 @@ We then have a table that contains a row per procedure, a column for each group 
 | :------------- | ---: | ---: | ---: | ----: |
 | A000           | 10   | 20   | 30   | 60    |
 
-As a data quality step, if a procedure has a total less than 100 (in the entirity of England in 2023/24) then we remove this procedure from our analysis.
+As a data quality step, if a procedure has a total less than 100 (in the entirety of England in 2023/24) then we remove this procedure from our analysis.
 
 We then classify the procedures based on the following:
 
