@@ -3,6 +3,22 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/10/07
+
+## v4.2.1
+
+We recently discovered a bug which meant that Gynaecology activity, identified through treatment specialty code 502, was being erroneously assigned to Other (Medical) in the grouped treatment specialties. This bug has been in place since v3.1.0 of the model. 
+
+This bug would not impact where actual treatment specialty codes are used, for example in "detailed results" outputs of the model.
+
+The grouped treatment specialties are only used in the aspects of the model listed below. Therefore, only schemes that have set these in the model parameters may have been impacted by this issue. Do contact your Model Relationship Manager if you have any concerns.
+
+-	Baseline adjustment
+-	Repatriation
+-	Expatriation
+-	Waiting list adjustment (disabled since v3.6 of the model)
+
+
 # Update 2025/10/01
 
 ## v4.2.0
