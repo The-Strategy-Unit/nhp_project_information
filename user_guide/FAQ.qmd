@@ -5,77 +5,77 @@ order: 1
 
 This page collates some frequently asked technical questions about the model from stakeholders. We will continue to add to this page as the project continues.
 
-## Is this model designed by an NHS team or a private firm? 
+## Is this model designed by an NHS team or a private firm?
 
 The Strategy Unit built the model, and we are (proudly) [an NHS team](https://www.strategyunitwm.nhs.uk)
 
-As an NHS team committed to open analysis, we are currently advocating for the entire model to be made open source. 
+As an NHS team committed to open analysis, we are currently advocating for the entire model to be made open source.
 
 ## We would like to model activity for a specific hospital site, rather than for the whole trust. How can we do this?
 
-The model uses all of the HES data for a particular trust for the baseline. This means that all sites are included by default. The sites for each trust are identified by the SITETRET field, and correspond to Organisation Data Service (ODS) site codes. Some trusts wish to only model the activities of one or more of their sites, but not all of them. At present, the NHP model does not support this directly, but it is possible to achieve this for outpatients and inpatients activity using the following workaround. 
+The model uses all of the HES data for a particular trust for the baseline. This means that all sites are included by default. The sites for each trust are identified by the SITETRET field, and correspond to Organisation Data Service (ODS) site codes. Some trusts wish to only model the activities of one or more of their sites, but not all of them. At present, the NHP model does not support this directly, but it is possible to achieve this for outpatients and inpatients activity using the following workaround.
 
-When entering parameters into the NHP inputs app, the data seen will be for all sites. When setting parameters for the model, trusts can do so as if they are only considering the site(s) of interest. However, it is important to note that some of the parameters are based on considerations of the trust's activity as a whole, such as demographic growth, where we consider the catchment population of the trust as a whole. 
+When entering parameters into the NHP inputs app, the data seen will be for all sites. When setting parameters for the model, trusts can do so as if they are only considering the site(s) of interest. However, it is important to note that some of the parameters are based on considerations of the trust's activity as a whole, such as demographic growth, where we consider the catchment population of the trust as a whole.
 
-The aggregated data that is output by the NHP model includes the SITETRET field. Using this, the NHP outputs app allows users to filter by site, as well as looking at all sites at once. If trusts wish to view the combined results for more than one site, but not all sites together, this is possible via the outputs app. This shows a breakdown of projected activity for each site belonging the trust. Trusts can then filter out only the sites of interest in the results. 
+The aggregated data that is output by the NHP model includes the SITETRET field. Using this, the NHP outputs app allows users to filter by site, as well as looking at all sites at once. If trusts wish to view the combined results for more than one site, but not all sites together, this is possible via the outputs app. This shows a breakdown of projected activity for each site belonging the trust. Trusts can then filter out only the sites of interest in the results.
 
-## Can multiple scenarios be created and 'run'? 
+## Can multiple scenarios be created and 'run'?
 
-Yes. Users will need to remember each of the scenario names and provide these to our team to 'run' prior to the technical outputs workshop.  
+Yes. Users will need to remember each of the scenario names and provide these to our team to 'run' prior to the technical outputs workshop.
 
-## Can users input their own population projections? 
+## Can users input their own population projections?
 
-It is expected that users will choose one of the ONS population projections available in the inputs app. There is a principal projection (set as default) plus 19 alternative ONS variants to choose from. Where an alternative variant is selected, schemes should provide a rationale and secure the formal agreement of system and regional partners for their preferred position.  In exceptional circumstances, it may become possible for schemes to request the use of a locally developed projection. However, for this to be considered, schemes would have to provide an evidence base for not using ONS projections and demonstrate that robust methods were deployed.    
+It is expected that users will choose one of the ONS population projections available in the inputs app. There is a principal projection (set as default) plus 19 alternative ONS variants to choose from. Where an alternative variant is selected, schemes should provide a rationale and secure the formal agreement of system and regional partners for their preferred position.  In exceptional circumstances, it may become possible for schemes to request the use of a locally developed projection. However, for this to be considered, schemes would have to provide an evidence base for not using ONS projections and demonstrate that robust methods were deployed.
 
 ## Are there plans for other baseline years?
 
 2023/24 is the most recent available year via HES and currently the only option in the model.
-We plan to include new baselines when they become available via HES. 
+We plan to include new baselines when they become available via HES.
 Using different baseline years for modelling means that assumptions will need to be revisited.
 
 ## Does the model use inpatient spells & LoS or beddays?
 
 The model uses inpatient spells and occupied bed days, defined as `discharge_date - admission_date + 1`. So, someone who is admitted and discharged on the same day has 1 bedday, someone who is discharged the day after they are admitted will have 2 beddays.
 
-## Does the model account for new services that were not delivered in the baseline year? 
+## Does the model account for new services that were not delivered in the baseline year?
 
-Where a trust will be delivering a new service that was not previously delivered by the hospital, schemes will need to add this in after the model has been run. This is because the repatriation factor in the model works by oversampling from existing activity, and in these instances, there will be no activity to sample from. 
+Where a trust will be delivering a new service that was not previously delivered by the hospital, schemes will need to add this in after the model has been run. This is because the repatriation factor in the model works by oversampling from existing activity, and in these instances, there will be no activity to sample from.
 
-## Does the model show the baseline data without any assumptions applied? 
+## Does the model show the baseline data without any assumptions applied?
 
-Yes, we recommend that Trusts check the baseline counts of activity in the inputs app against their own locally held data. This will help to ensure that all stakeholders have confidence in the quality of the baseline data that forms the basis of the modelling process and will help to identify any issues that need to be addressed through the baseline adjustment, repatriation or expatriation model parameters. 
+Yes, we recommend that Trusts check the baseline counts of activity in the inputs app against their own locally held data. This will help to ensure that all stakeholders have confidence in the quality of the baseline data that forms the basis of the modelling process and will help to identify any issues that need to be addressed through the baseline adjustment, repatriation or expatriation model parameters.
 
-The baseline data can be downloaded as an Excel file from the inputs app, on the Baseline Adjustment page. 
+The baseline data can be downloaded as an Excel file from the inputs app, on the Baseline Adjustment page.
 
-## Which year should be selected as the horizon year? 
+## Which year should be selected as the horizon year?
 
-The model allows users to select their 'horizon year': the year they wish the model to forecast up to. We recommend that users select a horizon year at least 10 years beyond the opening of the new hospital. The model can forecast up to and including the 2041/42 financial year.   
+The model allows users to select their 'horizon year': the year they wish the model to forecast up to. We recommend that users select a horizon year at least 10 years beyond the opening of the new hospital. The model can forecast up to and including the 2041/42 financial year.
 
-## Do the activity mitigators account for virtual wards? 
+## Do the activity mitigators account for virtual wards?
 
-Yes, we are introducing a new virtual wards mitigator from May. Information about all the mitigators is available [here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd). 
+Yes, we are introducing a new virtual wards mitigator from May. Information about all the mitigators is available [here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd).
 
-## Which mitigators should be prioritised when setting assumptions? 
+## Which mitigators should be prioritised when setting assumptions?
 
-The 20 mitigators associated with the highest levels of healthcare activity are listed in a table within the inputs app ('Summary table'). While all activity mitigators should be considered, this table can help users prioritise which mitigators to spend more time forecasting.  
+The 20 mitigators associated with the highest levels of healthcare activity are listed in a table within the inputs app ('Summary table'). While all activity mitigators should be considered, this table can help users prioritise which mitigators to spend more time forecasting.
 
-## Can a list of all the activity mitigators be downloaded? 
+## Can a list of all the activity mitigators be downloaded?
 
-Yes, this is available from the [mitigators lookup page](mitigators_lookup.qmd). Where needed, users can 'Print to PDF' any of the pages with activity mitigator information. This will include the charts showing trend/peer comparison information. 
+Yes, this is available from the [mitigators lookup page](mitigators_lookup.qmd). Where needed, users can 'Print to PDF' any of the pages with activity mitigator information. This will include the charts showing trend/peer comparison information.
 
-## What is the National Elicitation Exercise? 
+## What is the National Elicitation Exercise (NEE)?
 
-Subject matter experts were invited to provide forecasts about future hospital activity using an evidence-based elicitation exercise. In the inputs app, the aggregated forecasts from the exercise are presented for 77 activity mitigators. They provide a useful ‘outside’ view but should not be interpreted as an expectation of what can be achieved locally. The draft report of the National Elicitation Exercise can be [downloaded here](../resources/NHP_NEE_Draft_Report_8Dec2023.pdf).
+Subject matter experts were invited to provide forecasts about future hospital activity using an evidence-based elicitation exercise. The methodology and outcome has been [published in an open-access journal](https://doi.org/10.1136/bmjopen-2024-084632). In the inputs app, the aggregated forecasts from the exercise are presented for 77 activity mitigators. They provide a useful 'outside' view but should not be interpreted as an expectation of what can be achieved locally.
 
-## Capacity conversion - Does the model project the number of beds required?  
+## Capacity conversion - Does the model project the number of beds required?
 
-Earlier versions did include KH03 bed and occupancy data which were used to generate some indicative capacity (bed) estimates, but this was found to be insufficiently accurate. This is principally a demand model. The main outputs are hospital activity as measured in inpatients admissions and bed days, and outpatients and A&E attendances. Schemes will need to undertake their own analysis to convert activity into capacity. The first stage output report that we co-produce with you will detail how you have locally undertaken the conversion from demand to capacity based on local context. Over coming months, we will be issuing tools that can assist in this (e.g. discrete event simulation models that assist in determining required capacity based on availability requirements that you set and bed pools that you determine) and we are also structuring the demand output reports to facilitate this aspect of planning (e.g. grouping particular categories of activity because they impact on a chosen type of capacity). 
+Earlier versions did include KH03 bed and occupancy data which were used to generate some indicative capacity (bed) estimates, but this was found to be insufficiently accurate. This is principally a demand model. The main outputs are hospital activity as measured in inpatients admissions and bed days, and outpatients and A&E attendances. Schemes will need to undertake their own analysis to convert activity into capacity. The first stage output report that we co-produce with you will detail how you have locally undertaken the conversion from demand to capacity based on local context. Over coming months, we will be issuing tools that can assist in this (e.g. discrete event simulation models that assist in determining required capacity based on availability requirements that you set and bed pools that you determine) and we are also structuring the demand output reports to facilitate this aspect of planning (e.g. grouping particular categories of activity because they impact on a chosen type of capacity).
 
-## Does the model cater for seasonal variation to establish peak demand? 
+## Does the model cater for seasonal variation to establish peak demand?
 
-The high-level outputs are by year. The point where this becomes significant is in conversion to capacity, which is a task that has to be led by the trust given the significance of local contextual factors. Schemes will need to consider the availability standards and (operationally) effective bed pools (considering the effect on that of moving to single beds) as well as the extent to which current variability (e.g. in process) might be altered. Once those are determined, the simulation modelling methods take observed fluctuations in demand and process to then calculate capacity needed to achieve the availability standard. Bed occupancy is a product of that calculation and should not be considered as a target. 
+The high-level outputs are by year. The point where this becomes significant is in conversion to capacity, which is a task that has to be led by the trust given the significance of local contextual factors. Schemes will need to consider the availability standards and (operationally) effective bed pools (considering the effect on that of moving to single beds) as well as the extent to which current variability (e.g. in process) might be altered. Once those are determined, the simulation modelling methods take observed fluctuations in demand and process to then calculate capacity needed to achieve the availability standard. Bed occupancy is a product of that calculation and should not be considered as a target.
 
-The report we will co-produce with schemes at the end of the initial stage includes a section where the approach to this is set out. And there are of course more and less sophisticated ways that can be deployed if pragmatism is needed due to timelines. 
+The report we will co-produce with schemes at the end of the initial stage includes a section where the approach to this is set out. And there are of course more and less sophisticated ways that can be deployed if pragmatism is needed due to timelines.
 
 ## Can the model break down inpatients activity by month to provide an indication of demand throughout the year?
 
@@ -85,18 +85,18 @@ Our model works by sampling the original baseline activity data. This sampling a
 
 In order to provide activity levels at a monthly level, we would first need to investigate if that timescale is large enough to smooth out any artifical spikes.
 
-## How are a Trust's peers selected? 
+## How are a Trust's peers selected?
 
-The Trust peers displayed in the inputs app (in the comparative charts for the activity mitigators) are derived from an earlier Excel version of this tool: [Trust Peer Finder Tool](https://app.powerbi.com/view?r=eyJrIjoiMjdiOWQ4YTktNmNiNC00MmIwLThjNzktNWVmMmJmMzllNmViIiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9). 
+The Trust peers displayed in the inputs app (in the comparative charts for the activity mitigators) are derived from an earlier Excel version of this tool: [Trust Peer Finder Tool](https://app.powerbi.com/view?r=eyJrIjoiMjdiOWQ4YTktNmNiNC00MmIwLThjNzktNWVmMmJmMzllNmViIiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9).
 
-## Does the model quantify the projected activity removed from the hospital? 
+## Does the model quantify the projected activity removed from the hospital?
 
-We are currently developing an output which quantifies (in detail) the activity which in effect is assumed to be removed from hospital and provided elsewhere. This is seen as a powerful tool for systems in considering how they assure themselves of the overall plans. This is planned for release in the coming months. 
+We are currently developing an output which quantifies (in detail) the activity which in effect is assumed to be removed from hospital and provided elsewhere. This is seen as a powerful tool for systems in considering how they assure themselves of the overall plans. This is planned for release in the coming months.
 
 ## Why are Outpatient Did Not Attends (DNAs) excluded from the model?
 
 Of the 103 million outpatient appointments booked in 2021/22, [7.6% ended in a ‘Did Not Attend’](https://www.england.nhs.uk/long-read/reducing-did-not-attends-dnas-in-outpatient-services/#:~:text=Of%20the%20103%20million%20outpatient%20appointments%20booked%20in%202021/22%2C%207.6%25%20ended%20in%20a%20%E2%80%98Did%20Not%20Attend%E2%80%99%3B%20this%20equates%20to%20an%20average%20of%20650%2C000%20monthly%20appointment%20slots.). So why do we exclude them from the model?
-Hospitals tend to have a good understanding of the rates of their outpatient DNAs, and they account for this by slightly overscheduling appointments. This means that outpatient DNAs don't really impact activity levels. 
+Hospitals tend to have a good understanding of the rates of their outpatient DNAs, and they account for this by slightly overscheduling appointments. This means that outpatient DNAs don't really impact activity levels.
 
 On-the-day cancellations of inpatient surgery are included in the NHP model, because these do generally waste resources, as theatres may have already been booked, and this can cause lost activity.
 
@@ -107,21 +107,21 @@ Including outpatient DNAs in the model would add another level of complexity, an
 
 This will be made clearer in the outputs/refinement workshop. For inpatients and outpatients, outputs are provided which can be broken down by sitetret (ODS Site Code), pod (point of delivery), and tretspef (Treatment Function Codes), as well as demographic factors (sex and age). Detailed data visualisation and exploration is available via the outputs app, and model results are also available to download in JSON and Excel formats. An example of the Excel results using dummy data is available [to download here](example_outputs.xlsx).
 
-## When do users see model outputs? 
+## When do users see model outputs?
 
-The initial outputs of a first 'run' will be explored during a technical outputs workshop after which schemes will have opportunities to iterate the model prior to settling on a 'final version' (for this stage of planning). 
+The initial outputs of a first 'run' will be explored during a technical outputs workshop after which schemes will have opportunities to iterate the model prior to settling on a 'final version' (for this stage of planning).
 
-## Can users download their assumptions to retain for governance purposes? 
+## Can users download their assumptions to retain for governance purposes?
 
 Yes, completed model parameters can be downloaded as a JSON file by clicking the 'download params' button in the run model section of the inputs app, which is made available to users after their first refinement workshop. Model parameters can also be downloaded from the outputs app, from the Downloads page.
 
 ## Why can't we see a detailed breakdown of exactly which activity was avoided by each mitigator?
 
-Details of the modelling methodology can be seen on the [modelling uncertainty page](../modelling_methodology/modelling_uncertainty.qmd). 
+Details of the modelling methodology can be seen on the [modelling uncertainty page](../modelling_methodology/modelling_uncertainty.qmd).
 
-All of the activity avoidance mitigators apply at the same time. If more than one activity avoidance mitigator applies to a row of data, then their values are multiplied together to produce an activity avoidance summary parameter. This activity avoidance summary parameter is then used as $p$ when we randomly sample from a $\text{Binomial}(n,p)$ distribution, where $n = 1$. 
+All of the activity avoidance mitigators apply at the same time. If more than one activity avoidance mitigator applies to a row of data, then their values are multiplied together to produce an activity avoidance summary parameter. This activity avoidance summary parameter is then used as $p$ when we randomly sample from a $\text{Binomial}(n,p)$ distribution, where $n = 1$.
 
-With the efficiencies mitigators, if more than one efficiency mitigator applies to a row of data, the model randomly selects which mitigator to apply in each run. It then uses the sampled value for the efficiency mitigator as $p$ when sampling from a $\text{Binomial}(n,p)$ distribution, where $n = LOS$, the Length of Stay for the row. 
+With the efficiencies mitigators, if more than one efficiency mitigator applies to a row of data, the model randomly selects which mitigator to apply in each run. It then uses the sampled value for the efficiency mitigator as $p$ when sampling from a $\text{Binomial}(n,p)$ distribution, where $n = LOS$, the Length of Stay for the row.
 
 It is therefore not possible to exactly state which mitigator has removed specific types of activity. We can provide high-level estimates of activity removed through the [step counts/impact of changes](glossary.qmd#impact-of-changes), and a breakdown of avoided activity by age and sex in the model results. We have not yet implemented the ability to see a breakdown of activity removed by the efficiency mitigators in the model results.
 
@@ -146,6 +146,3 @@ Additionally, the individual bar chart displaying the effect of each mitigator d
 NB important to note that this is an improvement as it more accurately reflects the overall level of avoided activity at the horizon year.
 
 For a more detailed explanation of the binomial thinning method see [modelling_uncertainty](../modelling_methodology/modelling_uncertainty.qmd).
-
-
-
