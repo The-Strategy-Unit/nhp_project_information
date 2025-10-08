@@ -65,7 +65,7 @@ Yes, this is available from the [mitigators lookup page](mitigators_lookup.qmd).
 
 ## What is the National Elicitation Exercise (NEE)?
 
-Subject matter experts were invited to provide forecasts about future hospital activity using an evidence-based elicitation exercise. The methodology and outcome has been [published in an open-access journal](https://pubmed.ncbi.nlm.nih.gov/39366712/). In the inputs app, the aggregated forecasts from the exercise are presented for 77 activity mitigators. They provide a useful 'outside' view but should not be interpreted as an expectation of what can be achieved locally.
+Subject matter experts were invited to provide forecasts about future hospital activity using an evidence-based elicitation exercise. The methodology and outcome has been [published in an open-access journal](https://doi.org/10.1136/bmjopen-2024-084632). In the inputs app, the aggregated forecasts from the exercise are presented for 77 activity mitigators. They provide a useful 'outside' view but should not be interpreted as an expectation of what can be achieved locally.
 
 ## Capacity conversion - Does the model project the number of beds required?
 
