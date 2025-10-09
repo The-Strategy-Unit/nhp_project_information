@@ -23,7 +23,7 @@ We suggest that you consider including:
 
 * the date of model creation in a simple YYYYMMDD format such as 20240530
 
-* the non-demographic variant in the model, for example NDG2 or NDG1
+* the non-demographic variant in the model, for example NDG2 or NDG3
 
 * simple information such as LOW for a model run that you expect to give a low estimate of demand (e.g. because of high mitigation) and/or V1 for the first model run, V2 for the second, etc.
 
@@ -31,9 +31,9 @@ We suggest that you consider including:
 
 Example model names might be:
 
-* 20240530-NDG2-LOW (a model with non demographic variant 2, expected to yield a low estimate of demand)
+* 20240530-NDG2-LOW (a model with non demographic Variant 2, expected to yield a low estimate of demand)
 
-* 20240420-NDG1-V2 (a model with non demographic variant 1, the second model run which has been produced)
+* 20240420-NDG3-V2 (a model with non demographic Variant 3, the second model run which has been produced)
 
 ## Avoid words like "final" 
 

@@ -5,6 +5,46 @@ order: 250
 
 This page contains information about changes to the data underpinning the NHP model. If there are no changes logged for a particular version (such as 1.0) then the changes were only to the model code, and not to the underlying data.
 
+## Version 4.2.1
+
+Date updated: 07/10/2025
+Please see the [release notes for v4.2.1](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v4.2.1) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
+## Version 4.2
+
+Date updated: 01/10/2025
+Please see the [release notes for v4.2.0](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v4.2.0) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
+## Version 4.1
+
+Date updated: 03/09/2025
+Please see the [release notes for v4.1.0](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v4.1.0) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
+## Version 4.0
+
+Date updated: 11/07/2025
+Please see the [release notes for v4.0.0](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v4.0.0) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
+## Version 3.6
+
+Date updated: 11/06/2025
+Please see the [release notes for v3.6.0](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v3.6.0) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
+## Version 3.5
+
+Date updated: 14/05/2025
+Please see the [release notes for v3.5.0](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v3.5.0) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
+## Version 3.4
+
+Date updated: 23/04/2025
+Please see the [release notes for v3.4.0](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v3.4.0) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
+## Version 3.3
+
+Date updated: 25/03/2025
+Please see the [release notes for v3.3.0](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v3.3.0) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
 ## Version 3.2
 
 Date updated: 12/02/2025
@@ -18,7 +58,7 @@ Please see the [release notes for v3.1.0](https://github.com/The-Strategy-Unit/n
 ## Version 3.0
 
 Date updated: 13/11/2024
-We have migrated our data pre-processing pipeline from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the [nhp_sql](https://github.com/The-Strategy-Unit/nhp_sql) repositiory which will be publically archived and no longer maintained.
+We have migrated our data pre-processing pipeline from SQL to Databricks. The new data pre-processing scripts are available in the public repository [nhp_data](https://github.com/The-Strategy-Unit/nhp_data). This repository supersedes the nhp_sql repositiory which will be publically archived and no longer maintained.
 
 As part of migrating our data pre-processing, there are a number of changes to the data.
 

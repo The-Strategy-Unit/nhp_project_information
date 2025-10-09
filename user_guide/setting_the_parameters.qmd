@@ -20,12 +20,6 @@ The baseline data is sourced from Hospital Episodes Statistics (HES) data via th
 
 If for some reason the HES data for a provider trust in the baseline year was not an accurate representation of typical activity, this can be adjusted using the 'baseline adjustment' parameter. Users can provide a point estimate adjustment to the baseline data currently extracted for the trust for each Point of Delivery (POD)/specialty. However, this should be only used in exceptional cases. 
 
-### Covid adjustment
-
-- Mandatory, fixed
-
-This adjustment accounts for decreased hospital activity during the 2019/20 baseline year due to the COVID-19 pandemic. The adjustments shown are those recommended by NHSE and they are applied automatically within the model. This adjustment is turned off for other baseline years.
-
 ## Population changes
 
 The model accounts for how hospital activity levels might shift as a result of demographic growth. This includes adjustments relating to population size changes, population age/sex distribution, and population age-specific health status.
@@ -65,7 +59,7 @@ This adjustment accounts for any difference between elective (inpatients and out
 1. To increase the trust's inpatient elective and outpatient activity so that its Referral To Treat (RTT) activity is sufficient to meet RTT demand (referrals) in the baseline year, OR 
 2. To leave its activity in the baseline year unchanged.
 
-More information is available [here](modelling_methodology/demand_supply.html).
+More information is available [here](../modelling_methodology/demand_supply.qmd).
 
 ### Expatriation / repatriation
 
@@ -99,10 +93,19 @@ D) Zero-sum redistribution
 ### Non-demographic adjustment
 
 - Mandatory, fixed
+- Two Variants to select from (a primary rate and a sensitivity rate)
 
-This adjustment accounts for the growth in activity which is *not* due to changes in the size and age-sex structure of the population over time. This adjustment is based on detailed analysis to quantify growth after accounting for changes in population size and structure.
+This adjustment accounts for the growth in activity which is *not* due to changes in the size and age-sex structure of the population over time. 
 
-Information on non-demographic growth is available [here](../modelling_methodology/non-demographic_growth.qmd). There are two variants currently available. Further work is planned, disaggregating the effects of the impact of new medical technologies, changes in patient expectations, and changes in clinical standards - and seeking to explain and to provide forecasts for non-demographic growth.
+Non-demographic adjustments are applied to inpatient, outpatient and A&E activity but are not applied to length of stay. 
+
+The are two 'Variants' which can be selected by the user:
+
+- Variant 2 (NDG2) is the *primary* non-demographic adjustment rate. Demand projections described in the co-authored output report will be based on the use of Variant 2. This Variant is based on detailed analysis. 
+
+- Variant 3 (NDG3) is used for *sensitivity analysis* only. The impact of using Variant 2 instead of Variant 3 on projected demand can be explored in the output report. Variant 3 is based on the results of an expert elicitation exercise.
+
+More information on non-demographic growth is available [here](../modelling_methodology/non-demographic_growth.qmd).
 
 ## Activity mitigators
 
@@ -123,7 +126,7 @@ Includes the following types of activities, which are broken down further into s
 
 - Admission Avoidance
 - Mean Length of Stay reductions
-- Ambulatory Emergency Care Length of Stay reductions
+- Same Day Emergency Care activity type conversions
 - Pre-operative Length of Stay reductions
 - Day procedures
 
