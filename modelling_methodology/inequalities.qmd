@@ -20,7 +20,7 @@ When predicting future demand for acute care, we have the choice of whether to a
 
 ### Method
 
-Within each Healthcare Resource Group (HRG) in each scheme, the activity rate in the baseline year is plotted against quintiles of [Index of Multiple Deprivation](https://www.gov.uk/government/collections/english-indices-of-deprivation) (IMD[^1] , based on the [Lower Super Output Area](https://www.ons.gov.uk/methodology/geography/ukgeographies/statisticalgeographies) (LSOA) of patient residence, where quintile 1 is the most deprived 20% of LSOAs) and a straight line is fitted[^2] through the five points. This rate is calculated as the count of that activity per quintile of deprivation in the baseline year, divided by the estimated catchment population for the hospital that resides in that deprivation quintile. Currently, activity counts are caculated based on summing activity across inpatient elective activity and outpatients procedures only. If the fitted line trends upwards from quintile 1 to 5, this HRG is added to the list of those where significant inequality was evident[^3]. See @fig-1 for a visual depiction.
+Within each Healthcare Resource Group (HRG, trimmed to 4 characters) in each scheme and in each ICB, the activity rate in the baseline year is plotted against quintiles of [Index of Multiple Deprivation](https://www.gov.uk/government/collections/english-indices-of-deprivation) (IMD[^1] , based on the [Lower Super Output Area](https://www.ons.gov.uk/methodology/geography/ukgeographies/statisticalgeographies) (LSOA) of patient residence, where quintile 1 is the most deprived 20% of LSOAs) and a straight line is fitted[^2] through the five points. This rate is calculated as the count of that activity per quintile of deprivation in the baseline year, divided by the estimated catchment population for the hospital or ICB that resides in that deprivation quintile. Currently, activity counts are calculated based on summing activity across inpatient elective activity and outpatients procedures only. If the fitted line trends upwards from quintile 1 to 5, this HRG is added to the list of those where significant inequality was evident[^3]. See @fig-1 for a visual depiction.
 
 [^1]: [IMD19](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) in the current model version.
 
@@ -109,7 +109,7 @@ D.  **No change**: Inequality in delivery for this HRG will remain as it is the 
 
 In effect, with these options, the model will allow users to say, “For this HRG, by the horizon year we predict that inequality of activity in this HRG across deprivation quintiles will be removed. If it were removed by our chosen option, we would expect an increase in activity of ... over baseline.”
 
-In the table below, for each option, shows the activity rate to which the activity in 
+The table below, for each option, shows the activity rate to which the activity in 
 each quintile is predicted to reach ('Target Rate') along with the 'Multiplier'
 which will be applied to those rows to either increase or decrease their
 frequency in the results.  The multiplier is calculated by dividing the target
@@ -161,7 +161,9 @@ table <- data.frame('IMD Quintile' = c('1', '2', '3', '4', '5'),
 table
 ```
 
-@fig-2 below depicts these options.
+@fig-2 below depicts these options. Please note, these diagrams are not available
+within the inputs app when setting inequalities options, but a table of summary
+information per four-character HRG, ICB and scheme will be viewable.
 
 ```{r}
 #| fig-alt: |
