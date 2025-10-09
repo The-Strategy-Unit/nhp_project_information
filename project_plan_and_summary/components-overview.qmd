@@ -9,7 +9,7 @@ Given the size of the project, there are numerous GitHub repositories relating t
 
 The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
 
-![Diagram of NHP model architecture](../resources/NHP_diagram_public_v3-2.png){fig-alt="A diagram showing the connections between the various repositories"}
+![Diagram of NHP model architecture](../resources/nhp_infrastructure_v4-1.png){fig-alt="A diagram showing the connections between the various repositories"}
 
 ## Repositories relating to model inputs
 
@@ -21,23 +21,23 @@ This repository contains the code that specifies changes in the size, age/sex st
 
 This code contains all the data processing pipelines for the model, including the mitigators. It is written in Pyspark and runs on Databricks.
 
--   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) [PRIVATE]
+-   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) [OPEN]
 
 This repository provides an interface for users to provide the parameters to feed into the model, the [NHP inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
 ## Repositories relating to the model run
 
--   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/) [PRIVATE]
+-   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/) [OPEN]
 
 This repository contains the code that implements the methodologies to model future activity for hospitals. It takes all the input data, including the parameters set by users, and uses the Monte Carlo simulation method to produce estimates of future activity. This repository is written in Python.
 
--   [nhp_api](https://github.com/The-Strategy-Unit/nhp_api/) [PRIVATE]
+-   [nhp_api](https://github.com/The-Strategy-Unit/nhp_api/) [OPEN]
 
 This repository contains the Azure Functions for the API that triggers the running of the model on Azure Container Instances. 
 
 ## Repositories relating to model outputs
 
--   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs) [PRIVATE]
+-   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs) [OPEN]
 
 This repository provides an interface for users to explore the results of the model, the [NHP outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
@@ -48,6 +48,10 @@ This repository is a Shiny dashboard allowing the comparison of mitigators set b
 -   [nhp_final_reports](https://github.com/The-Strategy-Unit/nhp_final_reports) [CLOSED]
 
 This repository contains code to auto-populate with scheme-specific content the NHP 'final report' template (sometimes referred to as the 'outputs report'). Generates scheme-specific (and possibly site-specific) charts, tables and values from final model-run data and inserts these into the final-report template (docx) using {officer}.
+
+-   [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) [OPEN]
+
+This repository contains Python code for producing various products relating to the NHP model. It also includes quality assurance (QA) scripts.
 
 ## Repositories relating to documentation
 
@@ -63,4 +67,3 @@ The policy of the Strategy Unit (MLCSU) and [national policy](https://www.gov.uk
 
 Source: [Data Saves Lives](https://www.gov.uk/government/publications/data-saves-lives-reshaping-health-and-social-care-with-data/data-saves-lives-reshaping-health-and-social-care-with-data#working-with-partners-to-develop-innovations-that-improve-health-and-care)
 
-At the moment the codebase referred to in this documentation is closed, but we hope to make it open in the near future.

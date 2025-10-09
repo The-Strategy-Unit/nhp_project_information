@@ -3,144 +3,185 @@ title: "Modelling uncertainty"
 order: 2
 ---
 
-Having set the model parameters, the model calculates, for each record in the baseline dataset, the frequency of such cases in the model horizon period.  The model then samples each record (with replacement) according to its own future frequency.  The process applies to each unit of activity in its own right (for example, an inpatient spell, an outpatient attendance and so on) as well as, for inpatient spells, the number of bed days used.  In some cases, aspects of an activity unit are altered to reflect anticipated changes (for example, changing an inpatient spell to an outpatient appointment). 
+## Handling uncertainty in principle
 
-## Handling uncertainty
+Our approach in the NHP model is to recognise and embrace (not ignore) uncertainty.
 
-It is not possible to estimate many of the model parameters with precision. Changes are subject to uncertainty and are often contingent on other changes.  Users can reflect their uncertainty in the parameters passed to the model by, for example, providing a 80% prediction interval for a parameter. In other cases, users may be asked to indicate the frequency with which certain scenarios might occur.
-The model handles these uncertainty intervals or frequency distributions with a Monte Carlo simulation.  Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions.  The users can specify how many Monte Carlo simulations they wish to run.  The model results take two forms.   
-(1) a principal projection: the average (mean) of all the Monte Carlo simulations which have been run  
+We consider two major types of uncertainty - aleatory and epistemic.
+
+**Aleatory Uncertainty**: 
+This type of uncertainty arises from inherent randomness, such as in the rolling of a die or the tossing of a coin. 
+While we know that the outcomes from such processes will vary, this variation is due to chance causes or randomness. 
+Although we cannot predict with certainty what the next coin toss will produce, we can use probability theory to describe the distribution of outcomes, typically in the form of a probability distribution. 
+Such distributions can be represented graphically and summarized using statistics such as the mean (for central tendency), standard deviation (for spread), and prediction intervals (e.g. stating that 80% of outcomes lie between the 10th and 90th percentiles of the distribution).
+
+**Epistemic Uncertainty**: 
+This uncertainty arises from a lack of knowledge or information, such as not knowing the exact probability distribution of future outcomes. 
+For instance, when forecasting the weather, uncertainty exists because not all factors influencing the weather are known or fully understood. 
+While some of this uncertainty is due to randomness (e.g., small-scale atmospheric changes), a significant part is due to incomplete data or imperfect models. 
+Epistemic uncertainty can also be described using probability theory, where our knowledge (and degree of belief) about the situation is encoded in a subjective probability distribution. 
+Such distributions, although subjective, can also be represented graphically and summarized using statistics similar to those used for aleatory uncertainty. 
+For example, we might express a belief that there is an 80% chance that the average temperature tomorrow will be between 12°C and 18°C, thus encoding our degree of belief.
+
+
+The NHP model integrates both aleatory and epistemic uncertainty into its outputs by combining empirical data (baseline values) with random sampling from assumed probability distributions. 
+These assumed distributions, which reflect epistemic uncertainty, are referred to as input distributions. 
+These input distributions and are often assumed to be Gaussian (Normal) distributions with parameters that are typically set from external sources or by end users in the form of an 80% subjective prediction interval. 
+For example, an end user might believe there is an 80% chance that emergency admissions following episodes of self-harm will decrease by 16% to 23% over the next 20 years. 
+This 80% prediction interval defines the Normal distribution from which random samples are drawn. 
+The NHP model is primarily designed to allow end users to assess how altering epistemic uncertainty (by changing input parameters) affects future hospital activity, which is always subject to inherent randomness (which cannot be eliminated). 
+The model's final outputs are represented as probability distributions, typically summarized by the mean and an 80% prediction interval (from the 10th to the 90th percentiles) and displayed graphically.
+Having set the model parameters, the model calculates, for each record in the baseline dataset, the frequency of such cases in the model horizon period. 
+The model then samples each record (with replacement) according to its own future frequency. 
+The process applies to each unit of activity in its own right (for example, an inpatient spell, an outpatient attendance and so on) as well as, for inpatient spells, the number of bed days used. 
+In some cases, aspects of an activity unit are altered to reflect anticipated changes (for example, changing an inpatient spell to an outpatient appointment).
+
+
+## Handling uncertainty in practice
+
+It is not possible to estimate many of the model parameters with precision. Changes are subject to uncertainty and are often contingent on other changes. Users can reflect their uncertainty in the parameters passed to the model by, for example, providing a 80% prediction interval for a parameter. In other cases, users may be asked to indicate the frequency with which certain scenarios might occur. The model handles these uncertainty intervals or frequency distributions with a Monte Carlo simulation. Each run of the simulation randomly samples a single value for each parameter from the uncertainty intervals or frequency distributions. The users can specify how many Monte Carlo simulations they wish to run. The model results take two forms.\
+(1) a principal projection: the average (mean) of all the Monte Carlo simulations which have been run\
 (2) a distribution of results, one for each of the Monte Carlo simulations, illustrating how key metrics might vary under alternative model parameters.
 
 ## A worked example
 
-We will illustrate how the model works using a simplified example.  Let's imagine our inpatient dataset in the baseline year for the subject Trust contains a only three spells and a much reduced number of columns. In this example, row ID 1 is for a male non-elective patient aged 73 who was admitted to hospital for 7 days. 
+We will illustrate how the model works using a simplified example. Let's imagine our inpatient dataset in the baseline year for the subject Trust contains a only three spells and a much reduced number of columns. In this example, row ID 1 is for a male non-elective patient aged 73 who was admitted to hospital for 7 days.
 
+| ID  | Age | Gender | PoD | Length of stay |
+|:----|:----|:-------|:----|:---------------|
+| 1   | 73  | m      | NEL | 7              |
+| 2   | 23  | f      | EL  | 1              |
+| 3   | 93  | f      | NEL | 8              |
 
-| ID  | Age | Gender |  PoD | Length of stay |
-| :-- | :-- | :----- |  :-- | :------------- |
-| 1   | 73  | m      |  NEL | 7              |
-| 2   | 23  | f      |  EL  | 1              |
-| 3   | 93  | f      |  NEL | 8              |
 : Example baseline data
 
 **Changes in event frequency**
 
-By definition, each of these spells occurred once in the baseline year.  Our model estimates the frequency with which each of these spells might occur in some future year, by applying the model change factors as determined by the model user.  
+By definition, each of these spells occurred once in the baseline year. Our model estimates the frequency with which each of these spells might occur in some future year, by applying the model change factors as determined by the model user.
 
-1. The first stage in our modelling process is to establish which of the model change factors might apply to each record. In practice, all records are subject to a large number of change factors, including baseline adjustment, repatriation/expatriation, demographic growth, non-demographic growth, and health status adjustment, but to keep things simple in this example we will only describe a very small number of change factors. The full detail of all potential change factors is available on the [model parameters section](../user_guide/setting_the_parameters.qmd). In our simplified example, record ID 1, our 73 year old male non-elective admission, has the demographic growth, non-demographic growth change factors applied to it, as well as activity avoidance mitigator A and B, and efficiency mitigator C.
+1.  The first stage in our modelling process is to establish which of the model change factors might apply to each record. In practice, all records are subject to a large number of change factors, including baseline adjustment, repatriation/expatriation, demographic growth, non-demographic growth, and health status adjustment, but to keep things simple in this example we will only describe a very small number of change factors. The full detail of all potential change factors is available on the [model parameters section](../user_guide/setting_the_parameters.qmd). In our simplified example, record ID 1, our 73 year old male non-elective admission, has the demographic growth, non-demographic growth change factors applied to it, as well as activity avoidance mitigator A and B, and efficiency mitigator C.
 
 | ID | Demographic growth | Non-demographic growth | Waiting list adjustment | Activity Avoidance Mitigator A | Activity Avoidance Mitigator B | Efficiency Mitigator C | Efficiency Mitigator D |
-| -- | ------------------ | ---------------------- | ----------------------- | ------------------------------ | ------------------------------ | ---------------------- | ---------------------- |
-| 1  | Y                  | Y                      | N                       | Y                              | Y                              | Y                      | N                      |
-| 2  | Y                  | Y                      | Y                       | N                              | Y                              | N                      | N                      |
-| 3  | Y                  | Y                      | N                       | N                              | N                              | Y                      | Y                      |
+|---------|---------|---------|---------|---------|---------|---------|---------|
+| 1 | Y | Y | N | Y | Y | Y | N |
+| 2 | Y | Y | Y | N | Y | N | N |
+| 3 | Y | Y | N | N | N | Y | Y |
+
 : Example showing applicable change factors for each row of data
 
-2. For each change factor, users pass an array of parameters to the model.  The values used for the parameters are different depending on the change factor. The parameters may be point estimates, or the parameters might describe a distribution reflecting the user's uncertainty about the extent to which this change factor might apply.  In most cases users are asked to pass their 80% prediction interval for the change factor and the distribution of the change factor parameter is assumed to be Normal. In our example, let's assume that the user's parameters for activity avoidance mitigator A is 0.8-0.9.  From this information a Normal distribution is constructed. Similar distributions are constructed for each of the applicable change factors which are expressed in terms of prediction intervals.    In our example below, the demographic growth and waiting list adjustment change factors are given as point estimates, whereas the non-demographic growth and mitigator change factors are given as 80% prediction intervals.
+2.  For each change factor, users pass an array of parameters to the model. The values used for the parameters are different depending on the change factor. The parameters may be point estimates, or the parameters might describe a distribution reflecting the user's uncertainty about the extent to which this change factor might apply. In most cases users are asked to pass their 80% prediction interval for the change factor and the distribution of the change factor parameter is assumed to be Normal. In our example, let's assume that the user's parameters for activity avoidance mitigator A is 0.8-0.9. From this information a Normal distribution is constructed. Similar distributions are constructed for each of the applicable change factors which are expressed in terms of prediction intervals. In our example below, the demographic growth and waiting list adjustment change factors are given as point estimates, whereas the non-demographic growth and mitigator change factors are given as 80% prediction intervals.
 
 | ID | Demographic growth[^1] | Non-demographic growth | Waiting list adjustment | Activity Avoidance Mitigator A | Activity Avoidance Mitigator B | Efficiency Mitigator C | Efficiency Mitigator D |
-| -- | ------------------ | ---------------------- | ----------------------- | ------------------------------ | ------------------------------ | ---------------------- | ---------------------- |
-| 1  | 1.09               | 1.0194 - 1.0240        | N                       | 0.8-0.9                        | 0.7-0.9                        | 0.6-0.7                | N                      |
-| 2  | 1.03               | 1.0053 – 1.0071        | 1.0217                  | N                              | 0.7-0.9                        | N                      | N                      |
-| 3  | 1.2                | 1.0194 - 1.0240        | N                       | N                              | 0.7-0.9                        | 0.6-0.7                | 0.8-0.95               |
+|---------|---------|---------|---------|---------|---------|---------|---------|
+| 1 | 1.09 | 1.0194 - 1.0240 | N | 0.8-0.9 | 0.7-0.9 | 0.6-0.7 | N |
+| 2 | 1.03 | 1.0053 – 1.0071 | 1.0217 | N | 0.7-0.9 | N | N |
+| 3 | 1.2 | 1.0194 - 1.0240 | N | N | 0.7-0.9 | 0.6-0.7 | 0.8-0.95 |
+
 : Example showing parameters as point estimates and prediction intervals for each change factor
 
+[^1]: The demographic growth methodology is [described on this page](demographic_modelling/demographic_modelling.qmd).
 
-3. The next step in the model is to randomly sample a single value from the model parameters that are given as distributions. We use random sampling, so the number used for the first model iteration will be different from the number used for the second, third and fourth model iterations.
+3.  The next step in the model is to randomly sample a single value from the model parameters that are given as distributions. We use random sampling, so the number used for the first model iteration will be different from the number used for the second, third and fourth model iterations.
 
 | ID | Demographic growth | Non-demographic growth | Waiting list adjustment | Activity Avoidance Mitigator A | Activity Avoidance Mitigator B | Efficiency Mitigator C | Efficiency Mitigator D |
-| -- | ------------------ | ---------------------- | ----------------------- | ------------------------------ | ------------------------------ | ---------------------- | ---------------------- |
-| 1  | 1.09               | 1.02                   | N                       | 0.88                           | 0.75                           | 0.67                   | N                      |
-| 2  | 1.03               | 1.0057                 | 1.0217                  | N                              | 0.75                           | N                      | N                      |
-| 3  | 1.2                | 1.02                   | N                       | N                              | 0.75                           | 0.67                   | 0.9                    |
+|---------|---------|---------|---------|---------|---------|---------|---------|
+| 1 | 1.09 | 1.02 | N | 0.88 | 0.75 | 0.67 | N |
+| 2 | 1.03 | 1.0057 | 1.0217 | N | 0.75 | N | N |
+| 3 | 1.2 | 1.02 | N | N | 0.75 | 0.67 | 0.9 |
+
 : Example showing parameters sampled for a single model run for each row of activity
 
-4. We then calculate the summary parameters for our model. Our model is a two-step model which uses [Binomial thinning](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/binomial-thinning.html). For the first step, we use a Poisson distribution to estimate the amount of activity before mitigators are applied. The Poisson step needs a $\lambda$ parameter, which is the product of all the factors except the mitigators. For row ID 1 in our example, the summary parameter would be 1.09 * 1.02 = 1.1118. For row ID 2 in our example, the summary parameter would be 1.03 * 1.0057 * 1.0217 = 1.0583. For row ID 3 in our example, the summary parameter would be 1.2 * 1.02 = 1.224.
+4.  We then calculate the summary parameters for our model. Our model is a two-step model which uses [Binomial thinning](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/binomial-thinning.html). For the first step, we use a Poisson distribution to estimate the amount of activity before mitigators are applied. The Poisson step needs a $\lambda$ parameter, which is the product of all the factors except the mitigators. For row ID 1 in our example, the summary parameter would be 1.09 \* 1.02 = 1.1118. For row ID 2 in our example, the summary parameter would be 1.03 \* 1.0057 \* 1.0217 = 1.0583. For row ID 3 in our example, the summary parameter would be 1.2 \* 1.02 = 1.224.
 
-| ID | Age | Gender | PoD | Length of stay | Summary parameter for activity growth |
-| -- | --- | ------ | --- | -------------- | ----------------- |
-| 1  | 73  | m      | NEL | 7              | 1.1118            |
-| 2  | 23  | f      | EL  | 1              | 1.0583            |
-| 3  | 93  | f      | NEL | 8              | 1.224             |
+| ID  | Age | Gender | PoD | Length of stay | Summary parameter for activity growth |
+|----------|----------|----------|----------|--------------|-------------------|
+| 1   | 73  | m      | NEL | 7              | 1.1118                                |
+| 2   | 23  | f      | EL  | 1              | 1.0583                                |
+| 3   | 93  | f      | NEL | 8              | 1.224                                 |
+
 : Example showing baseline data with summary parameter for each row
 
-5. We randomly sample from a $\text{Poisson}(\lambda)$ distribution with rate, $\lambda$, set to our summary parameters for each row.  The result of this random sample will be an integer value.  Let's assume that in this case the random sample produces the values in the table below for each row. Note that there is some randomness inherent in this process, and the result of the Poisson sampling, even with the same summary parameter used as lambda, will produce different results in different model iterations.
+5.  We randomly sample from a $\text{Poisson}(\lambda)$ distribution with rate, $\lambda$, set to our summary parameters for each row. The result of this random sample will be an integer value. Let's assume that in this case the random sample produces the values in the table below for each row. Note that there is some randomness inherent in this process, and the result of the Poisson sampling, even with the same summary parameter used as lambda, will produce different results in different model iterations.
 
 | ID | Age | Gender | PoD | Length of stay | Result of Poisson sampling using summary parameter as lambda |
-| -- | --- | ------ | --- | -------------- | ----------------- |
-| 1  | 73  | m      | NEL | 7              | 2                 |
-| 2  | 23  | f      | EL  | 1              | 1                 |
-| 3  | 93  | f      | NEL | 8              | 3                 |
+|----------|----------|----------|----------|--------------|-------------------|
+| 1 | 73 | m | NEL | 7 | 2 |
+| 2 | 23 | f | EL | 1 | 1 |
+| 3 | 93 | f | NEL | 8 | 3 |
+
 : Example showing baseline data with result of Poisson sampling step for each row
 
-6. The result of the Poisson sampling step tells us how many times to replicate each row. This gives us the projected activity before any mitigators are applied, for the horizon year. An example of the new data is below.
+6.  The result of the Poisson sampling step tells us how many times to replicate each row. This gives us the projected activity before any mitigators are applied, for the horizon year. An example of the new data is below.
 
-| ID | Age | Gender | PoD | Length of stay | 
-| -- | --- | ------ | --- | -------------- | 
-| 1  | 73  | m      | NEL | 7              | 
-| 1  | 73  | m      | NEL | 7              | 
-| 2  | 23  | f      | EL  | 1              | 
-| 3  | 93  | f      | NEL | 8              | 
-| 3  | 93  | f      | NEL | 8              | 
-| 3  | 93  | f      | NEL | 8              | 
+| ID  | Age | Gender | PoD | Length of stay |
+|-----|-----|--------|-----|----------------|
+| 1   | 73  | m      | NEL | 7              |
+| 1   | 73  | m      | NEL | 7              |
+| 2   | 23  | f      | EL  | 1              |
+| 3   | 93  | f      | NEL | 8              |
+| 3   | 93  | f      | NEL | 8              |
+| 3   | 93  | f      | NEL | 8              |
+
 : Example showing the data after the Poisson sampling step
 
-7. The next step is to apply the activity avoidance mitigators. We multiply together the activity mitigator factors to get one summary parameter for the activity avoidance parameters. So for row ID 1, the activity avoidance summary parameter is 0.88 * 0.75 = 0.66. There is only one activity avoidance mitigator that applies to row ID 2 and 3, so this is not multiplied with anything. We randomly sample from a $\text{Binomial}(n,p)$ distribution with parameters $n = 1$, and probability $p$, where p is the activity avoidance summary parameter, the product of all the activity avoidance mitigators. This will give us a value which tells us if that row should remain after activity avoidance has been applied. Again, note that there is some randomness inherent in this step - the result of the Binomial sampling, even with the same summary parameter used as $p$, will be different between different model iterations.
+7.  The next step is to apply the activity avoidance mitigators. We multiply together the activity mitigator factors to get one summary parameter for the activity avoidance parameters. So for row ID 1, the activity avoidance summary parameter is 0.88 \* 0.75 = 0.66. There is only one activity avoidance mitigator that applies to row ID 2 and 3, so this is not multiplied with anything. We randomly sample from a $\text{Binomial}(n,p)$ distribution with parameters $n = 1$, and probability $p$, where p is the activity avoidance summary parameter, the product of all the activity avoidance mitigators. This will give us a value which tells us if that row should remain after activity avoidance has been applied. Again, note that there is some randomness inherent in this step - the result of the Binomial sampling, even with the same summary parameter used as $p$, will be different between different model iterations.
 
 | ID | Activity Avoidance Mitigator A | Activity Avoidance Mitigator B | Activity avoidance summary parameter | Result of Binomial sampling step |
-| -- |------------------------------- | ------------------------------ | ------------------------------------ | -------------------------------- |
-| 1  |  0.88                          | 0.75                           | 0.66                                 | 1                                |
-| 1  |  0.88                          | 0.75                           | 0.66                                 | 1                                |
-| 2  |  N/A                           | 0.75                           | 0.75                                 | 1                                |
-| 3  |  N/A                           | 0.75                           | 0.75                                 | 1                                |
-| 3  |  N/A                           | 0.75                           | 0.75                                 | 1                                |
-| 3  |  N/A                           | 0.75                           | 0.75                                 | 0                                |
+|--------------|--------------|--------------|----------------|--------------|
+| 1 | 0.88 | 0.75 | 0.66 | 1 |
+| 1 | 0.88 | 0.75 | 0.66 | 1 |
+| 2 | N/A | 0.75 | 0.75 | 1 |
+| 3 | N/A | 0.75 | 0.75 | 1 |
+| 3 | N/A | 0.75 | 0.75 | 1 |
+| 3 | N/A | 0.75 | 0.75 | 0 |
+
 : Example showing the Binomial sampling step applying the activity avoidance mitigators
 
-8. In our example, of the two rows with ID 1 following the Poisson sampling step, both remain after the activity avoidance Binomial sampling step. The one row with ID 2 remains in the data, and of the three rows with ID 3, two remain after the activity avoidance Binomial sampling step.
+8.  In our example, of the two rows with ID 1 following the Poisson sampling step, both remain after the activity avoidance Binomial sampling step. The one row with ID 2 remains in the data, and of the three rows with ID 3, two remain after the activity avoidance Binomial sampling step.
 
-| ID | Age | Gender | PoD | Length of stay | 
-| -- | --- | ------ | --- | -------------- | 
-| 1  | 73  | m      | NEL | 7              | 
-| 1  | 73  | m      | NEL | 7              |
-| 2  | 23  | f      | EL  | 1              | 
-| 3  | 93  | f      | NEL | 8              | 
-| 3  | 93  | f      | NEL | 8              | 
+| ID  | Age | Gender | PoD | Length of stay |
+|-----|-----|--------|-----|----------------|
+| 1   | 73  | m      | NEL | 7              |
+| 1   | 73  | m      | NEL | 7              |
+| 2   | 23  | f      | EL  | 1              |
+| 3   | 93  | f      | NEL | 8              |
+| 3   | 93  | f      | NEL | 8              |
+
 : Example showing the data after the activity avoidance Binomial sampling step
 
-9. The final step is to apply the efficiencies mitigators which for inpatients mostly reduce the length of stay. A reminder of the efficiencies mitigators that apply to each row is given below. For row ID 1, only one efficiency mitigator applies. For row ID 2, no efficiency mitigators apply, so this step will be skipped for this row. For the two rows with ID 3, there are two possible efficiency mitigators that could apply. Where more than one efficiency mitigator can apply to a row of data, the model will randomly select only one of the efficiencies mitigators to apply in each model iteration. 
+9.  The final step is to apply the efficiencies mitigators which for inpatients mostly reduce the length of stay. A reminder of the efficiencies mitigators that apply to each row is given below. For row ID 1, only one efficiency mitigator applies. For row ID 2, no efficiency mitigators apply, so this step will be skipped for this row. For the two rows with ID 3, there are two possible efficiency mitigators that could apply. Where more than one efficiency mitigator can apply to a row of data, the model will randomly select only one of the efficiencies mitigators to apply in each model iteration.
 
 | ID | Length of stay | Efficiency Mitigator C | Efficiency Mitigator D | Efficiency mitigator to apply |
-| -- | -------------- | ---------------------- | ---------------------- |------------------- |
-| 1  | 7              | 0.67                   | N/A                    | C                  |
-| 1  | 7              | 0.67                   | N/A                    | C                  |
-| 2  | 1              | N/A                    | N/A                    | N/A                |
-| 3  | 8              | 0.67                   | 0.9                    | C                  |
-| 3  | 8              | 0.67                   | 0.9                    | D                  |
+|--------------|--------------|----------------|----------------|--------------|
+| 1 | 7 | 0.67 | N/A | C |
+| 1 | 7 | 0.67 | N/A | C |
+| 2 | 1 | N/A | N/A | N/A |
+| 3 | 8 | 0.67 | 0.9 | C |
+| 3 | 8 | 0.67 | 0.9 | D |
+
 : Data after the activity avoidance Binomial sampling step, showing applicable efficiency mitigators for each row
 
 10. We sample from a $\text{Binomial}(n,p)$ distribution with parameters $n = LOS$, the Length of Stay for the row, and probability $p$ where p is the sampled value for the efficiency mitigator for each row. So for row ID 1, $n$ would be 7 and $p$ would be 0.67 for the efficiencies Binomial sampling step. The result of this Binomial sampling tells us what the new Length of Stay (LOS) should be for each row. As with the previous sampling steps, there is some randomness inherent in this process.
 
-| ID | Length of stay | Value used as $p$ | Result of Binomial sampling step |
-| -- | -------------- | ----------------  | -------------------------------  |
-| 1  | 7              | 0.67              | 5                                |
-| 1  | 7              | 0.67              | 4                                |
-| 3  | 8              | 0.67              | 5                                |
-| 3  | 8              | 0.9               | 8                                |
+| ID  | Length of stay | Value used as $p$ | Result of Binomial sampling step |
+|-----|----------------|-------------------|----------------------------------|
+| 1   | 7              | 0.67              | 5                                |
+| 1   | 7              | 0.67              | 4                                |
+| 3   | 8              | 0.67              | 5                                |
+| 3   | 8              | 0.9               | 8                                |
+
 : Example showing efficiencies Binomial sampling step
 
 11. Here we can see the final data after all the steps are completed, for one model iteration. This shows the projected activity for the horizon year, having taken into account all of the different model parameters.
 
-| ID | Age | Gender | PoD | Length of stay | 
-| -- | --- | ------ | --- | -------------- | 
-| 1  | 73  | m      | NEL | 5              | 
-| 1  | 73  | m      | NEL | 4              | 
-| 2  | 23  | f      | EL  | 1              | 
-| 3  | 93  | f      | NEL | 5              | 
-| 3  | 93  | f      | NEL | 8              | 
+| ID  | Age | Gender | PoD | Length of stay |
+|-----|-----|--------|-----|----------------|
+| 1   | 73  | m      | NEL | 5              |
+| 1   | 73  | m      | NEL | 4              |
+| 2   | 23  | f      | EL  | 1              |
+| 3   | 93  | f      | NEL | 5              |
+| 3   | 93  | f      | NEL | 8              |
+
 : Example showing the data after one model iteration.
 
-These stages are repeated for each record in the baseline dataset and for each run of the Monte Carlo simulation. We then aggregate the results of all the Monte Carlo simulations, using the mean as the principal projection. 
-
-[^1]: The demographic growth methodology is [described on this page](demographic_modelling/demographic_modelling.qmd).
+These stages are repeated for each record in the baseline dataset and for each run of the Monte Carlo simulation. We then aggregate the results of all the Monte Carlo simulations, using the mean as the principal projection.

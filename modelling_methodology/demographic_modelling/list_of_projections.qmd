@@ -5,23 +5,10 @@ order: 11
 
 | |Variant name|Source|Fertility assumption|Life expectancy assumption|Migration assumption|
 |:----|:----|:----|:----|:----|:----|
-|1|Principal|Standard variant|Principal|Principal|Principal|
+|1|Migration category|Standard variant|Principal|Principal|Principal|
 |2|High migration|Standard|Principal|Principal|High|
 |3|Low migration|Standard|Principal|Principal|Low|
-|4|Alternative internal migration|Standard|Principal|Principal|alternative internal|
-|5|10-year migration|Standard|Principal|Principal|10-year trends|
-|6|High fertility|Custom variant|High|Principal|Principal|
-|7|Low fertility|Custom|Low|Principal|Principal|
-|8|High life expectancy|Custom|Principal|High|Principal|
-|9|Low life expectancy|Custom|Principal|Low|Principal|
-|10|High population|Custom|High|High|High|
-|11|Low population|Custom|Low|Low|Low|
-|12|Zero net migration|Custom|Principal|Principal|Zero|
-|13|Young age structure|Custom|High|Low|High|
-|14|Old age structure|Custom|Low|High|Low|
-|15|Replacement fertility|Custom|Replacement|Principal|Principal|
-|16|Constant fertility|Custom|Constant|Principal|Principal|
-|17|No mortality improvement|Custom|Principal|No improvement|Principal|
-|18|Constant fertility and no mortality improvement|Custom|Constant|No improvement|Principal|
-|19|Not National Statistics: 0% future EU migration|Custom|Principal|Principal|0% future EU migration from year ending mid-2021 onwards|
-|20|Not National Statistics: 50% future EU migration|Custom|Principal|Principal|50% future EU migration from year ending mid-2021 onwards|
+|4|10-year migration|Standard|Principal|Principal|10-year trends|
+|5|5-year migration|Standard|Principal|Principal|5-year trends|
+|6|Zero net migration|Custom|Principal|Principal|Zero|
+
