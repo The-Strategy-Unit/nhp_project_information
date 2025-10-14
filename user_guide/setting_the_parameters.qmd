@@ -43,7 +43,7 @@ More information on the different population projection variants is available fr
 
 This adjustment accounts for potential changes in the health status of the population - very simply, accounting for the assumption that older people in future will be healthier than they are today. 
 
-The adjustments included in this factor were calculated using [the results from an elicitation workshop with subject matter experts](https://connect.strategyunitwm.nhs.uk/modeling-changes-in-population-health-status/model-pop-health-status.html). The results are applied automatically in the model so no user inputs are required here. 
+The adjustments included in this factor were calculated using [the results from an elicitation workshop with subject matter experts](https://connect.strategyunitwm.nhs.uk/outline-model-pop-health-status/). The results are applied automatically in the model so no user inputs are required here. 
 
 ## Demand-supply imbalances
 
