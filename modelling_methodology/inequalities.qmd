@@ -41,7 +41,7 @@ Where the regression coefficient for deprivation quintile is positive (indicatin
 
 [^2]: Method uses weighted least squares for heteroskedastic errors, where weighting is by [hospital catchment population size](https://github.com/The-Strategy-Unit/nhp_data/blob/main/inputs_data/inequalities.py) by IMD quintile.
 
-[^3]: HRG added to the selectable list only if: - at least 3 IMD quintiles are represented in the baseline data, - counts of HRG activity must exceed 50, and - the statistical significance (p-value) of the slope parameter of the fitted line is \<0.05 with a linear gradient \>0.
+[^3]: HRG added to the selectable list only if: 1) at least 3 IMD quintiles are represented in the baseline data, 2) counts of HRG activity must exceed 50, and 3) the statistical significance (p-value) of the slope parameter of the fitted line is \<0.05 with a linear gradient \>0.
 
 Where the linear model gradient is significant but negative, this does indicate inequality, however the model does not attempt to make activity adjustments where the regression model coefficient is negative because it is thought that these circumstances are more likely to be driven by unusual patterns of need or access to private healthcare rather than systematic bias in favour of those living in more deprived areas.
 
