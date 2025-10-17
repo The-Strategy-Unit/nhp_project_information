@@ -1,0 +1,6 @@
+---
+title: "Need-supply imbalances"
+order: 1
+---
+
+{{< inequalities.qmd >}}
