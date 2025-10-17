@@ -29,6 +29,7 @@ website:
         contents:
           - modelling_methodology/methodology.qmd
           - modelling_methodology/demand_supply.qmd
+          - modelling_methodology/need_supply.qmd
           - modelling_methodology/double_counting.qmd
           - modelling_methodology/modelling_uncertainty.qmd
           - modelling_methodology/non-demographic_growth.qmd
