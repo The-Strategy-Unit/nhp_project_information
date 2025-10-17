@@ -3,7 +3,7 @@ title: 'Inequalities'
 order: 1
 ---
 
-## Reducing Inequalities in Activity Rates
+## Reducing socio-economic inequalities in access to planned hospital procedures
 
 ::: {.callout-caution}
 
@@ -13,14 +13,29 @@ This functionality is not currently available to all users. Information provided
 
 ### Background
 
-[Health inequalities](https://www.england.nhs.uk/about/equality/equality-hub/national-healthcare-inequalities-improvement-programme/what-are-healthcare-inequalities/) are unfair, avoidable group-level differences in health outcomes.\
-All NHS providers have a duty to work to reduce these inequalities in future, and the [New Hospitals Programme](https://www.gov.uk/government/publications/new-hospital-programme-review-outcome/new-hospital-programme-equality-impact-assessment#:~:text=Women%2C%20children%2C%20the%20elderly%2C,use%20hospital%20services%20in%20general) allows schemes to model the effect of addressing inequalities, which will prevent them from building a hospital which is too small once health inequalities have been addressed.
+[Health inequalities](https://www.england.nhs.uk/about/equality/equality-hub/national-healthcare-inequalities-improvement-programme/what-are-healthcare-inequalities/) are unfair, avoidable group-level differences in health outcomes.  
+Health inequalities exist between groups defined by sex, income, and ethnicity for example.  
+They arise primarily as a result of the unequal distribution of societal assets and risks such as high quality education, employment and poor air quality, often referred to as the wider determinants of health.  
+The availability and distribution of health services also contribute to inequalities in health outcomes. 
+There is an extensive body of research that demonstrates that people living in more deprived areas have poor access to planned hospital procedures, despite high levels of need.  
+This mismatch between need and supply amongst deprived populations is often referred to as the [inverse care law](https://en.wikipedia.org/wiki/Inverse_care_law).  
 
-When predicting future demand for acute care, we have the choice of whether to assume existing inequalities in acute care activity will persist, or to make assumptions around their reduction. If we assume that inequality in activity rates will be rectified (an upward slope of activity rates against deprivation being flattened to become horizontal) by the horizon year, we can make further assumptions about how this change may come about. This is agnostic to the specific ways in which schemes will choose to modify their activity to achieve this aim, but it does assume that any changes made will be successful in removing group-specific inequality. This represents an assumption of the successful application of [proportional universalism](https://www.instituteofhealthequity.org/resources-reports/towards-health-equity-a-framework-for-the-application-of-proportionate-universalism). The following method is derived from the Strategy Unit report ['Strategies to reduce inequalities in access to planned hospital procedures'](https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures).
+Inequities in access to planned hospital procedures are commonly present in historical records of health service provision that form the baseline datasets used in the New Hospitals Programme activity model. 
+All NHS agencies have a duty to tackle health inequalities.  
+If participating schemes do not recognize and correct for inequities in their baseline data, then their plans will, by default, assume that the inequities will persist into the future.
+
+This component of the [New Hospitals Programme](https://www.gov.uk/government/publications/new-hospital-programme-review-outcome/new-hospital-programme-equality-impact-assessment#:~:text=Women%2C%20children%2C%20the%20elderly%2C,use%20hospital%20services%20in%20general) activity model, highlights socio-economic inequities in access to planned hospital procedures that are present at baseline, and offers schemes three distinct routes to eliminate these inequities by the model horizon year.  
+The method is derived from the Strategy Unit report [‘Strategies to reduce inequalities in access to planned hospital procedures’](https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures).
 
 ### Method
 
-Within each Healthcare Resource Group (HRG, trimmed to 4 characters) in each scheme and in each ICB, the activity rate in the baseline year is plotted against quintiles of [Index of Multiple Deprivation](https://www.gov.uk/government/collections/english-indices-of-deprivation) (IMD[^1] , based on the [Lower Super Output Area](https://www.ons.gov.uk/methodology/geography/ukgeographies/statisticalgeographies) (LSOA) of patient residence, where quintile 1 is the most deprived 20% of LSOAs) and a straight line is fitted[^2] through the five points. This rate is calculated as the count of that activity per quintile of deprivation in the baseline year, divided by the estimated catchment population for the hospital or ICB that resides in that deprivation quintile. Currently, activity counts are calculated based on summing activity across inpatient elective activity and outpatients procedures only. If the fitted line trends upwards from quintile 1 to 5, this HRG is added to the list of those where significant inequality was evident[^3]. See @fig-1 for a visual depiction.
+We start by counting planned hospital procedures in the baseline year, that occurred as part of an elective inpatient spell or outpatient attendance, for each Healthcare Resource Group (HRG, trimmed to 4 characters) in each scheme, and ICB, and deprivation quintile.  
+Deprivation is derived using the [Index of Multiple Deprivation (IMD[^1])(https://www.gov.uk/government/collections/english-indices-of-deprivation)], based on the [Lower Super Output Area (LSOA)](https://www.ons.gov.uk/methodology/geography/ukgeographies/statisticalgeographies) of patient residence, where quintile 1 is the most deprived.  
+We convert these counts to rates by dividing the activity count by the population size within each deprivation quintile, scheme catchment, and ICB.  
+We rely on [previous analysis](https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures) that suggests that the population size is a good generic proxy for need when comparing activity rates between quintiles of deprivation.  
+
+Next we fit a linear regression model[^2] to the activity rates over deprivation quintiles, weighting each point by the population size in each quintile.  
+Where the regression coefficient for deprivation quintile is positive (indicating lower activity rates in more deprived areas), and statistically significant (p < 0.05) then we conclude socio-economic inequities are present[^3]. See @fig-1 for a visual depiction.
 
 [^1]: [IMD19](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) in the current model version.
 
