@@ -230,3 +230,8 @@ fig2 <- A/B/C + plot_layout(heights = unit(5, 'cm'))
 suppressMessages(print(fig2))
 
 ```
+
+::: {.callout-warning}
+**Please Note**
+Where a scheme delivers activity for multiple ICBs, significant inequality may not exist for a particular HRG code in both ICB data sets. In this instance, the inequalities functionality exposed to users from the scheme will only relate to the ICB in which the inequality exists.
+:::
