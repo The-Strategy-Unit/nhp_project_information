@@ -6,6 +6,7 @@ on:
       - reopened
       - synchronize
       - closed
+  workflow_dispatch:
 
 jobs:
   connect-publish:
