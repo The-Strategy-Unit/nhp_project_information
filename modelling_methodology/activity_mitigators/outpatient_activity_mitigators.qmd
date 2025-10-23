@@ -1,5 +1,5 @@
 ---
-title: Outpatient Activity Mitigators
+title: Outpatient Related Types of Potentially Mitigatable Activity (TPMAs)
 ---
 
 # Outpatient Consultant to consultant referrals
