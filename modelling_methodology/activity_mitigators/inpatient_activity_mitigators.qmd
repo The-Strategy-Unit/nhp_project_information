@@ -1,5 +1,5 @@
 ---
-title: Inpatient related Types of Potentially Mitigatable Activity (TPMAs)
+title: Inpatient-Related Types of Potentially Mitigatable Activity (TPMAs)
 
 ---
 
