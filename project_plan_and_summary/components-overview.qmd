@@ -19,7 +19,7 @@ This repository contains the code that specifies changes in the size, age/sex st
 
 -   [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) [OPEN]
 
-This code contains all the data processing pipelines for the model, including the mitigators. It is written in Pyspark and runs on Databricks.
+This code contains all the data processing pipelines for the model, including the types of potentially mitigatable activity (TPMAs). It is written in Pyspark and runs on Databricks.
 
 -   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) [OPEN]
 
@@ -43,7 +43,7 @@ This repository provides an interface for users to explore the results of the mo
 
 -   [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app) [OPEN]
 
-This repository is a Shiny dashboard allowing the comparison of mitigators set by schemes using the NHP model.
+This repository is a Shiny dashboard allowing the comparison of TPMAs set by schemes using the NHP model.
 
 -   [nhp_final_reports](https://github.com/The-Strategy-Unit/nhp_final_reports) [CLOSED]
 

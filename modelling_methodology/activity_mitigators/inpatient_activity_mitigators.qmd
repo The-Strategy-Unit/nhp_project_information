@@ -1,5 +1,5 @@
 ---
-title: Inpatient Activity mitigators
+title: Inpatient-Related Types of Potentially Mitigatable Activity (TPMAs)
 
 ---
 
@@ -11,18 +11,18 @@ The underlying principle of [Same Day Emergency Care (SDEC)][1] is that a signif
 
 [1]: https://www.england.nhs.uk/urgent-emergency-care/same-day-emergency-care/
 
-The [Ambulatory Emergency Care Network][2] has published *Directory of Ambulatory Emergency Care for adults, 6th ed* (2018) which identifies emergency conditions that have the potential to be managed as an emergency day case delivered in an SDEC unit. We have grouped these conditions into four mitigator cohorts:
+The [Ambulatory Emergency Care Network][2] has published *Directory of Ambulatory Emergency Care for adults, 6th ed* (2018) which identifies emergency conditions that have the potential to be managed as an emergency day case delivered in an SDEC unit. We have grouped these conditions into four TPMA cohorts:
 
 - Same day emergency care (low potential) (IP-EF-028): Those that the network suggest have a low potential to be managed on an ambulatory basis (10-30% of cases) 
 - Same day emergency care (moderate potential) (IP-EF-029): Those that the network suggest have a moderate potential to be managed on an ambulatory basis (30-60% of cases)
 - Same day emergency care (high potential) (IP-EF-030): Those that the network suggest have a high potential to be managed on an ambulatory basis (60-90% of cases)
 - Same day emergency care (very high potential) (IP-EF-031): Those that the network suggest have a very high potential to be managed on an ambulatory basis (90-100% of cases)
 
-The spells identified by these mitigators exclude any with a length of stay (LOS) of 3 days and over, as these spells are considered less likely to be treatable within a day. This mitigator allows Trusts to make an assumption about what proportion of the identified spells they think will, in future, be delivered within an SDEC facility and not as an admitted patient. The model removes this quantity of spells from the inpatients data and adds them to the A&E outputs as type 5 (SDEC) attendances, enabling clear identification and quantification of future SDEC activity with the model outputs.
+The spells identified by these TPMAs exclude any with a length of stay (LOS) of 3 days and over, as these spells are considered less likely to be treatable within a day. This TPMA allows Trusts to make an assumption about what proportion of the identified spells they think will, in future, be delivered within an SDEC facility and not as an admitted patient. The model removes this quantity of spells from the inpatients data and adds them to the A&E outputs as type 5 (SDEC) attendances, enabling clear identification and quantification of future SDEC activity with the model outputs.
 
 [2]: https://www.nhselect.nhs.uk/improvement-collaboratives/Clinical-networks/AEC
 
-NOTE: these mitigators replace the previous set of Ambulatory Emergency Care (AEC) efficiency mitigators that adjusted the LOS of selected spells to 0 LOS but kept them within the inpatients (IP) dataset. The change reflects the new requirement for Trusts to record SDEC activity within the ECDS dataset.
+NOTE: these TPMAs replace the previous set of Ambulatory Emergency Care (AEC) efficiency TPMAs that adjusted the LOS of selected spells to 0 LOS but kept them within the inpatients (IP) dataset. The change reflects the new requirement for Trusts to record SDEC activity within the ECDS dataset.
 
 # Admission avoidance
 
@@ -261,7 +261,7 @@ The model identifies patients who are readmitted within 28 days of being dischar
 
 Some of these patients may have been discharged from a different hospital than the one being modelled.
 
-This mitigator does not impact readmissions where the first admission was flagged as a [Well baby](/data_extraction/data_log.qmd#version-1.1).
+This TPMA does not impact readmissions where the first admission was flagged as a [Well baby](/data_extraction/data_log.qmd#version-1.1).
 
 ## Smoking Related Admissions (IP-AA-029)
 
@@ -294,7 +294,7 @@ Virtual wards allow patients to receive the care they need at home, safely and c
 
 Whilst virtual wards may be beneficial for patients on a variety of clinical pathways, guidance has been produced relating to three pathways which represent the majority of patients who may be clinically suitable to benefit from a virtual ward. These pathways are Frailty, Acute Respiratory Infections (ARI) and Heart failure. 
 
-This activity avoidance mitigator identifies patients who may be suitable for admission to an ARI or Heart Failure virtual ward. 
+This activity avoidance TPMA identifies patients who may be suitable for admission to an ARI or Heart Failure virtual ward. 
 
 ### Available breakdowns
 
@@ -389,7 +389,7 @@ The model identifies patients who have a stroke related HRG code who may benefit
 
 ## General LoS Reduction
 
-Historically there has been a sustained and continuing reduction in average length of stay (LoS). The model allows users to make assumptions about future reductions in LoS relating to some specific activity cohorts, such as patients aged 75 and over who are admitted as an emergency, but it is recognised that continued LoS reductions may also continue to be achieved for patients outside of these specific cohorts. This mitigator therefore allows users to set assumptions about the expected reduction in the average LoS for emergency and elective spells that are not covered by the other specific efficiency mitigators. The assumed % reduction is applied to the average LoS.
+Historically there has been a sustained and continuing reduction in average length of stay (LoS). The model allows users to make assumptions about future reductions in LoS relating to some specific activity cohorts, such as patients aged 75 and over who are admitted as an emergency, but it is recognised that continued LoS reductions may also continue to be achieved for patients outside of these specific cohorts. This TPMA therefore allows users to set assumptions about the expected reduction in the average LoS for emergency and elective spells that are not covered by the other specific efficiency TPMAs. The assumed % reduction is applied to the average LoS.
 
 ### Available breakdowns
 
@@ -402,7 +402,7 @@ Virtual wards allow patients to receive the care they need at home, safely and c
 
 Whilst virtual wards may be beneficial for patients on a variety of clinical pathways guidance has been produced relating to three pathways which represent the majority of patients who may be clinically suitable to benefit from a virtual ward. These pathways are Frailty, Acute Respiratory Infections (ARI) and Heart failure. 
 
-This efficiency mitigator identifies patients who may be suitable for earlier discharge through admission to step down ARI or Heart Failure virtual wards. 
+This efficiency TPMA identifies patients who may be suitable for earlier discharge through admission to step down ARI or Heart Failure virtual wards. 
 
 ### Available breakdowns
 

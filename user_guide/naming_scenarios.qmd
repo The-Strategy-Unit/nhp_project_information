@@ -41,4 +41,4 @@ Do not use "final" or similar in a model name. The reason for this is because wh
 
 ## Recording runs to be used in outputs reports
 
-In order for us to generate your outputs reports, please send the name of your confirmed scenario, plus its run date and time, to your Model Relationship Manager. We recommend that, as with the mitigators, you maintain your own records throughout to avoid confusion.
+In order for us to generate your outputs reports, please send the name of your confirmed scenario, plus its run date and time, to your Model Relationship Manager. We recommend that, as with the types of potentially mitigatable activity (TPMAs), you maintain your own records throughout to avoid confusion.

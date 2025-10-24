@@ -1,15 +1,15 @@
 ---
-title: "Mitigators lookup"
+title: "TPMAs lookup"
 order: 5
 ---
 
-This page contains an interactive table with a sortable and searchable lookup of mitigators. Click the 'Download CSV' button to download a copy with the current filters applied (if any).
+This page contains an interactive table with a sortable and searchable lookup of types of potentially mitigatable activity (TPMAs). Click the 'Download CSV' button to download a copy with the current filters applied (if any).
 
-The table shows the model versions when each mitigator was active from and active to (if deprecated). There were 84 mitigators in model version 1.0. For model versions 1.1 onwards, there are 92 mitigators. Virtual Ward and Day Procedures mitigators were added in [version 1.1](/project_plan_and_summary/model_updates.html#update-20240424). Same Day Emergency Care (SDEC) mitigators were added and Ambulatory Emergency Care (AEC) mitigators removed in [version 3.4](http://localhost:5811/project_plan_and_summary/model_updates.html#update-20250423).
+The table shows the model versions when each TPMA was active from and active to (if deprecated). There were 84 TPMAs in model version 1.0. For model versions 1.1 onwards, there are 92 TPMAs. Virtual Ward and Day Procedures TPMAs were added in [version 1.1](/project_plan_and_summary/model_updates.html#update-20240424). Same Day Emergency Care (SDEC) TPMAs were added and Ambulatory Emergency Care (AEC) TPMAs removed in [version 3.4](http://localhost:5811/project_plan_and_summary/model_updates.html#update-20250423).
 
-The table contains mitigator codes, which exist to make it easier to refer to and discuss mitigators. These codes take the form 'IP-AA-001', for example. Each code is composed of an activity type ('IP' is inpatient, for example), a mitigator type ('AA' is activity avoidance) and a three-digit number (assigned on the basis of alphabetical order within activity and mitigator types).
+The table contains TPMA codes, which exist to make it easier to refer to and discuss TPMAs. These codes take the form 'IP-AA-001', for example. Each code is composed of an activity type ('IP' is inpatient, for example), a TPMA type ('AA' is activity avoidance) and a three-digit number (assigned on the basis of alphabetical order within activity and TPMA types).
 
-The variable names for each strategy are also included. These are used when interacting directly with the data that underlies the model and apps. The mitigator names are presented to users in the inputs- and outputs-app interfaces.
+The variable names for each strategy are also included. These are used when interacting directly with the data that underlies the model and apps. The TPMA names are presented to users in the inputs- and outputs-app interfaces.
 
 
 ```{r}

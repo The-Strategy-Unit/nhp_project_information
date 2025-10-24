@@ -122,7 +122,7 @@ This is set to `true` - it simplifies the logic within the model to have the sam
 
 ## Maternity activity
 
-Note that maternity activity is excluded from Outpatients mitigators. This activity is identified with treatment specialty codes `424`, `501`, `505`, and `560`.
+Note that maternity activity is excluded from types of potentially mitigatable activity for Outpatients. This activity is identified with treatment specialty codes `424`, `501`, `505`, and `560`.
 
 ## Aggregation
 

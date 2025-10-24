@@ -28,5 +28,5 @@ Hospital activity arises from the demands and needs of its catchment population.
 ### Non-demographic changes
 Healthcare need and demand might also change as a result of a series of non-demographic factors.  As medical technologies develop, medical conditions become treatable, and the technology becomes available to a wider set of patients.  Clinical standards may change what is acceptable or best-practice care.  And patient expectation may rise, increasing demand for a particular service or intervention.  This element of the model engine therefore accounts for anticipated changes in activity which are NOT due to changes in the size and age-sex structure of the population over time. The adjustment applied is based on detailed analysis and no user inputs are required – further information can be found [here](non-demographic_growth.qmd).
 
-### Activity mitigators
+### Types of potentially mitigatable activity (TPMAs)
 Hospital trusts and local health systems frequently plan to reduce hospital activity or resource use, by improving efficiency, diverting patients to receive care in more local settings outside of hospital, by preventing needs upstream or by restricting access to low-value procedures.  The component of the model allows users to adjust specific forms of hospital activity or resource use that commonly form the focus of these schemes.

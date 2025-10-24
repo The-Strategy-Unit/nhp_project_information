@@ -32,8 +32,7 @@ website:
           - modelling_methodology/double_counting.qmd
           - modelling_methodology/modelling_uncertainty.qmd
           - modelling_methodology/non-demographic_growth.qmd
-          - modelling_methodology/inequalities.qmd
-          - section: "Activity mitigators"
+          - section: "Types of Potentially Mitigatable Activity (TPMAs)"
             contents:
               - modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd
               - modelling_methodology/activity_mitigators/outpatient_activity_mitigators.qmd

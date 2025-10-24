@@ -20,7 +20,7 @@ For more detail on the data used in the project see the [data summary page](../m
 The model takes as its parameters estimations of activity - more detail is available in the [parameters section](../user_guide/setting_the_parameters.qmd). These parameters are informed by:
 
 -   **Expert opinion and local knowledge**\
-    For example, assumptions on the impact of specific activity avoidance strategies and interventions, sometimes also known as activity mitigators. These inputs will be set locally by each Trust's representatives, but will also be informed by the results of the [NHP National Elicitation Exercise (NEE)](https://github.com/The-Strategy-Unit/nhp_elicitation_tool), which gathered through Delphi/SHELF elicitation methods an expert consensus of possible activity mitigation on a national level.
+    For example, assumptions on the impact of specific activity avoidance strategies and interventions, sometimes also known as types of potentially mitigatable activity (TPMAs). These inputs will be set locally by each Trust's representatives, but will also be informed by the results of the [NHP National Elicitation Exercise (NEE)](https://github.com/The-Strategy-Unit/nhp_elicitation_tool), which gathered through Delphi/SHELF elicitation methods an expert consensus of possible activity mitigation on a national level.
 
     All inputs will be sense-checked and compared across Trusts where appropriate, with any anomalies requiring further evidence to support them.
 

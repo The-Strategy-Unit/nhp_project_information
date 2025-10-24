@@ -5,6 +5,10 @@ order: 1
 
 This page collates some frequently asked technical questions about the model from stakeholders. We will continue to add to this page as the project continues.
 
+## What are TPMAs and how do they relate to 'mitigators'?
+
+'Types of potentially mitigatable activity (TPMAs)' is the term now used to to describe the activity types for which model users can enter their assumptions around delivery in the horizon year. They were previously referred to as 'mitigators', but this terminology has been superseded and replaced with TPMAs to improve clarity and avoid confusion between the activity types referred to, and the mechanisms by which hospitals might attempt to reduce activity.
+
 ## Is this model designed by an NHS team or a private firm?
 
 The Strategy Unit built the model, and we are (proudly) [an NHS team](https://www.strategyunitwm.nhs.uk)
@@ -51,21 +55,21 @@ The baseline data can be downloaded as an Excel file from the inputs app, on the
 
 The model allows users to select their 'horizon year': the year they wish the model to forecast up to. We recommend that users select a horizon year at least 10 years beyond the opening of the new hospital. The model can forecast up to and including the 2041/42 financial year.
 
-## Do the activity mitigators account for virtual wards?
+## Do the types of potentially mitigatable activity (TPMAs) account for virtual wards?
 
-Yes, we are introducing a new virtual wards mitigator from May. Information about all the mitigators is available [here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd).
+Yes, we are introducing a new virtual wards TPMA from May. Information about all the TPMAs is available [here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd).
 
-## Which mitigators should be prioritised when setting assumptions?
+## Which types of potentially mitigatable activity (TPMAs) should be prioritised when setting assumptions?
 
-The 20 mitigators associated with the highest levels of healthcare activity are listed in a table within the inputs app ('Summary table'). While all activity mitigators should be considered, this table can help users prioritise which mitigators to spend more time forecasting.
+The 20 TPMAs associated with the highest levels of healthcare activity are listed in a table within the inputs app ('Summary table'). While all activity TPMAs should be considered, this table can help users prioritise which TPMAs to spend more time forecasting.
 
-## Can a list of all the activity mitigators be downloaded?
+## Can a list of all the types of potentially mitigatable activity (TPMAs) be downloaded?
 
-Yes, this is available from the [mitigators lookup page](mitigators_lookup.qmd). Where needed, users can 'Print to PDF' any of the pages with activity mitigator information. This will include the charts showing trend/peer comparison information.
+Yes, this is available from the [TPMAs lookup page](mitigators_lookup.qmd). Where needed, users can 'Print to PDF' any of the pages with activity TPMA information. This will include the charts showing trend/peer comparison information.
 
 ## What is the National Elicitation Exercise (NEE)?
 
-Subject matter experts were invited to provide forecasts about future hospital activity using an evidence-based elicitation exercise. The methodology and outcome has been [published in an open-access journal](https://doi.org/10.1136/bmjopen-2024-084632). In the inputs app, the aggregated forecasts from the exercise are presented for 77 activity mitigators. They provide a useful 'outside' view but should not be interpreted as an expectation of what can be achieved locally.
+Subject matter experts were invited to provide forecasts about future hospital activity using an evidence-based elicitation exercise. The methodology and outcome has been [published in an open-access journal](https://doi.org/10.1136/bmjopen-2024-084632). In the inputs app, the aggregated forecasts from the exercise are presented for 77 types of potentially mitigatable activity (TPMAs). They provide a useful 'outside' view but should not be interpreted as an expectation of what can be achieved locally.
 
 ## Capacity conversion - Does the model project the number of beds required?
 
@@ -87,7 +91,7 @@ In order to provide activity levels at a monthly level, we would first need to i
 
 ## How are a Trust's peers selected?
 
-The Trust peers displayed in the inputs app (in the comparative charts for the activity mitigators) are derived from an earlier Excel version of this tool: [Trust Peer Finder Tool](https://app.powerbi.com/view?r=eyJrIjoiMjdiOWQ4YTktNmNiNC00MmIwLThjNzktNWVmMmJmMzllNmViIiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9).
+The Trust peers displayed in the inputs app (in the comparative charts for the TPMAs) are derived from an earlier Excel version of this tool: [Trust Peer Finder Tool](https://app.powerbi.com/view?r=eyJrIjoiMjdiOWQ4YTktNmNiNC00MmIwLThjNzktNWVmMmJmMzllNmViIiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9).
 
 ## Does the model quantify the projected activity removed from the hospital?
 
@@ -115,23 +119,23 @@ The initial outputs of a first 'run' will be explored during a technical outputs
 
 Yes, completed model parameters can be downloaded as a JSON file by clicking the 'download params' button in the run model section of the inputs app, which is made available to users after their first refinement workshop. Model parameters can also be downloaded from the outputs app, from the Downloads page.
 
-## Why can't we see a detailed breakdown of exactly which activity was avoided by each mitigator?
+## Why can't we see a detailed breakdown of exactly which activity was avoided by each type of potentially mitigatable activity (TPMA)?
 
 Details of the modelling methodology can be seen on the [modelling uncertainty page](../modelling_methodology/modelling_uncertainty.qmd).
 
-All of the activity avoidance mitigators apply at the same time. If more than one activity avoidance mitigator applies to a row of data, then their values are multiplied together to produce an activity avoidance summary parameter. This activity avoidance summary parameter is then used as $p$ when we randomly sample from a $\text{Binomial}(n,p)$ distribution, where $n = 1$.
+All of the activity avoidance TPMAs apply at the same time. If more than one activity avoidance TPMA applies to a row of data, then their values are multiplied together to produce an activity avoidance summary parameter. This activity avoidance summary parameter is then used as $p$ when we randomly sample from a $\text{Binomial}(n,p)$ distribution, where $n = 1$.
 
-With the efficiencies mitigators, if more than one efficiency mitigator applies to a row of data, the model randomly selects which mitigator to apply in each run. It then uses the sampled value for the efficiency mitigator as $p$ when sampling from a $\text{Binomial}(n,p)$ distribution, where $n = LOS$, the Length of Stay for the row.
+With the efficiencies TPMAs, if more than one efficiency TPMA applies to a row of data, the model randomly selects which TPMA to apply in each run. It then uses the sampled value for the efficiency TPMA as $p$ when sampling from a $\text{Binomial}(n,p)$ distribution, where $n = LOS$, the Length of Stay for the row.
 
-It is therefore not possible to exactly state which mitigator has removed specific types of activity. We can provide high-level estimates of activity removed through the [step counts/impact of changes](glossary.qmd#impact-of-changes), and a breakdown of avoided activity by age and sex in the model results. We have not yet implemented the ability to see a breakdown of activity removed by the efficiency mitigators in the model results.
+It is therefore not possible to exactly state which TPMA has removed specific types of activity. We can provide high-level estimates of activity removed through the [step counts/impact of changes](glossary.qmd#impact-of-changes), and a breakdown of avoided activity by age and sex in the model results. We have not yet implemented the ability to see a breakdown of activity removed by the efficiency TPMAs in the model results.
 
 ## What effect does the v3.1 model methodology change have on model comparability? {#method-change}
 
-An improvement was made to the model so that the outputs more accurately reflect the impact that each activity mitigator has had on reducing activity.
+An improvement was made to the model so that the outputs more accurately reflect the impact that each activity TPMA has had on reducing activity.
 
 Model versions before Version 3.1 applied modifying factors to the baseline activity levels in a single step.
 
-This means that, if a mitigator was expected to reduce one type of activity by, say, 10%, this represented a reduction of 10% of the baseline rate, rather than the inflated activity rates created by applying the growth factors (demographic and non-demographic growth).
+This means that, if a TPMA was expected to reduce one type of activity by, say, 10%, this represented a reduction of 10% of the baseline rate, rather than the inflated activity rates created by applying the growth factors (demographic and non-demographic growth).
 
 In contrast, Version 3.1 applies impact factors in two stages:
 
@@ -139,9 +143,9 @@ Initial Projection: First, the demographic and non-demographic factors are incor
 
 Mitigation Application: The model then applies mitigation factors to this projected activity.
 
-The waterfall chart shows a "model interaction factor", which reflects only the interaction between factors in the first, "Initial Projection", stage. The degree of overlap of the mitigators is not shown in the waterfall chart, but is included in the "activity avoidance" bar.
+The waterfall chart shows a "model interaction factor", which reflects only the interaction between factors in the first, "Initial Projection", stage. The degree of overlap of the TPMAs is not shown in the waterfall chart, but is included in the "activity avoidance" bar.
 
-Additionally, the individual bar chart displaying the effect of each mitigator does not account for interaction effects, meaning the impact of each mitigator may be slightly overstated. However, the size of this interaction effect can be seen in the Excel download.
+Additionally, the individual bar chart displaying the effect of each TPMA does not account for interaction effects, meaning the impact of each TPMA may be slightly overstated. However, the size of this interaction effect can be seen in the Excel download.
 
 NB important to note that this is an improvement as it more accurately reflects the overall level of avoided activity at the horizon year.
 
