@@ -3,11 +3,22 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/10/29
+
+## v4.2.1/v4.2.3
+
+This update is for patch releases of the inputs and outputs apps (both v4.2.1) and project information (v4.2.3).
+
+The term 'mitigator' has been removed and replaced with 'types of potentially-mitigatable activity (TPMAs)'.
+Read more about this in [the FAQ section](../user_guide/FAQ.qmd#what-are-tpmas-and-how-do-they-relate-to-mitigators).
+
+Additionally, user-feedback buttons have been added to both apps and [the model diagram has been updated](../project_plan_and_summary/components-overview.qmd) in project information.
+
 # Update 2025/10/07
 
 ## v4.2.1
 
-We recently discovered a bug which meant that Gynaecology activity, identified through treatment specialty code 502, was being erroneously assigned to Other (Medical) in the grouped treatment specialties. This bug has been in place since v3.1.0 of the model. 
+We recently discovered a bug which meant that Gynaecology activity, identified through treatment specialty code 502, was being erroneously assigned to Other (Medical) in the grouped treatment specialties. This bug has been in place since v3.1.0 of the model.
 
 This bug would not impact where actual treatment specialty codes are used, for example in "detailed results" outputs of the model.
 
