@@ -7,7 +7,7 @@ As part of the self-directed learning process, we recommend that Trusts check th
 
 The baseline data can be downloaded as an Excel file from the inputs app, on the Baseline Adjustment page. 
 
-The processing that is conducted to produce the NHP model baseline data counts is documented in the [data extraction section](../data_extraction/). 
+The processing that is conducted to produce the NHP model baseline data counts is documented in the [data extraction section](../data_extraction/data_extraction_overview.qmd). 
 
 We use HES data; further details on the fields in this dataset are available from the [HES Data Dictionary](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics/hospital-episode-statistics-data-dictionary). 
 
