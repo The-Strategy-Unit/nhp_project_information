@@ -3,6 +3,21 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2025/11/27
+
+## v4.3.0
+
+### New data quality filter
+
+We have introduced a new data quality filter to exclude unusually long spells from the baseline data.
+This has been implemented across all providers. The data pipeline now:
+
+- Filters out spells with duration > 2 years that are likely data quality errors
+- Preserves mental health specialty spells (specialty codes starting with "7")
+- Preserves complex cases with many episodes (10 or more).
+
+This change will impact the baseline data and modelled results for a small number of schemes. NHP schemes that are impacted by this will be notified by their Model Relationship Manager.
+
 # Update 2025/10/29
 
 ## v4.2.1/v4.2.3

@@ -5,6 +5,12 @@ order: 250
 
 This page contains information about changes to the data underpinning the NHP model. If there are no changes logged for a particular version (such as 1.0) then the changes were only to the model code, and not to the underlying data.
 
+## Version 4.3
+
+Date updated: 27/11/2025
+Please see the [release notes for v4.2.3](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v4.2.3) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+
+
 ## Version 4.2.1
 
 Date updated: 07/10/2025
