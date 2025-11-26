@@ -45,6 +45,14 @@ We select the last episode in spell, determined in the pre-processing step.
 
 We filter out "well baby" records. These are records for newborn babies who are healthy and not requiring any medical interventions. We do this using the `WELL_BABY_IND` column, as well as other filtering as detailed in [the data log](/data_extraction/data_log.qmd#inpatients-2).
 
+### Data Quality
+
+From v4.3, we:
+
+- Filter out spells with duration > 2 years that are likely data quality errors, excluding:
+   - mental health specialty spells (specialty codes starting with "7")
+   - complex cases with many episodes (10 or more)
+
 ## Derived fields
 
 ### `group`
