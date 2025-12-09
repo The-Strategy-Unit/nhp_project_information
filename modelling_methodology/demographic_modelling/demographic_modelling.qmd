@@ -40,7 +40,7 @@ $$
 100 \times 50\% + 200 \times 10\% = 50 + 20 = 70
 $$
 
-The full methodology for generating the population catchment for demographic growth can be [seen here](https://github.com/The-Strategy-Unit/nhp_data/blob/main/reference/provider_catchments.py).
+The full methodology for generating the population catchment for demographic growth can be [seen here](https://github.com/The-Strategy-Unit/nhp_data/blob/main/src/nhp/data/reference/provider_catchments.py).
 
 ## Variant projections {#variant-projs}
 
