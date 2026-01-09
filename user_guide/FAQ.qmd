@@ -14,7 +14,9 @@ Scenarios will automatically be upgraded to the latest version of the model, unl
 * The scenario was created with a baseline year before 2023/24
 * The scenario was created with a model version before v1.2
 
-We cannot transfer parameters from any scenarios meeting these criteria to the latest model version. Note also that any scenarios prior to v3.6 which are upgraded will have their population projection overwritten to "migration category" by default.
+We cannot transfer parameters from any scenarios meeting these criteria to the latest model version. Should users wish to rerun a scenario meeting these criteria, parameters will need to be re-entered manually using the inputs app.
+
+Note also that any scenarios prior to v3.6 which are upgraded will have their population projection overwritten to "migration category" by default.
 
 ## What are TPMAs and how do they relate to 'mitigators'?
 
