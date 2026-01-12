@@ -5,6 +5,19 @@ order: 1
 
 This page collates some frequently asked technical questions about the model from stakeholders. We will continue to add to this page as the project continues.
 
+## Can we upgrade scenarios created on older versions of the model?
+
+It is mandatory to use the latest version of the model. We do not support running older versions of the model.
+
+Scenarios will automatically be upgraded to the latest version of the model, unless they meet any of the following criteria:
+
+* The scenario was created with a baseline year before 2023/24
+* The scenario was created with a model version before v1.2
+
+We cannot transfer parameters from any scenarios meeting these criteria to the latest model version. Should users wish to rerun a scenario meeting these criteria, parameters will need to be re-entered manually using the inputs app.
+
+Note also that any scenarios prior to v3.6 which are upgraded will have their population projection overwritten to "migration category" by default.
+
 ## What are TPMAs and how do they relate to 'mitigators'?
 
 'Types of potentially mitigatable activity (TPMAs)' is the term now used to to describe the activity types for which model users can enter their assumptions around delivery in the horizon year. They were previously referred to as 'mitigators', but this terminology has been superseded and replaced with TPMAs to improve clarity and avoid confusion between the activity types referred to, and the mechanisms by which hospitals might attempt to reduce activity.
