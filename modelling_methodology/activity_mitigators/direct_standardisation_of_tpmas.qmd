@@ -1,0 +1,379 @@
+---
+title: Direct Standardisation of TPMAs
+---
+
+## Method
+
+For each TPMA, we use direct standardisation by age/sex, using the following formula:
+
+$$
+rate = \cfrac{
+  \sum\limits_{a,s}{
+    \cfrac{ n_{a,s} }{ d_{a,s} }
+    \cdot
+    p_{a,s}
+  }
+}{
+  \sum\limits_{a,s}{p_{a,s}}
+}
+$$
+
+where:
+
+- $n_{a,s}$ is the numerator for a specific TPMA for age $a$ and sex $s$
+- $d_{a,s}$ is the denominator for a specific TPMA for age $a$ and sex $s$
+- $p_{a,s}$ is the reference population for age $a$ and sex $s$
+
+For each TPMA, we create a reference population by:
+
+* find the minimum and maximum age for that TPMA, by sex
+* get the population of England, and filter to be between the minimum and maximum age
+* if a TPMA has no activity for either male or females, then there will be no population for that sex
+
+Each TPMA has a different definition for the numerator and denominator. These are listed below.
+
+## Inpatients
+
+### Activity Avoidance
+
+*	Numerator is sum of the sample rate for this TPMA
+*	Denominator is the population for the age/sex within the geography
+*	Rate represents the rate per N population for this TPMA (e.g. per 1,000 population)
+
+For the population, we use either:
+
+* a catchment population, e.g. when we are looking at providers
+* the population for the selected geography, e.g. local authority
+
+If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
+denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
+do not impute any values for these rows, nor do we include values for the reference population.
+
+::: {.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+*	alcohol_partially_attributable_acute
+*	alcohol_partially_attributable_chronic
+*	alcohol_wholly_attributable
+*	ambulatory_care_conditions_acute
+*	ambulatory_care_conditions_chronic
+*	ambulatory_care_conditions_vaccine_preventable
+*	cancelled_operations
+*	eol_care_2_days
+*	eol_care_3_to_14_days
+*	evidence_based_interventions_ent
+*	evidence_based_interventions_general_surgery
+*	evidence_based_interventions_gi_surgical
+*	evidence_based_interventions_msk
+*	evidence_based_interventions_urology
+*	evidence_based_interventions_vascular_varicose_veins
+*	falls_related_admissions
+*	frail_elderly_high
+*	frail_elderly_intermediate
+*	intentional_self_harm
+*	medically_unexplained_related_admissions
+*	medicines_related_admissions_explicit
+*	medicines_related_admissions_implicit_anti-diabetics
+*	medicines_related_admissions_implicit_benzodiasepines
+*	medicines_related_admissions_implicit_diurectics
+*	medicines_related_admissions_implicit_nsaids
+*	obesity_related_admissions
+*	raid_ae
+*	readmission_within_28_days
+*	smoking
+*	virtual_wards_activity_avoidance_ari
+*	virtual_wards_activity_avoidance_heart_failure
+*	zero_los_no_procedure_adult
+*	zero_los_no_procedure_child
+ 
+:::
+
+### Mean Length Of Stay Reduction
+
+*	Numerator is the sum of spell duration (length of stay) for this TPMA
+*	Denominator is the number of admissions for this TPMA
+*	Rate represents mean length of stay for this TPMA
+
+If there are no rows for the numerator for a given age/sex/geography, then there will be no rows
+for the denominator. We do not impute any values for these rows, nor do we include values for the
+reference population.
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+*	emergency_elderly
+*	enhanced_recovery_bladder
+*	enhanced_recovery_breast
+*	enhanced_recovery_colectomy
+*	enhanced_recovery_hip
+*	enhanced_recovery_hysterectomy
+*	enhanced_recovery_knee
+*	enhanced_recovery_prostate
+*	enhanced_recovery_rectum
+*	excess_beddays_elective
+*	excess_beddays_emergency
+*	general_los_reduction_elective
+*	general_los_reduction_emergency
+*	raid_ip
+*	stroke_early_supported_discharge
+*	virtual_wards_efficiencies_ari
+*	virtual_wards_efficiencies_heart_failure
+ 
+:::
+
+### Pre-op Length of Stay Reduction
+
+*	Numerator is the number of elective admissions where a procedure was performed, and there was a pre-op length of stay of either 1 or 2 days
+*	Denominator is the number of elective admissions where a procedure was performed
+*	Rate represents the percentage of elective procedures with a pre-op length of stay of 1 or 2 days
+
+If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
+denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
+do not impute any values for these rows, nor do we include values for the reference population.
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+*	pre-op_los_1-day
+*	pre-op_los_2-day
+
+:::
+
+### Same Day Emergency Care
+
+*	Numerator is number of admissions for this TPMA
+*	Denominator is the total number of admissions for all admissions for that subgroup
+
+For the population, we use either:
+
+* a catchment population, e.g. when we are looking at providers
+* the population for the selected geography, e.g. local authority	Rate represents the rate per N population for this TPMA (e.g. per 1,000 population)
+
+If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
+denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
+do not impute any values for these rows, nor do we include values for the reference population.
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+*	same_day_emergency_care_low
+*	same_day_emergency_care_moderate
+*	same_day_emergency_care_high
+*	same_day_emergency_care_very_high
+
+:::
+
+### Day Procedures (Day Case)
+
+*	Numerator is number of admissions for this TPMA where the setting is an ordinary (overnight) admission
+*	Denominator is number of admissions for this TPMA for all settings (ordinary or day cases)
+*	Rate represents the percentage of admissions that were an ordinary admission
+
+If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
+denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
+do not impute any values for these rows, nor do we include values for the reference population.
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+*	day_procedure_usually_dc
+*	day_procedure_occasionally_dc
+
+:::
+
+### Day Procedures (Outpatients)
+
+*	Numerator is number of admissions for this TPMA where the setting is an ordinary (overnight) admission or a day case admission
+*	Denominator is number of admissions for this TPMA for all settings (ordinary, day cases, or outpatients)
+*	Rate represents the percentage of admissions that were not performed in outpatients
+
+If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
+denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
+do not impute any values for these rows, nor do we include values for the reference population.
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+*	day_procedure_usually_dc
+*	day_procedure_occasionally_dc
+
+:::
+
+## Outpatients
+
+### Follow-up reduction
+
+Only includes appointments where no procedure was performed, and face-to-face appointments.
+
+* Numerator is the number of first outpatient attendances
+* Denominator is the number of follow-up outpatient attendances
+* Rate represents the first/follow-up ratio
+
+No imputation of "missing" activity takes place.
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+* followup_reduction_adult_non-surgical
+* followup_reduction_adult_surgical
+* followup_reduction_child_non-surgical
+* followup_reduction_child_surgical
+
+:::
+
+### Consultant-to-Consultant Referral Reduction
+
+Only includes face-to-face appointments.
+
+* Numerator is the number of appointments where the patient was referred from a consultant to
+  another consultant
+* Denominator is the total number of appointments
+* Rate represents the percentage of appointments which were consultant-to-consultant referrals
+
+No imputation of "missing" activity takes place, but we can have cases where the numerator is 0 and
+the denominator is greater than 0 (so rate = 0).
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+* consultant_to_consultant_reduction_adult_non-surgical
+* consultant_to_consultant_reduction_adult_surgical
+* consultant_to_consultant_reduction_child_non-surgical
+* consultant_to_consultant_reduction_child_surgical
+
+:::
+
+### GP Referred First Attendance reduction
+
+Only includes face-to-face appointments.
+
+* Numerator is the number of appointments where the patient was referred by a GP, and it is the
+  patients first attendance
+* Denominator is the total number of appointments
+* Rate represents the percentage of appointments which were GP-Referred first attendances
+
+No imputation of "missing" activity takes place, but we can have cases where the numerator is 0 and
+the denominator is greater than 0 (so rate = 0).
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+* gp_referred_first_attendance_reduction_adult_non-surgical
+* gp_referred_first_attendance_reduction_adult_surgical
+* gp_referred_first_attendance_reduction_child_non-surgical
+* gp_referred_first_attendance_reduction_child_surgical
+
+:::
+
+### Convert to tele-attendance
+
+Only includes appointments where no procedure was performed.
+
+* Numerator is the number of face-to-face appointments
+* Denominator is the total number of appointments (face-to-face + tele-attendance)
+* Rate represents the percentage of appointments which were face-to-face
+
+No imputation of "missing" activity takes place, but we can have cases where the numerator is 0 and
+the denominator is greater than 0 (so rate = 0).
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+* convert_to_tele_adult_non-surgical
+* convert_to_tele_adult_surgical
+* convert_to_tele_child_non-surgical
+* convert_to_tele_child_surgical
+
+:::
+
+## A&E
+
+### Frequent attender reduction
+
+* Numerator is the number of A&E attendances where the patient was flagged as being a frequent attender
+* Denominator is the total number of A&E attendances
+* Rate represents the percentage of A&E attendances for "frequent attenders"
+
+No imputation of "missing" activity takes place, but we can have cases where the numerator is 0 and
+the denominator is greater than 0 (so rate = 0).
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+* frequent_attenders_adult_ambulance
+* frequent_attenders_adult_walk-in
+* frequent_attenders_child_ambulance
+* frequent_attenders_child_walk-in
+
+:::
+
+### Left before seen reduction
+
+* Numerator is the number of A&E attendances where the patient left before being seen or treated
+* Denominator is the total number of A&E attendances
+* Rate represents the percentage of A&E attendances where the patient left before being seen or treated
+
+No imputation of "missing" activity takes place, but we can have cases where the numerator is 0 and
+the denominator is greater than 0 (so rate = 0).
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+* left_before_seen_adult_ambulance
+* left_before_seen_adult_walk-in
+* left_before_seen_child_ambulance
+* left_before_seen_child_walk-in
+
+:::
+
+### Discharged with no treatment reduction
+
+* Numerator is the number of A&E attendance where the patient was discharged with no treatment performed
+* Denominator is the total number of A&E attendances
+* Rate represents the percentage of A&E attendances where the patient was discharged with no treatment performed
+
+No imputation of "missing" activity takes place, but we can have cases where the numerator is 0 and
+the denominator is greater than 0 (so rate = 0).
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+* discharged_no_treatment_adult_ambulance
+* discharged_no_treatment_adult_walk-in
+* discharged_no_treatment_child_ambulance
+* discharged_no_treatment_child_walk-in
+
+:::
+
+### Low cost attendance reduction
+
+* Numerator is the number of A&E attendance where the attendance was "low-cost"
+* Denominator is the total number of A&E attendances
+* Rate represents the percentage of A&E attendances which were "low-cost"
+
+No imputation of "missing" activity takes place, but we can have cases where the numerator is 0 and
+the denominator is greater than 0 (so rate = 0).
+
+:::{.callout-note collapse="true"}
+
+#### List of TPMAs in this subgroup
+
+* low_cost_discharged_adult_ambulance
+* low_cost_discharged_adult_walk-in
+* low_cost_discharged_child_ambulance
+* low_cost_discharged_child_walk-in
+
+:::
