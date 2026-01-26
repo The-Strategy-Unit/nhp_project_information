@@ -1,0 +1,147 @@
+---
+title: Deriving Hospital Catchments
+order: 210
+---
+
+## Build lookup from `LSOA11` to `LAD23CD`
+
+In our HES data, we have `LSOA11` present from 2015/16 onwards, but we do not have `LSOA21`. We have the LAD of residence, (`RESLADST_ONS`), but this field will not be consistent over time, as it will be the local authorities as valid at the time of publication of that years HES extract. This makes it hard for us to do longitudinal comparisons.
+
+Both of these fields are derived by `RULE_1200` (HES TOS), which is "Postcode derived items". While we do not have the postcode (sensitive field), we can use the `LSOA11` to lookup the valid `LAD23CD` code using the following logic. Therefore, if we can derive a one-one mapping from `LSOA11` to `LAD23`, then we can get a consistent and valid value for `LAD23` historically.
+
+### 1. Get lookup from `LSOA11` to `LSOA21`
+
+[source](https://www.data.gov.uk/dataset/03a52a27-36e7-4f33-a632-83282faea36f/lsoa-2011-to-lsoa-2021-to-local-authority-district-2022-exact-fit-lookup-for-ew-v3)
+
+This is a many-many lookup, most `LSOA11`'s remain unchanged, so `LSOA11` = `LSOA21`. There are some cases where multiple `LSOA11`'s merged into 1 `LSOA21`, but there are some cases where a single LSOA11 splits into multiple `LSOA21`'s.
+
+We filter this list to only include LSOA11's that start with an E (England).
+
+### 2. Get lookup from `LSOA21` to `LAD23CD`
+
+[source](https://geoportal.statistics.gov.uk/datasets/f9fa90df09024becb455ab3f7f7b4a15_0/explore)
+
+This is a one-one lookup, where each `LSOA21` is mapped to a single `LAD23CD`.
+
+We filter this list to only include `LSOA21`'s that start with an E (England).
+
+### 3. Create lookup from `LSOA11` to `LAD23CD`
+
+Using 1. and 2., we can create a mapping from `LSOA11->LSOA21->LAD23CD`. When we take the unique combinations of `LSOA11->LAD23`, we have one-one mappings for all but 4 `LSOA`'s.
+
+Doing a geospatial intersection of these specific `LSOA11`'s to `LAD23CD` boundaries, we find that there is a single `LAD23` for each of the `LSOA11`'s that dominates based on land area:
+
+| LSOA11CD  | area_before  | LAD23CDCD | LAD23NM            | area_after  | pcnt  |
+| :-------- | -----------: | :-------- | :----------------- | ----------: | ----: |
+| E01008187 |         3.93 | E08000037 | Gateshead          |        3.91 | 99.6% |
+| E01023508 |        30.28 | E07000242 | East Hertfordshire |       30.16 | 99.9% |
+| E01023964 |         9.47 | E07000241 | Welwyn Hatfield    |        9.44 | 99.7% |
+| E01027506 |       108.81 | E06000057 | Northumberland     |      108.75 | 99.9% |
+
+(areas are in km^3^)
+
+So, we can specifically filter out the rows that don't match this table above, which leaves us with a one-one mapping from `LSOA11` to `LAD23CD`.
+
+:::{.callout-note collapse="true"}
+
+### R code to find dominant `LAD23CD` for the above `LSOA11`s
+
+``` r
+library(sf)
+library(tidyverse)
+
+get_data <- function(dataset, fields, query = "1=1") {
+  httr::modify_url(
+    "https://services1.arcgis.com/",
+    path = c(
+      "ESMARspQHYMw9BZ9",
+      "arcgis",
+      "rest",
+      "services",
+      dataset,
+      "FeatureServer",
+      "0",
+      "query"
+    ),
+    query = list(
+      outFields = paste0(fields, collapse = ","),
+      where = query,
+      f = "geojson"
+    )
+  ) |>
+    st_read()
+}
+
+lad <- get_data(
+  "Local_Authority_Districts_December_2023_Boundaries_UK_BGC",
+  c("LAD23CDCD", "LAD23NM"),
+  "LAD23CDCD LIKE 'E%'"
+)
+
+lsoa <- get_data(
+  "LSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3",
+  c("LSOA11CD"),
+  "LSOA11CD IN ('E01008187', 'E01023508', 'E01023964', 'E01027506')"
+)
+
+lsoa |>
+  mutate(area_before = st_area(geometry) |> units::set_units("km^2")) |>
+  st_intersection(lad) |>
+  mutate(area_after = st_area(geometry) |> units::set_units("km^2")) |>
+  filter(area_before != area_after) |>
+  st_drop_geometry() |>
+  slice_max(area_after, n = 1, by = LSOA11CD) |>
+  as_tibble() |>
+  mutate(pcnt = as.numeric(area_after / area_before)) |>
+  arrange(LSOA11CD)
+```
+
+:::
+
+## Population extracts
+
+We need to know population at `LAD23CD` level, by year. ONS produce population by age and sex and `LSOA21` going back to 2011, so there is a simple and consistent way to get population over time by `LAD23`.
+
+### 1. Download population files
+
+[source](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/lowersuperoutputareamidyearpopulationestimates)
+
+Download each of the files required, reshape into a tidy format where each row corresponds to a single `year`/`lsoa21`/`age`/`sex`.
+
+### 2. Aggregate population files to `LAD23CD`
+
+Using the `LSOA21` to `LAD23CD` lookup created above, aggregate the population files to be at `LAD23` level instead of `LSOA`.
+
+## Build catchments
+
+We use logic based off of the OHID catchment tool, but with a few modifications:
+
+1. they use 5 year age bands, we use single year ages. This is for two reasons. Firstly, we can re-use these catchments in the demand models demographic module, which needs single year ages. Secondly, when we use these for direct age/sex standardisation with the TPMHA's, some of these are defined for specific age ranges. For example, the Alcohol Partially Attributable TPMHA's are defined for 16yo+.
+
+2. We use LAD, not MSOA. This is down to the issue we have with HES data not having `LSOA21` (therefore, not having `MSOA21`), and avoiding having to split the populations.
+
+3. The OHID logic states that they count distinct patients by MSOA/age group/sex for a) all providers and b) each provider. Then calculate the proportion of patients going to each provider by $\tfrac{b}{a}$. We skip calculating a, and instead do $\tfrac{b}{\sum{b}}$. This is a much simpler approach, and ensures that $\sum{\tfrac{b}{\sum{b}}} = 1$, so we always assign the population directly once. That is, if we sum our catchments, and the England population, the values will be equal.
+
+4. OHID do not exclude mothers and babies. Specifically, they include well babies, which we exclude.
+
+5. OHID create splits for all admissions, elective admissions, and emergency admissions. We just create all admissions. Note that both OHID and us only use admitted patient care activity.
+
+### Create provider to local authority splits
+
+1. Count how many distinct patients there are by age, sex, year, and LAD, for each provider
+
+2. By age, sex, year, and LAD, sum the count from 1.
+
+3. Create a percentage 2. / 1. (that is, for each subgroup `{age, sex, year, LAD}`, what percentage of patients went to each provider)
+
+### Inputs catchments
+
+1. Using the table above, join to the historical population estimates on year, age, sex, LAD
+
+2. Mutate the population by multiplying by the percentage
+
+3. Group by year, age, sex, and provider, and sum the mutated population
+
+### Model demographics catchments
+
+as for inputs catchments, except join to the population projections.
