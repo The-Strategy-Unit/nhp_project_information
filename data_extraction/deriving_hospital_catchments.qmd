@@ -132,7 +132,7 @@ We use logic based off of the OHID catchment tool, but with a few modifications:
 
 2. By age, sex, year, and LAD, sum the count from 1.
 
-3. Create a percentage 2. / 1. (that is, for each subgroup `{age, sex, year, LAD}`, what percentage of patients went to each provider)
+3. Create a percentage 1. / 2. (that is, for each subgroup `{age, sex, year, LAD}`, what percentage of patients went to each provider)
 
 ### Inputs catchments
 
