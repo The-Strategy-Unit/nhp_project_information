@@ -38,7 +38,7 @@ Doing a geospatial intersection of these specific `LSOA11`'s to `LAD23CD` bounda
 | E01023964 |         9.47 | E07000241 | Welwyn Hatfield    |        9.44 | 99.7% |
 | E01027506 |       108.81 | E06000057 | Northumberland     |      108.75 | 99.9% |
 
-(areas are in km^3^)
+(areas are in km^2^)
 
 So, we can specifically filter out the rows that don't match this table above, which leaves us with a one-one mapping from `LSOA11` to `LAD23CD`.
 
