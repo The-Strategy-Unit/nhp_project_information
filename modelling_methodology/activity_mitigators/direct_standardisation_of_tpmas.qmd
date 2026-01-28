@@ -150,7 +150,8 @@ do not impute any values for these rows, nor do we include values for the refere
 For the population, we use either:
 
 * a catchment population, e.g. when we are looking at providers
-* the population for the selected geography, e.g. local authority	Rate represents the rate per N population for this TPMA (e.g. per 1,000 population)
+* the population for the selected geography, e.g. local authority
+* Rate represents the rate per N population for this TPMA (e.g. per 1,000 population)
 
 If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
 denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
@@ -256,7 +257,7 @@ the denominator is greater than 0 (so rate = 0).
 Only includes face-to-face appointments.
 
 * Numerator is the number of appointments where the patient was referred by a GP, and it is the
-  patients first attendance
+  patient's first attendance
 * Denominator is the total number of appointments
 * Rate represents the percentage of appointments which were GP-Referred first attendances
 
@@ -360,7 +361,7 @@ the denominator is greater than 0 (so rate = 0).
 
 ### Low cost attendance reduction
 
-* Numerator is the number of A&E attendance where the attendance was "low-cost"
+* Numerator is the number of A&E attendances where the attendance was "low-cost"
 * Denominator is the total number of A&E attendances
 * Rate represents the percentage of A&E attendances which were "low-cost"
 
