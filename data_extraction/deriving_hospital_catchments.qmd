@@ -116,7 +116,7 @@ Using the `LSOA21` to `LAD23CD` lookup created above, aggregate the population f
 
 We use logic based off of the OHID catchment tool, but with a few modifications:
 
-1. they use 5 year age bands, we use single year ages. This is for two reasons. Firstly, we can re-use these catchments in the demand models demographic module, which needs single year ages. Secondly, when we use these for direct age/sex standardisation with the TPMHA's, some of these are defined for specific age ranges. For example, the Alcohol Partially Attributable TPMHA's are defined for 16yo+.
+1. they use 5 year age bands, we use single year ages. This is for two reasons. Firstly, we can re-use these catchments in the demand models demographic module, which needs single year ages. Secondly, when we use these for direct age/sex standardisation with the TPMAs, some of these are defined for specific age ranges. For example, the Alcohol Partially Attributable TPMAs are defined for 16yo+.
 
 2. We use LAD, not MSOA. This is down to the issue we have with HES data not having `LSOA21` (therefore, not having `MSOA21`), and avoiding having to split the populations.
 
