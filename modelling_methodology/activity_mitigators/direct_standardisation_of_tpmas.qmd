@@ -43,7 +43,7 @@ Each TPMA has a different definition for the numerator and denominator. These ar
 For the population, we use either:
 
 * a catchment population, e.g. when we are looking at providers (see [Deriving Hospital Catchments](/data_extraction/deriving_hospital_catchments.qmd))
-* the population for the selected geography, e.g. local authority (of residense).
+* the population for the selected geography, e.g. local authority of residence.
 
 If there are no rows for the numerator for a given age/sex in the local population, but there are
 rows for the denominator, then we impute a 0 for the numerator. If there are no rows for the
