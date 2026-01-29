@@ -3,6 +3,17 @@ title: Deriving Hospital Catchments
 order: 210
 ---
 
+In the model, we need to derive catchment populations to solve a couple of problems:
+
+1. for the [demographics](/modelling_methodology/demographic_modelling/demographic_modelling.qmd) part of the model, we need to join provider based data to local authority based data
+2. for the inputs app, we display some rates as "per 1,000 population", so we need a population to divide by
+
+OHID previously (circa 2022) produced a tool ["NHS Acute (Hospital) Trust Catchment Populations"](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9). We have use the logic stated in this tool to recreate the catchments for hospital providers, based on acute inpatient activity. This allows us to assign a percentage of a local authorities population, by single year of age and sex, to each provider, allowing us to create catchment populations by provider.
+
+In order to do this, we need to derive the Local Authority 2023 code (`LAD23CD`), and then use this to join our inpatient activity to the population files for local authorities.
+
+We use these catchments derived from inpatient activity for all other types of activity (e.g. inpatients, outpatients, A&E).
+
 ## Build lookup from `LSOA11` to `LAD23CD`
 
 In our HES data, we have `LSOA11` present from 2015/16 onwards, but we do not have `LSOA21`. We have the LAD of residence, (`RESLADST_ONS`), but this field will not be consistent over time, as it will be the local authorities as valid at the time of publication of that years HES extract. This makes it hard for us to do longitudinal comparisons.

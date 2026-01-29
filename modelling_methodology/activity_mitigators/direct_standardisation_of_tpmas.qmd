@@ -4,7 +4,7 @@ title: Direct Standardisation of TPMAs
 
 ## Method
 
-For each TPMA, we use direct standardisation by age/sex, using the following formula:
+For each TPMA, we use direct standardisation by (single-year) age and sex, using the following formula:
 
 $$
 rate = \cfrac{
@@ -42,12 +42,13 @@ Each TPMA has a different definition for the numerator and denominator. These ar
 
 For the population, we use either:
 
-* a catchment population, e.g. when we are looking at providers
-* the population for the selected geography, e.g. local authority
+* a catchment population, e.g. when we are looking at providers (see [Deriving Hospital Catchments](/data_extraction/deriving_hospital_catchments.qmd))
+* the population for the selected geography, e.g. local authority (of residense).
 
-If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
-denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
-do not impute any values for these rows, nor do we include values for the reference population.
+If there are no rows for the numerator for a given age/sex in the local population, but there are
+rows for the denominator, then we impute a 0 for the numerator. If there are no rows for the
+denominator then we do not impute any values for these rows, nor do we include values for the
+reference population.
 
 ::: {.callout-note collapse="true"}
 
@@ -95,9 +96,9 @@ do not impute any values for these rows, nor do we include values for the refere
 *	Denominator is the number of admissions for this TPMA
 *	Rate represents mean length of stay for this TPMA
 
-If there are no rows for the numerator for a given age/sex/geography, then there will be no rows
-for the denominator. We do not impute any values for these rows, nor do we include values for the
-reference population.
+If there are no rows for the numerator for a given age/sex in the local population, then there will
+be no rows for the denominator. We do not impute any values for these rows, nor do we include values
+for the reference population.
 
 :::{.callout-note collapse="true"}
 
@@ -129,9 +130,10 @@ reference population.
 *	Denominator is the number of elective admissions where a procedure was performed
 *	Rate represents the percentage of elective procedures with a pre-op length of stay of 1 or 2 days
 
-If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
-denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
-do not impute any values for these rows, nor do we include values for the reference population.
+If there are no rows for the numerator for a given age/sex in the local population, but there are
+rows for the denominator, then we impute a 0 for the numerator. If there are no rows for the
+denominator then we do not impute any values for these rows, nor do we include values for the
+reference population.
 
 :::{.callout-note collapse="true"}
 
@@ -153,9 +155,10 @@ For the population, we use either:
 * the population for the selected geography, e.g. local authority
 * Rate represents the rate per N population for this TPMA (e.g. per 1,000 population)
 
-If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
-denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
-do not impute any values for these rows, nor do we include values for the reference population.
+If there are no rows for the numerator for a given age/sex in the local population, but there are
+rows for the denominator, then we impute a 0 for the numerator. If there are no rows for the
+denominator then we do not impute any values for these rows, nor do we include values for the
+reference population.
 
 :::{.callout-note collapse="true"}
 
@@ -174,9 +177,10 @@ do not impute any values for these rows, nor do we include values for the refere
 *	Denominator is number of admissions for this TPMA for all settings (ordinary or day cases)
 *	Rate represents the percentage of admissions that were an ordinary admission
 
-If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
-denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
-do not impute any values for these rows, nor do we include values for the reference population.
+If there are no rows for the numerator for a given age/sex in the local population, but there are
+rows for the denominator, then we impute a 0 for the numerator. If there are no rows for the
+denominator then we do not impute any values for these rows, nor do we include values for the
+reference population.
 
 :::{.callout-note collapse="true"}
 
@@ -193,9 +197,10 @@ do not impute any values for these rows, nor do we include values for the refere
 *	Denominator is number of admissions for this TPMA for all settings (ordinary, day cases, or outpatients)
 *	Rate represents the percentage of admissions that were not performed in outpatients
 
-If there are no rows for the numerator for a given age/sex/geography, but there are rows for the
-denominator, then we impute a 0 for the numerator. If there are no rows for the denominator then we
-do not impute any values for these rows, nor do we include values for the reference population.
+If there are no rows for the numerator for a given age/sex in the local population, but there are
+rows for the denominator, then we impute a 0 for the numerator. If there are no rows for the
+denominator then we do not impute any values for these rows, nor do we include values for the
+reference population.
 
 :::{.callout-note collapse="true"}
 
