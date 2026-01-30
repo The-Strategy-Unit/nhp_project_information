@@ -22,8 +22,8 @@ To use Variant 3 for comparative purposes:
 3. Choose a new, unique name e.g. '(previous-scenario-name)-ndg3'.
 4. Select 'Variant 3' from the dropdown on the 'Non-demographic Adjustment' page of the inputs app. **For a true comparison, all other parameters should remain the same**.  
 
-The analyses underpinning Variant 2 are available to view [here](ndg_analysis.html) and [here](ndg2_analysis.html). The latter analysis determined the NDG rate applied to non-elective IP admissions.
-A report detailing the expert elicitation exercise which underpins Variant 3 will soon be made available to view on this page.
+The analyses underpinning Variant 2 are available to view [here](ndg_analysis.html) and [here](ndg2_analysis.html). The latter analysis determined the NDG rate applied to non-elective IP admissions. This work has also been published in a [peer-reviewed academic journal](https://doi.org/10.1186/s12913-025-13662-0).
+A report detailing the expert elicitation exercise which underpins Variant 3 is [available here](residual_growth_elicitation_02Dec2024.pdf).
 
 The adjustment rates applied across different types of activity are shown in the table below. These are shown as annual percentage growth rates.
 
