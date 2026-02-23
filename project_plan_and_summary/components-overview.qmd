@@ -47,7 +47,7 @@ This repository is a Shiny dashboard allowing the comparison of TPMAs set by sch
 
 -   [nhp_output_reports](https://github.com/The-Strategy-Unit/nhp_output_reports) [OPEN]
 
-This repository contains R ode to auto-populate the 'final' (sometimes to referred to as 'outputs') and 'validation' report templates. Generates scheme-specific (and possibly site-specific) charts, tables and values from model-run data and inserts these into the report template (docx).
+This repository contains R code to auto-populate the 'final' (sometimes referred to as 'outputs') and 'validation' report templates. Generates scheme-specific (and possibly site-specific) charts, tables and values from model-run data and inserts these into the report template (docx).
 
 -   [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) [OPEN]
 
