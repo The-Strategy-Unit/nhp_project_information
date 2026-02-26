@@ -1,5 +1,0 @@
-AZ_STORAGE_ACCOUNT=
-
-AZ_STORAGE_CONTAINER_SUPPORT=
-# generate a read-only SAS token for the support container using update_secrets.ps1
-AZ_STORAGE_CONTAINER_SUPPORT_SAS=
