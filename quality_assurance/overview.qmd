@@ -18,6 +18,6 @@ Some items are associated with private repositories. We are working towards maki
 
 ## Roles & Responsibilities
 
-- Model Senior Responsible Officer (MSRO): [Peter Spilsbury](https://www.strategyunitwm.nhs.uk/author/peter-spilsbury)
+- Model Senior Responsible Officer (MSRO): [Simon Bourne](https://www.strategyunitwm.nhs.uk/author/simon-bourne)
 - Model owner: [Chris Beeley](https://www.strategyunitwm.nhs.uk/author/chris-beeley)
 - Analysis team: [Data Science team](https://the-strategy-unit.github.io/data_science/about.html) at The Strategy Unit
