@@ -22,6 +22,9 @@ website:
       - section: "Project overview"
         contents:
           auto: project_plan_and_summary/*
+      - section: "Project roadmap"
+        contents:
+          auto: roadmap/*
       - section: "User guide"
         contents:
           auto: user_guide/*
