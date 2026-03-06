@@ -9,7 +9,7 @@ be subject to change in timing and/or scope as programme priorities shift.
 
 This roadmap is updated quarterly.
 
-### Last updated: yyyy-mm-dd
+### Last updated: March 2026
 
 ## Recently Completed 
 (for full details see [model updates](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/model_updates.html))
@@ -23,8 +23,8 @@ This roadmap is updated quarterly.
 
 ## Working on Now
 
-- Companion application "Compare NHP Mitigation Assumptions"
-- Inequalities removal functionality
+- Companion application "Compare NHP Mitigation Assumptions" to allow schemes to view context around TPMA assumptions
+- Inequalities adjustment functionality to allow predictions to assume their resolution per HRG
 - Refresh of health status adjustment distribution values following expert elicitation
 - Access and quality assurance of refreshed baseline data
 
@@ -32,8 +32,8 @@ This roadmap is updated quarterly.
 
 - User interface development for ICB, regional and National modelling
 - Implementation of updated waiting list adjustment module
-- Site-level modelling capabilities
-- Development of a National model scenario library
+- Site-level modelling capabilities to allow finer control on prediction
+- Development of a National model scenario library for training and illustrative purposes
 
 ## Exploring
 

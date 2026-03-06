@@ -3,6 +3,21 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2026/01/29
+
+## v4.4.0
+
+### Age-sex standardisation
+
+Data for all types of potentially-mitigatable activity (TPMAs) now involves direct standardisation by age and sex.
+This change only affects the presentation of data in the inputs app and does not have an impact on modelling.
+Read an explanation in the [Modelling Methodology](../modelling_methodology/activity_mitigators/direct_standardisation_of_tpmas.qmd) section.
+
+### Deriving hospital catchments
+
+We have also [updated the method for deriving hospital catchments](../data_extraction/deriving_hospital_catchments.qmd) to aggregate to local authority districts (LAD23CD).
+This change has had a small impact on the way in which ONS demographic growth has been mapped to providers.
+
 # Update 2025/11/27
 
 ## v4.3.0
