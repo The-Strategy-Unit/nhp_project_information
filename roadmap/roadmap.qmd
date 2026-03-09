@@ -15,22 +15,22 @@ This roadmap is updated quarterly.
 (for full details see [model updates](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/model_updates.html))
 
 - Companion application released, publicly available: ['Find opportunities to reduce hospital care'](https://connect.strategyunitwm.nhs.uk/tpma-explorer/)
-- Companion application released, available on Connect server: ['Scenario Comparisons']()
-- (internal) ICB modelling functionality
-- Direct age-sex standardisation of all TPMAs
+- Companion application released, available on Connect server: ['Scenario Comparisons'](https://connect.strategyunitwm.nhs.uk/connect/#/apps/6ef494fa-5904-48df-a81c-6029c0d5ee6b/content-view)
+- (internal) ICB modelling functionality to allow a system view of potential future acute demand
+- Direct age-sex standardisation of all types of potentially mitigatable activity (TPMAs)
 - Updated method to derive hospital catchments
 - Delivery episodes added to downloadable model results
 
 ## Working on Now
 
-- Companion application "Compare NHP Mitigation Assumptions" to allow schemes to view context around TPMA assumptions
-- Inequalities adjustment functionality to allow predictions to assume their resolution per HRG
+- Companion application "Compare NHP Mitigation Assumptions" to allow providers to view context around TPMA assumptions
+- Inequalities adjustment functionality to allow demand predictions to assume their resolution per HRG
 - Refresh of health status adjustment distribution values following expert elicitation
 - Access and quality assurance of refreshed baseline data
 
 ## Working on Next
 
-- User interface development for ICB, regional and National modelling
+- User interface development for ICB and NHS Regional modelling so users can submit model scenarios
 - Implementation of updated waiting list adjustment module
 - Site-level modelling capabilities to allow finer control on prediction
 - Development of a National model scenario library for training and illustrative purposes
@@ -39,4 +39,4 @@ This roadmap is updated quarterly.
 
 - Applications to support parameter elicitation at National and local levels
 - Addition of novel TPMAs and model components
-- Care-shift analysis support tools
+- Care-shift analysis support tools to allow analysis of 'left-shift' priorities
