@@ -26,7 +26,7 @@ Note also that any scenarios prior to v3.6 which are upgraded will have their po
 
 The Strategy Unit built the model, and we are (proudly) [an NHS team](https://www.strategyunitwm.nhs.uk)
 
-As an NHS team committed to open analysis, we are currently advocating for the entire model to be made open source.
+As an NHS team committed to open analysis, we have ensured that all of the code that can be open is currently open source. For more information on the code that is open and closed in the repository please see [here](../user_guide/FAQ.qmd).
 
 ## We would like to model activity for a specific hospital site, rather than for the whole trust. How can we do this?
 
