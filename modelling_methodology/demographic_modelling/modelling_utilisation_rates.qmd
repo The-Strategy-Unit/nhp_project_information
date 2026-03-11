@@ -55,7 +55,7 @@ Utilisation rates are only adjusted from age 55 years and upward.
 
 Some service lines (see [Baseline utilisation rates](#baseline-util-rate) for complete list) are not adjusted for changes in health status. The following groups are ignored: birth episode, child episode, maternity, all child outpatient groups and all child A&E groups.
 
-Please see [this paper](https://connect.strategyunitwm.nhs.uk/modeling-changes-in-population-health-status/model-pop-health-status.html) for further information on the Health Status Adjustment.
+Please see [this paper](https://connect.strategyunitwm.nhs.uk/outline-model-pop-health-status/) for further information on the Health Status Adjustment.
 
 ## Application in model
 
