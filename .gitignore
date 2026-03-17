@@ -57,3 +57,5 @@ _site/
 .vscode/
 
 **/*.quarto_ipynb
+
+*.html

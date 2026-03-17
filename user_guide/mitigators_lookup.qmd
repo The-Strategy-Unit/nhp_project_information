@@ -15,25 +15,10 @@ The variable names for each strategy are also included. These are used when inte
 ```{r}
 #| label: mitigators-table
 
-library(readr) # forces readr in AzureStor::storage_read_csv
+library(readr)
 
-get_support_container <- function() {
-  container_name <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT")
-  sas_token <- Sys.getenv("AZ_STORAGE_CONTAINER_SUPPORT_SAS")
-  storage_account <- Sys.getenv("AZ_STORAGE_ACCOUNT")
-
-  ep_uri <- glue::glue("https://{storage_account}.blob.core.windows.net")
-
-  ep_uri |>
-    AzureStor::blob_endpoint(sas = sas_token) |>
-    AzureStor::storage_container(container_name)
-}
-
-support_container <- get_support_container()
-
-lookup <- AzureStor::storage_read_csv(
-  support_container,
-  "mitigator-lookup.csv",
+lookup <- read_csv(
+  "https://raw.githubusercontent.com/The-Strategy-Unit/TPMAs/refs/heads/main/reference/mitigator-lookup.csv",
   col_types = "c"
 )
 
