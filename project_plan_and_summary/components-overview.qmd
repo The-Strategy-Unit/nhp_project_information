@@ -61,7 +61,8 @@ This is the repository hosting the content you are reading now. The aim is to pr
 
 ## Open source policy
 
-The policy of the Strategy Unit (MLCSU) and [national policy](https://www.gov.uk/government/publications/data-saves-lives-reshaping-health-and-social-care-with-data/data-saves-lives-reshaping-health-and-social-care-with-data#working-with-partners-to-develop-innovations-that-improve-health-and-care) both encourage sharing of code:
+The [policy of the Strategy Unit (MLCSU)](https://connect.strategyunitwm.nhs.uk/open-source-policy/) and [national policy](https://www.gov.uk/government/publications/data-saves-lives-reshaping-health-and-social-care-with-data/data-saves-lives-reshaping-health-and-social-care-with-data#working-with-partners-to-develop-innovations-that-improve-health-and-care) both encourage sharing of code.
+We will make:
 
 > ...new source code that we produce or commission open and reusable by default (with clear exceptions)
 
