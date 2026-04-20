@@ -101,7 +101,7 @@ The list of conditions that comprise Ambulatory Care Sensitive Conditions used w
 
 ## Cancelled Operations (IP-AA-007)
 
-Operations can be cancelled after a patient has been admitted this is inefficient for the provider and costly for the commissioner as they both incur an unnecessary opportunity cost. 
+Operations can be cancelled after a patient has been admitted. This is inefficient for the provider and costly for the commissioner as they both incur an unnecessary opportunity cost. 
 Cancelled operations can be for a variety of clinical, administrative or patient related reasons.
 Some of these admissions could be avoided through for example improved administration and scheduling or enhanced pre-op patient optimisation and assessment.
 
