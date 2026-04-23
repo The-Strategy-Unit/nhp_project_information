@@ -2,7 +2,7 @@
 title: "Project objectives"
 order: 1
 ---
-
+test
 The government has committed to building more than 40 new hospitals by 2030. The New Hospital Programme (NHP), a partnership between DHSC and NHSE, aims to ensure that this new hospital infrastructure will meet the future needs of the population and that the required investment represents value for money. 
 
 Estimating future activity levels represents a critical early step in the process of scaling and designing new hospital infrastructure. The Demand and Capacity Modelling Tool has been developed by the Strategy Unit to support DHSC and its stakeholders to make robust and auditable assessments of activity that hospitals may need to accommodate in future. 
