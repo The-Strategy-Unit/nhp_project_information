@@ -9,4 +9,4 @@ Estimating future activity levels represents a critical early step in the proces
 
 This document describes this model from a technical perspective. It is designed to be used by individuals engaging directly with the model, to ensure that they have a clear understanding of the model's operations, and by those involved in quality assuring the model. 
 
-The model will aid in the forecasting of the required activity levels the hospital will need to service, as well as the degree of flexibility to build into hospital designs to account for uncertainties and limitations in the modelling. 
+The model is designed to help hospital trusts to specify and quantify their planning assumptions.  The outputs take the form of detailed probabilistic descriptions of future healthcare activity, which can inform a Trust’s efforts to design and appropriately scale their hospital infrastructure.
