@@ -11,6 +11,13 @@ The table contains TPMA codes, which exist to make it easier to refer to and dis
 
 The variable names for each strategy are also included. These are used when interacting directly with the data that underlies the model and apps. The TPMA names are presented to users in the inputs- and outputs-app interfaces.
 
+There are four mechanisms that a TPMA may relate to:
+
+1.  Prevention and public health initiatives. This includes hospital activity related to smoking, alcohol consumption, obesity or falls which may be deemed to be avoidable via prevention and public health interventions. 
+2.  Redirection of activity to out-of-hospital settings or the substitution of hospital activity for some alternative out-of-hospital intervention.  This includes ambulatory care sensitive admissions, mental health admissions that may be avoided with psychiatric liaison, admissions of frail older people and low acuity admissions.
+3.  De-adoption of low value activities, such as tonsillectomies, grommets, and unnecessary follow-up outpatient attendances. 
+4.  Efficiency gains such as reduced length of stay or virtual wards.
+
 
 ```{r}
 #| label: mitigators-table
@@ -22,13 +29,21 @@ lookup <- read_csv(
   col_types = "c"
 )
 
+mechanisms_raw <- jsonlite::read_json(
+  "https://raw.githubusercontent.com/The-Strategy-Unit/TPMAs/refs/heads/main/reference/mechanism-lookup.json")
+
+# 2. Convert JSON list to a dataframe for joining
+mechanisms_df <- tibble::enframe(unlist(mechanisms_raw), name = "mitigator_code", value = "mechanism")
+
 dat <- lookup |>
+  dplyr::left_join(mechanisms_df, by = "mitigator_code") |> 
   dplyr::select(
     Code = mitigator_code,
     Activity = "activity_type",
     Type = "mitigator_type",
     Name = "mitigator_name",
     Variable = "mitigator_variable",
+    Mechanism = "mechanism",
     From = "active_from",
     To = "active_to"
   ) |>
