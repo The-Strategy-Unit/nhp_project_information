@@ -22,13 +22,22 @@ lookup <- read_csv(
   col_types = "c"
 )
 
+mechanisms_raw <- jsonlite::read_json(
+  "https://raw.githubusercontent.com/The-Strategy-Unit/TPMAs/refs/heads/main/reference/mechanism-lookup.json")
+
+# 2. Convert JSON list to a dataframe for joining
+# We assume the JSON is a named list where names are codes and values are the mechanism names
+mechanisms_df <- tibble::enframe(unlist(mechanisms_raw), name = "mitigator_code", value = "mechanism")
+
 dat <- lookup |>
+  dplyr::left_join(mechanisms_df, by = "mitigator_code") |> 
   dplyr::select(
     Code = mitigator_code,
     Activity = "activity_type",
     Type = "mitigator_type",
     Name = "mitigator_name",
     Variable = "mitigator_variable",
+    Mechanism = "mechanism",
     From = "active_from",
     To = "active_to"
   ) |>
