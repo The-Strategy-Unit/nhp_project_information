@@ -2,6 +2,7 @@ name: "Connect Publish (dev)"
 on:
   push:
     branches: [main]
+  pull_request:
 
 jobs:
   connect-publish:
