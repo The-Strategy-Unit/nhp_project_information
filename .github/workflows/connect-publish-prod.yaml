@@ -2,7 +2,6 @@ name: "Connect Publish (prod)"
 on:
   release:
     types: [published]
-  pull_request:
 
 jobs:
   connect-publish:
