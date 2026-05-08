@@ -35,7 +35,7 @@ We use the successors lists to map historical data to the current organisation.
 For example, if provider `A` merged with provider `B` in 2023, when we extract data from 2019 we would remap any data
 for `A` to `B`.
 
-### Private providers
+### Independent sector providers
 
 HES includes data about NHS patients treated by independent sector providers. 
 This includes admitted patient care, outpatient appointments, and A&E attendances.
