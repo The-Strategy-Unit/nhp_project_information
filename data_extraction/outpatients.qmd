@@ -27,6 +27,12 @@ This information is provided in the [organisation successors][ods_succ] from the
 We use the successors lists to map historical data to the current organisation.
 For example, if provider `A` merged with provider `B` in 2023, when we extract data from 2019 we would remap any data
 for `A` to `B`.
+### Independent sector providers
+
+HES includes data about NHS patients treated by independent sector providers. 
+This includes admitted patient care, outpatient appointments, and A&E attendances.
+This can sometimes be identified by an NHS trust provider code, but a site code for 
+an independent sector hospital. 
 
 ## Filtering
 
