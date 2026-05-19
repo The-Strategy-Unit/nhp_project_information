@@ -46,8 +46,11 @@ It is expected that users will choose one of the ONS population projections avai
 
 ## Are there plans for other baseline years?
 
-2023/24 is the most recent available year via HES and currently the only option in the model.
-We plan to include new baselines when they become available via HES.
+With the latest release 2024/5 data is now available. The previous year 2023/4 is also still avaialable to support users who have set and run models already with 2023/4 data. It is essential that you use the baseline data that is appropriate for the modelling stage that you are at- changing to earlier or later baseline dates will severely impact progress with business planning by invalidating modelling results.
+
+Whichever baseline you use it is essential that it is thoroughly validated as being an accurate representation before any modelling is carried out. Very commonly there are differences between HES and the picture painted by local data and these differences need to be understood and corrected to ensure model results are valid.
+
+We will continue to add in new baseline years to the model as they become available, yearly.
 Using different baseline years for modelling means that assumptions will need to be revisited.
 
 ## Does the model use inpatient spells & LoS or beddays?
