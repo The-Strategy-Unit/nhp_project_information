@@ -87,7 +87,7 @@ You can check this in the inputs app or [(re-)request your detailed baseline dat
 ### Covid adjustment removed from model
 
 Covid adjustment has been removed from the model and is no longer available in the inputs app.
-The adjustment was no longer needed because the earliest available baseline year is currently 2023/24.
+The adjustment was no longer needed because the earliest available baseline year no longer includes the period to which the COVID adjustment applies.
 
 ### Delivery episodes added into downloadable model results
 
