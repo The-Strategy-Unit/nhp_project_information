@@ -69,7 +69,7 @@ The baseline data can be downloaded as an Excel file from the inputs app, on the
 
 ## Which year should be selected as the horizon year?
 
-The model allows users to select their 'horizon year': the year they wish the model to forecast up to. We recommend that users select a horizon year at least 10 years beyond the opening of the new hospital. The model can forecast up to and including the 2041/42 financial year.
+The model allows users to select their 'horizon year': the year they wish the model to forecast up to. We recommend that users select a horizon year at least 10 years beyond the opening of the new hospital. The model can forecast up to and including the 2043/44 financial year. The inputs app defaults to the 2041/42 financial year.
 
 ## Do the types of potentially mitigatable activity (TPMAs) account for virtual wards?
 
