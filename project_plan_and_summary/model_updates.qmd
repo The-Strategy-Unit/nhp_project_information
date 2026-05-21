@@ -3,6 +3,26 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2026/05/21
+
+## v5.0.0
+
+### 2024/5 baseline year now available
+
+With the latest release, 2024/5 data is now available. The previous year 2023/4 is also still available to support users who have set and run models already with 2023/4 data. It is essential that you use the baseline data that is appropriate for the modelling stage that you are at, because changing to a different baseline year will severely impact progress with business planning by invalidating modelling results.
+
+Whichever baseline you use, it is essential that it is thoroughly validated as being an accurate representation before any modelling is carried out. Very commonly there are differences between HES and the picture painted by local data and these differences need to be understood and corrected to ensure model results are valid. Please contact [mlcsu.su.datascience@nhs.net](mailto:mlcsu.su.datascience@nhs.net) to request your organisation's 2024/5 baseline data.
+
+Using different baseline years for modelling means that assumptions will need to be revisited.
+
+### 2043 horizon year now available
+
+The model allows users to select their 'horizon year': the year they wish the model to forecast up to. The model can forecast up to and including the 2043/44 financial year. The inputs app defaults to the 2041/42 financial year.
+
+### Bugfix: Health Status Adjustment for OP & A&E
+
+We fixed a bug in the implementation of the [Health Status Adjustment functionality](../modelling_methodology/demographic_modelling/modelling_utilisation_rates.qmd#adjust-health-status) for Outpatients and A&E. This means that Health Status Adjustment now has a slightly larger impact on modeled activity in Outpatients and A&E. However, there is a minimal impact on overall model results.
+
 # Update 2026/01/29
 
 ## v4.4.0
