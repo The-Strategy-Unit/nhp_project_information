@@ -5,6 +5,32 @@ order: 1
 
 This page collates some frequently asked technical questions about the model from stakeholders. We will continue to add to this page as the project continues.
 
+## What happened to the request I made to change/add functionality to the model or its apps?
+
+The NHP demand model and its associated tools have many stakeholders and user groups.
+We aim to create and maintain data science tools that deliver the maximal value
+to the maximal number of users who can create patient care impact using our
+outputs.
+When a request or suggestion is proposed, it is triaged by our product team to
+estimate the user value, and all potential pros and cons of doing the work.
+We may decide that we will not progress the request any further because, for
+example;
+ 
+- User need is not proven or cannot be validated
+- The change would represent an unacceptable increase in maintenance costs
+- The change would not be possible using our current infrastructure
+- The suggested change would introduce governance problems like IG issues
+ 
+Should we agree that the request is valid, useful and theoretically possible to
+implement, it will be prioritised against our existing backlog of work, and we will
+implement the change once its priority is ranked high enough relative to other work.
+ 
+If you would like to ask us about a specific request or suggestion you have
+submitted or discussed in the past, feel free to email the product team (please
+add 'FAO Product Team' to the subject bar) at
+[The Strategy Unit Data Science Team](mailto:mlcsu.su.datascience@nhs.net) and we
+will investigate for you.
+
 ## Can we upgrade scenarios created on older versions of the model?
 
 It is mandatory to use the latest version of the model. We do not support running older versions of the model.
