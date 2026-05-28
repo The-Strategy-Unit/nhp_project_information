@@ -3,6 +3,20 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2026/05/29
+
+## v5.1.0
+
+### 2047 horizon year now available
+
+The model allows users to select their 'horizon year': the year they wish the model to forecast up to. The model can forecast up to and including the 2047/48 financial year. The inputs app defaults to the 2041/42 financial year.
+
+### Change to Health Status Adjustment methodology
+
+We have implemented a new [Health Status Adjustment (HSA) methodology](https://connect.strategyunitwm.nhs.uk/nhp/project_information/modelling_methodology/demographic_modelling/modelling_utilisation_rates.html#adjust-health-status).
+The new method leads to around a 4 times larger impact of HSA on results. However, because overall HSA has a small impact in the model, actual modelled results are only differing by around 2% reduction of activity in most measures and points of delivery.
+In scenarios used for testing, the most significant difference seen was a 5% reduction in modelled nonelective inpatients admissions and beddays, compared to the old methodology.
+
 # Update 2026/05/21
 
 ## v5.0.0
