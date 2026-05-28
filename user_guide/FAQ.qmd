@@ -15,16 +15,16 @@ When a request or suggestion is proposed, it is triaged by our product team to
 estimate the user value, and all potential pros and cons of doing the work.
 We may decide that we will not progress the request any further because, for
 example;
- 
+
 - User need is not proven or cannot be validated
 - The change would represent an unacceptable increase in maintenance costs
 - The change would not be possible using our current infrastructure
 - The suggested change would introduce governance problems like IG issues
- 
+
 Should we agree that the request is valid, useful and theoretically possible to
 implement, it will be prioritised against our existing backlog of work, and we will
 implement the change once its priority is ranked high enough relative to other work.
- 
+
 If you would like to ask us about a specific request or suggestion you have
 submitted or discussed in the past, feel free to email the product team (please
 add 'FAO Product Team' to the subject bar) at
@@ -95,7 +95,7 @@ The baseline data can be downloaded as an Excel file from the inputs app, on the
 
 ## Which year should be selected as the horizon year?
 
-The model allows users to select their 'horizon year': the year they wish the model to forecast up to. We recommend that users select a horizon year at least 10 years beyond the opening of the new hospital. The model can forecast up to and including the 2043/44 financial year. The inputs app defaults to the 2041/42 financial year.
+The model allows users to select their 'horizon year': the year they wish the model to forecast up to. We recommend that users select a horizon year at least 10 years beyond the opening of the new hospital. The model can forecast up to and including the 2047/48 financial year. The inputs app defaults to the 2041/42 financial year.
 
 ## Do the types of potentially mitigatable activity (TPMAs) account for virtual wards?
 
