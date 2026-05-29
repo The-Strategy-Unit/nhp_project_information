@@ -30,6 +30,8 @@ For each TPMA, we create a reference population by:
 * get the population of England, and filter to be between the minimum and maximum age
 * if a TPMA has no activity for either male or females, then there will be no population for that sex
 
+In some cases, the denominator of an age-sex specific rate is zero, and so the rate cannot be defined.  In these cases, we omit the rate from the calculation.  Whilst not conventional, this approach rarely has a material impact on the observed rates in this context. 
+
 Each TPMA has a different definition for the numerator and denominator. These are listed below.
 
 ## Inpatients
