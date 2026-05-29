@@ -8,7 +8,7 @@ This page contains information about changes to the data underpinning the NHP mo
 ## Version 5.1
 
 Date updated: 29/05/2026
-Please see the [release notes for v5.1.0](https://github.com/The-Strategy-Unit/nhp_data/releases/tag/v5.1.0) on the [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) repository.
+There have been no changes to the data between v5.0 and v5.1
 
 ## Version 5.0
 
