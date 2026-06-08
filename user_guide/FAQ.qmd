@@ -5,6 +5,13 @@ order: 1
 
 This page collates some frequently asked technical questions about the model from stakeholders. We will continue to add to this page as the project continues.
 
+## I have sign off to use our own bespoke population projections - how do I submit these to you?
+
+Once you have all relevant sign-offs, we can accept your population projections 
+provided it is delivered to us in a specific format. Please see [this example](../resources/national_demographic_factors.csv) CSV  - please structure your data with the same layout, headings and file format.
+
+You can [contact the inbox](mailto:mlcsu.su.datascience@nhs.net) for questions or to submit your file.
+
 ## What happened to the request I made to change/add functionality to the model or its apps?
 
 The NHP demand model and its associated tools have many stakeholders and user groups.
