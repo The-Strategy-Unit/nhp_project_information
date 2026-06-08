@@ -3,6 +3,16 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2026/06/08
+
+### Removal of time profiles
+
+Previously users were able to select between several options for how they predicted
+the effect of mitigations for a TPMA might change activity rates over time (front-loaded,
+back-loaded or linear). This functionality was only of use in the generation of 
+'time profiles', a product which has now been retired. We have therefore removed
+this selection in the inputs app.
+
 # Update 2026/05/29
 
 ## v5.1.0
