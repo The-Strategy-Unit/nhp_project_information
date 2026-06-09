@@ -5,10 +5,15 @@ order: 1
 
 This page collates some frequently asked technical questions about the model from stakeholders. We will continue to add to this page as the project continues.
 
-## I have sign off to use our own bespoke population projections - how do I submit these to you?
+## I have sign off to use our own custom population projections - how do I submit these to you?
 
 Once you have all relevant sign-offs, we can accept your population projections 
 provided it is delivered to us in a specific format. Please see [this example](../resources/national_demographic_factors.csv) CSV  - please structure your data with the same layout, headings and file format.
+
+If you also wish to submit a custom birth projection you have two options:
+
+1. Use our methodology to create custom birth projections from custom population projection you have submitted, or
+2. Provide us with a custom birth projection in [this format](../resources/national_birth_factors.csv).
 
 You can [contact the inbox](mailto:mlcsu.su.datascience@nhs.net) for questions or to submit your file.
 
