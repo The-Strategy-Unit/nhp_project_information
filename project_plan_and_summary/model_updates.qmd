@@ -9,7 +9,7 @@ order: 5
 
 Previously users were able to select between several options for how they predicted
 the effect of mitigations for a TPMA might change activity rates over time (front-loaded,
-back-loaded or linear). This functionality was only of use in the generation of 
+back-loaded, step change or linear). This functionality was only of use in the generation of 
 'time profiles', a product which has now been retired. We have therefore removed
 this selection in the inputs app.
 
