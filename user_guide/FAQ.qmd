@@ -10,7 +10,7 @@ This page collates some frequently asked technical questions about the model fro
 Once you have all relevant sign-offs, we can accept your population projections 
 provided it is delivered to us in a specific format. Please see [this example](../resources/national_demographic_factors.csv) CSV  - please structure your data with the same layout, headings and file format.
 
-If you also wish to submit a custom birth projection you have two options:
+A custom birth projection is also required. You may select either of the two options below:
 
 1. Use our methodology to create custom birth projections from custom population projection you have submitted, or
 2. Provide us with a custom birth projection in [this format](../resources/national_birth_factors.csv).
