@@ -118,7 +118,7 @@ For each TPMA, users are asked to provide estimates of how much they think the a
 
 A value of 100% means no change, whilst one of 0% means that all activity is mitigated.
 
-Further information on all the possible activity mitigation strategies accounted for in the model, including background, rationale, and evidence is [available here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd). The underpinning SQL code is available on request.
+Further information on all the possible activity mitigation strategies accounted for in the model, including background, rationale, and evidence is detailed in the [inpatient activity mitigators chapter](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd). The underpinning SQL code is available on request.
 
 ### Inpatients
 

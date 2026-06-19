@@ -356,7 +356,7 @@ We have fixed a bug preventing baseline adjustment from working correctly for A&
 ### Model methodology improvement to show activity avoided
 
 We have changed the methodology used in the modelling.
-An explanation of the new methodology is available [here](../modelling_methodology/modelling_uncertainty.qmd) and a detailed technical explanation is [available here](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/).
+An explanation of the new methodology is available in the chapter on [modelling uncertainty](../modelling_methodology/modelling_uncertainty.qmd) and a detailed technical explanation on [bionomial-thinning](https://connect.strategyunitwm.nhs.uk/technical-note/binomial-thinning/).
 
 The reason for this change is to allow greater nuance in the reporting of activity growth and activity mitigation.
 We can now show the activity that was prevented due to the activity avoidance mitigators.
@@ -588,7 +588,7 @@ The interaction between the various factors in the model has in the past been re
 However, we found this created inconsistencies in specific scenarios.
 To address this, we now show the Model Interaction Term as a separate value in the waterfall charts.
 
-Further detail on the methodology is [available here](https://connect.strategyunitwm.nhs.uk/nhp/project_information/user_guide/glossary.html#impact-of-changes).
+Further detail on the [impact of change](user_guide/glossary.qmd#impact-of-changes) can be found in the [glossary](user_guide/glossary.qmd).
 
 ## Other changes
 
@@ -731,7 +731,7 @@ There are four new Virtual Ward activity mitigators now available in the model v
 Day surgery is now established practice with rates continuing to increase.
 Due to advances in anaesthesia and surgical techniques, it is the standard pathway of care for many complex patients and procedures traditionally treated through inpatient pathways.
 There are four new day procedures mitigators now available in the model v.1.1.
-Further information is [available here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures).
+Further information can be found in the [inpatient activity mitgators chapter](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures).
 
 -   Day Procedures: Occasionally performed as a Daycase (IP-EF-005)
 -   Day Procedures: Usually performed as a Daycase (IP-EF-007)
