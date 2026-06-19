@@ -8,12 +8,12 @@ This page collates some frequently asked technical questions about the model fro
 ## I have sign off to use our own custom population projections - how do I submit these to you?
 
 Once you have all relevant sign-offs, we can accept your population projections 
-provided it is delivered to us in a specific format. Please see [this example](../resources/national_demographic_factors.csv) CSV  - please structure your data with the same layout, headings and file format.
+provided it is delivered to us in a specific format. Please see [this csv example](../resources/national_demographic_factors.csv) - please structure your data with the same layout, headings and file format.
 
 A custom birth projection is also required. You may select either of the two options below:
 
 1. Use our methodology to create custom birth projections from custom population projection you have submitted, or
-2. Provide us with a custom birth projection in [this format](../resources/national_birth_factors.csv).
+2. Provide us with a custom birth projection in the format of this [national birth factors csv](../resources/national_birth_factors.csv).
 
 You can [contact the inbox](mailto:mlcsu.su.datascience@nhs.net) for questions or to submit your file.
 
@@ -64,7 +64,7 @@ Note also that any scenarios prior to v3.6 which are upgraded will have their po
 
 The Strategy Unit built the model, and we are (proudly) [an NHS team](https://www.strategyunitwm.nhs.uk)
 
-As an NHS team committed to open analysis, we have ensured that all of the code that can be open is currently open source. For more information on the code that is open and closed in the repository please see [here](../project_plan_and_summary/components-overview.qmd).
+As an NHS team committed to open analysis, we have ensured that all of the code that can be open is currently open source. For more information on the code that is open and closed in the repository please go to the [components overview chapter](../project_plan_and_summary/components-overview.qmd).
 
 ## We would like to model activity for a specific hospital site, rather than for the whole trust. How can we do this?
 
@@ -163,7 +163,7 @@ Including outpatient DNAs in the model would add another level of complexity, an
 
 ## How are outputs provided?
 
-This will be made clearer in the outputs/refinement workshop. For inpatients and outpatients, outputs are provided which can be broken down by sitetret (ODS Site Code), pod (point of delivery), and tretspef (Treatment Function Codes), as well as demographic factors (sex and age). Detailed data visualisation and exploration is available via the outputs app, and model results are also available to download in JSON and Excel formats. An example of the Excel results using dummy data is available [to download here](example_outputs.xlsx).
+This will be made clearer in the outputs/refinement workshop. For inpatients and outpatients, outputs are provided which can be broken down by sitetret (ODS Site Code), pod (point of delivery), and tretspef (Treatment Function Codes), as well as demographic factors (sex and age). Detailed data visualisation and exploration is available via the outputs app, and model results are also available to download in JSON and Excel formats. [An example of the Excel results](example_outputs.xlsx) using dummy data is available to view or download through the browser or as a raw file from [GitHub](https://github.com/The-Strategy-Unit/nhp_project_information/blob/main/user_guide/example_outputs.xlsx).
 
 ## When do users see model outputs?
 
