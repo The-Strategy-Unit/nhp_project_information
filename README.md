@@ -1,41 +1,31 @@
 # NHP (New Hospital Programme) model project information
 
-This code repository contains the code used to build a Quarto website for the NHP documentation which is hosted on 
-the Strategy Unit Posit Connect.
+This code repository contains the code used to build a Quarto website for the 
+NHP documentation which is hosted on the Strategy Unit Posit Connect.
 
 ## Releases
 
-There are three workflows set up in GitHub to publish this documentation.
+There are three different deployments of this documentation site, all hosted on 
+the Strategy Unit Posit Connect server:
 
-As it's updated a workflow publishes a [preview](https://connect.strategyunitwm.nhs.uk/nhp/project_information_preview/) 
-on the Strategy Unit Posit Connect server. This is helpful to the team who have made the changes
-to ensure they are working and to check readability in the published format
-before release.
+1. [Preview deployment](https://connect.strategyunitwm.nhs.uk/nhp/project_information_preview/) 
 
-> The preview documentation site is created automatically from a Pull Request to the main branch in GitHub
+Triggered on Pull Request to the main branch. Intended to be helpful to authors 
+and reviewers to check for readability in the published format, before it is 
+approved. Restricted to specific users on Connect.
 
-Once a PR has been accepted with a merge to main the document can then be viewed
-at a [development Posit Connect site](https://connect.strategyunitwm.nhs.uk/nhp/dev/project_information/)
-so it's worth viewing this as a user of the documentation as these will reflect
-accepted changes.
+2. [Dev deployment](https://connect.strategyunitwm.nhs.uk/nhp/dev/project_information/)
 
-> The development documentation showing accepted changes (but not yet published) is created automatically by 
-a merge to the main branch in GitHub
+Triggered on merge to the main branch in GitHub. Intended to show all changes 
+that will go into the prod release, for previewing and checking. Restricted to 
+specific users on Connect.
 
-The final document available at the [Posit Connect site](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)
-is related closely to the [tagged releases](https://github.com/The-Strategy-Unit/nhp_project_information/releases).
+3. [Prod deployment](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)
 
-> The published documentation is triggered by a tagged release being added to the GitHub code
-
-Releases of the documentation are timed to coincide with the [NHP model](https://github.com/The-Strategy-Unit/nhp_model) 
-releases. This is in terms of the time of release and not the versions which can be different.
-
-## Versioning
-
-The versioning used for the first two parts of the number reflect all NHP 
-products (major and minor in Semantic Versioning terms) and the third number 
-will reflect "patch releases" connected with the repository. For documentation
-this may be edits or updates to the text.
+Triggered on [tagged release](https://github.com/The-Strategy-Unit/nhp_project_information/releases) 
+of the repository. Tagged releases of this repository for major and minor 
+versions are closely tied to the tagged releases of other NHP repositories, 
+including nhp_model, nhp_inputs and nhp_outputs. Open to the public.
 
 ## Contact
 
