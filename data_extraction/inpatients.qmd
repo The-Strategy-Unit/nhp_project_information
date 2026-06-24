@@ -37,10 +37,10 @@ for `A` to `B`.
 
 ### Independent sector providers
 
-HES includes data about NHS patients treated by independent sector providers. 
+HES includes data about NHS patients treated by independent sector providers.
 This includes admitted patient care, outpatient appointments, and A&E attendances.
-This can sometimes be identified by an NHS trust provider code, but a site code for 
-an independent sector hospital. 
+This can sometimes be identified by an NHS trust provider code, but a site code for
+an independent sector hospital.
 
 ## Filtering
 
@@ -64,10 +64,14 @@ From v4.3, we:
 
 ### `group`
 
-We determine the group based on the `admimeth` field.
+We mainly determine the group based on the `admimeth` field:
 
-- if it starts with a `"1"`, then `"elective"`
-- if it starts with a `"3"`, then `"maternity"`
+- if:
+  - `admimeth` starts with a `"3"` or `tretspef` is `"501"` or `"560"`
+  - and `sex` is `"2"`
+  - and `age` is between `13` and `55`
+  - then `"maternity"`
+- if `admimeth` starts with a `"1"`, then `"elective"`
 - otherwise, "`non-elective`"
 
 ### `has_procedure`
