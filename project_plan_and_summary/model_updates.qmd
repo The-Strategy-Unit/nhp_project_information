@@ -14,9 +14,12 @@ Previously it was when the admission-method code started with a 3.
 Now it's when the admission-method code starts with a 3 _or_ the treatment specialty code is 501 or 560, but only for female patients between the ages of 13 and 55.
 Please see [the full 'group' definition in the Data Extraction section](../data_extraction/inpatients.html#group).
 
+This impacts the maternity and elective inpatient points-of-delivery (PODs), so there's likely to be differences in your results.
+Please check your baseline data again.
+
 ### Removal of time profiles
 
-Previously, users were able to choose the rate of change to the horizon year for a given prediction: front-loaded, back-loaded, step change or linear. 
+Previously, users were able to choose the rate of change to the horizon year for a given prediction: front-loaded, back-loaded, step change or linear.
 This functionality was only of use in the generation of 'time profiles', a product which has now been retired.
 We have therefore removed this selection in the inputs app.
 
