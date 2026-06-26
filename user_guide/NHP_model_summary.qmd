@@ -5,7 +5,7 @@ order: 1
 
 # What does the NHP model do?
 
-A one page explainer [is available here](https://connect.strategyunitwm.nhs.uk/nhp_model_explainer/).
+A separate one page explainer is available as a [standalone webpage](https://connect.strategyunitwm.nhs.uk/nhp_model_explainer/).
 
 Essentially, the NHP model estimates future hospital activity. It is a probabilistic model which factors in the inherent uncertainty associated with making forecasts about future demand. As such, some of the inputs must be given in the form of ranges (80% prediction intervals) and the outputs provide a [principal projection](/user_guide/glossary.qmd#principal-projection) as well as a description of the variation in the estimated future activity. The main [outputs](/user_guide/FAQ.qmd#how-are-outputs-provided) are high-level summary statistics such as counts of admissions, bed-days, outpatient and A&E attendances as well as more detailed information providing a breakdown by site, activity type, age group, and treatment specialty.  
 
@@ -23,4 +23,4 @@ The model uses Monte Carlo simulations – it runs as many simulations as have b
 
 From model v2.0, it is the average (mean) of all the simulations which produces the principal projection – the most likely estimate of activity in the horizon year. It is the figures of the principal projection which will be the starting point for schemes converting this projected demand into capacity. The model outputs also inform the user of the potential variation in future activity, as displayed in beeswarm plots and S-curve charts. For many of the outputs, the values of the lower and upper prediction intervals are also available. As such, the outputs of the model reflect the uncertainty in the underpinning inputs, assumptions and estimates.  
 
-More detail on how the parameters are applied to individual records from the baseline data is [available here](/modelling_methodology/modelling_uncertainty.qmd). 
+More detail on how the parameters are applied to individual records from the baseline data can be found in the chapter on [modelling uncertainty](/modelling_methodology/modelling_uncertainty.qmd). 
