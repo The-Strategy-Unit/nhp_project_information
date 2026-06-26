@@ -1,6 +1,19 @@
 ---
 title: "TPMAs lookup"
 order: 5
+format:
+  html:
+    resources:
+      - js/table.js
+    include-in-header:
+      text: |
+        <link rel="stylesheet"
+              href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
+        <script src="js/table.js"></script>
 ---
 
 This page contains an interactive table with a sortable and searchable lookup of types of potentially mitigatable activity (TPMAs). Click the 'Download CSV' button to download a copy with the current filters applied (if any).
@@ -19,63 +32,10 @@ There are four mechanisms that a TPMA may relate to:
 4.  Efficiency gains such as reduced length of stay or virtual wards.
 
 
-```{r}
-#| label: mitigators-table
+<table id="tpma-table" class="display" style="width:100%"></table>
 
-library(readr)
-
-lookup <- read_csv(
-  "https://raw.githubusercontent.com/The-Strategy-Unit/TPMAs/refs/heads/main/reference/mitigator-lookup.csv",
-  col_types = "c"
-)
-
-mechanisms_raw <- jsonlite::read_json(
-  "https://raw.githubusercontent.com/The-Strategy-Unit/TPMAs/refs/heads/main/reference/mechanism-lookup.json")
-
-# 2. Convert JSON list to a dataframe for joining
-mechanisms_df <- tibble::enframe(unlist(mechanisms_raw), name = "mitigator_code", value = "mechanism")
-
-dat <- lookup |>
-  dplyr::left_join(mechanisms_df, by = "mitigator_code") |> 
-  dplyr::select(
-    Code = mitigator_code,
-    Activity = "activity_type",
-    Type = "mitigator_type",
-    Name = "mitigator_name",
-    Variable = "mitigator_variable",
-    Mechanism = "mechanism",
-    From = "active_from",
-    To = "active_to"
-  ) |>
-  dplyr::mutate(
-    Activity = dplyr::if_else(
-      Activity == "aae",
-      "A&E",
-      stringr::str_to_upper(Activity)
-    ),
-    Type = Type |> stringr::str_to_title() |> stringr::str_replace("_", " ")
-  ) |>
-  tidyr::replace_na(list(To = "-"))
-
-htmltools::tagList(
-  htmltools::tags$button(
-    "Download CSV",
-    onclick = "Reactable.downloadDataCSV('mitigators-data')"
-  ),
-  reactable::reactable(
-    elementId = "mitigators-data",
-    data = dat,
-    defaultSorted = "Code",
-    searchable = TRUE,
-    filterable = TRUE,
-    columns = list(
-      "Code" = reactable::colDef(maxWidth = 100),
-      "Activity" = reactable::colDef(maxWidth = 75),
-      "Type" = reactable::colDef(maxWidth = 105),
-      "From" = reactable::colDef(maxWidth = 70),
-      "To" = reactable::colDef(maxWidth = 70)
-    )
-  )
-) |>
-  htmltools::browsable()
-```
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  loadTpmasTable("#tpma-table");
+});
+</script>
