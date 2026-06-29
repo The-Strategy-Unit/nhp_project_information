@@ -9,13 +9,18 @@ format:
       - assumptions.json
     include-in-header:
       text: |
-        <link rel="stylesheet"
-              href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css" />
-        <link rel="stylesheet" href="css/table.css" />
+        <link
+          href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/datatables.min.css"
+          rel="stylesheet"
+          integrity="sha384-pq10ZYwmet1tp386fLkrSm/N7RUYsWsdYI3cFFJxvfY91mTNBl96Fw3/u4pYU3l2"
+          crossorigin="anonymous">
+ 
+        <script
+          src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/datatables.min.js"
+          integrity="sha384-6GudBuzC533FClgQWy/gDB8pVYcyEr0WN8QDbQu+kNaxeGolpBLCdhBMvrHr7gF8"
+          crossorigin="anonymous"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
+        <link rel="stylesheet" href="css/table.css" />
         <script src="js/table.js"></script>
 ---
 

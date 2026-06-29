@@ -3,11 +3,21 @@ function initDataTable(selector, data, columns) {
     data: data,
     columns: columns,
     pageLength: 25,
-    order: [],
+    order: [[0, "asc"]],
     scrollX: true,
     layout: {
-      topStart: "search",
-      topEnd: "pageLength",
+      topStart: [
+        {
+          buttons: [
+            {
+              extend: 'csvHtml5',
+              text: 'Download CSV'
+            }
+          ]
+        },
+
+      ],
+      topEnd: "search",
       bottomStart: "info",
       bottomEnd: "paging"
     }

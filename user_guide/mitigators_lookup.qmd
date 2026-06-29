@@ -7,12 +7,22 @@ format:
       - js/table.js
     include-in-header:
       text: |
-        <link rel="stylesheet"
-              href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css">
+        <link
+          href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/b-3.2.6/b-html5-3.2.6/datatables.min.css"
+          rel="stylesheet"
+          integrity="sha384-1OScWqbx4XgbHvbfZzPSoQ5TfKTHjWXe0jqxPmrngilLvmJ4Z4F8gkX/b9H/q1z4"
+          crossorigin="anonymous">
+        
+        <script
+          src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/b-3.2.6/b-html5-3.2.6/datatables.min.js"
+          integrity="sha384-c8v8R8HgB2YgkBbz+W+EB5M/1RKD5wqDVq1GWXpVLlYmI2EJ+qhj03f0LWH4nd3E"
+          crossorigin="anonymous"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js"
+          integrity="sha384-Jd2/X5FXVKahwaY2nivvw4LfSTg9idSj8yNXWtT4qef0fHSYr6M7M8bJAfbFYoMc"
+          crossorigin="anonymous"></script>
+          
         <script src="js/table.js"></script>
 ---
 
