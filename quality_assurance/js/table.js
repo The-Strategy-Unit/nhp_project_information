@@ -10,22 +10,21 @@ function initTable() {
       return response.json();
     })
     .then(rows => {
+      const escapeHtml = value => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      const safeHref = href => (/^javascript:/i.test(String(href ?? "").trim()) ? "#" : String(href ?? "").trim());
+
       const data = rows.map(row => {
-        const risk = calcRisk(row.quality, row.impact);
-        return {
-          id: row.id,
-          description: `<a href="${row.link}">${row.description}</a>`,
-          quality: `<div class="tag status-${row.quality}">${row.quality}</div>`,
-          impact: `<div class="tag status-${row.impact}">${row.impact}</div>`,
-          risk: `<div class="tag status-${risk}">${risk}</div>`
-        };
+        const quality = String(row.quality ?? "").toLowerCase();
+        const impact = String(row.impact ?? "").toLowerCase();
+        const risk = calcRisk(quality, impact);
+        return { id: row.id, description: String(row.description ?? ""), link: safeHref(row.link), quality, impact, risk };
       });
       const columns = [
         { data: "id", title: "ID" },
-        { data: "description", title: "Description" },
-        { data: "quality", title: "Quality" },
-        { data: "impact", title: "Impact" },
-        { data: "risk", title: "Risk" }
+        { data: "description", title: "Description", render: (data, type, row) => type === "display" ? `<a href="${escapeHtml(row.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(data)}</a>` : data },
+        { data: "quality", title: "Quality", render: (data, type) => type === "display" ? `<div class="tag status-${escapeHtml(data)}">${escapeHtml(data)}</div>` : data },
+        { data: "impact", title: "Impact", render: (data, type) => type === "display" ? `<div class="tag status-${escapeHtml(data)}">${escapeHtml(data)}</div>` : data },
+        { data: "risk", title: "Risk", render: (data, type) => type === "display" ? `<div class="tag status-${escapeHtml(data)}">${escapeHtml(data)}</div>` : data }
       ];
 
       new DataTable(selector, {
