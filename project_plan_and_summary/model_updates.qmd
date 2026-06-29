@@ -598,7 +598,7 @@ The interaction between the various factors in the model has in the past been re
 However, we found this created inconsistencies in specific scenarios.
 To address this, we now show the Model Interaction Term as a separate value in the waterfall charts.
 
-Further detail on the [impact of change](user_guide/glossary.qmd#impact-of-changes) can be found in the [glossary](user_guide/glossary.qmd).
+Further detail on the [impact of change](../user_guide/glossary.qmd#impact-of-changes) can be found in the [glossary](../user_guide/glossary.qmd).
 
 ## Other changes
 
