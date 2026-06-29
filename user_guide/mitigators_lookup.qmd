@@ -41,8 +41,10 @@ There are four mechanisms that a TPMA may relate to:
 3.  De-adoption of low value activities, such as tonsillectomies, grommets, and unnecessary follow-up outpatient attendances. 
 4.  Efficiency gains such as reduced length of stay or virtual wards.
 
-
-<table id="tpma-table" class="display" style="width:100%"></table>
+<table id="tpma-table" class="display" style="width:100%">
+  <thead></thead>
+  <tbody></tbody>
+</table>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {

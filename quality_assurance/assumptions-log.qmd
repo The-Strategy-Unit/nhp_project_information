@@ -36,7 +36,10 @@ Our assumptions log has the following columns
 
 This project website is version controlled and therefore historical versions of the assumption log can be found on [GitHub](https://github.com/The-Strategy-Unit/nhp_project_information).
 
-<table id="assumptions-table" class="" style="width:100%"></table>
+<table id="assumptions-table" class="" style="width:100%">
+  <thead></thead>
+  <tbody></tbody>
+</table>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => { initTable() });
