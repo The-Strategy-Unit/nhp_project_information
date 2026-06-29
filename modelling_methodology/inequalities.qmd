@@ -1,6 +1,7 @@
 ---
 title: 'Inequalities'
 order: 1
+freeze: true
 ---
 
 ## Reducing socio-economic inequalities in access to planned hospital procedures
@@ -56,18 +57,12 @@ library(gt)
 library(dplyr)
 
 #set up some dummy data
-data <- data.frame(quintile = seq(1,5,1),
-                   population = c(154565,
-                                  84885,
-                                  69171,
-                                  77929,
-                                  45067),
-                   activity_count = c(122,
-                                      96,
-                                      109,
-                                      150,
-                                      88)) |>
-  mutate(activity_rate = round(activity_count/population,  4))
+data <- data.frame(
+  quintile = seq(1, 5, 1),
+  population = c(154565, 84885, 69171, 77929, 45067),
+  activity_count = c(122, 96, 109, 150, 88)
+) |>
+  mutate(activity_rate = round(activity_count / population, 4))
 
 #create a linear model to plot and predict from
 model <- lm(activity_rate ~ quintile, data = data)
@@ -76,13 +71,15 @@ lower <- predict(model, newdata = data.frame(quintile = 1))
 mid <- mean(data$activity_rate)
 
 data |>
-  gt::gt() |> 
-  gt::tab_header('Synthetic activity rate per IMD quintile') |> 
+  gt::gt() |>
+  gt::tab_header('Synthetic activity rate per IMD quintile') |>
   gt::tab_footnote('IMD Index of Multiple Deprivation') |>
-  gt::cols_label(quintile = 'IMD Quintile',
-                 population = 'Population',
-                 activity_count = 'Count of Activity',
-                 activity_rate = 'Activity rate')
+  gt::cols_label(
+    quintile = 'IMD Quintile',
+    population = 'Population',
+    activity_count = 'Count of Activity',
+    activity_rate = 'Activity rate'
+  )
 ```
 
 
@@ -93,24 +90,32 @@ data |>
 #| label: fig-1
 #| warning: false
 
-
 library(ggplot2)
 
 #plotting
 plot <- ggplot(data, aes(x = as.factor(quintile), y = activity_rate)) +
   geom_point(size = 3, colour = 'blue') +
-  geom_smooth(aes(x = as.numeric(quintile), y = activity_rate), method = 'lm', 
-              colour = 'orange', linetype = 'dashed', se = F) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text = element_text(size = 14),
-        text = element_text(size = 14)) +
+  geom_smooth(
+    aes(x = as.numeric(quintile), y = activity_rate),
+    method = 'lm',
+    colour = 'orange',
+    linetype = 'dashed',
+    se = F
+  ) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text = element_text(size = 14),
+    text = element_text(size = 14)
+  ) +
   theme_bw() +
-  labs(y = 'Activity rate',
-       x = 'Deprivation quintile',
-       title = 'Figure 1. An example of deprivation-related inequality in activity rate',
-       subtitle = 'Blue dots represent average activity rates per quintile.\nThe orange dashed line is a line of best fit through these points.') +
-  scale_y_continuous(breaks = seq(0.000,0.004, 0.0005))
+  labs(
+    y = 'Activity rate',
+    x = 'Deprivation quintile',
+    title = 'Figure 1. An example of deprivation-related inequality in activity rate',
+    subtitle = 'Blue dots represent average activity rates per quintile.\nThe orange dashed line is a line of best fit through these points.'
+  ) +
+  scale_y_continuous(breaks = seq(0.000, 0.004, 0.0005))
 
 suppressMessages(print(plot))
 ```
@@ -137,40 +142,64 @@ quintile.
 #| label: tab-2
 #| warning: false
 
-table <- data.frame('IMD Quintile' = c('1', '2', '3', '4', '5'),
-                    'Observed activity rate' = c(data$activity_rate[data$quintile == min(data$quintile)], 
-                                                 data$activity_rate[data$quintile == '2'],
-                                                 data$activity_rate[data$quintile == '3'],
-                                                 data$activity_rate[data$quintile == '4'],
-                                                 data$activity_rate[data$quintile == max(data$quintile)]),
-                    'Fitted Rate' = c(predict(model, newdata = data.frame(quintile = 1)),
-                                      predict(model, newdata = data.frame(quintile = 2)),
-                                      predict(model, newdata = data.frame(quintile = 3)),
-                                      predict(model, newdata = data.frame(quintile = 4)),
-                                      predict(model, newdata = data.frame(quintile = 5))),
-                    'Level-up Target Rate' = c(rep(predict(model, newdata = data.frame(quintile = 5)),4),
-                                   data$activity_rate[data$quintile == 5]),
-                    'Level-up Multiplier' = c(predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == '1'],
-                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == '2'],
-                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == '3'],
-                                              predict(model, newdata = data.frame(quintile = 5))/data$activity_rate[data$quintile == '4'],
-                                              1),
-                    'Level-down Target Rate' = c(rep(predict(model, newdata = data.frame(quintile = 1)),4),
-                                   data$activity_rate[data$quintile == 1]),
-                    'Level-down Multiplier' = c(1,
-                                                predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == '2'],
-                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == '3'],
-                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == '4'],
-                                              predict(model, newdata = data.frame(quintile = 1))/data$activity_rate[data$quintile == '5']),
-                    'Zero-sum Target Rate' = rep(mean(data$activity_rate),5),
-                    'Zero-sum Multiplier' = c(mean(data$activity_rate)/data$activity_rate[data$quintile == '1'],
-                                              mean(data$activity_rate)/data$activity_rate[data$quintile == '2'],
-                                              mean(data$activity_rate)/data$activity_rate[data$quintile == '3'],
-                                              mean(data$activity_rate)/data$activity_rate[data$quintile == '4'],
-                                              mean(data$activity_rate)/data$activity_rate[data$quintile == '5']),
-                    check.names = F) |>
+table <- data.frame(
+  'IMD Quintile' = c('1', '2', '3', '4', '5'),
+  'Observed activity rate' = c(
+    data$activity_rate[data$quintile == min(data$quintile)],
+    data$activity_rate[data$quintile == '2'],
+    data$activity_rate[data$quintile == '3'],
+    data$activity_rate[data$quintile == '4'],
+    data$activity_rate[data$quintile == max(data$quintile)]
+  ),
+  'Fitted Rate' = c(
+    predict(model, newdata = data.frame(quintile = 1)),
+    predict(model, newdata = data.frame(quintile = 2)),
+    predict(model, newdata = data.frame(quintile = 3)),
+    predict(model, newdata = data.frame(quintile = 4)),
+    predict(model, newdata = data.frame(quintile = 5))
+  ),
+  'Level-up Target Rate' = c(
+    rep(predict(model, newdata = data.frame(quintile = 5)), 4),
+    data$activity_rate[data$quintile == 5]
+  ),
+  'Level-up Multiplier' = c(
+    predict(model, newdata = data.frame(quintile = 5)) /
+      data$activity_rate[data$quintile == '1'],
+    predict(model, newdata = data.frame(quintile = 5)) /
+      data$activity_rate[data$quintile == '2'],
+    predict(model, newdata = data.frame(quintile = 5)) /
+      data$activity_rate[data$quintile == '3'],
+    predict(model, newdata = data.frame(quintile = 5)) /
+      data$activity_rate[data$quintile == '4'],
+    1
+  ),
+  'Level-down Target Rate' = c(
+    rep(predict(model, newdata = data.frame(quintile = 1)), 4),
+    data$activity_rate[data$quintile == 1]
+  ),
+  'Level-down Multiplier' = c(
+    1,
+    predict(model, newdata = data.frame(quintile = 1)) /
+      data$activity_rate[data$quintile == '2'],
+    predict(model, newdata = data.frame(quintile = 1)) /
+      data$activity_rate[data$quintile == '3'],
+    predict(model, newdata = data.frame(quintile = 1)) /
+      data$activity_rate[data$quintile == '4'],
+    predict(model, newdata = data.frame(quintile = 1)) /
+      data$activity_rate[data$quintile == '5']
+  ),
+  'Zero-sum Target Rate' = rep(mean(data$activity_rate), 5),
+  'Zero-sum Multiplier' = c(
+    mean(data$activity_rate) / data$activity_rate[data$quintile == '1'],
+    mean(data$activity_rate) / data$activity_rate[data$quintile == '2'],
+    mean(data$activity_rate) / data$activity_rate[data$quintile == '3'],
+    mean(data$activity_rate) / data$activity_rate[data$quintile == '4'],
+    mean(data$activity_rate) / data$activity_rate[data$quintile == '5']
+  ),
+  check.names = F
+) |>
   gt::gt() |>
-  gt::tab_header('Fitted activity rates per quintile') |> 
+  gt::tab_header('Fitted activity rates per quintile') |>
   gt::tab_footnote('IMD Index of Multiple Deprivation') |>
   fmt_number(columns = 2:9, decimals = 4)
 table
@@ -192,43 +221,54 @@ information per four-character HRG, ICB and scheme will be viewable.
 
 library(patchwork)
 
-A <- plot + 
-  labs(subtitle = NULL)+
+A <- plot +
+  labs(subtitle = NULL) +
   geom_hline(yintercept = upper, colour = 'darkgreen', linewidth = 1.5) +
-  geom_segment(data = subset(data, quintile !=5),
-    aes(x = as.factor(quintile), 
-        y = activity_rate, 
-        xend = as.factor(quintile),
-        yend = upper),
-    arrow = arrow()) +
-  labs(title = 'A. Level-up') 
+  geom_segment(
+    data = subset(data, quintile != 5),
+    aes(
+      x = as.factor(quintile),
+      y = activity_rate,
+      xend = as.factor(quintile),
+      yend = upper
+    ),
+    arrow = arrow()
+  ) +
+  labs(title = 'A. Level-up')
 
 
-B <- plot + 
-  labs(subtitle = NULL)+
+B <- plot +
+  labs(subtitle = NULL) +
   geom_hline(yintercept = lower, colour = 'darkgreen', linewidth = 1.5) +
-  geom_segment(data = subset(data, quintile !=1),
-               aes(x = as.factor(quintile), 
-                   y = activity_rate, 
-                   xend = as.factor(quintile),
-                   yend = lower),
-               arrow = arrow()) +
-  labs(title = 'B. Level-down') 
+  geom_segment(
+    data = subset(data, quintile != 1),
+    aes(
+      x = as.factor(quintile),
+      y = activity_rate,
+      xend = as.factor(quintile),
+      yend = lower
+    ),
+    arrow = arrow()
+  ) +
+  labs(title = 'B. Level-down')
 
-C <- plot + 
-  labs(subtitle = NULL)+
+C <- plot +
+  labs(subtitle = NULL) +
   geom_hline(yintercept = mid, colour = 'darkgreen', linewidth = 1.5) +
-  geom_segment(aes(x = as.factor(quintile), 
-                   y = activity_rate, 
-                   xend = as.factor(quintile),
-                   yend = mid),
-               arrow = arrow()) +
-  labs(title = 'C. Zero-sum redistribution') 
+  geom_segment(
+    aes(
+      x = as.factor(quintile),
+      y = activity_rate,
+      xend = as.factor(quintile),
+      yend = mid
+    ),
+    arrow = arrow()
+  ) +
+  labs(title = 'C. Zero-sum redistribution')
 
 
-fig2 <- A/B/C + plot_layout(heights = unit(5, 'cm'))
+fig2 <- A / B / C + plot_layout(heights = unit(5, 'cm'))
 suppressMessages(print(fig2))
-
 ```
 
 ::: {.callout-warning}
