@@ -1,0 +1,37 @@
+.tag {
+  display: inline-block;
+  padding: 0.125rem 0.75rem;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.status-excellent {
+  background: hsl(116, 60%, 90%);
+  color: hsl(116, 30%, 25%);
+}
+
+.status-good {
+  background: hsl(26, 70%, 90%);
+  color: hsl(26, 45%, 30%);
+}
+
+.status-poor {
+  background: hsl(350, 70%, 90%);
+  color: hsl(350, 45%, 30%);
+}
+
+.status-low {
+  background: hsl(116, 60%, 90%);
+  color: hsl(116, 30%, 25%);
+}
+
+.status-medium {
+  background: hsl(26, 70%, 90%);
+  color: hsl(26, 45%, 30%);
+}
+
+.status-high {
+  background: hsl(350, 70%, 90%);
+  color: hsl(350, 45%, 30%);
+}

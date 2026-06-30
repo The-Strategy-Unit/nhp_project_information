@@ -94,10 +94,7 @@ summing the 90th and 10th percentiles from each POD ("Summed").
 ::: {.callout-note collapse="true"} 
 ## Expand to see an example of how to calculate the above using R code
 
-```{r}
-#| echo: true
-#| eval: false
-
+``` r
 library(tidyverse)
 
 #create the synthetic data
