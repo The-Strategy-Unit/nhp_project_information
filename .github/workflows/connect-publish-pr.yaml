@@ -5,7 +5,6 @@ on:
       - opened
       - reopened
       - synchronize
-      - closed
   workflow_dispatch:
 
 jobs:
@@ -13,20 +12,10 @@ jobs:
     name: connect-publish-preview
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
-          r-version: "4.4"
-
-      - name: Install system dependencies
-        run: sudo apt-get install -y libcurl4-openssl-dev
-
-      - uses: r-lib/actions/setup-renv@v2
 
       - name: Publish to RStudio Connect (and render)
         shell: bash
@@ -34,7 +23,4 @@ jobs:
           QUARTO_PRINT_STACK: true
           CONNECT_SERVER: ${{ secrets.RSCONNECT_URL }}
           CONNECT_API_KEY: ${{ secrets.RSCONNECT_API_KEY_NEW }}
-          AZ_STORAGE_ACCOUNT: ${{ secrets.AZ_STORAGE_ACCOUNT }}
-          AZ_STORAGE_CONTAINER_SUPPORT: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT }}
-          AZ_STORAGE_CONTAINER_SUPPORT_SAS: ${{ secrets.AZ_STORAGE_CONTAINER_SUPPORT_SAS }}
         run: quarto publish --id 8a793bc6-6399-4260-b2c9-10fc040fda6f --no-browser
