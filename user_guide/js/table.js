@@ -4,7 +4,10 @@ function initDataTable(selector, data, columns) {
     columns: columns,
     pageLength: 25,
     order: [[0, "asc"]],
-    scrollX: true,
+    autoWidth: false,
+    initComplete: function () {
+      this.api().table().node().style.tableLayout = "fixed";
+    },
     layout: {
       topStart: [
         {
@@ -100,6 +103,17 @@ function transformTpmasRows(lookupRows, mechanismsRaw) {
   });
 }
 
+function applyTableCellWrapping(columns) {
+  return columns.map(column => ({
+    ...column,
+    createdCell: function (td) {
+      td.style.whiteSpace = "normal";
+      td.style.overflowWrap = "anywhere";
+      td.style.wordBreak = "break-word";
+    }
+  }));
+}
+
 async function loadTpmasTable(
   selector,
   {
@@ -121,17 +135,17 @@ async function loadTpmasTable(
 
     const data = transformTpmasRows(lookupRows, mechanismsRaw);
     const columns = [
-      { title: "Code", data: "Code" },
-      { title: "Activity", data: "Activity" },
-      { title: "Type", data: "Type" },
+      { title: "Code", data: "Code", width: "100px" },
+      { title: "Activity", data: "Activity", width: "75px" },
+      { title: "Type", data: "Type", width: "105px" },
       { title: "Name", data: "Name" },
       { title: "Variable", data: "Variable" },
       { title: "Mechanism", data: "Mechanism" },
-      { title: "From", data: "From" },
-      { title: "To", data: "To" }
+      { title: "From", data: "From", width: "70px" },
+      { title: "To", data: "To", width: "70px" }
     ];
 
-    initDataTable(selector, data, columns);
+    initDataTable(selector, data, applyTableCellWrapping(columns));
   } catch (err) {
     console.error("Failed to load TPMA table", err);
   }
