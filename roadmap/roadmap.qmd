@@ -1,6 +1,8 @@
 ---
 title: "Planning Roadmap"
 order: 1
+execute:
+  freeze: auto
 ---
 
 The roadmap is for anyone who needs to know about planned changes to the 
