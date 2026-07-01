@@ -9,34 +9,77 @@ be subject to change in timing and/or scope as programme priorities shift.
 
 This roadmap is updated quarterly.
 
-### Last updated: March 2026
+### Last updated: June 2026
 
 ## Recently Completed 
 (for full details see [model updates](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/model_updates.html))
 
-- Companion application released, publicly available: ['Find opportunities to reduce hospital care'](https://connect.strategyunitwm.nhs.uk/tpma-explorer/)
-- Companion application released, available on Connect server: ['Scenario Comparisons'](https://connect.strategyunitwm.nhs.uk/connect/#/apps/6ef494fa-5904-48df-a81c-6029c0d5ee6b/content-view)
-- (internal) ICB modelling functionality to allow a system view of potential future acute demand
-- Direct age-sex standardisation of all types of potentially mitigatable activity (TPMAs)
-- Updated method to derive hospital catchments
-- Delivery episodes added to downloadable model results
+
+```{r}
+#| results: asis
+#| echo: false
+#| warning: false
+#| message: false
+# Read pin
+board <- pins::board_connect()
+data <- pins::pin_read(board, name = "claire.welsh/roadmap_full_list")
+
+library(dplyr)
+done <- data |>
+  filter(Safe.to.show.to.public. == "Yes" &
+         (Workstream_1 == "NHP"|Workstream_2 == "NHP") &
+         Include.in.NHP.public.roadmap. == 1 &
+         NNL == "Done") |>
+  select(Public_wording) 
+cat(paste0("- ", done$Public_wording, collapse = "\n"))
+
+```
 
 ## Working on Now
 
-- Companion application "Compare NHP Mitigation Assumptions" to allow providers to view context around TPMA assumptions
-- Inequalities adjustment functionality to allow demand predictions to assume their resolution per HRG
-- Refresh of health status adjustment distribution values following expert elicitation
-- Access and quality assurance of refreshed baseline data
+```{r}
+#| results: asis
+#| echo: false
+#| warning: false
+#| message: false
+
+now <- data |>
+  filter(Safe.to.show.to.public. == "Yes",
+         (Workstream_1 == "NHP"|Workstream_2 == "NHP"),
+         Include.in.NHP.public.roadmap. == 1,
+         NNL == "Now") |>
+  select(Public_wording) 
+cat(paste0("- ", now$Public_wording, collapse = "\n"))
+```
 
 ## Working on Next
 
-- User interface development for ICB and NHS Regional modelling so users can submit model scenarios
-- Implementation of updated waiting list adjustment module
-- Site-level modelling capabilities to allow finer control on prediction
-- Development of a National model scenario library for training and illustrative purposes
+```{r}
+#| results: asis
+#| echo: false
+#| warning: false
+#| message: false
+nnl_next <- data |>
+  filter(Safe.to.show.to.public. == "Yes",
+         (Workstream_1 == "NHP"|Workstream_2 == "NHP"),
+         Include.in.NHP.public.roadmap. == 1,
+         NNL == "Next") |>
+  select(Public_wording) 
+cat(paste0("- ", nnl_next$Public_wording, collapse = "\n"))
+```
 
 ## Exploring
 
-- Applications to support parameter elicitation at National and local levels
-- Addition of novel TPMAs and model components
-- Care-shift analysis support tools to allow analysis of 'left-shift' priorities
+```{r}
+#| results: asis
+#| echo: false
+#| warning: false
+#| message: false
+exploring <- data |>
+  filter(Safe.to.show.to.public. == "Yes",
+         (Workstream_1 == "NHP"|Workstream_2 == "NHP"),
+         Include.in.NHP.public.roadmap. == 1,
+         NNL == "Later") |>
+  select(Public_wording) 
+cat(paste0("- ", exploring$Public_wording, collapse = "\n"))
+```
