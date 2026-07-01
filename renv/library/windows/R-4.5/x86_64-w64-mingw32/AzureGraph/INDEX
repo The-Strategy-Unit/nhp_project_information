@@ -1,0 +1,22 @@
+az_app                  Registered app in Azure Active Directory
+az_device               Device in Azure Active Directory
+az_directory_role       Directory role
+az_group                Group in Azure Active Directory
+az_object               Azure Active Directory object
+az_service_principal    Service principal in Azure Active Directory
+az_user                 User in Azure Active Directory
+call_batch_endpoint     Call the Graph API batch endpoint
+call_graph_endpoint     Call the Microsoft Graph REST API
+create_graph_login      Login to Azure Active Directory Graph
+extract_list_values     Get the list of values from a Graph pager
+                        object
+find_class_generator    Find the R6 class for a Graph object
+format_public_fields    Format a Microsoft Graph or Azure object
+graph_request           Microsoft Graph request
+is_app                  Informational functions
+ms_graph                Microsoft Graph
+ms_graph_pager          Pager object for Graph list results
+ms_object               Microsoft Graph object
+named_list              Miscellaneous utility functions
+register_graph_class    Extensible registry of Microsoft Graph classes
+                        that AzureGraph supports

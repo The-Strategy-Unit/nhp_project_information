@@ -1,0 +1,30 @@
+Package: reactR
+Type: Package
+Title: React Helpers
+Version: 0.6.1
+Date: 2024-09-14
+Authors@R: c( person( "Facebook", "Inc" , role = c("aut", "cph") , comment = "React library in lib, https://reactjs.org/; see AUTHORS for full list of contributors" ), person( "Michel","Weststrate", , role = c("aut", "cph") , comment = "mobx library in lib, https://github.com/mobxjs" ), person( "Kent", "Russell" , role = c("aut", "cre") , comment = "R interface" , email = "kent.russell@timelyportfolio.com" ), person( "Alan", "Dipert" , role = c("aut") , comment = "R interface" , email = "alan@rstudio.com" ), person( "Greg", "Lin" , role = c("aut") , comment = "R interface" , email = "glin@glin.io" ) )
+Maintainer: Kent Russell <kent.russell@timelyportfolio.com>
+Description: Make it easy to use 'React' in R with 'htmlwidget' scaffolds, helper dependency functions, an embedded 'Babel' 'transpiler', and examples.
+URL: https://github.com/react-R/reactR
+BugReports: https://github.com/react-R/reactR/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports: htmltools
+Suggests: htmlwidgets (>= 1.5.3), rmarkdown, shiny, V8, knitr, usethis,
+    jsonlite
+RoxygenNote: 7.3.2
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2024-09-14 13:24:57 UTC; kentr
+Author: Facebook Inc [aut, cph] (React library in lib, https://reactjs.org/; see AUTHORS for full list of contributors), Michel Weststrate [aut, cph] (mobx library in lib, https://github.com/mobxjs), Kent Russell [aut, cre] (R interface), Alan Dipert [aut] (R interface), Greg Lin [aut] (R interface)
+Repository: RSPM
+Date/Publication: 2024-09-14 13:50:02 UTC
+Built: R 4.5.0; ; 2025-04-09 19:26:55 UTC; windows
+RemoteType: standard
+RemoteRef: reactR
+RemotePkgRef: reactR
+RemoteRepos: https://packagemanager.posit.co/cran/latest
+RemoteReposName: CRAN
+RemotePkgPlatform: x86_64-w64-mingw32
+RemoteSha: 0.6.1

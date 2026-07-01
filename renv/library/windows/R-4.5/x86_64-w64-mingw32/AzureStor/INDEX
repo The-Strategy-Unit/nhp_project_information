@@ -1,0 +1,34 @@
+acquire_lease           Operations on blob leases
+adls_filesystem         Operations on an Azure Data Lake Storage Gen2
+                        endpoint
+az_storage              Storage account resource class
+blob_container          Operations on a blob endpoint
+call_azcopy             Call the azcopy file transfer utility
+copy_url_to_storage     Upload and download generics
+create_blob_snapshot    Create, list and delete blob snapshots
+create_storage_account
+                        Create Azure storage account
+delete_storage_account
+                        Delete an Azure storage account
+do_container_op         Carry out operations on a storage account
+                        container or endpoint
+file_share              Operations on a file endpoint
+get_account_sas         Generate shared access signatures
+get_storage_account     Get existing Azure storage account(s)
+get_storage_metadata    Get/set user-defined metadata for a storage
+                        object
+get_storage_properties
+                        Get storage properties for an object
+list_adls_files         Operations on an Azure Data Lake Storage Gen2
+                        filesystem
+list_azure_files        Operations on a file share
+list_blob_versions      List and delete blob versions
+list_blobs              Operations on a blob container or blob
+sign_request            Signs a request to the storage REST endpoint
+                        with a shared key
+storage_container       Storage client generics
+storage_endpoint        Create a storage endpoint object
+storage_save_rds        Save and load R objects to/from a storage
+                        account
+storage_write_delim     Read and write a data frame to/from a storage
+                        account

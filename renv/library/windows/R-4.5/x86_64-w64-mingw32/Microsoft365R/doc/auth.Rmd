@@ -1,0 +1,114 @@
+---
+title: "Authenticating to Microsoft 365"
+author: Hong Ooi
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{Authentication}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{utf8}
+---
+
+## Authentication
+
+To authenticate with Azure Active Directory, simply call one of the Microsoft365R client functions.
+
+```r
+get_personal_onedrive()
+get_business_onedrive()
+get_personal_outlook()
+get_business_outlook()
+get_sharepoint_site()
+get_team()
+```
+
+Notice that you do _not_ provide your username and password in the function call. Instead, Microsoft365R will use your Internet browser to obtain your credentials, in a similar manner to other web apps. You will get a dialog box asking for permission to access your information. Your login information is saved, so you should only have to authenticate once.
+
+### Using the device code flow
+
+The default authentication method assumes that your R session can access the Internet via a browser. If this is not the case, for example if you are using Databricks or RStudio Server, you can switch to the _device code_ flow by passing the `auth_type="device_code"` argument:
+
+```r
+get_personal_onedrive(auth_type="device_code")
+```
+
+This will print an access code and URL on the screen. You login to the URL using a browser on another device, and type in the code. Once this is done, Microsoft365R will complete the authentication process. Again, you do _not_ provide your username and password in the function call.
+
+### Specifying the tenant
+
+When authenticating to the Microsoft 365 Business services, Microsoft365R will detect your Azure Active Directory tenant from your logged-in credentials in the browser. Sometimes this doesn't work, in particular if you are logged in with a personal account that is also a guest account in a tenant. To solve this, specify your tenant name with the `tenant` argument:
+
+```r
+get_business_onedrive(tenant="mytenant")
+get_business_outlook(tenant="mytenant")
+get_sharepoint_site("My site", tenant="mytenant")
+get_team("My team", tenant="mytenant")
+```
+
+## App registration and approvals
+
+Microsoft365R comes with a default app registration for authenticating with AAD; depending on your organisation's security policy, you may have to get an admin to grant it access to your tenant. See [app_registration.md](https://github.com/Azure/Microsoft365R/blob/master/inst/app_registration.md) for details on the permissions that Microsoft365R requires.
+
+### Using your own app registration
+
+Rather than getting the default app registration approved, you can also create your own registration for authentication. If this is for use in a local R session, it should have a mobile & desktop redirect URI of `http://localhost:1410` (not a web or SPA redirect), and the "Allow native client" setting should be enabled. You can use the same permissions as the default app, or set your own: for example, if you know you don't need to interact with Outlook, you can omit the Mail.Send and Mail.ReadWrite permissions.
+
+Once the app has been registered, you can pass the app ID to Microsoft365R in a couple of ways.
+
+- The client functions can accept the app ID as the `app` argument:
+
+  ```r
+  get_business_onedrive(app="myappid")
+  ```
+
+- Alternatively, if the environment variable `CLIMICROSOFT365_AADAPPID` is set, Microsoft365R will use its value as the app ID for authenticating to the Microsoft 365 Business services (Teams, SharePoint and OneDrive for Business). This environment variable is defined by the [CLI for Microsoft365](https://pnp.github.io/cli-microsoft365/), an open source tool for managing Microsoft 365 accounts; you thus can reuse the same app ID for both the CLI and Microsoft365R.
+
+If you want to use Microsoft365R outside a local R session, creating a custom app registration is **required**. In particular, this includes the following common scenarios:
+
+- Using Microsoft365R inside a Shiny webapp
+- Using it in an unattended (automated) script, eg in a GitHub Actions workflow or other CI/CD pipeline
+
+See the vignettes "Using Microsoft365R in a Shiny app" and "Using Microsoft365R in an unattended script" for more on these use cases, including how to configure the app registration in Azure Active Directory.
+
+### Using other app registrations: last-resort workarounds
+
+The above methods are the **recommended solutions** to dealing with access restrictions on Microsoft365R. If they are not feasible, it's possible to work around these issues by using the Azure CLI's app ID: `04b07795-8ddb-461a-bbee-02f9e1bf7b46`. This is a first-party Microsoft app, and hence can be used in any tenant. It is not intended for use with Microsoft 365, so not all functionality may be supported; however it should be possible to access Teams and SharePoint sites (but not Outlook, personal OneDrive or OneDrive for Business).
+
+  ```r
+  get_sharepoint_site("My site", app="04b07795-8ddb-461a-bbee-02f9e1bf7b46")
+  ```
+
+Be warned that this may draw the attention of your admin!
+
+
+## Authenticating with a token
+
+In some circumstances, it may be desirable to carry out authentication/authorization as a separate step prior to  making requests to the Microsoft 365 REST API. This holds in a Shiny app, for example, since only the UI part can talk to the browser while the server part does the rest of the work. Another scenario is if the refresh token lifetime set by your org is too short, so that the token expires in between R sessions. In this case, you can authenticate by obtaining a new token with `AzureAuth::get_azure_token`, and passing the token object to the client function.
+
+When calling `get_azure_token`, the scopes you should use are those given in the `scopes` argument for each client function, and the API host is `https://graph.microsoft.com/`. The Microsoft365R internal app ID is `d44a05d5-c6a5-4bbb-82d2-443123722380`, while that for the CLI for Microsoft 365 is `31359c7f-bd7e-475c-86db-fdb8c937548e`. As noted above, however, these app IDs **only** work for a local R session; you must create your own app registration if you want to use the package inside a Shiny app.
+
+```r
+# authenticating separately to working with the MS365 API
+scopes <- c(
+    "https://graph.microsoft.com/Files.ReadWrite.All",
+    "https://graph.microsoft.com/User.Read",
+    "openid", "offline_access"
+)
+app <- "d44a05d5-c6a5-4bbb-82d2-443123722380" # for local use only
+token <- AzureAuth::get_azure_token(scopes, "mytenant", app, version=2)
+od <- get_business_onedrive(token=token)
+```
+
+
+## Other issues
+
+The AzureR packages save your login sessions so that you don't need to reauthenticate each time. If you're experiencing authentication failures, you can try clearing the saved data by running the following code:
+
+```r
+AzureAuth::clean_token_directory()
+AzureGraph::delete_graph_login(tenant="mytenant")
+```
+
+You can also consult the vignettes from the AzureAuth and AzureGraph packages for more information on this topic.
+
+- [AzureAuth: Authentication scenarios](https://cran.r-project.org/package=AzureAuth/vignettes/scenarios.html)
+- [AzureGraph: Authentication](https://cran.r-project.org/package=AzureGraph/vignettes/auth.html)

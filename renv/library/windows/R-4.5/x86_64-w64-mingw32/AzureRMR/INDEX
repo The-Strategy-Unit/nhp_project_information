@@ -1,0 +1,17 @@
+az_resource             Azure resource class
+az_resource_group       Azure resource group class
+az_rm                   Azure Resource Manager
+az_role_assignment      Azure role assignment class
+az_role_definition      Azure role definition class
+az_subscription         Azure subscription class
+az_template             Azure template class
+build_template_definition
+                        Build the JSON for a template and its
+                        parameters
+call_azure_rm           Call the Azure Resource Manager REST API
+create_azure_login      Login to Azure Resource Manager
+init_pool               Manage parallel Azure connections
+is_azure_login          Informational functions
+is_url                  Miscellaneous utility functions
+lock                    Management locks
+rbac                    Role-based access control (RBAC)

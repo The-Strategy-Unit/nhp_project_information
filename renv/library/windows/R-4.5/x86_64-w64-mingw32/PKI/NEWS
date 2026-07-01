@@ -1,0 +1,167 @@
+NEWS for PKI package
+
+0.1-15
+    o	use pkg-config on Windows if available
+
+    o	update configure and remove a bashism
+
+
+0.1-14
+    o	improves fall-back to native crypto routines on macOS (#31)
+
+    o	remove calls to SETLENGTH() and copy defensively.
+
+
+0.1-13
+    o	fixed PKI.sign.tar() and PKI.verify.tar() mist-detecting
+	tar-balls with xz (lzma) compression. Also the detection
+	no longer fails in UTF-8 locales on systems where R
+	attempts to interpret the magic bytes as UTF-8. (#29)
+
+    o	added PKI.genpass() for random password generation
+
+
+0.1-12
+    o	minor cleanup of casts to avoid spurious warnings
+
+    o	add support for large vector digests
+
+
+0.1-11
+    o	add PKI.info() which returns information about the
+	underlying engine.
+
+    o	add support for OpenSSL >= 3.0.0 (#26)
+	Thanks to Steve Langasek for analysis and patch.
+
+    o	PKI.sign.tar() avoids the use of strings for compression
+	detection as it can fail in some locales. (#27)
+
+    o	added support for PKGCONFIG which defaults to pkg-config
+	and will be used to auto-detect compiler flags if they
+	are not provided in PKG_* or OPENSSL_INCLUDES. This
+	behavior can be disabled by explicitly setting
+	PKGCONFIG to an empty string.
+
+
+0.1-10
+    o	minor change of flags for UCRT Windows
+
+
+0.1-9
+    o	add default= and partial= arguments to PKI.verifyCA()
+
+    o	add PKI.get.cert.info() and informative print() method
+	for certificates.
+
+    o	fix PKI.verify.tar to support certificates stored
+	directly instead of wrapped inside ASN1 bit string.
+
+
+0.1-8
+    o	improve configure to use R's CPPFLAGS
+
+
+0.1-7
+    o	fix a bug in PKI.save.key when writing binary DER key
+	to a file or connection
+
+    o	add defensive PROTECTs in PKI_load_DER_X509
+
+
+0.1-6
+    o	add work-around for macOS SDKs that remove libcrypto
+
+
+0.1-5.1	(CRAN NMU courtesy of Brian Ripley)
+    o	added explicit C code for symbol registration
+
+
+0.1-5
+    o	use configure/autoconf
+
+    o	macOS: fetch OpenSSL headers from Apple if not available
+	in the SDK
+
+
+0.1-4	
+    o	add support for explicit setting of initialization vectors
+	(iv) in PKI.encrypt() and PKI.decrypt() for ciphers that
+	support it. (see #16)
+
+    o	add PKI.random() for generating cryptographically strong
+	random bytes which can be used for keys, IVs, seeds etc.
+
+    o	adapt to API changes in OpenSSL 1.1 (see also PR#18)
+
+
+0.1-3	2015-07-28
+    o	fixed crash when loading private keys introduced by PR#1
+	in (unreleased) 0.1-2 and bring back the ability to directly
+	read "DER"-encoded private RSA keys.
+
+    o	fix detection of PKCS#8 encrypted private keys in PEM format
+
+
+0.1-2	(not released)
+    o	add "DER" format option to PKI.load.cert()
+
+    o	allow key in PKI.verify to be a certificate
+	(which will be passed to PKI.pubkey() internally)
+
+    o	add experimental signing/verification of tar files using
+	PKI.sign.tar() and PKI.verify.tar()
+
+    o	add support for symmetric ciphers like AES in
+	PKI.encrypt()/PKI.decrypt()
+
+    o	add support for retrieving the subject of a certificate
+	via PKI.get.subject() [PR#2, thanks to Matt Jones]
+
+    o	add support for PKCS#8 private key format (RFC 5208)
+	and sign/verify/digest using SHA256.
+	[PR#1, thanks to Siddhartha Bagaria]
+
+    o	bugfix: key length was incorrectly checked when using
+	symmetric ciphers so too short keys were accepted.
+
+    o	bugfix: if the last block was filled during encryption, the
+	necessary additional padding block was not generated. (#8)
+
+    o	bugfix: some functions did not call PKI initialization.
+	One manifestation was that error messages were cryptic until
+	any X.509 function was called. (#9)
+
+
+0.1-1	2013-02-19
+    o	added PKI.load.key() and PKI.save.key()
+	functions to load/save keys from/to PEM and DER formats
+
+	IMPORTANT API NOTE: PKI.load.key() replaces the
+	(unexported) function PKI.load.privkey()
+	in the previous PKI version.
+
+    o	added support for OpenSSH public key format
+	(as used in .ssh/authorized_keys files)
+	as well as pure PKCS#1 and SSH2 PEMs
+
+    o	make PEM parsing more robust to support
+	headers
+
+    o	added ASN.1 tools to parse and synthesize ASN.1
+	formatted objects - mostly for use in key format
+	conversions
+
+    o	added as.BIGNUMint() for ASN.1 BIGNUM integer
+	format conversion
+
+    o	added PKI.mkRSApubkey() to create RSA public keys
+	from modulus and exponent alone
+
+    o	added raw2hex() function to convert raw hashes
+	into string format
+
+
+0.1-0	2012-11-05
+    o	first public release
+

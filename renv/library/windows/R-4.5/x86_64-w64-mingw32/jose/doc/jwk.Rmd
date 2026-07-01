@@ -1,0 +1,53 @@
+---
+title: "Reading/Writing JSON Web Keys (JWK) in R"
+date: "`r Sys.Date()`"
+output:
+  html_document
+vignette: >
+  %\VignetteIndexEntry{Reading/Writing JSON Web Keys (JWK) in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment = "")
+```
+
+
+### RSA / ECDSA keys
+
+JSON Web Keys (JWK) is a format specified in [RFC7517](https://datatracker.ietf.org/doc/html/rfc7517) for storing RSA/EC/AES keys in a JSON based format. It can be used to import/export such keys in the browser using the new [W3C WebCryptoAPI](https://www.w3.org/TR/WebCryptoAPI/).
+
+The `jose` package makes it easy to read/write such keys in R for use with JWT or any other functionality from the `openssl` package.
+
+
+```{r}
+library(openssl)
+library(jose)
+
+# Generate a ECDSA key
+key <- openssl::ec_keygen()
+jsonlite::prettify(write_jwk(key))
+
+# Use public key
+pubkey <- as.list(key)$pubkey
+json <- write_jwk(pubkey)
+jsonlite::prettify(json)
+
+# Read JWK key
+(out <- read_jwk(json))
+identical(pubkey, out)
+```
+
+
+### AES/HMAC keys
+
+JWT also specifies a format for encoding AES/HMAC secrets. Such secret keys are simply raw bytes. 
+
+```{r}
+# Random secret
+(key <- rand_bytes(16))
+(jwk <- write_jwk(key))
+read_jwk(jwk)
+```

@@ -1,0 +1,261 @@
+8.0.1
+  - Windows: downgrade libv8 to 11.9 for now due to WASM bug in 14.0
+  - Enable experimental temporal api on libv8 > 14.1
+
+8.0.0
+  - Add shim for emscripten to run JS/WASM in a web worker.
+  - Windows: update libv8 and fix threading bug.
+
+7.0.0
+  - Static library for Linux has been updated to libv8 12.4.254.21 (node-22)
+  - Static library for MacOS arm64 updated to libv8 13.6.233.10 (node-24)
+  - Static library for Windows updated to libv8 14.0.365.4
+  - We now support arm64 and amd64 static libs for all platforms.
+
+6.0.6
+  - Update to wasm-feature-detect@1.8.0
+  - ctx$call() gains argument simplify which is passed to fromJSON()
+  - ctx$eval('null', TRUE) now returns "null" instead of NULL
+
+6.0.5
+  - Remove -DV8_ENABLE_CHECKS from standard build flags because it causes
+    problems with node24 on Fedora (#190)
+  - Add scope to start_v8_isolate() for libv8 v14 and up (#189)
+
+6.0.4
+  - Enable wasm-reftypes on libv8 v8.5 - v9.9 which was opt-in back then. This
+    feature is needed for rust compiled wasm.
+
+6.0.3
+  - Explicitly include <fstream> in bindings as required by latest libv8
+
+6.0.2
+  - Windows: minor update of libv8 to fix a warning with rtools45
+
+6.0.1
+  - Fix build for legacy libv8 versions on CondaForge and Centos-7
+
+6.0.0
+  - Experimental support for dynamic ES modules
+  - Linux: update static libv8 to version 11.9
+
+5.0.1
+  - Remove some test verbosity per CRAN request
+  - Update maintainer email address
+
+5.0.0
+  - Drop support for legacy v8-314 library bindings
+  - Compile with C++20 when available (required as of libv8 version 12.7)
+  - Experimental @ accessor for v8 objects in R >= 4.3.0
+  - Fix 'anchored' links for CRAN
+
+4.4.2
+  - Prevent Fedora from accidentally building against the legacy v8-314 library
+    instead of the current v8-devel on that system.
+  - Remove bundled underscore.js and examples
+
+4.4.1
+  - Fix a printf warning for CRAN
+
+4.4.0
+  - Windows (R-4.3 and up): update libv8 to 11.8.172.13 + arm64 support.
+
+4.3.4
+  - MacOS: update libv8 to 11.5
+  - Windows (R-4.3 and up): update libv8 to 11.8
+  - Update wasm_features() detection with new wasm features
+
+4.3.3
+  - Fix yet more version comparisons
+
+4.3.2
+  - Fix another version comparison issue
+
+4.3.1
+ - Fix getRversion() type requested by CRAN
+
+4.3.0
+ - MacOS: update libv8 to 11.2
+ - Windows: use libv8 version 9.1 on all R >= 4.0, drop support for Win2008/Vista
+ - Add feature test for V8_ENABLE_SANDBOX, required by some V8 10.8+ (#144)
+ - Unbundle 3rd party JS libs that are only needed for examples.
+
+4.2.2
+ - Fix a sanitizer error by avoiding a broken API on NodeJS (#152)
+ - You can override build flags by setting V8_PKG_LIBS / V8_PKG_CFLAGS
+
+4.2.1
+ - Fix a feature test for NodeJS 18 (#145)
+
+4.2.0
+ - Use CXX17 on supported platforms. C++17 is required as of libv8 10.2
+
+4.1.0
+ - engine_info() now includes a 'numeric_version' field for easy comparison
+ - make js-to-r callback mechanism robust against -DRCPP_USE_UNWIND_PROTECT
+
+4.0.0
+ - If a call to ct$eval(),ct$get(), or ct$call() returns a JavaScript promise,
+   you can set await = TRUE to wait for the promise to be resolved. It will
+   then return the result of the promise, or an error in case the promise is
+   rejected.
+ - New section about promises in the intro vignette.
+ - New function wasm_features() lists the supported WASM capabilities on the
+   current installation.
+ - Updated static libv8 for Mac and Linux to v8-v8-9.6.180.12
+ - Windows ucrt: update libv8 to 9.1.269.38
+ - Legacy libv8 versions (3.xx) are no longer supported. Package will still
+   build but the examples and vignette now assume support for promises.
+ - On Ubuntu, RHEL, and MacOS we now default to DOWNLOAD_STATIC_LIBV8=1 for
+   supported architectures (amd64 and arm64). If this fails it will fall back
+   on finding a local libv8. Opt-out by setting DISABLE_STATIC_LIBV8=1.
+
+3.6.0
+ - Try to give better error message when unable to allocate, probably due to
+   hitting the stack limit. Previously we would see 'string conversion failed'
+   which was very confusing.
+ - The same stacklimit is now used across all platforms. Previously we would only
+   set it on Linux, but apparently it is also needed on Windows sometimes.
+ - Disable stacklimit when running in ASAN (which blows up the stack size)
+ - Make DOWNLOAD_STATIC_LIBV8 the default on RHEL/CentOS based distros because
+   these include a very old or no libv8.
+ - Check and warn against very old libv8 when attaching the package.
+
+3.5.0
+ - On legacy systems which still have libv8 version 3.x we now try to download
+   a more recent static libv8. We plan to deprecate support for libv8 3.x, which
+   is now over 10 years old, and does not support ES6 (modern JavaScript).
+
+3.4.2
+ - Add Windows binaries for ucrt targets
+
+3.4.1
+ - Minor compatibility fixes by Jan Marvin for new versions of libv8.
+
+3.4.0
+ - When setting envvar DOWNLOAD_STATIC_LIBV8=1 on Linux at build-time, the
+   configure script automatically downloads a static libv8, instead of looking
+   for libv8 on the system. This allows the package to be installed on distros
+   that do not have libv8, or ship with a very old V8.
+ - The above should work for all x86_64 Linux systems with at least gcc-4.8.5
+   and is enabled by default on Travis and Github Actions.
+ - Do not assume bash in configure script
+
+3.3.1
+ - Fix a bug in the configure script
+
+3.3.0
+ - Use CXX14 when available, required as of libv8 version 8.7.80
+
+3.2.0
+ - Fix bug with pointer compression feature-test on Debian / Anaconda
+ - Linux: increase JS stack limit, because of problems with new libv8 on Fedora.
+ - Add FatalErrorHandler and MessageListener callbacks (that just print stuff)
+ - Fix UBSAN error during teardown (package unload)
+
+3.1.0
+ - Fix configure script for pointer compression in upcoming V8 engine 8.4
+ - MacOS: binary packagess now ship with V8 engine 8.3
+
+3.0.2
+ - Windows: fix text encoding bug introduced in 3.0 for non-ascii text.
+ - Fix unit test for big-endian systems
+
+3.0.1
+ - Fix build for old versions of R using old compilers that do not default to C++11
+
+3.0
+ - Internal rewrite of object serialization to prepare for wasm
+ - Automatically convert raw vectors to/from Uint8Array in eval/get/assign
+ - Experimental wasm API + test
+ - Fix callback API crashes in V8 7.9+ (Jan Marvin, #70, #71, #75)
+ - Build with -DV8_ENABLE_CHECKS to get better error messages
+
+2.3
+ - Fix for removed API in libv8 version 7.7
+
+2.2
+ - Fixes for API changes in libv8 version 7.4 and 7.5
+ - MacOS: fix include/linker path for new location of v8
+
+2.1
+ - Remove special casing for libnode-dev on Debian: libnode-dev now
+   officially provides and symlinks libv8-dev.
+ - Fix build for new V8 7.3.492.22 (Jan Marvin, #55)
+
+2.0
+ - Major upgrade: now support libv8 version 6.x and up. Note that this means
+   we move to ES2015+ adding support for promises, async, etc. This may change
+   the behavior of certain JavaScript libraries.
+ - For now we also still stupport building with legacy V8 (3.14)
+ - Debian Buster: support building with libnode-dev
+ - Fedora: support building with v8-devel (V8 6.7.17)
+ - MacOS: update binary package to V8 7.2.502.24
+
+1.6 (unreleased)
+ - Let Rcpp generated R_init_V8()
+ - Add unit test for the exception problem on OSX 10.11
+
+1.5
+ - Homebrew has moved V8 (again), now it's called v8@3.15
+
+1.4
+ - Fix autobrew for OSX Mavericks
+
+1.3
+ - Extract autobrew script to separate repo
+ - Add symbol registration
+
+1.2
+ - Improve configure script to check for the correct version of libv8
+ - Fedora 25+ requires v8-314-devel instead of v8-devel
+
+1.1
+ - Use C++ 'new' and 'delete' instead of nodelist to keep contexts in scope
+
+1.0.3
+ - Update homebrew URL in configure script
+
+1.0.2
+ - Update URL of browserify logo
+
+1.0.1
+ - Fix internal stop() function for new testthat
+ - ctx$eval(character(0)) does not raise error anymore
+ - Remove references to new_context() in favor of v8()
+ - Use the new 'COMPILED_BY' variable on windows
+ - Updated the URL to the V8 homepage in DESCRIPTION
+
+1.0
+ - Remove UTF-8 workarounds now that Rcpp has proper UTF-8 support
+
+0.10
+ - Add the console.r callback JavaScript api
+
+0.9
+ - Fix for OSX cran builder
+ - Add 'v8' as a more descriptive alias for 'new_context'
+ - Update libv8 on Windows to 3.15
+ - Add support for the new windows tool chain
+
+0.8
+ - Fix configure script for OSX
+ - Add 'v8' as a more descriptive alias for 'new_context'
+ - Update libv8 on Windows to 3.15
+ - Add support for the new windows tool chain
+
+0.7
+ - Deprecated support for I() removed. Use JS() instead
+ - Refactored configure script to use pkg-config if available.
+ - Updated libv8 brew script on OSX to v8-3.15
+ - Update libv8 static builds on windows to v3.14.5.10
+ - Ship separate libraries for win32 for more recent compilers
+
+0.6
+ - Breaking change: use JS() instead of I() to mark strings as literal JavaScript.
+ - ct$source() now always assumes UTF-8 data, even on Windows.
+ - Use the new V8_types.h feature from Rcpp 0.11.5
+ - Start with custom code completion within ct$console() for R 3.2.0
+
+0.5
+ - Add support for Typed Arrays

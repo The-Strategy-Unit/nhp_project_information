@@ -1,0 +1,214 @@
+---
+title: "Acquire an OAuth token"
+author: Hong Ooi
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Acquire an OAuth token}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{utf8}
+---
+
+This is a short introduction to authenticating with Azure Active Directory (AAD) with AzureAuth.
+
+## The `get_azure_token` function
+
+The main function in AzureAuth is `get_azure_token`, which obtains an OAuth token from AAD:
+
+```r
+library(AzureAuth)
+
+token <- get_azure_token(resource="myresource", tenant="mytenant", app="app_id",
+    password="mypassword", username="username", certificate="encoded_cert", version=1, ...)
+```
+
+The function has the following arguments:
+
+- `resource`: The resource or scope for which you want a token. For AAD v1.0, this should be a single URL (eg "[https://example.com](https://example.com)") or a GUID. For AAD v2.0, this should be a vector of scopes (see below).
+- `tenant`: The AAD tenant.
+- `app`: The app ID or service principal ID to authenticate with.
+- `username`, `password`, `certificate`: Your authentication credentials.
+- `auth_type`: The OAuth authentication method to use. See the next section.
+- `version`: The version of AAD for which you want a token, either 1 or 2. The default is version 1. Note that the _OAuth scheme_ is always 2.0.
+
+Scopes in AAD v2.0 consist of a URL or a GUID, along with a path that designates the scope. If a scope doesn't have a path, `get_azure_token` will append the `/.default` path with a warning. A special scope is `offline_access`, which requests a refresh token from AAD along with the access token: without this, you will have to reauthenticate if you want to refresh the token.
+
+```r
+# request an AAD v1.0 token for Resource Manager
+token1 <- get_azure_token("https://management.azure.com/", "mytenant", "app_id")
+
+# same request to AAD v2.0, along with a refresh token
+token2 <- get_azure_token(c("https://management.azure.com/.default", "offline_access"),
+    "mytenant", "app_id", version=2)
+
+# requesting multiple scopes in AAD v2.0 (Microsoft Graph)
+scopes <- c("https://graph.microsoft.com/User.Read",
+            "https://graph.microsoft.com/Files.Read",
+            "https://graph.microsoft.com/Mail.Read",
+            "offline_access")
+token3 <- get_azure_token(scopes, "mytenant", "app_id", version=2)
+```
+
+## Authentication methods
+
+AzureAuth supports the following methods for authenticating with AAD: **authorization_code**, **device_code**, **client_credentials**, **resource_owner** and **on_behalf_of**.
+
+1. Using the **authorization_code** method is a multi-step process. First, `get_azure_token` opens a login window in your browser, where you can enter your AAD credentials. In the background, it loads the [httpuv](https://github.com/rstudio/httpuv) package to listen on a local port. Once you have logged in, the AAD server redirects your browser to a local URL that contains an authorization code. `get_azure_token` retrieves this authorization code and sends it to the AAD access endpoint, which returns the OAuth token.</p>
+The httpuv package must be installed to use this method, as it requires a web server to listen on the (local) redirect URI. Since it opens a browser to load the AAD authorization page, your machine must also have an Internet browser installed that can be run from inside R. In particular, if you are using a Linux [Data Science Virtual Machine](https://azure.microsoft.com/en-us/products/virtual-machines/data-science-virtual-machines/) in Azure, you may run into difficulties; use one of the other methods instead.
+
+```r
+# obtain a token using authorization_code
+# no user credentials needed
+get_azure_token("myresource", "mytenant", "app_id", auth_type="authorization_code")
+```
+
+2. The **device_code** method is similar in concept to authorization_code, but is meant for situations where you are unable to browse the Internet -- for example if you don't have a browser installed or your computer has input constraints. First, `get_azure_token` contacts the AAD devicecode endpoint, which responds with a login URL and an access code. You then visit the URL and enter the code, possibly using a different computer. Meanwhile, `get_azure_token` polls the AAD access endpoint for a token, which is provided once you have entered the code.
+
+```r
+# obtain a token using device_code
+# no user credentials needed
+get_azure_token("myresource", "mytenant", "app_id", auth_type="device_code")
+```
+
+3. The **client_credentials** method is much simpler than the above methods, requiring only one step. `get_azure_token` contacts the access endpoint, passing it the credentials. This can be either a client secret or a certificate, which you supply in the `password` or `certificate` argument respectively. Once the credentials are verified, the endpoint returns the token. This is the method typically used by service accounts.
+
+```r
+# obtain a token using client_credentials
+# supply credentials in password arg
+get_azure_token("myresource", "mytenant", "app_id",
+                password="client_secret", auth_type="client_credentials")
+
+# can also supply a client certificate as a PEM/PFX file...
+get_azure_token("myresource", "mytenant", "app_id",
+                certificate="mycert.pem", auth_type="client_credentials")
+
+# ... or as an object in Azure Key Vault
+cert <- AzureKeyVault::key_vault("myvault")$certificates$get("mycert")
+get_azure_token("myresource", "mytenant", "app_id",
+                certificate=cert, auth_type="client_credentials")
+```
+
+4. The **resource_owner** method also requires only one step. In this method, `get_azure_token` passes your (personal) username and password to the AAD access endpoint, which validates your credentials and returns the token.
+
+```r
+# obtain a token using resource_owner
+# supply credentials in username and password args
+get_azure_token("myresource", "mytenant", "app_id",
+                username="myusername", password="mypassword", auth_type="resource_owner")
+```
+
+5. The **on_behalf_of** method is used to authenticate with an Azure resource by passing a token obtained beforehand. It is mostly used by intermediate apps to authenticate for users. In particular, you can use this method to obtain tokens for multiple resources, while only requiring the user to authenticate once.
+
+```r
+# obtaining multiple tokens: authenticate (interactively) once...
+tok0 <- get_azure_token("serviceapp_id", "mytenant", "clientapp_id", auth_type="authorization_code")
+# ...then get tokens for each resource with on_behalf_of
+tok1 <- get_azure_token("resource1", "mytenant," "serviceapp_id",
+                        password="serviceapp_secret", auth_type="on_behalf_of", on_behalf_of=tok0)
+tok2 <- get_azure_token("resource2", "mytenant," "serviceapp_id",
+                        password="serviceapp_secret", auth_type="on_behalf_of", on_behalf_of=tok0)
+```
+
+If you don't specify the method, `get_azure_token` makes a best guess based on the presence or absence of the other authentication arguments, and whether httpuv is installed.
+
+```r
+# this will default to authorization_code if httpuv is installed, and device_code if not
+get_azure_token("myresource", "mytenant", "app_id")
+
+# this will use client_credentials method
+get_azure_token("myresource", "mytenant", "app_id",
+                password="client_secret")
+
+# this will use on_behalf_of method
+get_azure_token("myresource", "mytenant", "app_id",
+                password="client_secret", on_behalf_of=token)
+```
+
+### Managed identities
+
+AzureAuth provides `get_managed_token` to obtain tokens from within a managed identity. This is a VM, service or container in Azure that can authenticate as itself, which removes the need to save secret passwords or certificates.
+
+```r
+# run this from within an Azure VM or container for which an identity has been setup
+get_managed_token("myresource")
+```
+
+### Inside a web app
+
+Using the interactive flows (authorization_code and device_code) from within a Shiny app requires separating the authorization (logging in to Azure) step from the token acquisition step. For this purpose, AzureAuth provides the `build_authorization_uri` and `get_device_creds` functions. You can use these from within your app to carry out the authorization, and then pass the resulting credentials to `get_azure_token` itself. See the "Authenticating from Shiny" vignette for an example app.
+
+## Authentication vs authorization:
+
+Azure Active Directory can be used for two purposes: _authentication_ (verifying that a user is who they claim they are) and _authorization_ (granting a user permission to access a resource). In AAD, a successful authorization process concludes with the granting of an OAuth 2.0 access token, as discussed above. Authentication uses the same process but concludes by granting an ID token, as defined in the OpenID Connect protocol.
+
+You can use `get_azure_token` to obtain ID tokens, in addition to access tokens.
+
+With AAD v1.0, using an interactive authentication flow (authorization_code or device_code) will return an ID token by default -- you don't have to do anything extra. However, AAD v1.0 will _not_ refresh the ID token when it expires (only the access token). Because of this, specify `use_cache=FALSE` to avoid picking up cached token credentials which may have been refreshed previously.
+
+AAD v2.0 does not return an ID token by default, but you can get one by specifying `openid` as a scope. Again, this applies only to interactive authentication. If you only want an ID token, it's recommended to use AAD v2.0.
+
+```r
+# ID token with AAD v1.0
+# if you only want an ID token, set the resource to blank ("")
+tok <- get_azure_token("", "mytenant", "app_id")
+extract_token(tok, "id")
+
+# ID token with AAD v2.0
+tok2 <- get_azure_token(c("openid", "offline_access"), "mytenant", "app_id", version=2)
+extract_token(tok2, "id")
+```
+
+## Caching
+
+AzureAuth caches tokens based on all the inputs to `get_azure_token`, as listed above. It defines its own directory for cached tokens, using the rappdirs package. On recent Windows versions, this will usually be in the location `C:\Users\(username)\AppData\Local\AzureR`. On Linux, it will be in `~/.local/share/AzureR`, and on MacOS, it will be in `~/Library/Application Support/AzureR`. Note that a single directory is used for all tokens, and the working directory is not touched (which significantly lessens the risk of accidentally introducing cached tokens into source control).
+
+For reasons of CRAN policy, the first time that AzureAuth is loaded, it will prompt you for permission to create this directory. Unless you have a specific reason otherwise, it's recommended that you allow the directory to be created. Note that most other cloud engineering tools save credentials in this way, including Docker, Kubernetes, and the Azure CLI itself. The prompt only appears in an interactive session; if AzureAuth is loaded in a batch script, the directory is not created if it doesn't already exist.
+
+To list all cached tokens on disk, use `list_azure_tokens`. This returns a list of token objects, named according to their MD5 hashes.
+
+To load a token from the cache using its MD5 hash, use `load_azure_token`. To delete a cached token, use `delete_azure_token`. This takes the same inputs as `get_azure_token`, or you can supply an MD5 hash via the `hash` argument. To delete _all_ cached tokens, use `clean_token_directory`.
+
+```r
+# list all tokens
+list_azure_tokens()
+
+# <... list of token objects ...>
+
+# delete a token
+delete_azure_token("myresource", "mytenant", "app_id",
+                   password="client_credentials", auth_type="client_credentials")
+```
+
+If you want to bypass the cache, specify `use_cache=FALSE` in the call to `get_azure_token`. This will always obtain a new token from AAD, and also prevent it being saved to the cache.
+
+```r
+get_azure_token("myresource", "mytenant", "app_id", use_cache=FALSE)
+```
+
+## Refreshing
+
+A token object can be refreshed by calling its `refresh()` method. If the token's credentials contain a refresh token, this is used; otherwise a new access token is obtained by reauthenticating. In most situations you don't need to worry about this, as the AzureR packages will check if the credentials have expired and automatically refresh them for you.
+
+One scenario where you might want to refresh manually is using a token for one resource to obtain a token for another resource. Note that in AAD, a refresh token can be used to obtain an access token for any resource or scope that you have permissions for. Thus, for example, you could use a refresh token issued on a request for `https://management.azure.com` to obtain a new access token for `https://graph.microsoft.com` (assuming you've been granted permission).
+
+To obtain an access token for a new resource, change the object's `resource` (for an AAD v1.0 token) or `scope` field (for an AAD v2.0 token) before calling `refresh()`. If you _also_ want to retain the token for the old resource, you should call the `clone()` method first to create a copy.
+
+```r
+# use a refresh token from one resource to get an access token for another resource
+tok <- get_azure_token("https://myresource", "mytenant", "app_id")
+tok2 <- tok$clone()
+tok2$resource <- "https://anotherresource"
+tok2$refresh()
+
+# same for AAD v2.0
+tok <- get_azure_token(c("https://myresource/.default", "offline_access"),
+    "mytenant", "app_id", version=2)
+tok2 <- tok$clone()
+tok2$scope <- c("https://anotherresource/.default", "offline_access")
+tok2$refresh()
+```
+
+## More information
+
+For the details on Azure Active Directory, consult the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/active-directory/develop/).
+
+

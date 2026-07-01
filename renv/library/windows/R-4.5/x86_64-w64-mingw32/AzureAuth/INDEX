@@ -1,0 +1,12 @@
+AzureManualToken        Manual Azure Token
+AzureR_dir              Data directory for AzureR packages
+AzureToken              Azure OAuth authentication
+build_authorization_uri
+                        Standalone OAuth authorization functions
+cert_assertion          Create a client assertion for certificate
+                        authentication
+decode_jwt              Get raw access token (which is a JWT object)
+format_auth_header      Format an AzureToken object
+get_managed_token       Manage Azure Active Directory OAuth 2.0 tokens
+get_manual_token        Get a manual Azure token
+normalize_tenant        Normalize GUID and tenant values

@@ -1,0 +1,19 @@
+React                   React component builder.
+babel_transform         Transform Code with Babel
+component               Create a React component
+createReactShinyInput   Create a React-based input
+html_dependency_corejs
+                        Shim Dependency for React in RStudio Viewer
+html_dependency_mobx    Dependencies for 'mobx'
+html_dependency_react   Dependencies for React
+html_dependency_reacttools
+                        Adds window.reactR.exposeComponents and
+                        window.reactR.hydrate
+reactMarkup             Prepare data that represents a single-element
+                        character vector, a React component, or an
+                        htmltools tag for sending to the client.
+scaffoldReactShinyInput
+                        Create implementation scaffolding for a
+                        React.js-based Shiny input.
+scaffoldReactWidget     Create implementation scaffolding for a
+                        React.js-based HTML widget

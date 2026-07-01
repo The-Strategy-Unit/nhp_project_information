@@ -1,0 +1,29 @@
+Type: Package
+Package: bigD
+Title: Flexibly Format Dates and Times to a Given Locale
+Version: 0.3.1
+Description: Format dates and times flexibly and to whichever locales make sense. Parses dates, times, and date-times in various formats (including string-based ISO 8601 constructions). The formatting syntax gives the user many options for formatting the date and time output in a precise manner. Time zones in the input can be expressed in multiple ways and there are many options for formatting time zones in the output as well. Several of the provided helper functions allow for automatic generation of locale-aware formatting patterns based on date/time skeleton formats and standardized date/time formats with varying specificity.
+Authors@R: c( person("Richard", "Iannone", , "rich@posit.co", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-3925-190X")), person("Olivier", "Roy", role = "ctb"), person("Posit Software, PBC", role = c("cph", "fnd")) )
+License: MIT + file LICENSE
+URL: https://rstudio.github.io/bigD/, https://github.com/rstudio/bigD
+BugReports: https://github.com/rstudio/bigD/issues
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+Depends: R (>= 3.6.0)
+Suggests: testthat (>= 3.0.0), vctrs (>= 0.5.0)
+Config/testthat/edition: 3
+Config/testthat/parallel: true
+NeedsCompilation: no
+Packaged: 2025-04-03 13:52:40 UTC; riannone
+Author: Richard Iannone [aut, cre] (<https://orcid.org/0000-0003-3925-190X>), Olivier Roy [ctb], Posit Software, PBC [cph, fnd]
+Maintainer: Richard Iannone <rich@posit.co>
+Repository: RSPM
+Date/Publication: 2025-04-03 14:20:02 UTC
+Built: R 4.5.0; ; 2025-04-09 18:20:06 UTC; windows
+RemoteType: standard
+RemoteRef: bigD
+RemotePkgRef: bigD
+RemoteRepos: https://packagemanager.posit.co/cran/latest
+RemoteReposName: CRAN
+RemotePkgPlatform: x86_64-w64-mingw32
+RemoteSha: 0.3.1

@@ -1,0 +1,220 @@
+---
+title: "Introduction to AzureGraph"
+author: Hong Ooi
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{utf8}
+---
+
+[Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview) is a comprehensive framework for accessing data in various online Microsoft services, including Azure Active Directory (AAD), Office 365, OneDrive, Teams, and more. AzureGraph is a simple R6-based interface to the Graph REST API, and is the companion package to [AzureRMR](https://github.com/Azure/AzureRMR) and [AzureAuth](https://github.com/Azure/AzureAuth).
+
+Currently, AzureGraph aims to provide an R interface only to the AAD part, with a view to supporting R interoperability with Azure: registered apps and service principals, users and groups. However, it can be extended to support other services; for more information, see the "Extending AzureGraph" vignette.
+
+## Authentication
+
+The first time you authenticate with a given Azure Active Directory tenant, you call `create_graph_login()` and supply your credentials. AzureGraph will prompt you for permission to create a special data directory in which to cache the obtained authentication token and AD Graph login. Once this information is saved on your machine, it can be retrieved in subsequent R sessions with `get_graph_login()`. Your credentials will be automatically refreshed so you don't have to reauthenticate.
+
+```r
+library(AzureGraph)
+
+# authenticate with AAD
+# - on first login, call create_graph_login()
+# - on subsequent logins, call get_graph_login()
+gr <- create_graph_login()
+```
+
+See the "Authentication basics" vignette for more details on how to authenticate with AzureGraph.
+
+## Users and groups
+
+The basic classes for interacting with user accounts and groups are `az_user` and `az_group`. To instantiate these, call the `get_user` and `get_group` methods of the login client object. You can also list the users and groups with the `list_users` and `list_groups` methods.
+
+```r
+# account of the logged-in user (if you authenticated via the default method)
+me <- gr$get_user()
+
+# alternative: supply a GUID, name or email address
+me2 <- gr$get_user(email="hongooi@microsoft.com")
+
+# lists of users and groups (may be large!)
+gr$list_users()
+gr$list_groups()
+
+# IDs of my groups
+head(me$list_group_memberships())
+#> [1] "98326d14-365a-4257-b0f1-5c3ce3104f75" "b21e5600-8ac5-407b-8774-396168150210"
+#> [3] "be42ef66-5c13-48cb-be5c-21e563e333ed" "dd58be5a-1eac-47bd-ab78-08a452a08ea0"
+#> [5] "4c2bfcfe-5012-4136-ab33-f10389f2075c" "a45fbdbe-c365-4478-9366-f6f517027a22"
+
+# a specific group
+(grp <- gr$get_group("82d27e38-026b-4e5d-ba1a-a0f5a21a2e85"))
+#> <Graph group 'AIlyCATs'>
+#>   directory id: 82d27e38-026b-4e5d-ba1a-a0f5a21a2e85
+#>   description: ADS AP on Microsoft Teams.
+#> - Instant communication.
+#> - Share files/links/codes/...
+#> - Have fun. :)
+```
+
+The actual properties of an object are stored as a list in the `properties` field:
+
+```r
+# properties of a user account
+names(me$properties)
+#>  [1] "@odata.context"                 "id"                             "deletedDateTime"
+#>  [4] "accountEnabled"                 "ageGroup"                       "businessPhones"
+#>  [7] "city"                           "createdDateTime"                "companyName"
+#> [10] "consentProvidedForMinor"        "country"                        "department"
+#> [13] "displayName"                    "employeeId"                     "faxNumber"
+#> ...
+
+me$properties$companyName
+#> [1] "MICROSOFT PTY LIMITED"
+
+# properties of a group
+names(grp$properties)
+#>  [1] "@odata.context"                "id"                            "deletedDateTime"
+#>  [4] "classification"                "createdDateTime"               "description"
+#>  [7] "displayName"                   "expirationDateTime"            "groupTypes"
+#> [10] "mail"                          "mailEnabled"                   "mailNickname"
+#> [13] "membershipRule"                "membershipRuleProcessingState" "onPremisesLastSyncDateTime"
+#> ...
+```
+
+You can apply a filter to the `list_users` and `list_groups` methods, to cut down on the number of results. The filter should be a supported [OData expression](https://learn.microsoft.com/en-us/graph/query-parameters#filter-parameter). For example, this will filter the list of users down to your own account:
+
+```r
+# get my own name
+my_name <- me$properties$displayName
+
+gr$list_users(filter=sprintf("displayName eq '%s'", my_name))
+```
+
+You can also view any directory objects that you own and/or created, via the `list_owned_objects` and `list_registered_objects` methods of the user object. These accept a `type` argument to filter the list of objects by the specified type(s).
+
+```r
+me$list_owned_objects(type="application")
+#> [[1]]
+#> <Graph registered app 'AzureRapp'>
+#>   app id: 5af7bc65-8834-4ee6-90df-e7271a12cc62
+#>   directory id: 132ce21b-ebb9-4e75-aa04-ad9155bb921f
+#>   domain: microsoft.onmicrosoft.com
+
+me$list_owned_objects(type="group")
+#> [[1]]
+#> <Graph group 'AIlyCATs'>
+#>   directory id: 82d27e38-026b-4e5d-ba1a-a0f5a21a2e85
+#>   description: ADS AP on Microsoft Teams.
+#> - Instant communication.
+#> - Share files/links/codes/...
+#> - Have fun. :)
+#>
+#> [[2]] 
+#> <Graph group 'ANZ Data Science and AI V-Team'>
+#>   directory id: 4e237eed-5f9b-4abd-830b-9322cb472b66
+#>   description: ANZ Data Science V-Team
+#>
+#> ...
+```
+
+## Registered apps and service principals
+
+To get the details for a registered app, use the `get_app` or `create_app` methods of the login client object. These return an object of class `az_app`. The first method retrieves an existing app, while the second creates a new app.
+
+```r
+# an existing app
+gr$get_app("5af7bc65-8834-4ee6-90df-e7271a12cc62")
+#> <Graph registered app 'AzureRapp'>
+#>   app id: 5af7bc65-8834-4ee6-90df-e7271a12cc62
+#>   directory id: 132ce21b-ebb9-4e75-aa04-ad9155bb921f
+#>   domain: microsoft.onmicrosoft.com
+
+# create a new app
+(appnew <- gr$create_app("AzureRnewapp"))
+#> <Graph registered app 'AzureRnewapp'>
+#>   app id: 1751d755-71b1-40e7-9f81-526d636c1029
+#>   directory id: be11df41-d9f1-45a0-b460-58a30daaf8a9
+#>   domain: microsoft.onmicrosoft.com
+```
+
+By default, creating a new app will also generate a strong password with a duration of two years, and create a corresponding service principal in your AAD tenant. You can retrieve this with the `get_service_principal` method, which returns an object of class `az_service_principal`.
+
+```r
+appnew$get_service_principal()
+#> <Graph service principal 'AzureRnewapp'>
+#>   app id: 1751d755-71b1-40e7-9f81-526d636c1029
+#>   directory id: 7dcc9602-2325-4912-a32e-03e262ffd240
+#>   app tenant: 72f988bf-86f1-41af-91ab-2d7cd011db47
+
+# or directly from the login client (supply the app ID in this case)
+gr$get_service_principal("1751d755-71b1-40e7-9f81-526d636c1029")
+#> <Graph service principal 'AzureRnewapp'>
+#>   app id: 1751d755-71b1-40e7-9f81-526d636c1029
+#>   directory id: 7dcc9602-2325-4912-a32e-03e262ffd240
+#>   app tenant: 72f988bf-86f1-41af-91ab-2d7cd011db47
+```
+
+To update an app, call its `update` method. For example, use this to set a redirect URL or change its permissions. Consult the Microsoft Graph documentation for what properties you can update.
+
+```r
+#' # set a public redirect URL
+newapp$update(publicClient=list(redirectUris=I("http://localhost:1410")))
+```
+
+One app property you _cannot_ change with `update` is its password. As a security measure, app passwords are auto-generated on the server, rather than being specified manually. To manage an app's password, call the `add_password` and `remove_password` methods.
+
+```r
+#' # add a password
+newapp$add_password()
+
+#' remove a password
+pwd_id <- newapp$properties$passwordCredentials[[1]]$keyId
+newapp$remove_password(pwd_id)
+```
+
+Similarly, to manage an app's certificate for authentication, call the `add_certificate` and `remove_certificate` methods.
+
+```r
+#' add a certificate:
+#' can be specified as a filename, openssl::cert object, AzureKeyVault::stored_cert object,
+#' or raw or character vector
+newapp$add_certificate("cert.pem")
+
+#' remove a certificate
+cert_id <- newapp$properties$keyCredentials[[1]]$keyId
+newapp$remove_certificate(cert_id)
+```
+
+## Common methods
+
+The classes described above inherit from the `az_object` class, which represents an arbitrary object in Azure Active Directory. This has the following methods:
+
+- `list_group_memberships()`: Return the IDs of all groups this object is a member of.
+- `list_object_memberships()`: Return the IDs of all groups, administrative units and directory roles this object is a member of.
+
+In turn, the `az_object` class inherits from `ms_object`, which is a base class to represent any object (not just an AAD object) in Microsoft Graph. This has the following methods:
+
+- `delete(confirm=TRUE)`: Delete an object. By default, ask for confirmation first.
+- `update(...)`: Update the object information in Azure Active Directory (mentioned above when updating an app).
+- `do_operation(...)`: Carry out an arbitrary operation on the object.
+- `sync_fields()`: Synchronise the R object with the data in Azure Active Directory.
+- `get_list_pager()`: Returns a pager object for iterating through the items in a list of results. See the "Batching and paging" vignette for more information on this topic.
+
+In particular, the `do_operation` method allows you to call the Graph REST endpoint directly. This means that even if AzureGraph doesn't support the operation you want to perform, you can do it manually. For example, if you want to retrieve information on your OneDrive:
+
+```r
+# get my OneDrive
+me$do_operation("drive")
+
+# list the files in my OneDrive root folder
+me$do_operation("drive/root/children")
+```
+
+## See also
+
+See the following links on Microsoft Docs for more information.
+
+- [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview)
+- [Graph REST API (beta)](https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-beta)

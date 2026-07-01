@@ -1,0 +1,15 @@
+1.2
+  - jwt_encode_sig() now allows to override the typ field via headers #15
+  - jwt_decode functions now check the 'exp' and 'nbf' fields and raise
+    and error if token has expired.
+
+1.1
+  - Allow for empty list attributes in jwt_claim(), issue #13
+
+1.0
+  - jwt_encode_sig() and jwt_decode_sig() now use proper 64bit signatures
+    as described in the spec (instead of openssl DER structures)
+
+0.2
+  - jwt_encode_hmac() and jwt_encode_sig() gain a 'header' parameter
+  - Add spell checker, update maintainer email address

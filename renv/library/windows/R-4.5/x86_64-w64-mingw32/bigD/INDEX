@@ -1,0 +1,19 @@
+fdt                     Format a datetime with a formatting string
+fdt_locales_lst         A list of all supported locales
+fdt_locales_vec         Get a vector of all supported locales
+first_day_of_week       Get a named vector of all first-day-of-the-week
+                        names for different regions
+flex_d_lst              A list of all flexible date types
+flex_d_vec              Get a vector of all flexible date types
+flex_t12_lst            A list of all 12-hour flexible time types
+flex_t12_vec            Get a vector of all 12-hour flexible time types
+flex_t24_lst            A list of all 24-hour flexible time types
+flex_t24_vec            Get a vector of all 24-hour flexible time types
+names_months            Get a vector of all the short month names
+names_wkdays            Get a vector of all the short weekday names
+standard_date           Obtain a standard date format that works across
+                        locales
+standard_date_time      Obtain a standard datetime format that works
+                        across locales
+standard_time           Obtain a standard time format that works across
+                        locales

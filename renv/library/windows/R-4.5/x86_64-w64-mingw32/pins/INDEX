@@ -1,0 +1,26 @@
+board_azure             Use an Azure storage container as a board
+board_cache_path        Retrieve default cache path
+board_connect           Use Posit Connect as board
+board_connect_url       Use a vector of Posit Connect vanity URLs as a
+                        board
+board_databricks        Use a Databricks Volume as a board
+board_folder            Use a local folder as board
+board_gcs               Use a Google Cloud Storage bucket as a board
+board_gdrive            Use a Google Drive folder as a board
+board_ms365             Use a OneDrive or Sharepoint document library
+                        as a board
+board_s3                Use an S3 bucket as a board
+board_url               Use a vector of URLs as a board
+cache_browse            Cache management
+pin_browse              Browse source of a pin
+pin_delete              Delete a pin
+pin_download            Upload and download files to and from a board
+pin_exists              Determine if a pin exists
+pin_list                List all pins
+pin_meta                Retrieve metadata for a pin
+pin_reactive_read       Wrap a pin in a reactive expression
+pin_read                Read and write objects to and from a board
+pin_search              Search for pins
+pin_versions            List, delete, and prune pin versions
+write_board_manifest    Write board manifest file to board's root
+                        directory

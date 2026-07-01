@@ -1,0 +1,22 @@
+add_methods             Microsoft 365 object accessor methods
+get_personal_onedrive   Login clients for Microsoft 365
+microsoft365r_options   Global options
+ms_channel              Teams channel
+ms_chat                 Teams chat
+ms_chat_message         Teams chat message
+ms_drive                Personal OneDrive or SharePoint document
+                        library
+ms_drive_item           File or folder in a drive
+ms_list                 Sharepoint list
+ms_list_item            SharePoint list item
+ms_outlook              Outlook mail client
+ms_outlook_attachment   Outlook mail attachment
+ms_outlook_email        Outlook mail message
+ms_outlook_folder       Outlook mail folder
+ms_plan                 Microsoft Planner Plan
+ms_plan_bucket          Microsoft Planner Plan Bucket
+ms_plan_task            Microsoft Planner Plan Task
+ms_site                 Office 365 SharePoint site
+ms_team                 Microsoft Teams team
+ms_team_member          Teams/channel member
+personal_onedrive       Deprecated client functions

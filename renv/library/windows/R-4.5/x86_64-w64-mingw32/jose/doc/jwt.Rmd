@@ -1,0 +1,121 @@
+---
+title: "Encoding/Decoding JSON Web Tokens (JWT) in R"
+date: "`r Sys.Date()`"
+output:
+  html_document
+vignette: >
+  %\VignetteIndexEntry{Encoding/Decoding JSON Web Tokens (JWT) in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment = "")
+```
+
+JavaScript Object Signing and Encryption (JOSE) consists of a set of specifications for encryption and signatures based on the popular JSON format. This is work in progress, the IETF [jose workgroup](https://datatracker.ietf.org/wg/jose/) usually has the latest information. 
+
+ - [RFC7515](https://datatracker.ietf.org/doc/html/rfc7515): JSON Web Signature (JWS)
+ - [RFC7516](https://datatracker.ietf.org/doc/html/rfc7516): JSON Web Encryption (JWE)
+ - [RFC7517](https://datatracker.ietf.org/doc/html/rfc7517): JSON Web Key (JWK)
+ - [RFC7518](https://datatracker.ietf.org/doc/html/rfc7518): JSON Web Algorithms (JWA)
+ - [RFC7519](https://datatracker.ietf.org/doc/html/rfc7519): JSON Web Token (JWT)
+ 
+The `jose` package implements some of these specifications, in particular for working with JSON web tokens and keys.
+
+### JSON Web Token: HMAC tagging
+
+The most common use of JSON Web Tokens is combining a small payload (the 'claim') with a HMAC tag or RSA/ECDSA signature. See also [https://jwt.io](https://jwt.io) for short introduction. 
+
+```{r}
+library(openssl)
+library(jose)
+
+# Example payload
+claim <- jwt_claim(user = "jeroen", session_key = 123456)
+
+# Encode with hmac
+key <- charToRaw("SuperSecret")
+(jwt <- jwt_encode_hmac(claim, secret = key))
+
+# Decode 
+jwt_decode_hmac(jwt, secret = key)
+```
+
+The decoding errors if the tag verification fails.
+
+```{r error=TRUE}
+# What happens if we decode with the wrong key
+jwt_decode_hmac(jwt, secret = raw())
+```
+
+### JSON Web Token: RSA/ECDSA signature
+
+Similarly, we can use an RSA or ECDSA key pair we to verify a signature from someone's public key.
+
+```{r}
+# Generate ECDSA keypair
+key <- ec_keygen()
+pubkey <- as.list(key)$pubkey
+
+# Sign with the private key
+(jwt <- jwt_encode_sig(claim, key = key))
+
+# Decode and verify using the public key
+jwt_decode_sig(jwt, pubkey = pubkey)
+```
+
+Again decoding will error if the signature verification fails.
+
+```{r error = TRUE}
+wrong_key <- ec_keygen()
+jwt_decode_sig(jwt, pubkey = wrong_key)
+```
+
+
+The spec also describes methods for encrypting the payload, but this is currently not widely in use yet.
+
+### Reserved jwt-claim names
+
+You can include custom fields in your jwt payload, but the spec names a few [registered claims](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1) that are reserved for specific uses.
+
+ - `iss` (Issuer): the principal that issued the JWT.
+ - `sub` (Subject): the principal that is the subject of the JWT.
+ - `aud` (Audience): the recipients that the JWT is intended for.
+ - `exp` (Expiration Time): the expiration time on or after which the JWT must not be accepted.
+ - `nbf` (Not Before): the time before which the JWT must not be accepted.
+ - `iat` (Issued At): the time at which the JWT was issued.
+ - `jti` (JWT ID): a unique identifier for the JWT.
+ 
+Each of these are optional, by default only `iat` is set. The `jwt_claim()` function will automatically do basic validation when you set additional fields from this list. For any other fields you can use any value. For example:
+
+```{r}
+# Note that this token expires in 1 hour!
+myclaim <- jwt_claim(
+  iss = "My webapp",
+  exp = Sys.time() + 3600,
+  myfield = "Some application logic",
+  customer = "a cow"
+)
+(jwt <- jwt_encode_sig(myclaim, key = key))
+```
+
+The decode functions will automatically verify that the token has not expired (with a 60s grace period to account for inaccurate clocks), and error otherwise:
+
+```{r}
+jwt_decode_sig(jwt, pubkey = pubkey)
+```
+
+
+### Where is the JSON
+
+The jwt payloads consists of a head, body and signature which are separated with a dot into a single string. Both the header and body are actually `base64url` encoded JSON objects.
+
+```{r}
+(strings <- strsplit(jwt, ".", fixed = TRUE)[[1]])
+cat(rawToChar(base64url_decode(strings[1])))
+cat(rawToChar(base64url_decode(strings[2])))
+```
+
+However you should never trust this information without verifying the signature. This is what the `jwt_decode` functions do for you.

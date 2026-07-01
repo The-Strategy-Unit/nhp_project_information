@@ -1,0 +1,4 @@
+base64url_encode        Base64URL encoding
+jwt_claim               Generate claim
+jwt_encode_hmac         JSON Web Token
+read_jwk                JSON web-keys

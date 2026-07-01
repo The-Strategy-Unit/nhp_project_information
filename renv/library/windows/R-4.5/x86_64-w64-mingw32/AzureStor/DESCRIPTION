@@ -1,0 +1,30 @@
+Package: AzureStor
+Title: Storage Management in 'Azure'
+Version: 3.7.1
+Authors@R: c( person("Hong", "Ooi", , "hongooi73@gmail.com", role = c("aut", "cre")), person("Microsoft", role="cph") )
+Description: Manage storage in Microsoft's 'Azure' cloud: <https://azure.microsoft.com/en-us/products/category/storage/>. On the admin side, 'AzureStor' includes features to create, modify and delete storage accounts. On the client side, it includes an interface to blob storage, file storage, and 'Azure Data Lake Storage Gen2': upload and download files and blobs; list containers and files/blobs; create containers; and so on. Authenticated access to storage is supported, via either a shared access key or a shared access signature (SAS). Part of the 'AzureR' family of packages.
+License: MIT + file LICENSE
+URL: https://github.com/Azure/AzureStor https://github.com/Azure/AzureR
+BugReports: https://github.com/Azure/AzureStor/issues
+VignetteBuilder: knitr
+Depends: R (>= 3.3),
+Imports: utils, R6, httr (>= 1.4.0), mime, openssl, xml2, vctrs, AzureRMR (>=
+    2.3.0)
+Suggests: AzureAuth, readr, knitr, rmarkdown, jsonlite, testthat, processx,
+    uuid
+RoxygenNote: 7.3.2
+NeedsCompilation: no
+Packaged: 2025-08-25 09:25:20 UTC; hongo
+Author: Hong Ooi [aut, cre], Microsoft [cph]
+Maintainer: Hong Ooi <hongooi73@gmail.com>
+Repository: RSPM
+Date/Publication: 2025-08-25 10:00:10 UTC
+Encoding: UTF-8
+Built: R 4.5.0; ; 2025-08-26 04:31:35 UTC; windows
+RemoteType: standard
+RemoteRef: AzureStor
+RemotePkgRef: AzureStor
+RemoteRepos: https://packagemanager.posit.co/cran/latest
+RemoteReposName: CRAN
+RemotePkgPlatform: x86_64-w64-mingw32
+RemoteSha: 3.7.1

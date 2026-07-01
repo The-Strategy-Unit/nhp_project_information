@@ -1,0 +1,28 @@
+Package: snowflakeauth
+Title: Authentication Helpers for 'Snowflake'
+Version: 0.2.2
+Authors@R: c( person("Aaron", "Jacobs", , "aaron.jacobs@posit.co", role = c("aut")), person("E. David", "Aja", , "david@posit.co", role = c("aut", "cre")), person("Posit Software, PBC", role = c("cph", "fnd")) )
+Description: Authentication helpers for 'Snowflake'. It provides compatibility with authentication approaches supported by the 'Snowflake Connector for Python' <https://pypi.org/project/snowflake-connector-python> and the 'Snowflake CLI' <https://pypi.org/project/snowflake-cli>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports: cli, curl, jsonlite, RcppTOML, rlang, jose, openssl
+Suggests: httpuv, keyring, testthat (>= 3.0.0), withr
+RoxygenNote: 7.3.2
+Config/testthat/edition: 3
+URL: https://posit-dev.github.io/snowflakeauth/,
+    https://github.com/posit-dev/snowflakeauth
+BugReports: https://github.com/posit-dev/snowflakeauth/issues
+NeedsCompilation: no
+Packaged: 2026-02-24 17:45:53 UTC; edavidaja
+Author: Aaron Jacobs [aut], E. David Aja [aut, cre], Posit Software, PBC [cph, fnd]
+Maintainer: E. David Aja <david@posit.co>
+Repository: RSPM
+Date/Publication: 2026-02-25 06:30:23 UTC
+Built: R 4.5.0; ; 2026-02-26 04:43:29 UTC; windows
+RemoteType: standard
+RemoteRef: snowflakeauth
+RemotePkgRef: snowflakeauth
+RemoteRepos: https://packagemanager.posit.co/cran/latest
+RemoteReposName: CRAN
+RemotePkgPlatform: x86_64-w64-mingw32
+RemoteSha: 0.2.2

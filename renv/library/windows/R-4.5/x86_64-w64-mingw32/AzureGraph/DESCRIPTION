@@ -1,0 +1,29 @@
+Package: AzureGraph
+Title: Simple Interface to 'Microsoft Graph'
+Version: 1.3.5
+Authors@R: c( person("Hong", "Ooi", , "hongooi73@gmail.com", role = c("aut", "cre")), person("Microsoft", role="cph") )
+Description: A simple interface to the 'Microsoft Graph' API <https://learn.microsoft.com/en-us/graph/overview>. 'Graph' is a comprehensive framework for accessing data in various online Microsoft services. This package was originally intended to provide an R interface only to the 'Azure Active Directory' part, with a view to supporting interoperability of R and 'Azure': users, groups, registered apps and service principals. However it has since been expanded into a more general tool for interacting with Graph. Part of the 'AzureR' family of packages.
+URL: https://github.com/Azure/AzureGraph https://github.com/Azure/AzureR
+BugReports: https://github.com/Azure/AzureGraph/issues
+License: MIT + file LICENSE
+VignetteBuilder: knitr
+Depends: R (>= 3.3)
+Imports: AzureAuth (>= 1.0.1), utils, httr (>= 1.3), jsonlite, openssl, curl,
+    R6
+Suggests: AzureRMR, vctrs, knitr, rmarkdown, testthat
+RoxygenNote: 7.3.1
+NeedsCompilation: no
+Packaged: 2025-07-31 13:03:35 UTC; hongo
+Author: Hong Ooi [aut, cre], Microsoft [cph]
+Maintainer: Hong Ooi <hongooi73@gmail.com>
+Repository: RSPM
+Date/Publication: 2025-07-31 13:50:02 UTC
+Encoding: UTF-8
+Built: R 4.5.0; ; 2025-08-01 04:32:46 UTC; windows
+RemoteType: standard
+RemoteRef: AzureGraph
+RemotePkgRef: AzureGraph
+RemoteRepos: https://packagemanager.posit.co/cran/latest
+RemoteReposName: CRAN
+RemotePkgPlatform: x86_64-w64-mingw32
+RemoteSha: 1.3.5

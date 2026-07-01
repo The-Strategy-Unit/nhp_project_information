@@ -1,0 +1,5 @@
+has_a_default_connection
+                        Reports whether a default connection is
+                        available
+snowflake_connection    Snowflake connection parameter configuration
+snowflake_credentials   Get credentials for a Snowflake connection

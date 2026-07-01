@@ -1,0 +1,5 @@
+snowflakeauth-package	snowflakeauth-package
+has_a_default_connection	has_a_default_connection
+snowflakeauth	snowflakeauth-package
+snowflake_connection	snowflake_connection
+snowflake_credentials	snowflake_credentials

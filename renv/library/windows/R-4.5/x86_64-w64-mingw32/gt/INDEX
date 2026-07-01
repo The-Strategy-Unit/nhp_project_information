@@ -1,0 +1,283 @@
+adjust_luminance        Adjust the luminance for a palette of colors
+as_gtable               Transform a *gt* table to a 'gtable' object
+as_latex                Output a *gt* object as LaTeX
+as_raw_html             Get the HTML content of a *gt* table
+as_rtf                  Output a *gt* object as RTF
+as_word                 Output a *gt* object as Word
+cell_borders            Helper for defining custom borders for table
+                        cells
+cell_fill               Helper for defining custom fills for table
+                        cells
+cell_text               Helper for defining custom text styles for
+                        table cells
+cells_body              Location helper for targeting data cells in the
+                        table body
+cells_column_labels     Location helper for targeting the column labels
+cells_column_spanners   Location helper for targeting the column
+                        spanners
+cells_footnotes         Location helper for targeting the footnotes
+cells_grand_summary     Location helper for targeting cells in a grand
+                        summary
+cells_row_groups        Location helper for targeting row groups
+cells_source_notes      Location helper for targeting the source notes
+cells_stub              Location helper for targeting cells in the
+                        table stub
+cells_stub_grand_summary
+                        Location helper for targeting the stub cells in
+                        a grand summary
+cells_stub_summary      Location helper for targeting the stub cells in
+                        a summary
+cells_stubhead          Location helper for targeting the table
+                        stubhead cell
+cells_summary           Location helper for targeting group summary
+                        cells
+cells_title             Location helper for targeting the table title
+                        and subtitle
+cols_add                Add one or more columns to a *gt* table
+cols_align              Set the alignment of columns
+cols_align_decimal      Align all numeric values in a column along the
+                        decimal mark
+cols_hide               Hide one or more columns
+cols_label              Relabel one or more columns
+cols_label_with         Relabel columns with a function
+cols_merge              Merge data from two or more columns to a single
+                        column
+cols_merge_n_pct        Merge two columns to combine counts and
+                        percentages
+cols_merge_range        Merge two columns to a value range column
+cols_merge_uncert       Merge columns to a value-with-uncertainty
+                        column
+cols_move               Move one or more columns
+cols_move_to_end        Move one or more columns to the end
+cols_move_to_start      Move one or more columns to the start
+cols_nanoplot           Add a new column of nanoplots, taking input
+                        data from selected columns
+cols_unhide             Unhide one or more columns
+cols_units              Define units for one or more columns
+cols_width              Set the widths of columns
+constants               The fundamental physical constants
+countrypops             Yearly populations of countries from 1960 to
+                        2024
+currency                Supply a custom currency symbol to
+                        'fmt_currency()'
+data_color              Perform data cell colorization
+default_fonts           Provide a vector of sensible system fonts for
+                        use with *gt* tables
+escape_latex            Perform LaTeX escaping
+exibble                 A toy example tibble for testing with gt:
+                        exibble
+extract_body            Extract the table body from a *gt* object
+extract_cells           Extract a vector of formatted cells from a *gt*
+                        object
+extract_summary         Extract a summary list from a *gt* object
+films                   Feature films in competition at the Cannes Film
+                        Festival
+fmt                     Set a column format with a formatter function
+fmt_auto                Automatically format column data according to
+                        their values
+fmt_bins                Format column data containing bin/interval
+                        information
+fmt_bytes               Format values as bytes
+fmt_chem                Format chemical formulas
+fmt_country             Generate country names from their corresponding
+                        country codes
+fmt_currency            Format values as currencies
+fmt_date                Format values as dates
+fmt_datetime            Format values as datetimes
+fmt_duration            Format numeric or duration values as styled
+                        time duration strings
+fmt_email               Format email addresses to generate 'mailto:'
+                        links
+fmt_engineering         Format values to engineering notation
+fmt_flag                Generate flag icons for countries from their
+                        country codes
+fmt_fraction            Format values as mixed fractions
+fmt_icon                Use icons within a table's body cells
+fmt_image               Format image paths to generate images in cells
+fmt_index               Format values to indexed characters
+fmt_integer             Format values as integers
+fmt_markdown            Format Markdown text
+fmt_number              Format numeric values
+fmt_number_si           Format numbers with SI prefixes
+fmt_partsper            Format values as parts-per quantities
+fmt_passthrough         Format by simply passing data through
+fmt_percent             Format values as a percentage
+fmt_roman               Format values as Roman numerals
+fmt_scientific          Format values to scientific notation
+fmt_spelled_num         Format values to spelled-out numbers
+fmt_tf                  Format 'TRUE' and 'FALSE' values
+fmt_time                Format values as times
+fmt_units               Format measurement units
+fmt_url                 Format URLs to generate links
+fmts                    Formatting functions
+from_column             Reference a column of values for certain
+                        parameters
+ggplot_image            Helper function for adding a ggplot
+gibraltar               Weather conditions in Gibraltar, May 2023
+google_font             Helper function for specifying a font from the
+                        _Google Fonts_ service
+grand_summary_rows      Add grand summary rows using aggregation
+                        functions
+grp_add                 Add one or more *gt* tables to a 'gt_group'
+                        container object
+grp_clone               Clone one or more *gt* tables in a 'gt_group'
+                        container object
+grp_options             Modify table options for all tables within a
+                        'gt_group' object
+grp_pull                Pull out a *gt* table from a 'gt_group'
+                        container object
+grp_replace             Replace one or more *gt* tables in a 'gt_group'
+                        container object
+grp_rm                  Remove one or more *gt* tables from a
+                        'gt_group' container object
+gt                      Create a *gt* table object
+gt_group                Create a 'gt_group' container for holding
+                        multiple *gt* table objects
+gt_latex_dependencies   Get the LaTeX dependencies required for a *gt*
+                        table
+gt_output               Create a *gt* display table output element for
+                        Shiny
+gt_preview              Generate a special *gt* table for previewing a
+                        dataset
+gt_split                Split a table into a group of tables (a
+                        'gt_group')
+gt_update_select        Update a *gt* selection in Shiny
+gtcars                  Deluxe automobiles from the 2014-2017 period
+gtsave                  Save a *gt* table as a file
+html                    Interpret input text as HTML-formatted text
+illness                 Lab tests for one suffering from an illness
+info_currencies         View a table with info on supported currencies
+info_date_style         View a table with info on date styles
+info_flags              View a table with all available flags for
+                        'fmt_flag()'
+info_google_fonts       View a table on recommended Google Fonts
+info_icons              View a table with all available Font Awesome
+                        icons for 'fmt_icon()'
+info_locales            View a table with info on supported locales
+info_paletteer          View a table with info on color palettes
+info_time_style         View a table with info on time styles
+info_unit_conversions   View a table with all units that can be
+                        converted by 'unit_conversion()'
+latex                   Interpret input text as LaTeX-formatted text
+local_image             Helper function for adding a local image
+locale                  Localize formatting and symbols
+md                      Interpret input text as Markdown-formatted text
+metro                   The stations of the Paris Metro
+nanoplot_options        Supply nanoplot options to 'cols_nanoplot()'
+nuclides                Nuclide data
+opt_align_table_header
+                        Option to align the table header
+opt_all_caps            Option to use all caps in select table
+                        locations
+opt_css                 Option to add custom CSS for the table
+opt_footnote_marks      Option to modify the set of footnote marks
+opt_footnote_order      Option to modify the order of footnotes
+opt_footnote_spec       Option to specify the formatting of footnote
+                        marks
+opt_horizontal_padding
+                        Option to expand or contract horizontal padding
+opt_interactive         Option to put interactive elements in an HTML
+                        table
+opt_row_striping        Option to add or remove row striping
+opt_stylize             Stylize your table with a colorful look
+opt_table_font          Options to define font choices for the entire
+                        table
+opt_table_lines         Option to set table lines to different extents
+opt_table_outline       Option to wrap an outline around the entire
+                        table
+opt_vertical_padding    Option to expand or contract vertical padding
+pct                     Helper for providing a numeric value as
+                        percentage
+peeps                   A table of personal information for people all
+                        over the world
+photolysis              Data on photolysis rates for gas-phase organic
+                        compounds
+pizzaplace              A year of pizza sales from a pizza place
+px                      Helper for providing a numeric value as pixels
+                        value
+random_id               Helper for creating a random 'id' for a *gt*
+                        table
+reactions               Reaction rates for gas-phase atmospheric
+                        reactions of organic compounds
+render_gt               A *gt* display table render function for use in
+                        Shiny
+rm_caption              Remove the table caption
+rm_footnotes            Remove table footnotes
+rm_header               Remove the table header
+rm_source_notes         Remove table source notes
+rm_spanners             Remove column spanner labels
+rm_stubhead             Remove the stubhead label
+row_group               Select helper for targeting the row group
+                        column
+row_group_order         Modify the ordering of any row groups
+rows-columns            Apply conditional formatting to cells with
+                        'rows' and 'columns'
+rows_add                Add one or more rows to a *gt* table
+rx_addv                 An ADDV-flavored clinical trial toy dataset
+rx_adsl                 An ADSL-flavored clinical trial toy dataset
+sp500                   Daily S&P 500 Index data from 1950 to 2015
+stub                    Select helper for targeting the stub column
+sub_large_vals          Substitute large values in the table body
+sub_missing             Substitute missing values in the table body
+sub_small_vals          Substitute small values in the table body
+sub_values              Substitute targeted values in the table body
+sub_zero                Substitute zero values in the table body
+summary_columns         Add summary columns using aggregation functions
+summary_rows            Add group-wise summary rows using aggregation
+                        functions
+system_fonts            Get a themed font stack that works well across
+                        systems
+sza                     Twice hourly solar zenith angles by month &
+                        latitude
+tab_caption             Add a table caption
+tab_footnote            Add a table footnote
+tab_header              Add a table header
+tab_info                Understand what's been set inside of a *gt*
+                        table object
+tab_options             Modify the table output options
+tab_row_group           Add a row group to a *gt* table
+tab_source_note         Add a source note citation
+tab_spanner             Add a spanner label
+tab_spanner_delim       Create column labels and spanners via delimited
+                        column names
+tab_stub_indent         Control indentation of row labels in the stub
+tab_stubhead            Add label text to the stubhead
+tab_style               Add custom styles to one or more cells
+tab_style_body          Target cells in the table body and style
+                        accordingly
+test_image              Generate a path to a test image
+text_case_match         Perform whole or partial text replacements with
+                        a 'switch'-like approach
+text_case_when          Perform whole text replacements using a
+                        'case-when'-expression approach
+text_replace            Perform highly targeted text replacement with a
+                        regex pattern
+text_transform          Perform text transformations with a custom
+                        function
+towny                   Populations of all municipalities in Ontario
+                        from 1996 to 2021
+unit_conversion         Get a conversion factor across two measurement
+                        units of a given class
+vec_fmt_bytes           Format a vector as values in terms of bytes
+vec_fmt_currency        Format a vector as currency values
+vec_fmt_date            Format a vector as date values
+vec_fmt_datetime        Format a vector as datetime values
+vec_fmt_duration        Format a vector of numeric or duration values
+                        as styled time duration strings
+vec_fmt_engineering     Format a vector as values in engineering
+                        notation
+vec_fmt_fraction        Format a vector as mixed fractions
+vec_fmt_index           Format a vector as indexed characters
+vec_fmt_integer         Format a vector as integer values
+vec_fmt_markdown        Format a vector containing Markdown text
+vec_fmt_number          Format a vector as numeric values
+vec_fmt_number_si       Format a vector as numbers with SI prefixes
+vec_fmt_partsper        Format a vector as parts-per quantities
+vec_fmt_percent         Format a vector as percentage values
+vec_fmt_roman           Format a vector as Roman numerals
+vec_fmt_scientific      Format a vector as values in scientific
+                        notation
+vec_fmt_spelled_num     Format a vector as spelled-out numbers
+vec_fmt_time            Format a vector as time values
+web_image               Helper function for adding an image from the
+                        web
