@@ -12,7 +12,7 @@ format:
           rel="stylesheet"
           integrity="sha384-1OScWqbx4XgbHvbfZzPSoQ5TfKTHjWXe0jqxPmrngilLvmJ4Z4F8gkX/b9H/q1z4"
           crossorigin="anonymous">
-        
+
         <script
           src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/b-3.2.6/b-html5-3.2.6/datatables.min.js"
           integrity="sha384-c8v8R8HgB2YgkBbz+W+EB5M/1RKD5wqDVq1GWXpVLlYmI2EJ+qhj03f0LWH4nd3E"
@@ -22,24 +22,47 @@ format:
           src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js"
           integrity="sha384-Jd2/X5FXVKahwaY2nivvw4LfSTg9idSj8yNXWtT4qef0fHSYr6M7M8bJAfbFYoMc"
           crossorigin="anonymous"></script>
-          
+
         <script src="js/table.js"></script>
 ---
 
-This page contains an interactive table with a sortable and searchable lookup of types of potentially mitigatable activity (TPMAs). Click the 'Download CSV' button to download a copy with the current filters applied (if any).
+This page contains an interactive table with a sortable and searchable lookup of types of potentially mitigatable activity (TPMAs).
 
-The table shows the model versions when each TPMA was active from and active to (if deprecated). There were 84 TPMAs in model version 1.0. For model versions 1.1 onwards, there are 92 TPMAs. Virtual Ward and Day Procedures TPMAs were added in [version 1.1](/project_plan_and_summary/model_updates.html#update-20240424). Same Day Emergency Care (SDEC) TPMAs were added and Ambulatory Emergency Care (AEC) TPMAs removed in [version 3.4](http://localhost:5811/project_plan_and_summary/model_updates.html#update-20250423).
+## The current list
 
-The table contains TPMA codes, which exist to make it easier to refer to and discuss TPMAs. These codes take the form 'IP-AA-001', for example. Each code is composed of an activity type ('IP' is inpatient, for example), a TPMA type ('AA' is activity avoidance) and a three-digit number (assigned on the basis of alphabetical order within activity and TPMA types).
+There are 34 TPMAs from model version 1.1 onwards, totalling 92 unique TPMAs in combination with their sub-types.
 
-The variable names for each strategy are also included. These are used when interacting directly with the data that underlies the model and apps. The TPMA names are presented to users in the inputs- and outputs-app interfaces.
+The table shows the model versions when each TPMA was active from and active to (if deprecated).
+Major changes have included that:
+
+* Virtual Ward and Day Procedures TPMAs were added in [version 1.1](/project_plan_and_summary/model_updates.html#update-20240424)
+* Same Day Emergency Care (SDEC) TPMAs were added and Ambulatory Emergency Care (AEC) TPMAs removed in [version 3.4](http://localhost:5811/project_plan_and_summary/model_updates.html#update-20250423)
+
+## Unique codes
+
+The table contains unique TPMA codes, which make it easier to refer to and discuss TPMAs.
+Each code is composed of:
+
+* an activity type, where 'IP' is inpatients, 'OP' is outpatients and 'AE' is accident and emergency
+* a TPMA type, where 'AA' is activity avoidance and 'EF' is efficiencies
+* a three-digit number, which was assigned on the basis of alphabetical order within activity and TPMA types
+
+So, for example, 'IP-AA-001' refers to the first-listed activity-avoidance TPMA within the inpatients activity type.
+
+## Mechanisms
 
 There are four mechanisms that a TPMA may relate to:
 
-1.  Prevention and public health initiatives. This includes hospital activity related to smoking, alcohol consumption, obesity or falls which may be deemed to be avoidable via prevention and public health interventions. 
-2.  Redirection of activity to out-of-hospital settings or the substitution of hospital activity for some alternative out-of-hospital intervention.  This includes ambulatory care sensitive admissions, mental health admissions that may be avoided with psychiatric liaison, admissions of frail older people and low acuity admissions.
-3.  De-adoption of low value activities, such as tonsillectomies, grommets, and unnecessary follow-up outpatient attendances. 
-4.  Efficiency gains such as reduced length of stay or virtual wards.
+1. Prevention and public health initiatives.
+This includes hospital activity related to smoking, alcohol consumption, obesity or falls which may be deemed to be avoidable via prevention and public health interventions.
+2. Redirection of activity to out-of-hospital settings or the substitution of hospital activity for some alternative out-of-hospital intervention.
+This includes ambulatory care sensitive admissions, mental health admissions that may be avoided with psychiatric liaison, admissions of frail older people and low acuity admissions.
+3. De-adoption of low value activities, such as tonsillectomies, grommets, and unnecessary follow-up outpatient attendances.
+4. Efficiency gains such as reduced length of stay or virtual wards.
+
+## TPMA lookup table
+
+Click the 'Download CSV' button to download a copy with the current filters applied (if any).
 
 <table id="tpma-table" style="width:100%">
   <thead></thead>
