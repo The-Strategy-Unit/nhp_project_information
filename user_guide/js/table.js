@@ -80,8 +80,7 @@ function applyTableCellWrapping(columns) {
 async function loadTpmasTable(
   selector,
   {
-    // TODO: update path when merged to main in TPMAs repo
-    lookupCsvUrl = "https://raw.githubusercontent.com/The-Strategy-Unit/TPMAs/refs/heads/10-lookup-update/reference/tpma-lookup.csv"
+    lookupCsvUrl = "https://raw.githubusercontent.com/The-Strategy-Unit/TPMAs/refs/heads/main/reference/tpma-lookup.csv"
   } = {}
 ) {
   try {
