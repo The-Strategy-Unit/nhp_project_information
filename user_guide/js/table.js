@@ -2,7 +2,7 @@ function initDataTable(selector, data, columns) {
   new DataTable(selector, {
     data: data,
     columns: columns,
-    pageLength: 25,
+    pageLength: 10,
     order: [[0, "asc"]],
     autoWidth: false,
     initComplete: function () {
