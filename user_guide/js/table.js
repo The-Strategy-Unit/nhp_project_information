@@ -57,7 +57,8 @@ function transformTpmasRows(lookupRows) {
     return {
       Code: row.tpma_code,
       Name: row.tpma_name,
-      Subtype: subtypeValue === "NA" ? "-" : subtypeValue,
+      SubType: subtypeValue === "NA" ? "-" : subtypeValue,
+      ActivityType: row.activity_type,
       Mechanism: row.tpma_mechanism,
       From: row.active_from,
       To: toValue === "NA" ? "-" : toValue
@@ -90,7 +91,8 @@ async function loadTpmasTable(
     const columns = [
       { title: "Code", data: "Code", width: "95px" },
       { title: "Name", data: "Name" },
-      { title: "Subtype", data: "Subtype" },
+      { title: "Sub-type", data: "SubType" },
+      { title: "Activity type", data: "ActivityType" },
       { title: "Mechanism", data: "Mechanism" },
       { title: "From", data: "From", width: "65px" },
       { title: "To", data: "To", width: "65px" }
