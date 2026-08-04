@@ -34,7 +34,7 @@ Our assumptions log has the following columns
 - Impact rating: Low, Medium or High
 - Risk rating: Determined by quality rating and impact rating
 
-This project website is version controlled and therefore historical versions of the assumption log can be found on [GitHub](https://github.com/The-Strategy-Unit/nhp_project_information).
+This project website is version controlled and therefore historical versions of the assumption log can be found in [GitHub Releases](https://github.com/The-Strategy-Unit/nhp_project_information/releases).
 
 <table id="assumptions-table" style="width:100%">
   <thead></thead>
