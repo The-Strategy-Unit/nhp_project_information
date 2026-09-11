@@ -1,6 +1,9 @@
 ---
 title: "Overview of components"
 order: 6
+format:
+  html:
+    mermaid:
 ---
 
 Given the size of the project, there are numerous GitHub repositories relating to NHP, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, do contact a member of the Strategy Unit Data Science team. Please note that some repositories are currently set to private.
@@ -10,6 +13,86 @@ Given the size of the project, there are numerous GitHub repositories relating t
 The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
 
 ![Diagram of NHP model architecture](../resources/NHP_model_v4.2.png){fig-alt="A diagram showing the connections between the various repositories"}
+
+```{mermaid}
+%%| fig-width: 12
+%%| fig-height: 10
+---
+config:
+  layout: elk
+  theme: neutral
+  themeVariables:
+    fontSize: 20px
+  flowchart:
+    nodeSpacing: 40
+    rankSpacing: 60
+---
+
+
+flowchart LR
+
+    %% Data Sources
+    subgraph Sources["Data Sources"]
+        direction LR
+        hes["HES Data"]
+        ons["ONS Population Projections"]
+        nhp["nhp_data"]
+    end
+
+    hes --> nhp
+    ons --> nhp
+
+    %% Storage Layer
+    subgraph Storage["Azure Storage"]
+        direction LR
+        inputs["inputs data"]
+        modeldata["model data"]
+        results["model results"]
+    end
+
+    nhp --> inputs
+    nhp --> modeldata
+
+    %% Processing Layer
+    subgraph Compute["Azure Compute"]
+        direction LR
+        api["nhp_api_v2"]
+        aci["nhp_aci"]
+        model["nhp_model"]
+        databricks["nhp_model_databricks"]
+        reskit["nhp_reskit"]
+
+        api --> aci
+        aci --> model
+        model --> databricks
+    end
+
+    modeldata --> aci
+    aci --> results
+
+    %% Applications Layer
+    subgraph Connect["Connect Server"]
+        direction LR
+        nhpinputs["nhp_inputs"]
+        scenario["Scenario Parameters"]
+        outputs["nhp_outputs"]
+        reports["nhp_inputs_report_app"]
+        final["nhp_final_reports"]
+        project["nhp_project_information"]
+    end
+
+    inputs --> nhpinputs
+    nhpinputs --> scenario
+    scenario --> api
+
+    results --> reskit
+
+    reskit --> outputs
+    reskit --> reports
+    reskit --> final
+```
+
+
 
 ## Repositories relating to model inputs
 
