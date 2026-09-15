@@ -3,6 +3,20 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2026/09/14
+
+## v6.0.0
+
+### Updated Inputs selection app
+
+Inputs selection app appearance has been updated. 
+
+### Introduction of Progress app
+
+A new progress app has been introduced, reporting result generation progress. The user is automatically redirected to the progress app, once they click "Start" in Inputs selection.  
+Progress will not be lost if the app tab is closed; the user can access it again from Inputs selection by selecting the scenario they last launched, while the model is still running.  
+Once results have been generated, the user gets automatically redirected to the Outputs app that offers model results access and downloads. 
+
 # Update 2026/06/24
 
 ## v5.2.0
