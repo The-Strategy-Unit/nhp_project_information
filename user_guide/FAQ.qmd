@@ -205,3 +205,14 @@ NB important to note that this is an improvement as it more accurately reflects 
 
 For a more detailed explanation of the binomial thinning method see [modelling_uncertainty](../modelling_methodology/modelling_uncertainty.qmd).
 
+## What data sharing arrangements are in place?
+
+Producing demand estimates within the work of the NHP demand and capacity project requires the use of row level pseudonymised data. This data is only accessed by specific MLCSU staff who need to use this data to carry out their work on the modelling. The data is stored on password protected NHS provisioned servers. This pseudonymised row level data is not shared with any third parties as part of the work of the modelling team.
+
+The modelling work does generate data summaries that are safe to access by individuals outside the immediate team. Even pseudonymised data can be reidentified under the appropriate conditions and the dashboard and high level summaries which are provided on a server which is hosted on the open internet have appropriate suppression of small numbers (suppressing numbers <5) in line with NHS guidance to prevent reidentification.
+
+The work does require sharing more detailed summaries with the hospital schemes themselves as well as named contractors commissioned by the programme within the 'Health Delivery Partnership'. These detailed summaries contain small numbers that are not suppressed but the risk of reidentification is highly mitigated as described in the DPIA. Both contractors operate under a contract which contains specific instructions around use of data including prohibiting sharing of any data. NHS staff in hospitals with whom the summaries are shared will be bound by their local IG policies.
+
+Data minimisation is used extensively to reduce the amount of information disclosed. All of the age data is in categories (0, 1-17, 18-65, 65+) and other than sex there is no other demographic information present. 
+
+No other data should be shared as part of this work, neither data summaries with variables that increase the risk of reidentification (for example, DOB or LSOA) nor with any other parties than those described above. All of this detail is held within a DPIA approved and held by NHS England.
