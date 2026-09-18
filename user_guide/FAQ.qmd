@@ -111,7 +111,7 @@ The model allows users to select their 'horizon year': the year they wish the mo
 
 ## Do the types of potentially mitigatable activity (TPMAs) account for virtual wards?
 
-Yes, we are introducing a new virtual wards TPMA from May. Information about all the TPMAs is available [here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd).
+Yes, we introduced a new virtual wards TPMA in May 2024. Information about all the TPMAs is available [here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd).
 
 ## Which types of potentially mitigatable activity (TPMAs) should be prioritised when setting assumptions?
 
