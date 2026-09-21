@@ -5,4 +5,6 @@ order: 1
 
 Please contact [mlcsu.nhpanalytics@nhs.net](mailto:mlcsu.nhpanalytics@nhs.net) or your scheme's Model Relationship Manager with any queries.
 
+Contact the [Product Team](mailto:mlcsu.su.datascience@nhs.net?subject=FAO%20Product%20Team) directly or use the email above with the Subject header as "FAO Product Team".
+
 You can also raise an issue or a comment on the [GitHub repository for this website](https://github.com/The-Strategy-Unit/nhp_project_information).

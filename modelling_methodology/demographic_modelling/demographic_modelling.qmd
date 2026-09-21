@@ -64,7 +64,7 @@ In most cases we expect users to select and use ONS's main ('migration category'
 
 ## Custom demographic projections
 
-Users may request the use of a custom population projection for specific schemes, by contacting their Model Relationship Manager. Any proposed alternative population projection will require the evidenced support of the ICB and region.
+Users may request the use of a custom population projection for specific schemes, please [contact us](../contact.qmd). Any proposed alternative population projection will require the evidenced support of the ICB and region.
 
 ## How demographic growth is applied in the model: a worked example
 
