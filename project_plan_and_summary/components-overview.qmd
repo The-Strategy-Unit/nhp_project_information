@@ -31,7 +31,7 @@ This repository provides an interface for users to provide the parameters to fee
 
 This repository contains the code that implements the methodologies to model future activity for hospitals. It takes all the input data, including the parameters set by users, and uses the Monte Carlo simulation method to produce estimates of future activity. This repository is written in Python.
 
--   [nhp_api](https://github.com/The-Strategy-Unit/nhp_api/) [OPEN]
+-   [nhp-api-v2](https://github.com/The-Strategy-Unit/nhp-api-v2) 
 
 This repository contains the Azure Functions for the API that triggers the running of the model on Azure Container Instances. 
 
@@ -41,11 +41,13 @@ This repository contains the Azure Functions for the API that triggers the runni
 
 This repository provides an interface for users to explore the results of the model, the [NHP outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
--   [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app) [OPEN]
+-   [nhp_compare_mitigation_predictions_app](https://github.com/The-Strategy-Unit/nhp_compare_mitigation_predictions_app) 
 
 This repository is a Shiny dashboard allowing the comparison of TPMAs set by schemes using the NHP model.
 
--   [nhp_output_reports](https://github.com/The-Strategy-Unit/nhp_output_reports) [OPEN]
+Previously known as nhp_inputs_report and the link redirects to the updated name.
+
+-   [nhp_output_reports](https://github.com/The-Strategy-Unit/nhp_output_reports) 
 
 This repository contains R code to auto-populate the 'final' (sometimes referred to as 'outputs') and 'validation' report templates. Generates scheme-specific (and possibly site-specific) charts, tables and values from model-run data and inserts these into the report template (docx).
 
