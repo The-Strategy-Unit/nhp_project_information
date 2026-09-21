@@ -21,9 +21,13 @@ This repository contains the code that specifies changes in the size, age/sex st
 
 This code contains all the data processing pipelines for the model, including the types of potentially mitigatable activity (TPMAs). It is written in Pyspark and runs on Databricks.
 
+-   [nhp_inputs_selection_app](https://github.com/The-Strategy-Unit/nhp_inputs_selection_app)
+
+This repository provides an interface for users to provide the parameters to feed into the model, the [NHP inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R as a package, implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/) and works with the nhp_inputs app.
+
 -   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) [OPEN]
 
-This repository provides an interface for users to provide the parameters to feed into the model, the [NHP inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
+This respository is accessed from the nhp_inputs_selection_app as the latest (default) dashboard. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
 ## Repositories relating to the model run
 
