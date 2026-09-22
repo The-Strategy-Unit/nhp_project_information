@@ -23,9 +23,13 @@ This repository contains the code that specifies changes in the size, age/sex st
 
 This code contains all the data processing pipelines for the model, including the types of potentially mitigatable activity (TPMAs). It is written in Pyspark and runs on Databricks.
 
+-   [nhp_inputs_selection_app](https://github.com/The-Strategy-Unit/nhp_inputs_selection_app)
+
+This repository provides an interface for users to provide the parameters to feed into the model, the [NHP inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R as a package, implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/) and works with the nhp_inputs app.
+
 -   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) 
 
-This repository provides an interface for users to provide the parameters to feed into the model, the [NHP inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
+This respository is accessed from the nhp_inputs_selection_app as the latest (default) dashboard. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
 ## Repositories relating to the model run
 
@@ -33,9 +37,13 @@ This repository provides an interface for users to provide the parameters to fee
 
 This repository contains the code that implements the methodologies to model future activity for hospitals. It takes all the input data, including the parameters set by users, and uses the Monte Carlo simulation method to produce estimates of future activity. This repository is written in Python.
 
--   [nhp_api](https://github.com/The-Strategy-Unit/nhp_api/) 
+-   [nhp-api-v2](https://github.com/The-Strategy-Unit/nhp-api-v2) 
 
 This repository contains the Azure Functions for the API that triggers the running of the model on Azure Container Instances. 
+
+-   [nhp_model_databricks](https://github.com/The-Strategy-Unit/nhp_model_databricks)
+
+A Databricks implementation of the New Hospital Programme (NHP) demand model uses Python.
 
 ## Repositories relating to model outputs
 
@@ -43,9 +51,11 @@ This repository contains the Azure Functions for the API that triggers the runni
 
 This repository provides an interface for users to explore the results of the model, the [NHP outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
--   [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app) 
+-   [nhp_compare_mitigation_predictions_app](https://github.com/The-Strategy-Unit/nhp_compare_mitigation_predictions_app) 
 
 This repository is a Shiny dashboard allowing the comparison of TPMAs set by schemes using the NHP model.
+
+Previously known as nhp_inputs_report and the link redirects to the updated name.
 
 -   [nhp_output_reports](https://github.com/The-Strategy-Unit/nhp_output_reports) 
 
@@ -60,6 +70,24 @@ This repository contains Python code for producing various products relating to 
 -   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information) 
 
 This is the repository hosting the content you are reading now. The aim is to provide a high level overview of the project as a whole.
+
+## Repositories relating to supporting packages
+
+-   [nhp_aci](https://github.com/The-Strategy-Unit/nhp_aci)
+
+Python package: helpers to run the New Hospital Programme (NHP) demand model using Azure Container Instances (ACI).
+
+-   [nhp_inkit](https://github.com/The-Strategy-Unit/nhp_inkit)
+
+R package: handle and visualise inputs data for the New Hospital Programme (NHP) demand model.
+
+-   [nhp_reskit](https://github.com/The-Strategy-Unit/nhp_reskit)
+
+R package: process results from the New Hospital Programme (NHP) demand model.
+
+-   [nhp_azkit](https://github.com/The-Strategy-Unit/azkit)
+
+R package: handle Azure authentication and basic tasks with blob storage.
 
 ## Open source policy
 
