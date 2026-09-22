@@ -9,7 +9,7 @@ execute:
 
 ::: {.callout-caution}
 
-This functionality is not currently available to all users. Information provided here is intended to support local discussions around setting inequalities parameters. If you have further questions, please contact your model relationship manager.
+This functionality is not currently available to all users. Information provided here is intended to support local discussions around setting inequalities parameters. If you have further questions, please [contact us](../contact.qmd).
 
 :::
 

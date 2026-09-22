@@ -15,7 +15,7 @@ A custom birth projection is also required. You may select either of the two opt
 1. Use our methodology to create custom birth projections from custom population projection you have submitted, or
 2. Provide us with a custom birth projection in the format of this [national birth factors csv](../resources/national_birth_factors.csv).
 
-You can [contact the inbox](mailto:mlcsu.su.datascience@nhs.net) for questions or to submit your file.
+You can [contact us](../contact.qmd) for questions or to submit your file.
 
 ## What happened to the request I made to change/add functionality to the model or its apps?
 
@@ -38,10 +38,7 @@ implement, it will be prioritised against our existing backlog of work, and we w
 implement the change once its priority is ranked high enough relative to other work.
 
 If you would like to ask us about a specific request or suggestion you have
-submitted or discussed in the past, feel free to email the product team (please
-add 'FAO Product Team' to the subject bar) at
-[The Strategy Unit Data Science Team](mailto:mlcsu.su.datascience@nhs.net) and we
-will investigate for you.
+submitted or discussed in the past, feel free to email [contact us](../contact.qmd).
 
 ## Can we upgrade scenarios created on older versions of the model?
 
@@ -64,7 +61,7 @@ Note also that any scenarios prior to v3.6 which are upgraded will have their po
 
 The Strategy Unit built the model, and we are (proudly) [an NHS team](https://www.strategyunitwm.nhs.uk)
 
-As an NHS team committed to open analysis, we have ensured that all of the code that can be open is currently open source. For more information on the code that is open and closed in the repository please go to the [components overview chapter](../project_plan_and_summary/components-overview.qmd).
+As an NHS team committed to open analysis, we have ensured that all of the code that can be open is currently open source. For more information please go to the [components overview chapter](../project_plan_and_summary/components-overview.qmd).
 
 ## We would like to model activity for a specific hospital site, rather than for the whole trust. How can we do this?
 
@@ -111,7 +108,7 @@ The model allows users to select their 'horizon year': the year they wish the mo
 
 ## Do the types of potentially mitigatable activity (TPMAs) account for virtual wards?
 
-Yes, we are introducing a new virtual wards TPMA from May. Information about all the TPMAs is available [here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd).
+Yes, we introduced a new virtual wards TPMA in May 2024. Information about all the TPMAs is available [here](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd).
 
 ## Which types of potentially mitigatable activity (TPMAs) should be prioritised when setting assumptions?
 
@@ -205,3 +202,14 @@ NB important to note that this is an improvement as it more accurately reflects 
 
 For a more detailed explanation of the binomial thinning method see [modelling_uncertainty](../modelling_methodology/modelling_uncertainty.qmd).
 
+## What data sharing arrangements are in place?
+
+Producing demand estimates within the work of the NHP demand and capacity project requires the use of row level pseudonymised data. This data is only accessed by specific MLCSU staff who need to use this data to carry out their work on the modelling. The data is stored on password protected NHS provisioned servers. This pseudonymised row level data is not shared with any third parties as part of the work of the modelling team.
+
+The modelling work does generate data summaries that are safe to access by individuals outside the immediate team. Even pseudonymised data can be reidentified under the appropriate conditions and the dashboard and high level summaries which are provided on a server which is hosted on the open internet have appropriate suppression of small numbers (suppressing numbers <5) in line with NHS guidance to prevent reidentification.
+
+The work does require sharing more detailed summaries with the hospital schemes themselves as well as named contractors commissioned by the programme within the 'Health Delivery Partnership'. These detailed summaries contain small numbers that are not suppressed but the risk of reidentification is highly mitigated as described in the DPIA. Both contractors operate under a contract which contains specific instructions around use of data including prohibiting sharing of any data. NHS staff in hospitals with whom the summaries are shared will be bound by their local information governance policies.
+
+Data minimisation is used extensively to reduce the amount of information disclosed. All of the age data is in categories (0, 1-17, 18-65, 65+) and other than sex there is no other demographic information present. 
+
+No other data should be shared as part of this work, neither data summaries with variables that increase the risk of reidentification (for example, date of birth or LSOA) nor with any other parties than those described above. All of this detail is held within a DPIA approved and held by NHS England.

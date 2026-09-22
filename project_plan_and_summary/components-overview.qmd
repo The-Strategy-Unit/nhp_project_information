@@ -3,7 +3,9 @@ title: "Overview of components"
 order: 6
 ---
 
-Given the size of the project, there are numerous GitHub repositories relating to NHP, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, do contact a member of the Strategy Unit Data Science team. Please note that some repositories are currently set to private.
+Given the size of the project, there are numerous GitHub repositories relating to NHP, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, please [contact us](../contact.qmd). 
+
+Note that some repositories are currently set to private.
 
 ## Diagram showing repository relationships
 
@@ -13,11 +15,11 @@ The diagram below shows the relationship between the different repositories and 
 
 ## Repositories relating to model inputs
 
--   [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs) [OPEN]
+-   [nhp_demogr_module_inputs](https://github.com/The-Strategy-Unit/nhp_demogr_module_inputs) 
 
 This repository contains the code that specifies changes in the size, age/sex structure and health status of a hospital's catchment population. The code is written in R and makes use of data sources from the Office for National Statistics.
 
--   [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) [OPEN]
+-   [nhp_data](https://github.com/The-Strategy-Unit/nhp_data) 
 
 This code contains all the data processing pipelines for the model, including the types of potentially mitigatable activity (TPMAs). It is written in Pyspark and runs on Databricks.
 
@@ -25,13 +27,13 @@ This code contains all the data processing pipelines for the model, including th
 
 This repository provides an interface for users to provide the parameters to feed into the model, the [NHP inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). It provides a variety of user-friendly functions such as saving inputs from previous runs and providing a document which summarises the parameters used in each run. This repository is written in R as a package, implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/) and works with the nhp_inputs app.
 
--   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) [OPEN]
+-   [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) 
 
 This respository is accessed from the nhp_inputs_selection_app as the latest (default) dashboard. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
 ## Repositories relating to the model run
 
--   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/) [OPEN]
+-   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/) 
 
 This repository contains the code that implements the methodologies to model future activity for hospitals. It takes all the input data, including the parameters set by users, and uses the Monte Carlo simulation method to produce estimates of future activity. This repository is written in Python.
 
@@ -45,7 +47,7 @@ A Databricks implementation of the New Hospital Programme (NHP) demand model use
 
 ## Repositories relating to model outputs
 
--   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs) [OPEN]
+-   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs) 
 
 This repository provides an interface for users to explore the results of the model, the [NHP outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
@@ -59,13 +61,13 @@ Previously known as nhp_inputs_report and the link redirects to the updated name
 
 This repository contains R code to auto-populate the 'final' (sometimes referred to as 'outputs') and 'validation' report templates. Generates scheme-specific (and possibly site-specific) charts, tables and values from model-run data and inserts these into the report template (docx).
 
--   [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) [OPEN]
+-   [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) 
 
 This repository contains Python code for producing various products relating to the NHP model. It also includes quality assurance (QA) scripts.
 
 ## Repositories relating to documentation
 
--   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information) [OPEN]
+-   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information) 
 
 This is the repository hosting the content you are reading now. The aim is to provide a high level overview of the project as a whole.
 
