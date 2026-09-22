@@ -15,7 +15,7 @@ A custom birth projection is also required. You may select either of the two opt
 1. Use our methodology to create custom birth projections from custom population projection you have submitted, or
 2. Provide us with a custom birth projection in the format of this [national birth factors csv](../resources/national_birth_factors.csv).
 
-You can [contact the inbox](mailto:mlcsu.su.datascience@nhs.net) for questions or to submit your file.
+You can [contact us](../contact.qmd) for questions or to submit your file.
 
 ## What happened to the request I made to change/add functionality to the model or its apps?
 
@@ -38,10 +38,7 @@ implement, it will be prioritised against our existing backlog of work, and we w
 implement the change once its priority is ranked high enough relative to other work.
 
 If you would like to ask us about a specific request or suggestion you have
-submitted or discussed in the past, feel free to email the product team (please
-add 'FAO Product Team' to the subject bar) at
-[The Strategy Unit Data Science Team](mailto:mlcsu.su.datascience@nhs.net) and we
-will investigate for you.
+submitted or discussed in the past, feel free to email [contact us](../contact.qmd).
 
 ## Can we upgrade scenarios created on older versions of the model?
 
