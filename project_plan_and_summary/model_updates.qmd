@@ -3,6 +3,18 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2026/10/14
+
+## v6.1.0
+
+### Updated Inputs selection app 
+
+Bug fix to ensure step counts that are produced by the model better align with model results.
+
+### Updated Outputs app downloadable reports
+
+Bug fixes in downloadable reports related to how messages in the reports are presented.
+
 # Update 2026/09/14
 
 ## v6.0.0
