@@ -11,7 +11,7 @@ order: 5
 
 Bug fix to ensure step counts that are produced by the model better align with model results.
 
-#### Updated Outputs app downloadable reports
+### Updated Outputs app downloadable reports
 
 Bug fixes in downloadable reports related to how messages in the reports are presented.
 
