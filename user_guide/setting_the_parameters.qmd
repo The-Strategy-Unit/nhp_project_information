@@ -81,7 +81,7 @@ Note: Not currently in the model v.1.0
 
 Access to some hospital services are known to vary between socio-economic groups. In particular, several studies have shown that patient access to planned hospital care are lower for patients living in more deprived areas, having adjusted for need. Reducing health inequalities and inequities in access to services is a long-standing national policy objective. Inequalities present in the baseline year will be carried forward in the NHP demand and activity model unless some adjustment is applied.
 
-Users will have four options to select from. Further information on each one is available in the [Strategies to reduce inequalities in access to planned hospital procedures report](https://www.midlandsdecisionsupport.nhs.uk/knowledge-library/strategies-to-reduce-inequalities-in-access-to-planned-hospital-procedures/).
+Users will have four options to select from. Further information on each one is available in the [Strategies to reduce inequalities in access to planned hospital procedures report](https://www.strategyunitwm.nhs.uk/news/strategies-reduce-inequalities-access-planned-hospital-procedures).
 
 A) No change 
 B) Level-up 
