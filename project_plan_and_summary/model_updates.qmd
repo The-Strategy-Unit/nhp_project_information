@@ -361,7 +361,8 @@ Following feedback, we have renamed the following mitigators:
 
 ### 2023/24 baseline year now available
 
-We have received 2023/24 [HES (Hospital Episode Statistics)](https://digital.nhs.uk/services/hospital-episode-statistics) data and it is now available to select as a baseline year on the [inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/).
+We have received 2023/24 [HES (Hospital Episode Statistics)](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics) data and it is now available to select as a baseline year on the [inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/).
+
 You must request and review your detailed 2023/24 baseline data before selecting 2023/24 as the baseline year.
 Please contact [mlcsu.su.datascience\@nhs.net](mailto:mlcsu.su.datascience@nhs.net?subject=NHP%20request:%202023/24%20detailed%20baseline%20data&body=I%20am%20requesting%20the%202023/24%20detailed%20baseline%20data%20for%20%5Binsert%20scheme%20name%5D.) to request your 2023/24 detailed baseline data.
 
