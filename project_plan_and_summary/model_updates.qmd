@@ -320,7 +320,7 @@ The spells identified by these mitigators exclude any with a length of stay (LOS
 These mitigators allow schemes to make an assumption about what proportion of the identified spells they think will, in future, be delivered within an SDEC facility and not as an admitted patient.
 The model removes this quantity of spells from the inpatients data and adds them to the A&E outputs as type 5 (SDEC) attendances enabling clear identification and quantification of future SDEC activity with the model outputs.
 
-The code used to identify spells affected by these mitigators can be found in [the nhp_data repository](https://github.com/The-Strategy-Unit/nhp_data/blob/main/raw_data/mitigators/ip/efficiency/same_day_emergency_care.py).
+The code used to identify spells affected by these mitigators can be found in [the nhp_data repository](https://github.com/The-Strategy-Unit/nhp_data/blob/cd88d8ce432b877cefdee134d7eee1280e52ac57/src/nhp/data/raw_data/mitigators/ip/efficiency/same_day_emergency_care.py).
 
 #### Ambulatory Emergency Care mitigators removed
 
