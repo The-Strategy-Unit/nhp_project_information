@@ -36,7 +36,7 @@ The table shows the model versions when each TPMA was active from and active to 
 Major changes have included that:
 
 * Virtual Ward and Day Procedures TPMAs were added in [version 1.1](/project_plan_and_summary/model_updates.html#update-20240424)
-* Same Day Emergency Care (SDEC) TPMAs were added and Ambulatory Emergency Care (AEC) TPMAs removed in [version 3.4](http://localhost:5811/project_plan_and_summary/model_updates.html#update-20250423)
+* Same Day Emergency Care (SDEC) TPMAs were added and Ambulatory Emergency Care (AEC) TPMAs removed in [version 3.4](/project_plan_and_summary/model_updates.html#update-20250423)
 
 ## Unique codes
 

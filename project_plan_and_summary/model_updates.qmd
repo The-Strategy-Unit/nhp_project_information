@@ -294,7 +294,7 @@ These are:
 -   [nhp_model](https://github.com/The-Strategy-Unit/nhp_model/)
 -   [nhp_api](https://github.com/The-Strategy-Unit/nhp_api/): A set of Azure functions for managing Azure Container Instances.
 -   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs): An app to explore the results of scenarios run through the New Hospital Programme (NHP) demand model.
--   [nhp_inputs_report_app](https://github.com/The-Strategy-Unit/nhp_inputs_report_app): A Shiny app to explore and compare schemes' mitigator selections as part of the National Hospital Programme (NHP) modelling process.
+-   nhp_inputs_report_app - 29 August 2025 renamed to [nhp_compare_mitigation_predictions_app](https://github.com/The-Strategy-Unit/nhp_compare_mitigation_predictions_app): A Shiny app to explore and compare schemes' mitigator selections as part of the National Hospital Programme (NHP) modelling process.
 -   [nhp_project_information](https://github.com/The-Strategy-Unit/nhp_project_information): The repository for this website
 
 A full list of the repositories relating to the NHP model is available [here](../project_plan_and_summary/components-overview.qmd).
@@ -320,7 +320,7 @@ The spells identified by these mitigators exclude any with a length of stay (LOS
 These mitigators allow schemes to make an assumption about what proportion of the identified spells they think will, in future, be delivered within an SDEC facility and not as an admitted patient.
 The model removes this quantity of spells from the inpatients data and adds them to the A&E outputs as type 5 (SDEC) attendances enabling clear identification and quantification of future SDEC activity with the model outputs.
 
-The code used to identify spells affected by these mitigators can be found in [the nhp_data repository](https://github.com/The-Strategy-Unit/nhp_data/blob/main/raw_data/mitigators/ip/efficiency/same_day_emergency_care.py).
+The code used to identify spells affected by these mitigators can be found in [the nhp_data repository](https://github.com/The-Strategy-Unit/nhp_data/blob/cd88d8ce432b877cefdee134d7eee1280e52ac57/src/nhp/data/raw_data/mitigators/ip/efficiency/same_day_emergency_care.py).
 
 #### Ambulatory Emergency Care mitigators removed
 
@@ -361,7 +361,8 @@ Following feedback, we have renamed the following mitigators:
 
 ### 2023/24 baseline year now available
 
-We have received 2023/24 [HES (Hospital Episode Statistics)](https://digital.nhs.uk/services/hospital-episode-statistics) data and it is now available to select as a baseline year on the [inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/).
+We have received 2023/24 [HES (Hospital Episode Statistics)](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics) data and it is now available to select as a baseline year on the [inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/).
+
 You must request and review your detailed 2023/24 baseline data before selecting 2023/24 as the baseline year.
 Please contact [mlcsu.su.datascience\@nhs.net](mailto:mlcsu.su.datascience@nhs.net?subject=NHP%20request:%202023/24%20detailed%20baseline%20data&body=I%20am%20requesting%20the%202023/24%20detailed%20baseline%20data%20for%20%5Binsert%20scheme%20name%5D.) to request your 2023/24 detailed baseline data.
 

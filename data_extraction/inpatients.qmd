@@ -29,7 +29,7 @@ In these cases we set the age to 0.
 Over time, some NHS organisations merge.
 This information is provided in the [organisation successors][ods_succ] from the Organisation Data Service (ODS).
 
-[ods_succ]: https://digital.nhs.uk/services/organisation-data-service/export-data-files/csv-downloads/miscellaneous
+[ods_succ]: https://digital.nhs.uk/services/organisation-data-service/data-search-and-export/csv-downloads/miscellaneous
 
 We use the successors lists to map historical data to the current organisation.
 For example, if provider `A` merged with provider `B` in 2023, when we extract data from 2019 we would remap any data

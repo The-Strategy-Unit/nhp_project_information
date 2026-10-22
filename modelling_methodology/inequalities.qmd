@@ -41,7 +41,7 @@ Where the regression coefficient for deprivation quintile is positive (indicatin
 
 [^1]: [IMD19](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) in the current model version.
 
-[^2]: Method uses weighted least squares for heteroskedastic errors, where weighting is by [hospital catchment population size](https://github.com/The-Strategy-Unit/nhp_data/blob/main/inputs_data/inequalities.py) by IMD quintile.
+[^2]: Method uses weighted least squares for heteroskedastic errors, where weighting is by [hospital catchment population size](https://github.com/The-Strategy-Unit/nhp_data/blob/cd88d8ce432b877cefdee134d7eee1280e52ac57/src/nhp/data/inputs_data/inequalities.py) by IMD quintile.
 
 [^3]: HRG added to the selectable list only if: 1) at least 3 IMD quintiles are represented in the baseline data, 2) counts of HRG activity must exceed 50, and 3) the statistical significance (p-value) of the slope parameter of the fitted line is \<0.05 with a linear gradient \>0.
 
