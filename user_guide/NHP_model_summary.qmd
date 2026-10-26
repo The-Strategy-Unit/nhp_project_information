@@ -11,11 +11,13 @@ Essentially, the NHP model estimates future hospital activity. It is a probabili
 
 In addition to the forecasting of hospital activity, schemes will be offered the use of tools to assist them in their task of converting the forecasted demand into capacity. 
 
-# What does the model NOT do? 
+# What does the demand model NOT do? 
 
-The model does **not** provide users with estimations of accommodation requirements such as the number of beds, rooms, wards, theatres etc. The task of converting the projected demand into capacity is the responsibility of the scheme.   
+The demand model does **not** provide users with estimations of accommodation requirements such as the number of beds, rooms, wards, theatres etc. 
+A separate tool, which works alongside the demand model, handles capacity modelling.
+See the [capacity model documentation site](https://connect.strategyunitwm.nhs.uk/capacity-model-docs/) for more information.
 
-# How does the model generate its outputs? 
+# How does the demand model generate its outputs? 
 
 The model uses HES data and handles discrete hospital events rather than aggregate summaries of hospital activity. It currently uses the [baseline year 2024/25](/user_guide/FAQ.qmd#are-there-plans-for-other-baseline-years) and uses this as the basis to model future hospital activity up to the [horizon year](/user_guide/FAQ.qmd#which-year-should-be-selected-as-the-horizon-year) chosen by the scheme. Users provide input parameters, estimating the extent to which specific types of activity will increase or decrease. These assumptions are given in the form of 80% prediction intervals.  Other change factors are also taken into consideration, such as demographic and non-demographic growth. Some parameters can not be adjusted by the user because they have been determined nationally.  
 
