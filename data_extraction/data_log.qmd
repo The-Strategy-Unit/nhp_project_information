@@ -3,7 +3,8 @@ title: Data log
 order: 250
 ---
 
-This page contains information about changes to the data underpinning the NHP model. If there are no changes logged for a particular version (such as 1.0) then the changes were only to the model code, and not to the underlying data.
+This page contains information about changes to the data underpinning the OpenPlan demand model. 
+If there are no changes logged for a particular version (such as 1.0) then the changes were only to the model code, and not to the underlying data.
 
 ## Version 6.0
 

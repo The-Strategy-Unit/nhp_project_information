@@ -3,6 +3,12 @@ title: "Model updates"
 order: 5
 ---
 
+# Update 2026/11/05
+
+The NHP model is being rebranded to the 'OpenPlan hospital demand model'.
+The names of key applications and assets will be progressively updated to reflect this change.
+To read about wny we are making this change, see this [explanation]().
+
 # Update 2026/10/14
 
 ## v6.1.0

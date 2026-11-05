@@ -1,8 +1,11 @@
 ---
-title: "New Hospital Programme model project documentation"
+title: "OpenPlan demand model documentation"
 order: 1
 ---
 
-Welcome to the New Hospital Programme Demand modelling tool documentation site.
+Welcome to the OpenPlan demand model documentation site.
 
-This site summarises the project plan, statistical methodology behind the tool, and software implementation of the model. It will be kept up to date as the project progresses, and old versions of the documentation will be available in the version controlled GitHub repository on which this project is being produced.
+This site summarises the  methodology and software implementation of the model. 
+It will be kept up to date as development progresses, and old versions of the 
+documentation will be available in the version controlled GitHub repository on 
+which this project is being produced.

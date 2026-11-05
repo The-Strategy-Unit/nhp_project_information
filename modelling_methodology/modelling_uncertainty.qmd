@@ -5,7 +5,7 @@ order: 2
 
 ## Handling uncertainty in principle
 
-Our approach in the NHP model is to recognise and embrace (not ignore) uncertainty.
+Our approach in the OpenPlan hospital demand model is to recognise and embrace (not ignore) uncertainty.
 
 We consider two major types of uncertainty - aleatory and epistemic.
 
@@ -24,12 +24,12 @@ Such distributions, although subjective, can also be represented graphically and
 For example, we might express a belief that there is an 80% chance that the average temperature tomorrow will be between 12°C and 18°C, thus encoding our degree of belief.
 
 
-The NHP model integrates both aleatory and epistemic uncertainty into its outputs by combining empirical data (baseline values) with random sampling from assumed probability distributions. 
+The OpenPlan demand model integrates both aleatory and epistemic uncertainty into its outputs by combining empirical data (baseline values) with random sampling from assumed probability distributions. 
 These assumed distributions, which reflect epistemic uncertainty, are referred to as input distributions. 
 These input distributions and are often assumed to be Gaussian (Normal) distributions with parameters that are typically set from external sources or by end users in the form of an 80% subjective prediction interval. 
 For example, an end user might believe there is an 80% chance that emergency admissions following episodes of self-harm will decrease by 16% to 23% over the next 20 years. 
 This 80% prediction interval defines the Normal distribution from which random samples are drawn. 
-The NHP model is primarily designed to allow end users to assess how altering epistemic uncertainty (by changing input parameters) affects future hospital activity, which is always subject to inherent randomness (which cannot be eliminated). 
+The OpenPlan demand model is primarily designed to allow end users to assess how altering epistemic uncertainty (by changing input parameters) affects future hospital activity, which is always subject to inherent randomness (which cannot be eliminated). 
 The model's final outputs are represented as probability distributions, typically summarized by the mean and an 80% prediction interval (from the 10th to the 90th percentiles) and displayed graphically.
 Having set the model parameters, the model calculates, for each record in the baseline dataset, the frequency of such cases in the model horizon period. 
 The model then samples each record (with replacement) according to its own future frequency. 

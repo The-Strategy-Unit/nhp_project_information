@@ -1,5 +1,5 @@
 ---
-title: "TPMAs lookup"
+title: "OpsnPlan TPMAs lookup"
 order: 5
 format:
   html:
@@ -26,7 +26,7 @@ format:
         <script src="js/table.js"></script>
 ---
 
-This page contains an interactive table with a sortable and searchable lookup of types of potentially mitigatable activity (TPMAs).
+This page contains an interactive table with a sortable and searchable lookup of OpenPlan types of potentially mitigatable activity (OpenPlan TPMAs).
 
 ## The current list
 
