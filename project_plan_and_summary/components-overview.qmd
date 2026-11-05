@@ -3,7 +3,7 @@ title: "Overview of components"
 order: 6
 ---
 
-Given the size of the project, there are numerous GitHub repositories relating to the OpenPlan demand model, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, please [contact us](../contact.qmd). 
+Given the size of the project, there are numerous GitHub repositories relating to the OpenPlan hospital demand model, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, please [contact us](../contact.qmd). 
 
 Note that some repositories are currently set to private.
 
@@ -63,7 +63,7 @@ This repository contains R code to auto-populate the 'final' (sometimes referred
 
 -   [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) 
 
-This repository contains Python code for producing various products relating to the OpenPlan demand model. It also includes quality assurance (QA) scripts.
+This repository contains Python code for producing various products relating to the OpenPlan hospital demand model. It also includes quality assurance (QA) scripts.
 
 ## Repositories relating to documentation
 

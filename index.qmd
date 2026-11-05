@@ -1,9 +1,9 @@
 ---
-title: "OpenPlan demand model documentation"
+title: "OpenPlan hospital demand model documentation"
 order: 1
 ---
 
-Welcome to the OpenPlan demand model documentation site.
+Welcome to the OpenPlan hospital demand model documentation site.
 
 :::{.callout-note}
 # The NHP model is now called the "OpenPlan hospital demand model"
