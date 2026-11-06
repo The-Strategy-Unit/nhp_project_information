@@ -3,7 +3,7 @@ title: "Double counting"
 order: 1
 ---
 
-The NHP model applies a number of adjustments to hospital activity in a baseline year, with each adjustment designed to reflect a change in the populations needs, demand for healthcare or the supply of healthcare in the future. The manifold nature of these changes introduces the risk of double-counting effects. If the overlap between two change factors is not recognised, then the combined effects may be overestimated. This page sets out these risks, the mitigations that are encoded in the model structure and how those can be addressed through intelligent parametrisation of the model.
+The OpenPlan hospital demand model applies a number of adjustments to hospital activity in a baseline year, with each adjustment designed to reflect a change in the populations needs, demand for healthcare or the supply of healthcare in the future. The manifold nature of these changes introduces the risk of double-counting effects. If the overlap between two change factors is not recognised, then the combined effects may be overestimated. This page sets out these risks, the mitigations that are encoded in the model structure and how those can be addressed through intelligent parametrisation of the model.
 
 ## Mitigating risks by handling discrete event data
 

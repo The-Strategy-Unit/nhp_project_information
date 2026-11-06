@@ -11,7 +11,7 @@ Bed days are defined as `discharge_date - admission_date + 1`.
 
 ## Prediction intervals
 
-A prediction interval (PI) is an interval which is expected to typically contain the variable being estimated. In the context of the NHP Demand and Capacity model, we show results in terms of a principal projection, as well as 90% (upper) and 10% (lower) prediction intervals showing the range of possibilities in the modelled future. For example, if the model's principal projection for beddays is 200,000 and the upper and lower prediction intervals are 210,000 and 190,000, then this indicates the actual number of beddays in the horizon year should lie between this interval with probability 0.8.
+A prediction interval (PI) is an interval which is expected to typically contain the variable being estimated. In the context of the OpenPlan hospital demand model, we show results in terms of a principal projection, as well as 90% (upper) and 10% (lower) prediction intervals showing the range of possibilities in the modelled future. For example, if the model's principal projection for beddays is 200,000 and the upper and lower prediction intervals are 210,000 and 190,000, then this indicates the actual number of beddays in the horizon year should lie between this interval with probability 0.8.
 
 ### Combining distributions
 

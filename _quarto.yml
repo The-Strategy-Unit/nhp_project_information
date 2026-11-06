@@ -6,13 +6,13 @@ website:
   open-graph: true
   repo-url: https://github.com/The-Strategy-Unit/nhp_project_information
   repo-actions: [edit, issue]
-  title: "NHP model project information"
-  description: "Documentation for the Demand Model created by the Strategy Unit to support NHS England's New Hospital Programme"
+  title: "OpenPlan hospital demand model documentation"
+  description: "Documentation for the OpenPlan hospital demand model created by the Strategy Unit to support NHS England's New Hospital Programme"
   favicon: _assets/favicon.ico
   navbar:
     background: dark
     foreground: light
-    title: "NHP model project information"
+    title: "OpenPlan hospital demand model documentation"
     pinned: true
   sidebar:
     style: "floating"
@@ -57,7 +57,7 @@ website:
       - contact.qmd
   page-navigation: true
   page-footer:
-    right: "[NHP Model Project Information](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)© 2023 by [The Strategy Unit](https://www.strategyunitwm.nhs.uk/) is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)"
+    right: "[OpenPlan hospital demand model documentation](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)© 2023 by [The Strategy Unit](https://www.strategyunitwm.nhs.uk/) is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)"
     left: "This page is built using the [NHS-R Quarto theme](https://github.com/nhs-r-community/quarto-nhs-theme)."
 
 format:

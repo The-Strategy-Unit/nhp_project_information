@@ -3,7 +3,7 @@ title: "Overview of components"
 order: 6
 ---
 
-Given the size of the project, there are numerous GitHub repositories relating to NHP, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, please [contact us](../contact.qmd). 
+Given the size of the project, there are numerous GitHub repositories relating to the OpenPlan hospital demand model, with this number likely to grow. This page gives an overview of the main repositories forming the backbone of the model. It is not exhaustive - if there are any queries on repositories not listed here, please [contact us](../contact.qmd). 
 
 Note that some repositories are currently set to private.
 
@@ -11,7 +11,7 @@ Note that some repositories are currently set to private.
 
 The diagram below shows the relationship between the different repositories and the data flows and architecture connecting them.
 
-[![Diagram of NHP model architecture](../resources/NHP_model_v6.png)](../resources/NHP_model_v6.png){target="_blank" fig-alt="A diagram showing the connections between the various repositories"}
+[![Diagram of OpenPlan model architecture](../resources/NHP_model_v6.png)](../resources/NHP_model_v6.png){target="_blank" fig-alt="A diagram showing the connections between the various repositories"}
 
 ## Repositories relating to model inputs
 
@@ -43,17 +43,17 @@ This repository contains the Azure Functions for the API that triggers the runni
 
 -   [nhp_model_databricks](https://github.com/The-Strategy-Unit/nhp_model_databricks)
 
-A Databricks implementation of the New Hospital Programme (NHP) demand model uses Python.
+A Databricks implementation of the OpenPlan hospital demand model uses Python.
 
 ## Repositories relating to model outputs
 
 -   [nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs) 
 
-This repository provides an interface for users to explore the results of the model, the [NHP outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
+This repository provides an interface for users to explore the results of the model, the [OpenPlan outputs app](https://connect.strategyunitwm.nhs.uk/nhp/outputs/). It provides a variety of data visualisations and summaries, and includes the functionality to download model results. This repository is written in R and implements a [Shiny](https://shiny.posit.co/) dashboard using [golem](https://thinkr-open.github.io/golem/).
 
 -   [nhp_compare_mitigation_predictions_app](https://github.com/The-Strategy-Unit/nhp_compare_mitigation_predictions_app) 
 
-This repository is a Shiny dashboard allowing the comparison of TPMAs set by schemes using the NHP model.
+This repository is a Shiny dashboard allowing the comparison of TPMAs set by schemes using the OpenPlan hospital demand model.
 
 Previously known as nhp_inputs_report and the link redirects to the updated name.
 
@@ -63,7 +63,7 @@ This repository contains R code to auto-populate the 'final' (sometimes referred
 
 -   [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) 
 
-This repository contains Python code for producing various products relating to the NHP model. It also includes quality assurance (QA) scripts.
+This repository contains Python code for producing various products relating to the OpenPlan hospital demand model. It also includes quality assurance (QA) scripts.
 
 ## Repositories relating to documentation
 
@@ -75,15 +75,15 @@ This is the repository hosting the content you are reading now. The aim is to pr
 
 -   [nhp_aci](https://github.com/The-Strategy-Unit/nhp_aci)
 
-Python package: helpers to run the New Hospital Programme (NHP) demand model using Azure Container Instances (ACI).
+Python package: helpers to run the OpenPlan hospital demand model using Azure Container Instances (ACI).
 
 -   [nhp_inkit](https://github.com/The-Strategy-Unit/nhp_inkit)
 
-R package: handle and visualise inputs data for the New Hospital Programme (NHP) demand model.
+R package: handle and visualise inputs data for the OpenPlan hospital demand model.
 
 -   [nhp_reskit](https://github.com/The-Strategy-Unit/nhp_reskit)
 
-R package: process results from the New Hospital Programme (NHP) demand model.
+R package: process results from the OpenPlan hospital demand model.
 
 -   [nhp_azkit](https://github.com/The-Strategy-Unit/azkit)
 

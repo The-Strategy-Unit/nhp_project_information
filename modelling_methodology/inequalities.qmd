@@ -22,11 +22,11 @@ The availability and distribution of health services also contribute to inequali
 There is an extensive body of research that demonstrates that people living in more deprived areas have poor access to planned hospital procedures, despite high levels of need.  
 This mismatch between need and supply amongst deprived populations is often referred to as the [inverse care law](https://en.wikipedia.org/wiki/Inverse_care_law).  
 
-Inequities in access to planned hospital procedures are commonly present in historical records of health service provision that form the baseline datasets used in the New Hospitals Programme activity model. 
+Inequities in access to planned hospital procedures are commonly present in historical records of health service provision that form the baseline datasets used in the OpenPlan hospital demand model. 
 All NHS agencies have a duty to tackle health inequalities.  
 If participating schemes do not recognize and correct for inequities in their baseline data, then their plans will, by default, assume that the inequities will persist into the future.
 
-This component of the [New Hospitals Programme](https://www.gov.uk/government/publications/new-hospital-programme-review-outcome/new-hospital-programme-equality-impact-assessment#:~:text=Women%2C%20children%2C%20the%20elderly%2C,use%20hospital%20services%20in%20general) activity model, highlights socio-economic inequities in access to planned hospital procedures that are present at baseline, and offers schemes three distinct routes to eliminate these inequities by the model horizon year.  
+This component of the OpenPlan hospital demand model (created on behalf of the [New Hospitals Programme](https://www.gov.uk/government/publications/new-hospital-programme-review-outcome/new-hospital-programme-equality-impact-assessment#:~:text=Women%2C%20children%2C%20the%20elderly%2C,use%20hospital%20services%20in%20general)), highlights socio-economic inequities in access to planned hospital procedures that are present at baseline, and offers schemes three distinct routes to eliminate these inequities by the model horizon year.  
 The method is derived from the Strategy Unit report [‘Strategies to reduce inequalities in access to planned hospital procedures’](https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures).
 
 ### Method

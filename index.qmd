@@ -1,8 +1,31 @@
 ---
-title: "New Hospital Programme model project documentation"
+title: "OpenPlan hospital demand model documentation"
 order: 1
 ---
 
-Welcome to the New Hospital Programme Demand modelling tool documentation site.
+Welcome to the OpenPlan hospital demand model documentation site.
 
-This site summarises the project plan, statistical methodology behind the tool, and software implementation of the model. It will be kept up to date as the project progresses, and old versions of the documentation will be available in the version controlled GitHub repository on which this project is being produced.
+:::{.callout-note}
+# The NHP model is now called the "OpenPlan hospital demand model"
+
+The Strategy Unit was originally commissioned by the New Hospital Programme to 
+create a transparent, consistent way to forecast future hospital demand. 
+This model continues to develop in response to feedback and emerging requirements, 
+with all underpinning code published openly.
+
+It has also been joined by several, related tools that support hospitals and 
+systems to identify opportunities for 'left shift', compare their plans with 
+those of peers and estimate their future capacity requirements. 
+These use cases are not unique to the New Hospital Programme - they are relevant 
+to all hospitals and systems in the NHS.
+
+We have therefore made the decision to group these tools under the new heading 
+'**OpenPlan**'. 
+We will refer to the existing NHP demand model as the 
+'**OpenPlan hospital demand model**' going forward.
+:::
+
+This site summarises the  methodology and software implementation of the model. 
+It will be kept up to date as development progresses, and old versions of the 
+documentation will be available in the version controlled GitHub repository on 
+which this project is being produced.

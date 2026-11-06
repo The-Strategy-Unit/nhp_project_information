@@ -3,7 +3,7 @@ title: "Setting the model parameters"
 order: 4
 ---
 
-The model accepts input parameters, which can be set by users. These are set via the [nhp_inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). This page lists all the input parameters currently accepted by the model.
+The model accepts input parameters, which can be set by users. These are set via the [Openplan inputs app](https://connect.strategyunitwm.nhs.uk/nhp/inputs/). This page lists all the input parameters currently accepted by the model.
 
 A CSV containing all the type of potentially mitigatable activity (TPMAs) that can be set by users is available to [download on this page](mitigators_lookup.qmd).
 
@@ -79,7 +79,7 @@ Note: Not currently in the model v.1.0
 - Optional, set by users
 - Selection between the four options
 
-Access to some hospital services are known to vary between socio-economic groups. In particular, several studies have shown that patient access to planned hospital care are lower for patients living in more deprived areas, having adjusted for need. Reducing health inequalities and inequities in access to services is a long-standing national policy objective. Inequalities present in the baseline year will be carried forward in the NHP demand and activity model unless some adjustment is applied.
+Access to some hospital services are known to vary between socio-economic groups. In particular, several studies have shown that patient access to planned hospital care are lower for patients living in more deprived areas, having adjusted for need. Reducing health inequalities and inequities in access to services is a long-standing national policy objective. Inequalities present in the baseline year will be carried forward in the OpenPlan hospital demand model unless some adjustment is applied.
 
 Users will have four options to select from. Further information on each one is available in the [Strategies to reduce inequalities in access to planned hospital procedures report](https://www.strategyunitwm.nhs.uk/news/strategies-reduce-inequalities-access-planned-hospital-procedures).
 
