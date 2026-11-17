@@ -1,0 +1,9 @@
+---
+title: "Technical information"
+---
+
+This section describes in detail:
+
+- [Data preparation](/technical/data_extraction/data_extraction_overview.qmd)
+- [Modelling methodology](/technical/modelling_methodology/methodology.qmd)
+- [Information for developers](/technical/developer/code.qmd)

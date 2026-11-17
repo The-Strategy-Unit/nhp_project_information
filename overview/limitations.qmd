@@ -1,0 +1,30 @@
+---
+title: "Model limitations"
+---
+
+The OpenPlan model is robust, transparent and trustworthy.
+However, as with all modelling methods, it is not appropriate for all uses, and
+has some limitations.
+
+### OpenPlan does not use epidemiology (disease distribution) information
+
+OpenPlan is based on estimating relative future demand for hospital services by undertaking a series of adjustments to baseline activity, rather than modelling demand for hospitals directly using epidemiological approaches, for example. 
+This approach has been chosen given the significant challenges in modelling healthcare need directly (requiring disease level modelling) and in converting this need into activity (where consensus on optimal approaches requires considerable debate and evolves over time). 
+Estimating current activity and adjusting this has the advantage of an agreed starting point from which projections can be adjusted and tailored to individual schemes and scenarios.
+
+### OpenPlan works with one Trust at a time
+
+The model produces estimates for one hospital/scheme at a time, rather than capturing all hospitals with consideration of the interactions between them.
+
+### Only hospital care is taken into account
+
+Linked to this, the model will also not directly model wider healthcare settings so for example if activity mitigating interventions push activity that would have previously required hospital treatment to community care, the increase in community care demand is not explicitly modelled. This change in 'outside hospital' demand would be a useful output for wider decision making and planning, and informing cost benefit analysis. 
+However, the model will still be able to inform this through outputting the impact of individual change factors on future hospital activity (such as types of potentially mitigatable activity (TPMAs) that may transfer care out of the hospital), which could potentially be converted through some methodology and assumptions (to be determined) to community/other activity requirements.
+
+### OpenPlan is for long-term predictions
+
+This model helps users explore plausible long-term futures for acute hospital
+activity.  
+It is most useful when your question is about planning delivery over coming years,
+rather than precise short-term forecasts or single interventions.
+For short-term operational queries, other modelling types are probably better suited.

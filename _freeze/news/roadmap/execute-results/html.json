@@ -1,0 +1,15 @@
+{
+  "hash": "816a01cec198b0eb0c86a356043fcad4",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Planning Roadmap\"\norder: 1\nexecute:\n  freeze: auto\n---\n\nThe roadmap is for anyone who needs to know about planned changes to the \ndemand model. It contains high-level indicative areas of development that may\nbe subject to change in timing and/or scope as programme priorities shift.\n\nThis roadmap is updated quarterly.\n\n### Last updated: June 2026\n\n## Recently Completed \n(for full details see [model updates](/model_updates.qmd))\n\n\n\n\n## Working on Now\n\n\n\n## Working on Next\n\n\n\n## Exploring\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -6,59 +6,59 @@ website:
   open-graph: true
   repo-url: https://github.com/The-Strategy-Unit/nhp_project_information
   repo-actions: [edit, issue]
-  title: "NHP model project information"
-  description: "Documentation for the Demand Model created by the Strategy Unit to support NHS England's New Hospital Programme"
+  title: "OpenPlan hospital demand model"
+  description: "Documentation for the OpenPlan hospital demand model created by the Strategy Unit to support NHS England's New Hospital Programme"
   favicon: _assets/favicon.ico
   navbar:
     background: dark
     foreground: light
-    title: "NHP model project information"
+    title: "OpenPlan hospital demand model <span style='background:white; color:black; padding:3px 9px; border-radius:20px; font-size:0.65em; font-weight:600; margin-left:6px;'>DOCS</span>"
     pinned: true
   sidebar:
     style: "floating"
     search: true
     collapse-level: 1
     contents:
-      - section: "Project overview"
+
+      - section: "News"
+        href: news/news.qmd
         contents:
-          auto: project_plan_and_summary/*
-      - section: "Project roadmap"
+          - news/model_updates.qmd
+          - news/roadmap.qmd
+      - quick_start/quick_start.qmd
+      - overview/model_summary.qmd
+      - section: "Key concept: TPMAs"
+        href: overview/TPMAs.qmd
         contents:
-          auto: roadmap/*
-      - section: "User guide"
+            - overview/tpmas_lookup.qmd
+            - overview/inpatient_tpmas.qmd
+            - overview/outpatient_tpmas.qmd
+            - overview/ae_tpmas.qmd
+      - overview/limitations.qmd
+      - section: "Assurance"
+        href: assurance/assurance.qmd
         contents:
-          auto: user_guide/*
-      - section: "Modelling methodology"
+          - assurance/assumptions-log.qmd
+          - assurance/data_log.qmd
+      - section: "Technical information"
+        href: technical/technical.qmd
         contents:
-          - modelling_methodology/methodology.qmd
-          - modelling_methodology/demand_supply.qmd
-          - modelling_methodology/double_counting.qmd
-          - modelling_methodology/modelling_uncertainty.qmd
-          - modelling_methodology/non-demographic_growth.qmd
-          - section: "Types of Potentially Mitigatable Activity (TPMAs)"
+          - section: "Data pre-processing"
             contents:
-              - modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd
-              - modelling_methodology/activity_mitigators/outpatient_activity_mitigators.qmd
-              - modelling_methodology/activity_mitigators/ae_activity_mitigators.qmd
-              - modelling_methodology/activity_mitigators/direct_standardisation_of_tpmas.qmd
-          - section: "Data quality"
+              - auto: technical/data_extraction/*.qmd
+          - section: "Modelling methodology"
             contents:
-            - modelling_methodology/data_summary.qmd
-            - modelling_methodology/baseline_data_validation.qmd
+              - auto: technical/modelling_methodology/*.qmd
           - section: "Demographic modelling"
+            href: technical/modelling_methodology/demographic_modelling/demographic_modelling.qmd
             contents:
-              - auto: modelling_methodology/demographic_modelling/*.qmd
-      - section: "Data extraction"
-        contents:
-          auto: data_extraction/*
-      - section: "Quality assurance"
-        contents:
-          auto: quality_assurance/*
+              - technical/modelling_methodology/demographic_modelling/modelling_utilisation_rates.qmd
+              - technical/modelling_methodology/demographic_modelling/list_of_projections.qmd
+          - technical/developer/code.qmd
       - contact.qmd
   page-navigation: true
   page-footer:
-    right: "[NHP Model Project Information](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)© 2023 by [The Strategy Unit](https://www.strategyunitwm.nhs.uk/) is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)"
-    left: "This page is built using the [NHS-R Quarto theme](https://github.com/nhs-r-community/quarto-nhs-theme)."
+    right: "[OpenPlan hospital demand model documentation](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)© 2023 by [The Strategy Unit](https://www.strategyunitwm.nhs.uk/) is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)"
 
 format:
   html:

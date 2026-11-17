@@ -1,0 +1,63 @@
+---
+icon: lucide/puzzle
+---
+
+# Types of Potentially Mitigatable Activity
+
+The NHS is always seeking to reduce the volume of care needed in hospitals.
+Forecasts of future activity demand would not be credible if they were unable
+to take into account the predicted effects of interventions Trusts plan to 
+implement.
+
+In order to incorporate the predicted effects of such plans, the OpenPlan demand
+model uses the concept of Types of Potentially Mitigatable Activity (TPMAs) to 
+help define these predictions in a transparent and logical way.
+
+The user is asked to identify the most appropriate TPMA that describes the activity
+a chosen intervention should affect, and to describe their assumptions about how
+much less activity they expect to be delivering in their horizon year, should their
+plans be successful.
+
+They do this by providing a range that represents the proportion of the activity
+in the baseline year that would be plausible - an 80% prediction interval.
+For example, if the estimated activity mitigation for 'Admission Avoidance: Cancelled Operations' is given as a prediction interval of 50%-70%, this means that users are 80% sure that that the number of cancelled operations will be reduced by between 30-50% in the horizon year, as compared with the baseline.
+
+A value of 100% means no change, whilst one of 0% means that all activity is mitigated.
+
+Each TPMA is defined based on clinical and operational evidence and/or expert
+knowledge, and the full set are reviewed on a rolling basis.
+
+## Mechanisms of mitigation
+
+Each TPMA is assigned to one of four mitigation mechanisms:
+
+1. **Prevention** and public health initiatives. 
+
+This includes hospital activity related to smoking, alcohol consumption, obesity or falls which may be deemed to be avoidable via prevention and public health interventions.
+
+2. **Redirection/Substitution**.
+
+Redirection of activity to out-of-hospital settings or the substitution of hospital activity for some alternative out-of-hospital intervention. 
+This includes ambulatory care sensitive admissions, mental health admissions that may be avoided with psychiatric liaison, admissions of frail older people and low acuity admissions.
+
+3. **De-adoption** 
+
+De-adoption of low value activities, such as tonsillectomies, grommets, and unnecessary follow-up outpatient attendances.
+
+4. **Efficiency**
+Efficiency TPMAs describe types of activity that are not expected to reduce the 
+number of admissions, but may reduce length of stay.
+
+
+The full list of current TPMAs can be found in the relevant section:
+
+- [Inpatient-related](overview\inpatient_tpmas.qmd)
+- [Outpatient-related](/overview/outpatient_tpmas.qmd)
+- [A&E related](/overview/ae_tpmas.qmd)
+
+A [lookup table](/overview/tpmas_lookup.qmd) is also available that contains an interactive table with a sortable and searchable lookup of OpenPlan types of potentially mitigatable activity (OpenPlan TPMAs).
+
+:::{.callout-tip}
+👀 You can explore historical activity rates compared to statistical peer organisations
+on our public [Explore opportunities to reduce hospital care](https://connect.strategyunitwm.nhs.uk/tpma-explorer/) site!
+:::

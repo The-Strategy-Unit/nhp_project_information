@@ -1,0 +1,13 @@
+---
+title: "Data summary"
+order: 2
+---
+
+## Data sources
+
+The data sources utilised in the model are listed below.
+
+The model uses the pseudonymised, hospital event-level dataset known as [Hospital Episode Statistics](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics) as its primary source of information about hospital activity in the baseline period. The dataset contains detailed administrative, demographic, geographic and clinical information about NHS-funded hospital events.  These data are supplied for use by NHS Digital.  The use of the data is dictated by a Data Sharing Agreement. 
+
+[Sub-national population projects and national variants of these projections](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/variantnationalpopulationprojectionsfortheukandsubnationalpopulationprojectionsandhouseholdprojectionsforenglanduserguide) are supplied by the Office of National Statistics.
+

@@ -1,0 +1,87 @@
+---
+title: "Demand-supply imbalances"
+order: 1
+---
+
+## Waiting List Imbalances
+
+Waiting times for elective care are subject to several national targets. Patients waiting for care are placed on a patient tracking list (PTL), and are removed once their treatment reaches a certain stage. If the number of patients being referred to a trust and therefore being added to a PTL is larger in any given period than the number being removed, then waiting times will tend to increase. On the other hand, if the number of patients being added to a PTL is smaller than the number being removed, then waiting times will tend to decrease. 
+
+Given that these effects are cumulative, a trust might aim in the long term for its PTL additions and removals to be equivalent. If this is not the case at baseline, then the user may wish to specify changes in the level of elective activity at baseline.
+
+The inpatients values relate to the number of elective waiting list admissions (admission method = '11'), and the outpatients relates to the amount of all outpatient attendances for that treatment function.
+
+The choice for users is (1) to increase the trust's inpatient elective and outpatient activity so that its Referral To Treat (RTT) activity is sufficient to meet RTT demand (referrals) in the baseline year, or (2) to leave its activity unchanged.
+
+If users opt to change the RTT baseline activity, the model calculates the ratio of the changed activity / baseline activity. This value is used as the parameter "lambda" from a random Poisson distribution.
+
+A positive value will indicate an increase to waiting lists (generating more activity in the model), and a negative value will indicate a decrease to waiting lists (generating less activity in the model).
+
+The values default to the actual change in activity for that treatment function in the baseline year. The change values are calculated using conversion ratios from RTT activity to inpatient/outpatient activity, which have been provided by NHS England. These are given below. 
+
+<details>
+
+<summary>Conversion ratios from RTT activity to inpatient/outpatient activity</summary>
+
+| treatment_function       | op_only_split | mixed_split | avg_op_first_activity_per_pathway_op_only | avg_op_first_activity_per_pathway_mixed | avg_ip_activity_per_pathway_mixed |
+|------------|------------|------------|-------------|------------|------------|
+| Thoracic Medicine        | 0.847         | 0.153       | 1.41                                      | 0.73                                    | 1.65                              |
+| Oral Surgery             | 0.724         | 0.276       | 0.78                                      | 0.6                                     | 0.98                              |
+| Gastroenterology         | 0.36          | 0.64        | 1.49                                      | 0.41                                    | 2                                 |
+| Trauma & Orthopaedics    | 0.785         | 0.215       | 1.35                                      | 0.9                                     | 1.58                              |
+| General Medicine         | 0.703         | 0.297       | 1.74                                      | 0.44                                    | 3.37                              |
+| Cardiothoracic Surgery   | 0.604         | 0.396       | 0.41                                      | 0.42                                    | 0.44                              |
+| Plastic Surgery          | 0.602         | 0.398       | 1.32                                      | 1.02                                    | 1.6                               |
+| General Surgery          | 0.519         | 0.481       | 0.6                                       | 0.44                                    | 0.84                              |
+| Dermatology              | 0.879         | 0.121       | 1.1                                       | 0.78                                    | 1.06                              |
+| Cardiology               | 0.865         | 0.135       | 1.8                                       | 0.91                                    | 2.04                              |
+| Urology                  | 0.664         | 0.336       | 1.13                                      | 0.61                                    | 1.52                              |
+| Rheumatology             | 0.749         | 0.251       | 1.62                                      | 0.2                                     | 1.43                              |
+| Neurosurgery             | 0.744         | 0.256       | 1.22                                      | 0.73                                    | 1.45                              |
+| Ear, Nose & Throat (ENT) | 0.861         | 0.139       | 1.11                                      | 0.77                                    | 1.13                              |
+| Other                    | 0.814         | 0.186       | 1.67                                      | 0.7                                     | 3.24                              |
+| Ophthalmology            | 0.733         | 0.267       | 1.34                                      | 0.74                                    | 1.42                              |
+| Neurology                | 0.852         | 0.148       | 1.48                                      | 0.26                                    | 1.55                              |
+| Gynaecology              | 0.842         | 0.158       | 1.22                                      | 0.88                                    | 1.53                              |
+| Geriatric Medicine       | 0.926         | 0.074       | 1.37                                      | 0.45                                    | 1.87                              |
+
+
+Outpatients calculation:
+
+```         
+
+( baseline_change_in_waiting_list * op_only_split * avg_op_first_activity_per_pathway_op_only ) + ( baseline_change_in_waiting_list * mixed_split * avg_op_first_activity_per_pathway_mixed )
+```
+
+Inpatients calculation:
+
+```         
+baseline_change_in_waiting_list * mixed_split * avg_ip_activity_per_pathway_mixed
+```
+
+
+</details>
+
+**Data source and calculation approach**
+
+The basis of our calculations is the change in incomplete pathways from start to end of year in the baseline year. This is obtained from [NHS England's Referral to Treatment (RTT) Waiting Times](https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/) data. 
+
+The change values approximate the demand/supply imbalance that is applied to the model baseline - i.e. if waiting lists are increasing, this increase is added to baseline activity, approximating keeping waiting lists stable.
+
+
+## Expatriation / Repatriation
+
+**Expatriation**
+This adjustment accounts for the expected reductions in the current number of patients treated at the hospital because they will receive care elsewhere in the future. For example, if the new hospital will no longer deliver a particular specialty.
+
+100% means no change due to expatriation. 95% means 5% of current activity would be 'expatriated' (treated elsewhere). A value of 0% would mean all activity is 'expatriated'.
+
+**Repatriation - Local**
+This adjustment accounts for the number of local ICB patients not currently treated at the hospital that will be in the future. For example, if the new hospital plans to increase the capacity of a particular specialty to address a historic under provision which has resulted in local ICB patients travelling further to other trusts.
+
+100% means no change. 105% means a 5% increase in activity.
+
+**Repatriation - Non-Local**
+This adjustment accounts for an expected increase in non local patients (patients living outside of the local ICB) . For example, if the new hospital includes a larger specialist ophthalmology department that it expects will attract patients from outside of the local area.
+
+100% means no change. 105% means a 5% increase in current levels of non local activity.
