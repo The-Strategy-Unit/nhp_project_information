@@ -20,12 +20,15 @@ website:
     collapse-level: 1
     contents:
 
-      - section: "News"
+      - section: 'News'
         href: news/news.qmd
         contents:
           - news/model_updates.qmd
           - news/roadmap.qmd
-      - quick_start/quick_start.qmd
+      - section: "User Guide"
+        contents:
+        - quick_start/quick_start.qmd
+        - user_guide/user_guide.qmd
       - overview/model_summary.qmd
       - section: "Key concept: TPMAs"
         href: overview/TPMAs.qmd
@@ -43,18 +46,30 @@ website:
       - section: "Technical information"
         href: technical/technical.qmd
         contents:
-          - section: "Data pre-processing"
+          - section: "Data preparation"
             contents:
-              - auto: technical/data_extraction/*.qmd
+              - technical/data_extraction/data_extraction_overview.qmd
+              - technical/data_extraction/deriving_hospital_catchments.qmd
+              - technical/data_extraction/inpatients.qmd
+              - technical/data_extraction/outpatients.qmd
+              - technical/data_extraction/aae.qmd
           - section: "Modelling methodology"
             contents:
-              - auto: technical/modelling_methodology/*.qmd
-          - section: "Demographic modelling"
-            href: technical/modelling_methodology/demographic_modelling/demographic_modelling.qmd
+              - technical/modelling_methodology/methodology.qmd
+              - technical/modelling_methodology/double_counting.qmd
+              - technical/modelling_methodology/modelling_uncertainty.qmd
+              - section: "Demographic growth"
+                href: technical/modelling_methodology/demographic_modelling/demographic_modelling.qmd
+                contents:
+                  - technical/modelling_methodology/demographic_modelling/modelling_utilisation_rates.qmd
+                  - technical/modelling_methodology/demographic_modelling/list_of_projections.qmd
+              - user_guide/non-demographic_growth.qmd
+              - technical/modelling_methodology/demand_supply.qmd
+              - overview/TPMAs.qmd      
+          - section: "Developer information" 
             contents:
-              - technical/modelling_methodology/demographic_modelling/modelling_utilisation_rates.qmd
-              - technical/modelling_methodology/demographic_modelling/list_of_projections.qmd
-          - technical/developer/code.qmd
+              - technical/developer/code.qmd
+      - user_guide/FAQ.qmd     
       - contact.qmd
   page-navigation: true
   page-footer:

@@ -26,6 +26,15 @@ A value of 100% means no change, whilst one of 0% means that all activity is mit
 
 Each TPMA is defined based on clinical and operational evidence and/or expert
 knowledge, and the full set are reviewed on a rolling basis.
+All TPMAs are age-sex standardised to maximise their comparability across settings.
+You can read about [how we standardise the data](../technical/modelling_methodology/activity_mitigators/direct_standardisation_of_tpmas.qmd) in the methodology section.
+
+:::{.callout-important}
+TPMA assumptions are specific to a particular set of baseline and horizon years.
+Should you wish to use a different baseline or horizon year, you should always
+carefully consider whether your TPMA assumptions are still valid.
+:::
+
 
 ## Mechanisms of mitigation
 
@@ -45,13 +54,14 @@ This includes ambulatory care sensitive admissions, mental health admissions tha
 De-adoption of low value activities, such as tonsillectomies, grommets, and unnecessary follow-up outpatient attendances.
 
 4. **Efficiency**
+
 Efficiency TPMAs describe types of activity that are not expected to reduce the 
 number of admissions, but may reduce length of stay.
 
 
 The full list of current TPMAs can be found in the relevant section:
 
-- [Inpatient-related](overview\inpatient_tpmas.qmd)
+- [Inpatient-related](/overview/inpatient_tpmas.qmd)
 - [Outpatient-related](/overview/outpatient_tpmas.qmd)
 - [A&E related](/overview/ae_tpmas.qmd)
 

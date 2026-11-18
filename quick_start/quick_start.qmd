@@ -36,10 +36,11 @@ Baseline Adjustment page.
 
 ## 4. Run a model
 
-Once you have worked through all the sections of the model inputs, you will be
+Once you have worked through all the sections of the model inputs (thus creating
+what we refer to as a model 'scenario'), you will be
 able to click 'Run Model' at the bottom left of the page.
 
-If this button is not appearing for you and you expect it to, please [contact us](mailto:mlcsu.su.datascience@nhs.net)
+If this button is not appearing for you when expected, please [contact us](mailto:mlcsu.su.datascience@nhs.net).
 
 :::{.callout-important}
 Remember, the quality of your model results is proportionate to the care and 

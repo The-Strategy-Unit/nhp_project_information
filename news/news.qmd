@@ -6,7 +6,7 @@ This section is where you can find the latest information about [updates to the
 model](/news/model_updates.qmd), and a high-level [development roadmap](/news/roadmap.qmd) 
 that will be refreshed at least quarterly.
 
-## New Hospital Programme users
+## 🚨 New Hospital Programme users 📢
 
 If you are using the model for the purposes of the New Hospital Programme, please
 note that programme-specific advice, guidance and content can be found on the 

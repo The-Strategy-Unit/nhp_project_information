@@ -30,7 +30,6 @@ Check the out our frequently asked questions.
 </div>
 :::
 
-
 ::: {.callout-caution}
 
 # The NHP model is now called the "OpenPlan hospital demand model"

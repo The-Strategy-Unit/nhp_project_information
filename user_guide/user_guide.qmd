@@ -1,0 +1,127 @@
+---
+title: "User Guide"
+---
+
+This guide explains how to use the OpenPlan capacity model, and how to receive
+your results.
+
+### Create a model scenario
+
+A model 'scenario' is a set of choices and assumptions that is created by you when
+you use the [inputs app](https://connect.strategyunitwm.nhs.uk/tools_list/).
+You can choose to create a new scenario from scratch, edit an existing one, or create
+a new scenario from an existing one.
+
+Access to the inputs app is only possible for users who have been granted access,
+as described in the [quick start guide](../quick_start/quick_start.qmd).
+
+#### 1. Set the Trust and model years
+
+Once you have logged in to the app, you will be presented with a landing page
+that requires you to select the Trust you are modelling on behalf of, and the
+baseline year of data that will be used in the scenario.
+You will also be required to selec the ['horizon' year](/faqs/FAQ.qmd#which-year-should-be-selected-as-the-horizon-year) - this is the financial 
+year whose activity you will be planning for.
+
+#### 2. Give the scenario a name
+
+A sensible name is required - follow the [linked guidance](naming_scenarios.qmd) on how to create an
+appropriate scenario name.
+If you do not wish to select advanced options, you can then click 'Start' to be
+taken to the next stage.
+The following sections describe the modules you will find down the left hand side
+of the app. 
+
+#### 3. Baseline adjustment
+
+Use the sliders to adjust your baseline year data to match your local data, as
+decided by your [baseline reconciliation](/modelling_methodology/baseline_data_validation.qmd) process.
+Record a rationale for your choices, including the choice not to adjust.
+
+#### 4. Population changes
+
+_Population Growth_
+
+In the population growth section, if you have [sign-off](/faqs/FAQ.qmd#i-have-sign-off-to-use-our-own-custom-population-projections---how-do-i-submit-these-to-you) from your system to use a
+non-default ONS population projection, you can select the variant you wish to use
+here.
+
+_Health Status Adjustment_
+
+By default the model enables [this element](/technical/modelling_methodology/demographic_modelling/modelling_utilisation_rates.qmd).
+You can uncheck the box if you do not wish to include health status adjustment 
+in your scenario.
+
+#### 5. Demand-supply Imbalances
+
+You may know that certain types of activity your hospital delivered in the
+baseline year will no loger be provided in the horizon year as they are being
+moved to a different Trust ('Expatriation').
+Similarly, you may know that, by the horizon year, your Trust will be delivering
+activity that was delivered by a different provider in the baseline year ('Local repatriation' = 
+both providers within the same ICB, 'Non-local reptriation' = activity from outside your
+ICB will be delivered at your Trust in future).
+
+For each type of activity that this applies to, select the relevant activity
+type, subgroup and specialty. Click 'Include?' in the relevant box, and use
+the sliders to show the proportion of baseline year activity you **will still be 
+providing** in the horizon year.
+
+Include text in the rationale box to explain these choices.
+
+#### 6. Non-demographic Adjustment (NDG)
+
+Here you can select whether you would like to use the default version of the NDG 
+parameter, or the alternative.
+This parameter is very influential on your results and cannot be 'switched off'.
+You can [read more about NDG here](/modelling_methodology/non-demographic_growth.qmd)
+
+#### 7. Types of Activity
+
+_Summary totals_ gives you counts of types of potentially mitigatable activity,
+so that you can appreciate their relative cohort sizes (note that the groups
+are not mutually exclusive).
+
+The next three sections, _Inpatients_, _Outpatients_ and _A&E_ all detail the
+data describing historical activity for your Trust for every [TPMA](/overview/TPMAs.qmd), and show this related to
+your peer organisations.
+For every TPMA, you can choose to include your mitigation plans for that activity
+in your scenario by clicking 'Include'.
+You should then use the '80% prediction interval' sliders to describe the 
+plausible range of activity you will still be providing in the horion year.
+Include a rationale in the box below to record relevant reasoning for your decisions.
+
+#### 8. Run Model
+
+Once you have completed all relevant sections (modules listed down the left hand
+side of the app) you can click the 'Run Model' button.
+If you do not see this button in the app, you have not been added to the relevant
+permissions group.
+If you believe this to be an error please [contact us](#contact-us).
+
+You will be redirected to the [outputs app](https://connect.strategyunitwm.nhs.uk/tools_list/) 
+when the model has completed.
+
+-----
+
+### Understand your results
+
+The [outputs app](https://connect.strategyunitwm.nhs.uk/tools_list/) allows you
+to explore the results produced - both the ['principal projection'](glossary.qmd) (the mean of
+all the sets of model results per scenario) and the distribution of those model
+runs.
+
+You can download your results as a workbook or a JSON file for local inspection 
+and analysis.
+
+An example of scenario results can be downloaded [here](example_outputs.xlsx).
+
+## Model help
+
+### [FAQs](FAQ.qmd)
+
+Answers to common questions about the model.
+
+### [Glossary](glossary.qmd)
+
+Definitions of terms and abbreviations used in this guide.

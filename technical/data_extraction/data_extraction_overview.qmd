@@ -1,9 +1,33 @@
 ---
-title: Data extraction overview
+title: Data preparation overview
 order: 200
 ---
+## Data sources
+
+The data sources utilised in the model are listed below.
+
+The model uses the pseudonymised, hospital event-level dataset known as [Hospital Episode Statistics](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics) as its primary source of information about hospital activity in the baseline period. 
+The dataset contains detailed administrative, demographic, geographic and clinical information about NHS-funded hospital events. 
+These data are supplied for use by NHS Digital. 
+The use of the data is dictated by a Data Sharing Agreement. 
 
 We store Hospital Episodes Statistics (HES) data on Databricks. 
 The NHS Data Dictionary is available to [view online](https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics/hospital-episode-statistics-data-dictionary).
 
+[Sub-national population projects and national variants of these projections](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/variantnationalpopulationprojectionsfortheukandsubnationalpopulationprojectionsandhouseholdprojectionsforenglanduserguide) are supplied by the Office of National Statistics.
+
+
 The code for the processing and extraction of data for this project is available openly in the [nhp_data repository](https://github.com/The-Strategy-Unit/nhp_data).
+
+To explore further, read about how we process;
+
+- [Inpatient data](inpatients.qmd)
+- [Outpatient data](outpatients.qmd)
+- [A&E data](aae.qmd)
+
+Each row of the pre-processed data that the model takes in is assigned to only
+one provider organisation. 
+However, [ONS population projections](../modelling_methodology/demographic_modelling/demographic_modelling.qmd) are provided at Local Authority level.
+To reconcile this difference and ensure we are applying demographic growth in the
+right way, we derive hospital catchments as described [here](deriving_hospital_catchments.qmd).
+
