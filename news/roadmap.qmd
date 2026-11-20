@@ -14,7 +14,7 @@ This roadmap is updated quarterly.
 ### Last updated: June 2026
 
 ## Recently Completed 
-(for full details see [model updates](/model_updates.qmd))
+(for full details see [model updates](/news/model_updates.qmd))
 
 
 ```{r}

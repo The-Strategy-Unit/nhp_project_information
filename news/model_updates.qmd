@@ -87,7 +87,7 @@ The model allows users to select their 'horizon year': the year they wish the mo
 
 ### Bugfix: Health Status Adjustment for OP & A&E
 
-We fixed a bug in the implementation of the [Health Status Adjustment functionality](../modelling_methodology/demographic_modelling/modelling_utilisation_rates.qmd#adjust-health-status) for Outpatients and A&E. This means that Health Status Adjustment now has a slightly larger impact on modeled activity in Outpatients and A&E. However, there is a minimal impact on overall model results.
+We fixed a bug in the implementation of the [Health Status Adjustment functionality](/technical/modelling_methodology/demographic_modelling/modelling_utilisation_rates.qmd#adjusting-for-health-status) for Outpatients and A&E. This means that Health Status Adjustment now has a slightly larger impact on modeled activity in Outpatients and A&E. However, there is a minimal impact on overall model results.
 
 # Update 2026/01/29
 
@@ -97,11 +97,11 @@ We fixed a bug in the implementation of the [Health Status Adjustment functional
 
 Data for all types of potentially-mitigatable activity (TPMAs) now involves direct standardisation by age and sex.
 This change only affects the presentation of data in the inputs app and does not have an impact on modelling.
-Read an explanation in the [Modelling Methodology](../modelling_methodology/activity_mitigators/direct_standardisation_of_tpmas.qmd) section.
+Read an explanation in the [Modelling Methodology](/technical/modelling_methodology/activity_mitigators/direct_standardisation_of_tpmas.qmd) section.
 
 ### Deriving hospital catchments
 
-We have also [updated the method for deriving hospital catchments](../data_extraction/deriving_hospital_catchments.qmd) to aggregate to local authority districts (LAD23CD).
+We have also [updated the method for deriving hospital catchments](/technical/data_extraction/deriving_hospital_catchments.qmd) to aggregate to local authority districts (LAD23CD).
 This change has had a small impact on the way in which ONS demographic growth has been mapped to providers.
 
 # Update 2025/11/27
@@ -128,7 +128,7 @@ This update is for patch releases of the inputs and outputs apps (both v4.2.1) a
 The term 'mitigator' has been removed and replaced with 'types of potentially-mitigatable activity (TPMAs)'.
 Read more about this in [the FAQ section](../user_guide/FAQ.qmd#what-are-tpmas-and-how-do-they-relate-to-mitigators).
 
-Additionally, user-feedback buttons have been added to both apps and [the model diagram has been updated](../project_plan_and_summary/components-overview.qmd) in project information.
+Additionally, user-feedback buttons have been added to both apps and [the model diagram has been updated](/technical/developer/code.qmd#diagram-showing-repository-relationships) in project information.
 
 # Update 2025/10/07
 
@@ -152,17 +152,17 @@ The grouped treatment specialties are only used in the aspects of the model list
 
 ### Note on waiting-list adjustment calculations
 
-Until recently, the NHP model has included functionality that allowed participating trusts to [correct for imbalances at baseline](../modelling_methodology/demand_supply.qmd) between the rates of referral for planned care activity, and rates of inpatient and outpatient activity that remove people from elective waiting lists.
+Until recently, the NHP model has included functionality that allowed participating trusts to [correct for imbalances at baseline](/technical/modelling_methodology/demand_supply.qmd) between the rates of referral for planned care activity, and rates of inpatient and outpatient activity that remove people from elective waiting lists.
 Whilst this adjustment performs adequately in most situations, we have recently become aware of several examples where this adjustment generates unexpected results.
 The underlying issue appears to arise from inconsistencies between a Trust's Referral-to-Treatment statistics and its Hospital Episode Statistics.
 We are exploring potential solutions and will make more robust functionality available in a later release of the model.
 
-In the meantime, we recommend that Trusts perform their own calculations to estimate the imbalance between referrals and planned care activities in the baseline year, and implement these using [the baseline adjustment functionality in the model](../user_guide/setting_the_parameters.qmd#baseline-adjustments).
+In the meantime, we recommend that Trusts perform their own calculations to estimate the imbalance between referrals and planned care activities in the baseline year, and implement these using [the baseline adjustment functionality in the model](/user_guide/user_guide.qmd).
 If you have any questions about this process, please contact [mlcsu.nhpanalytics@nhs.net](mailto:mlcsu.nhpanalytics@nhs.net).
 
 ### Updated day procedures classification
 
-The [classification methodology for day procedures](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.qmd#classification-methodology) has been updated.
+The [classification methodology for day procedures](/overview/inpatient_tpmas.qmd#day-procedures) has been updated.
 As a result, the amount of activity impacted by each of these mitigators has changed.
 You can check this in the inputs app or [(re-)request your detailed baseline data](mailto:mlcsu.su.datascience@nhs.net).
 
@@ -236,7 +236,7 @@ We have instigated a change to the column names relating to the treatment specia
 
 The [step counts](../user_guide/glossary.qmd#impact-of-changes), also known as "impact of changes" or the "waterfall diagram", show the impact of each of the individual components of the model which are increasing or decreasing the amount of activity that the model predicts in the horizon year.
 
-We have improved the methodology for calculating the impact of the [birth adjustment](../modelling_methodology/demographic_modelling/demographic_modelling#birth-adjustment) in the model.
+We have improved the methodology for calculating the impact of the [birth adjustment](/technical/modelling_methodology/demographic_modelling/demographic_modelling.qmd#birth-adjustment) in the model.
 In previous versions of the model, we would apply the demographic growth to all activity including maternity, then when we did the birth adjustment step we would "undo" the demographic growth step for maternity activity before applying the birth adjustment.
 This had the impact of exaggerating the impact of demographic growth in the model, and understating the impact of birth adjustment.
 
@@ -249,7 +249,7 @@ Previously each trust's final catchment population comprised a weighted sum of i
 
 We now calculate the percentage of inpatient admissions—broken down by age and sex—that are attributable to each provider for residents of that area.
 
-For details please see the [demographic modelling page](../modelling_methodology/demographic_modelling/demographic_modelling.qmd#hosp-catchments).
+For details please see the [demographic modelling page](/technical/data_extraction/deriving_hospital_catchments.qmd).
 
 # Update 2025/07/02
 
@@ -518,7 +518,7 @@ We have also expanded our QA process to include a broader set of test data to ru
 
 ### Other updates
 
-We fixed a small bug which gave an incorrect value of beddays in the step counts/impact of changes for elective activity converted to day case by the [day procedures mitigators](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures).
+We fixed a small bug which gave an incorrect value of beddays in the step counts/impact of changes for elective activity converted to day case by the [day procedures mitigators](/overview/inpatient_tpmas.qmd#day-procedures).
 
 # Update 2024/08/29
 
@@ -725,7 +725,7 @@ We are currently in discussions about open sourcing the entire model.
 
 The non-demographic adjustment section of the inputs app was updated to:
 
--   set Variant 2 as the default for non-elective inpatients (for more information about Variant 2 see [the modelling methodology](../modelling_methodology/non-demographic_growth.html))
+-   set Variant 2 as the default for non-elective inpatients (for more information about Variant 2 see [the modelling methodology](/technical/modelling_methodology/non-demographic_growth.qmd))
 -   show the 10 and 90% prediction intervals in the the table of parameter values
 
 ### Outputs
@@ -764,17 +764,17 @@ Virtual wards allow patients to receive the care they need at home, safely and c
 They also provide systems with a significant opportunity to narrow the gap between demand and capacity for secondary care beds, by providing an alternative to admission and/or early discharge.
 There are four new Virtual Ward activity mitigators now available in the model v.1.1:
 
--   [Virtual Wards Admission Avoidance (Acute Respiratory Infection) (IP-AA-030)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-admission-avoidance)
--   [Virtual Wards Admission Avoidance (Heart Failure) (IP-AA-031)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-admission-avoidance)
--   [Virtual Wards LoS Reduction (Acute Respiratory Infection) (IP-EF-026)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-los-reduction)
--   [Virtual Wards LoS Reduction (Heart Failure) (IP-EF-027)](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#virtual-wards-los-reduction)
+-   [Virtual Wards Admission Avoidance (Acute Respiratory Infection) (IP-AA-030)](/overview/inpatient_tpmas.qmd#virtual-wards-admission-avoidance)
+-   [Virtual Wards Admission Avoidance (Heart Failure) (IP-AA-031)](-   [Virtual Wards Admission Avoidance (Acute Respiratory Infection) (IP-AA-030)](/overview/inpatient_tpmas.qmd#virtual-wards-admission-avoidance)
+-   [Virtual Wards LoS Reduction (Acute Respiratory Infection) (IP-EF-026)](/overview/inpatient_tpmas.qmd#virtual-wards-los-reduction)
+-   [Virtual Wards LoS Reduction (Heart Failure) (IP-EF-027)](/overview/inpatient_tpmas.qmd#virtual-wards-los-reduction)
 
 ## New Day procedures mitigators
 
 Day surgery is now established practice with rates continuing to increase.
 Due to advances in anaesthesia and surgical techniques, it is the standard pathway of care for many complex patients and procedures traditionally treated through inpatient pathways.
 There are four new day procedures mitigators now available in the model v.1.1.
-Further information can be found in the [inpatient activity mitgators chapter](../modelling_methodology/activity_mitigators/inpatient_activity_mitigators.html#day-procedures).
+Further information can be found in the [inpatient activity mitgators chapter](/overview/inpatient_tpmas.qmd#day-procedures).
 
 -   Day Procedures: Occasionally performed as a Daycase (IP-EF-005)
 -   Day Procedures: Usually performed as a Daycase (IP-EF-007)

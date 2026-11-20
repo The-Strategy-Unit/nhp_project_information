@@ -19,7 +19,9 @@ website:
     search: true
     collapse-level: 1
     contents:
-
+      
+      - section: 'Home'
+        href: index.qmd
       - section: 'News'
         href: news/news.qmd
         contents:
@@ -43,7 +45,7 @@ website:
         contents:
           - assurance/assumptions-log.qmd
           - assurance/data_log.qmd
-      - section: "Technical information"
+      - section: "Technical zone"
         href: technical/technical.qmd
         contents:
           - section: "Data preparation"
@@ -63,7 +65,7 @@ website:
                 contents:
                   - technical/modelling_methodology/demographic_modelling/modelling_utilisation_rates.qmd
                   - technical/modelling_methodology/demographic_modelling/list_of_projections.qmd
-              - user_guide/non-demographic_growth.qmd
+              - technical/modelling_methodology/non-demographic_growth.qmd
               - technical/modelling_methodology/demand_supply.qmd
               - overview/TPMAs.qmd      
           - section: "Developer information" 

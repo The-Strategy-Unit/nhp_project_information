@@ -29,8 +29,8 @@ The model accounts transparently for inherent uncertainty in predictions, and
 avoids double counting where the effects of transformations overlap.
 Read more about these features here;
 
-- [Avoiding double counting](/modelling_methodology/double_counting.qmd)
-- [Modelling uncertainty](/modelling_methodology/modelling_uncertainty.qmd)
+- [Avoiding double counting](/technical/modelling_methodology/double_counting.qmd)
+- [Modelling uncertainty](/technical/modelling_methodology/modelling_uncertainty.qmd)
 
 
 ## The model engine

@@ -13,7 +13,7 @@ We extract spell level data for a given year.
 We use the last episode in spell, but the field `SPELEND` has issues where some admissions end up with multiple episodes
 having a `SPELEND` flag assigned. This would lead to an inflated amount of admissions in our model if left as is.
 
-We use the published [Methodology to create provider and CIP spells from HES APC data](https://files.digital.nhs.uk/B6/4A484B/Methodology%20to%20create%20provider%20and%20CIP%20spells%20from%20HES%20APC%20data%20v2.pdf) from NHS Digital, September 2021. Further details are in the [data log](data_log.qmd#last-episode-in-spell).
+We use the published [Methodology to create provider and CIP spells from HES APC data](https://files.digital.nhs.uk/B6/4A484B/Methodology%20to%20create%20provider%20and%20CIP%20spells%20from%20HES%20APC%20data%20v2.pdf) from NHS Digital, September 2021. Further details are in the [data log](/assurance/data_log.qmd#last-episode-in-spell).
 
 ### Age
 
@@ -50,7 +50,7 @@ one of the two stated values above.
 
 We select the last episode in spell, determined in the pre-processing step.
 
-We filter out "well baby" records. These are records for newborn babies who are healthy and not requiring any medical interventions. We do this using the `WELL_BABY_IND` column, as well as other filtering as detailed in [the data log](/data_extraction/data_log.qmd#inpatients-2).
+We filter out "well baby" records. These are records for newborn babies who are healthy and not requiring any medical interventions. We do this using the `WELL_BABY_IND` column, as well as other filtering as detailed in [the data log](/assurance/data_log.qmd#inpatients-2).
 
 ### Data Quality
 

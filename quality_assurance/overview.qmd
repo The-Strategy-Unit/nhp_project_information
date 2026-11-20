@@ -14,7 +14,7 @@ The model has been quality assured and checked by appropriate individuals intern
 - [Assumptions log](/quality_assurance/assumptions-log.qmd)
 - [Change Log](https://github.com/The-Strategy-Unit/nhp_model/commits/main/)
 
-Some items are associated with private repositories. We are working towards making these repositories public as part of our [open source policy](/project_plan_and_summary/components-overview.qmd#open-source-policy).
+Some items are associated with private repositories. We are working towards making these repositories public as part of our [open source policy](/technical/developer/code.qmd).
 
 ## Roles & Responsibilities
 

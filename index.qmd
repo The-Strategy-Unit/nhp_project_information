@@ -24,7 +24,7 @@ those interested in the shift of activity from hospitals into the community.
 
 [{{< fa check-circle >}} Model assurance](/assurance/assurance.qmd) - Understand how the model promotes trust and auditability.
 
-[{{< fa question-circle >}} FAQs](/faqs/FAQ.qmd) - Can't find what you're looking for? 
+[{{< fa question-circle >}} FAQs](/user_guide/FAQ.qmd) - Can't find what you're looking for? 
 Check the out our frequently asked questions.
 
 </div>
