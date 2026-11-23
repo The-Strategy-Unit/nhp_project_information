@@ -4,9 +4,9 @@ icon:
 order: 1
 ---
 
-A separate one page explainer is available as a [standalone webpage](https://connect.strategyunitwm.nhs.uk/nhp_model_explainer/).
+![Model summary](/resources/Demand%20and%20Capacity%20Model.png)
 
-![Model overview](/resources/NHP_model_process.png)
+A separate one page explainer is available as a [standalone webpage](https://connect.strategyunitwm.nhs.uk/nhp_model_explainer/).
 
 The OpenPlan hospital demand model estimates future hospital activity. 
 It is a sophisticated model that factors in the inherent uncertainty associated with making forecasts about future demand. 
@@ -17,6 +17,8 @@ Population growth predictions (published by the Office for National Statistics) 
 combined with assumptions about several 'change factors', summarised in the 
 diagram above, to shrink or grow the types of activity in the baseline year, based
 on their user-supplied prediction intervals.
+
+![Simplified demand model modules](/resources/NHP_model_process.png)
 
 Some of the model inputs must be given in the form of ranges that describe your
 assumptions about plausible levels of future activity, and the outputs provide a [principal projection](/user_guide/glossary.qmd#principal-projection) as well as a description of the variation in the estimated future activity. 
@@ -78,7 +80,7 @@ The model takes as its parameters estimations of activity - more detail is avail
 
 The model will use the estimations of activity increase/decrease found in the parameters to transform the input data into estimations of future activity.
 
-## Outputs
+### Outputs
 
 The model will generate the following key outputs for each scheme and set of scenarios:
 

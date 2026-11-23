@@ -20,7 +20,7 @@ website:
     collapse-level: 1
     contents:
       
-      - section: 'Home'
+      - text: 'Home'
         href: index.qmd
       - section: 'News'
         href: news/news.qmd

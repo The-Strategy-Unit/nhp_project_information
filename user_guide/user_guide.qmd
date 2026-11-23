@@ -5,7 +5,51 @@ title: "User Guide"
 This guide explains how to use the OpenPlan capacity model, and how to receive
 your results.
 
-### 1. Create a model scenario
+## 📝 Preparation 📝 
+
+Please note, the _majority_ of user work needed to use the model occurs _before_
+you begin modelling. 
+It can take significant time to carry out due diligence on the scenario selections
+to be used, to ensure that the results you produce are trusted, plausible and 
+auditable.
+
+#### 1. Read the [model summary](/overview/model_summary.qmd) to ensure this model can meet your needs. 
+Its a good idea to choose your support team from your colleagues now.
+
+#### 2. Register with the [Strategy Unit](../quick_start/quick_start.qmd#register) to obtain a user account.
+Up to two accounts are permitted per organisation, so check whether anyone in your
+team already has an account before applying.
+
+#### 3. Identify TPMAs that align best with your mitigation plans.
+You can use the [inputs app](https://connect.strategyunitwm.nhs.uk/tools_list/) or the [Explore opportunities to reduce hospital care app](https://connect.strategyunitwm.nhs.uk/tpma-explorer/) 
+to understand all the TPMAs, and see how your organisation compares to your peers
+in baseline year activity rates.
+
+#### 4. Validate your baseline data.
+Download your baseline data from the [inputs app](https://connect.strategyunitwm.nhs.uk/tools_list/) and check that it matches
+your local data. 
+If it does not, record your decisions about how you will modify the baseline
+model data to allow it to better describe the activity you delivered.
+
+#### 5. Negotiate the crucial parameters to be used.
+Gather the necessary input from colleagues on your model scenario choices:
+
+- Which future year's [('horizon year')](/user_guide/FAQ.qmd#which-year-should-be-selected-as-the-horizon-year) activity do you wish to model?
+- If there is a choice of baseline years, which will you use as the basis of your modelling?
+- Make a collective choice about which [population projection variant](/technical/modelling_methodology/demographic_modelling/demographic_modelling.qmd) you will use.
+- Make a collective choice about which [non-demographic growth variant](/technical/modelling_methodology/non-demographic_growth.qmd) you will use.
+- Gather intelligence on the volumes of activity that may be [expatriating or repatriating](/technical/modelling_methodology/demand_supply.qmd) into your Trust by the horizon year.
+- For every [TPMA](/overview/TPMAs.qmd) you will include, what are the upper and lower limits of 
+plausibility for the percentage of activity (the 'p10' amd'p90') you will still 
+be delivering in the chosen horizon year?
+
+----
+
+
+## 🚀 Running a model scenario 🚀
+
+
+#### 1. Create a model scenario
 
 A model 'scenario' is a set of choices and assumptions that is created by you when
 you use the [inputs app](https://connect.strategyunitwm.nhs.uk/tools_list/).
@@ -13,7 +57,7 @@ You can choose to create a new scenario from scratch, edit an existing one, or c
 a new scenario from an existing one.
 
 Access to the inputs app is only possible for users who have been granted access,
-as described in the [quick start guide](../quick_start/quick_start.qmd).
+as described in the [quick start guide](../quick_start/quick_start.qmd#register).
 
 #### 2. Set the Trust and model years
 

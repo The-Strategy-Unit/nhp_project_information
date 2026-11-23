@@ -9,6 +9,7 @@ England.
 The model can be used by NHS Trusts, hospital planners, service designers and 
 those interested in the shift of activity from hospitals into the community.
 
+<br><br>
 
 :::{.callout-tip}
 
@@ -29,6 +30,12 @@ Check the out our frequently asked questions.
 
 </div>
 :::
+
+<br><br>
+
+![Model summary](/resources/Demand%20and%20Capacity%20Model.png)
+
+<br><br>
 
 ::: {.callout-caution}
 
