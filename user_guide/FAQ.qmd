@@ -7,7 +7,7 @@ This page collates some frequently asked technical questions about the model fro
 
 ## I have sign off to use our own custom population projections - how do I submit these to you?
 
-Once you have all relevant sign-offs, we can accept your population projections 
+Once you have all relevant sign-offs, we can accept your population projections
 provided it is delivered to us in a specific format. Please see [this csv example](../resources/national_demographic_factors.csv) - please structure your data with the same layout, headings and file format.
 
 A custom birth projection is also required. You may select either of the two options below:
@@ -124,7 +124,7 @@ Subject matter experts were invited to provide forecasts about future hospital a
 
 ## Capacity conversion - Does the model project the number of beds required?
 
-The demand model does not produce capacity estimates. The main outputs are hospital activity as measured in inpatients admissions and bed days, and outpatients and A&E attendances. Schemes can either undertake their own analysis to convert activity into capacity, or use our new dedicated [capacity model](https://connect.strategyunitwm.nhs.uk/capacity-model-docs/). The first stage output report that we co-produce with you will detail how you have locally undertaken the conversion from demand to capacity based on local context. 
+The demand model does not produce capacity estimates. The main outputs are hospital activity as measured in inpatients admissions and bed days, and outpatients and A&E attendances. Schemes can either undertake their own analysis to convert activity into capacity, or use our new dedicated [capacity model](https://connect.strategyunitwm.nhs.uk/capacity-model-docs/). The first stage output report that we co-produce with you will detail how you have locally undertaken the conversion from demand to capacity based on local context.
 
 ## Does the model cater for seasonal variation to establish peak demand?
 
@@ -142,7 +142,8 @@ In order to provide activity levels at a monthly level, we would first need to i
 
 ## How are a Trust's peers selected?
 
-The Trust peers displayed in the inputs app (in the comparative charts for the TPMAs) are derived from an earlier Excel version of this tool: [Trust Peer Finder Tool](https://app.powerbi.com/view?r=eyJrIjoiMjdiOWQ4YTktNmNiNC00MmIwLThjNzktNWVmMmJmMzllNmViIiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9).
+Peers for NHS provider trusts are from [the Model Health System](https://www.england.nhs.uk/applications/model-hospital/).
+That list is incomplete, so specialist providers have been added in three groups (Women's and Children's, Orthopaedic and Neurology and Other specialist), while University Hospitals Birmingham NHS Foundation Trust (RRK) and Croydon Health Services NHS Trust (RJ6) have been assigned peers from [the NHP Trust Peer Finder Tool](https://app.powerbi.com/view?r=eyJrIjoiMjdiOWQ4YTktNmNiNC00MmIwLThjNzktNWVmMmJmMzllNmViIiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9) (2019).
 
 ## Does the model quantify the projected activity removed from the hospital?
 
@@ -210,6 +211,6 @@ The modelling work does generate data summaries that are safe to access by indiv
 
 The work does require sharing more detailed summaries with the hospital schemes themselves as well as named contractors commissioned by the programme within the 'Health Delivery Partnership'. These detailed summaries contain small numbers that are not suppressed but the risk of reidentification is highly mitigated as described in the DPIA. Both contractors operate under a contract which contains specific instructions around use of data including prohibiting sharing of any data. NHS staff in hospitals with whom the summaries are shared will be bound by their local information governance policies.
 
-Data minimisation is used extensively to reduce the amount of information disclosed. All of the age data is in categories (0, 1-17, 18-65, 65+) and other than sex there is no other demographic information present. 
+Data minimisation is used extensively to reduce the amount of information disclosed. All of the age data is in categories (0, 1-17, 18-65, 65+) and other than sex there is no other demographic information present.
 
 No other data should be shared as part of this work, neither data summaries with variables that increase the risk of reidentification (for example, date of birth or LSOA) nor with any other parties than those described above. All of this detail is held within a DPIA approved and held by NHS England.
